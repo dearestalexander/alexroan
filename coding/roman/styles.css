@@ -1,0 +1,109 @@
+:root {
+  --color-black: #000;
+  --color-gray-dark: #58595b;
+  --color-gray-medium: #767676;
+  --color-gray-light: #d8d8d8;
+  --color-off-white: #f6f6f6;
+  --color-white: #fff;
+  --color-red-primary: #e10a1d;
+  --color-red-medium: #b00716;
+  --color-red-dark: #890713;
+  --color-blue-primary: #007aff;
+  --color-red: #e10a1d;
+  --color-ash: #2b303b;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-black);
+}
+
+.freecodecamp-logo {
+  width: 300px;
+  background-color: var(--color-black);
+  margin: 20px auto;
+}
+
+h1 {
+  margin: 20px auto;
+  color: var(--color-white);
+}
+
+#red {
+  color: var(--color-red);
+  font-size: 1.5em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 0px;
+  font-size: 1.4rem;
+  background-color: var(--color-gray-medium);
+}
+
+#inputTxt {
+  margin: 20px auto 20px;
+  color: var(--color-white);
+  text-align: center;
+}
+
+#number {
+  height: 60px;
+  width: 300px;
+  font-size: 1.4rem;
+  margin: auto;
+}
+
+#convert-btn {
+  height: 60px;
+  width: 150px;
+  margin: 10px auto 10px;
+  font-size: 1.4rem;
+  background-color: var(--color-gray-light);
+}
+
+#divider {
+  border: 1px solid var(--color-red);
+  width: 400px;
+  margin: 20px auto 20px;
+}
+
+#outputBox {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 200px;
+  width: 400px;
+  background-color: var(--color-gray-medium);
+}
+
+#resultTitle {
+  margin: auto;
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--color-white);
+}
+
+#output {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 60px;
+  width: 300px;
+  background-color: var(--color-white);
+}
+
+#resultTxt {
+  font-size: 1.4rem;
+  margin: auto;
+  text-align: center;
+}
