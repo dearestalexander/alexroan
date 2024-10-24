@@ -1,0 +1,21 @@
+---
+title: Photography
+titletwo: ~ by Alex Roan
+layout: 'content.njk'
+main__class: photography
+---
+
+<div class="posts__frame">
+  <ul class="ul--plain">
+    {%- for photo in collections.photography | reverse -%}
+      <li class="li--plain">
+        <article class="snippet__article">
+          <a href="{{ photo.url }}"><img src="{{ photo.data.image }}" /></a>
+          <h2 class="photography__h2">{{ photo.data.title }}</h2>
+          <a href="{{ photo.data.location }}">location</a>
+        </article>
+      </li>
+      <div class="divider-two"></div>
+    {%- endfor -%}
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+---
+title: Business and technology transformation
+titletwo: ~ by Alex Roan
+layout: 'content.njk'
+main__class: main-blog
+---
+
+
+<div class="posts__frame">
+  <ul class="ul--plain">
+    {%- for blog in collections.blog | reverse -%}
+      <li class="li--plain">
+        <article class="snippet__article">
+          <h2 class="snippet__title">{{ blog.data.title }}</h3>
+          <p class="snippet__meta">by <span>{{ blog.data.author }}</span> on <span>{{ blog.data.date | postDate }}</span></p>
+          <p class="snippet__description">{{ blog.data.description }}</p>
+          <a class="snippet__link" href="{{ blog.url }}">Continue reading</a>
+        </article>
+      </li>
+      <div class="divider-two"></div>
+    {%- endfor -%}
+  </ul>
+</div>
