@@ -1,0 +1,15 @@
+---
+layout: 'content.njk'
+main__class: photography
+---
+
+
+<article class="article__photo-page">
+  <figure class="main-article__figure">
+    <img class="photo-page__image" src="{{ image }}" art"{{ imageAlt}}">
+  </figure>
+  <p>{{ title }}</p>
+  <h2 class="photography__h2">{{ photo.data.title }}</h2>
+  <a href="{{ photo.data.location }}">location</a>
+  {{ content | safe }}
+</article>

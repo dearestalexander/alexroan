@@ -1,0 +1,610 @@
+
+
+
+
+/* ======================================= */
+/* ========== VARIABLES & RESET ========== *
+/* ======================================= */
+:root {
+  /* alexroan.com colours */
+  --color-red: #EB0A1E;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-grey: #58595B;
+  --color-lightgrey: #f6f6f6;
+  --color-lightyellow: #f1be32;
+}
+
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+
+
+
+/* =================================== */
+/* ========== DESIGN - BODY ========== *
+/* =================================== */
+body {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img {
+  max-width: 100%;
+  margin: auto;
+}
+
+a {
+  color: var(--color-red);
+}
+
+.ul--plain {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+.li--plain {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+/* ===================================== */
+/* ========== DESIGN - HEADER ========== *
+/* ===================================== */
+
+/* ---------- Large header (used on home/index.njk) ----------  */
+.heading__frame {
+  padding: 6rem 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  color: black;
+}
+
+.heading__title-one {
+  display: block;
+  background-color: var(--color-red);
+  font-size: 3rem;
+  width: 8rem;
+  padding: 4rem 0.5rem 0rem 4rem;
+}
+
+.heading__title-two {
+  display: block;
+  width: 16rem;
+  font-size: 4rem;
+  margin: -0.4rem 1rem 1rem 1.4rem;
+}
+
+.nav__ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav__li {
+  text-decoration: none;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+.nav__li:hover {
+  background-color: var(--color-lightgrey);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav__more {
+  display: none;
+  position: absolute;
+  background-color: var(--color-lightgrey);
+  list-style-type: none;
+  color: black;
+  top: 100%;
+  left: 0%;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown:hover .nav__more {
+  display: block;
+}
+
+.nav__more a:hover {
+  background-color: var(--color-grey);
+  color: white;
+}
+
+
+/* ---------- Large header (used on post and other pages) ----------  */
+.mobile-nav__container { 
+  display: none; /* hide mobile nav */
+}
+
+.heading__frame {
+  min-width: (105ch, 90%);
+}
+
+.heading__frame--small {
+  width: min(105ch, 90%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.heading__title--small {
+  font-size: 1.2rem;
+}
+
+.heading__title-two--small {
+  color: var(--color-red);
+  font-style: italic;
+}
+
+/*   - navigation  */
+.nav__link--small {
+  display: block;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.nav__link--small:hover {
+  background-color: var(--color-lightgrey);
+}
+
+.divider-one {
+  border: 1px solid var(--color-lightgrey);
+  margin-bottom: 0.1rem;
+}
+
+
+
+
+/* ===================================== */
+/* ========== DESIGN - MAIN ========== *
+/* ===================================== */
+
+
+/* ---------- Large header & general (used on home/index.njk) ----------  */
+main {
+  width: min(105ch, 90%);
+  display: flex;
+  flex-direction: row;
+  margin-top: 4rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+.posts__frame {
+  width: min(65ch, 90%);
+  margin: 0ch 5ch 0ch 5ch;
+}
+
+.snippet__article {
+  border-radius: 0.5rem;
+}
+
+.snippet__title {
+  font-size: 1.2rem;
+  padding: 0 0 1rem 0;
+  margin: 0;
+}
+
+.snippet__image {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.snippet__meta {
+  color: var(--color-grey);
+  font-style: italic;
+}
+
+.divider-two {
+  border: 1px solid var(--color-lightgrey);
+  width: 40%;
+  margin: 4rem auto;
+}
+
+
+/* ---------- Adjust main for single posts pages (post-layout.njk) ----------  */
+.main__centered {
+  flex-direction: column;
+  align-items: center;
+}
+
+.posts__frame__post {
+  width: min(75ch, 90%);
+}
+
+
+/* ---------- Sidebar menu on home/index and posts pages ----------  */
+.sidebar__container {
+  width: 40ch;
+  padding: 0ch 2ch 0ch 2ch;
+}
+
+.sidebar__container--content {
+  padding-top: 4rem;
+}
+
+.sidebar__aside {
+  border-radius: 0.5rem;
+  background-color: var(--color-lightgrey);
+  margin-bottom: 2rem;
+}
+
+.sidebar__text {
+  margin: 0;
+  padding: 0;
+  hyphens: none;
+}
+
+.sidebar__title {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-lightyellow);
+  font-weight: bold;
+}
+
+.sidebar__box {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 1rem 1.2rem 1rem;
+}
+
+.sidebar__link {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-grey);
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar__link:hover {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+/* higlight the 'filter link' based on the content page being viewed
+    - The frontmatter on content pages has a field 'main__class'
+    - This is used to update the class of main in the content template
+    - e.g. <main class="articles"> or <main class="finance"> depending on the content page
+    - Each link in the sidebar has a class matching it's name e.g. <a class="article">
+    - Styles can then be applied using descendent selector to highlight the link for the current page
+      - .articles .article {background-color: grey} would apply grey to the articles link on the article page
+      - .finance .finance {background-color: grey} would apply gret to teh finance link on the finance page
+    - (This allows for dynamic update of the sidebar template)
+*/
+
+.main-all .type-all-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-articles .articles-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-blog .blog-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-all .category-all-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-consulting .consulting-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-finance .finance-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-operations .operations-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-project .project-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-strategy .strategy-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.main-technology .technology-link {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+
+
+
+/* ===================================== */
+/* ========== DESIGN - FOOTER ========== *
+/* ===================================== */
+
+footer {
+  width: 100svw;
+  background-color: var(--color-lightgrey);
+  color: var(--color-grey);
+  margin-top: 4rem;
+}
+
+.footer__container {
+  width: min(105ch, 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4rem;
+  margin: auto;
+}
+
+.footer__subtitle-one {
+  color: var(--color-lightyellow);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.footer__subtitle-two {
+  color: var(--color-lightyellow);
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+
+/* ---------- Contact form ----------  */
+
+.contact-form {
+  width: min(50ch, 100%);
+  display: grid;
+  grid-template-columns: auto 1fr; /* content size for label, remainder for input */
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.contact-form__row {
+  display: contents; /* ensure divs don't interfere with grid layout */
+}
+
+.contact__label {
+  width: 10ch;
+  padding-right: 10px;
+}
+
+.contact__input {
+  width: 100%;
+}
+
+.contact__message {
+  height: 10ch;
+}
+
+
+/* ---------- Sitemap ----------  */
+.sitemap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 2rem;
+}
+
+
+/* ---------- Attribution ----------  */
+.footer__text {
+  font-size: 1rem;
+  padding: 2rem;
+  align-self: center;
+  font-style: italic;
+}
+
+
+
+/* ====================================== */
+/* ========== Photography page ========== *
+/* ====================================== */
+
+/* remove sidebar (which is part of content.njk layout) */
+.photography > .sidebar__container {
+  display: none;
+}
+
+/* adjust flex to centre content after removing sidebar */
+.photography {
+  flex-direction: column;
+  align-items: center;
+}
+
+.photography__h2 {
+  font-size: 1rem;
+}
+
+/* Design for single photo post (photo.njk and template file photo-layout.njk) */
+.photo-page__image {
+  max-width: 90svw;
+  max-height: 90svh;
+}
+
+
+
+/* ====================================== */
+/* ========== Programming page ========== *
+/* ====================================== */
+
+/* remove sidebar (which is part of content.njk layout) */
+.programming > .sidebar__container {
+  display: none;
+}
+
+/* adjust flex to centre content after removing sidebar */
+.programming {
+  flex-direction: column;
+  align-items: center;
+}
+
+.article__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  border: 1px solid var(--color-lightyellow);
+  padding: 1rem;
+}
+
+.grid-item:nth-child(5) {
+  grid-column: 1 / span 2;
+  justify-self: center;
+}
+
+
+
+/* ====================================== */
+/* ========== Classic cars page ========== *
+/* ====================================== */
+
+/* remove sidebar (which is part of content.njk layout) */
+.classics > .sidebar__container {
+  display: none;
+}
+
+/* adjust flex to centre content after removing sidebar */
+.classics {
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ===================================================== */
+/* ========== DESIGN - SMALL SCREENS / MOBILE ========== *
+/* ===================================================== */
+
+/* 
+As there are several pages and filters to navigage between
+The approach is 
+- Hide main nav menu
+- Hide sidebar filters
+- Add a 'hamburger' menu top right
+- On click this links to a separate menu page
+- The menu page has a 'x' top right to close and return
+*/
+
+
+@media (max-width: 600px) {
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%;
+  }
+
+  .footer__site-map {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .sitemap {
+    grid-template-columns: 1fr
+  }
+
+  .heading__frame {
+    padding: 0;
+  }
+
+
+  .heading__frame--small {
+    width: 80%;
+    font-size: 1rem;
+    hyphens: none;
+  }
+
+  .nav__container, .nav__container--small, .sidebar__container, .sidebar__container--content {
+    display: none;
+  }
+
+  .mobile-nav__container {
+    display: flex;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .hamburger {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}

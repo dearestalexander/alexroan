@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon Search App</title>
+  <meta name="description" content="example description text" />
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+      alt="freecodecamp logo"
+      class="hero-img"
+      loading="lazy" </>
+    <h1>Pokémon Search App</h1>
+  </header>
+  <main>
+    <div id="frame">
+      <form id="search">
+        <label for="search-input">Search for Pokémon Name or ID:</label>
+        <div>
+          <input id="search-input" type="text" name="searchInput">
+          <button id="search-button" type="submit">Search</button>
+        </div>
+      </form>
+      <div id="searchResults">
+        <div>
+          <p id="pokemon-name" class="vls"></p>
+          <p id="pokemon-id" class="vls"></p>
+        </div>
+        <div>
+          <p id="weight" class="vls"></p>
+          <p id="height" class="vls"></p>
+        </div>
+        <div id="img-container" class="vls"></div>
+        <div id="types" class="vls"></div>
+      </div>
+      <div id="statsFrame">
+        <div class="stats"><p><strong>Base</strong></p></div>
+        <div class="stats"><p><strong>Stats</strong></p></div>
+        <div class="stats"><p>HP:</p></div>
+        <div id="hp" class="stats vls"></div>
+        <div class="stats"><p>Attack:</p></div>
+        <div id="attack" class="stats vls"></div>
+        <div class="stats"><p>Defense:</p></div>
+        <div id="defense" class="stats vls"></div>
+        <div class="stats"><p>Sp.Attack:</p></div>
+        <div id="special-attack" class="stats vls"></div>
+        <div class="stats"><p>Sp.Defense:</p></div>
+        <div id="special-defense" class="stats vls"></div>
+        <div class="stats"><p>Speed:</p></div>
+        <div id="speed" class="stats vls"></div>
+      </div>
+    </div>
+  </main>
+  <footer> 
+  </footer>
+  <script src="./script.js"></script>
+</body>
+</html>

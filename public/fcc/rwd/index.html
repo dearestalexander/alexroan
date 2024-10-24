@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN" xml:lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>Responsive Web Design Quick Reference</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https//fonts.googleapis.com/css?family=Roboto+Mono:300,400"
+      rel="stylesheet"/>
+    <link
+      href="https//fonts.googleapis.com/css?family=Lato:400"
+      rel="stylesheet"/>
+  </head>
+  <body onload="PR.prettyPrint()">
+    <header>
+      <div class="logo">
+        <img src="fcc_primary_large.jpg" 
+          alt="freecodecamp logo"
+          class="hero-img"
+          loading="lazy"
+          width="200">
+      </div>
+      <nav>
+        <div>
+          <p id="choose">Choose section:</p>
+          <a href id="htmlcss" class="categories yellow-border">Responsive Web Design (HTML & CSS)</a>
+          <a href id="javascript" class="categories">JavaScript Algorithms & Data Structures</a>
+        </div>
+        <div id="contents">
+        <p>Section contents:</p>
+        <ul>
+          <li>
+            <a href="#html">HTML</a>
+            <ul>
+              <li><a href="#basic-layout">Basic layout</a></li>
+              <li>
+                <a href="#google-fonts-and-fontawesome-icons"
+                  >Google fonts and fontawesome icons</a
+                >
+              </li>
+              <li><a href="#general">General</a></li>
+              <li>
+                <a href="#identifying-elements-id-class"
+                  >Identifying elements (id class)</a
+                >
+                <ul>
+                  <li><a href="#id">Id</a></li>
+                  <li><a href="#class">Class</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#layout-elements">Layout elements</a>
+                <ul>
+                  <li><a href="#heading-h1">Heading h1</a></li>
+                  <li><a href="#paragraph-p">Paragraph p</a></li>
+                  <li><a href="#list-ul">List ul</a></li>
+                  <li><a href="#div">Div</a></li>
+                  <li><a href="#span">Span</a></li>
+                  <li><a href="#section">Section</a></li>
+                  <li><a href="#article">Article</a></li>
+                  <li><a href="#divider-hr">Divider hr</a></li>
+                  <li><a href="#line-break-br">Line break br</a></li>
+                  <li><a href="#table">Table</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#inputs">Inputs</a>
+                <ul>
+                  <li><a href="#form">Form</a></li>
+                  <li><a href="#fieldset">Fieldset</a></li>
+                  <li><a href="#legend">Legend</a></li>
+                  <li><a href="#label">Label</a></li>
+                  <li><a href="#input">Input</a></li>
+                  <li><a href="#select">Select</a></li>
+                  <li><a href="#textarea">Textarea</a></li>
+                  <li><a href="#button">Button</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#images-links-icons">Images, links, icons</a>
+                <ul>
+                  <li><a href="#image">Image</a></li>
+                  <li><a href="#anchor">Anchor</a></li>
+                  <li><a href="#icon">Icon</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#other-topics">Other topics</a>
+                <ul>
+                  <li><a href="#html-formatting">HTML formatting</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#css">CSS</a>
+            <ul>
+              <li><a href="#general-1">General</a></li>
+              <li><a href="#selectors">Selectors</a></li>
+              <li><a href="#psuedo-selectors">Psuedo selectors</a></li>
+              <li>
+                <a href="#layout">Layout</a>
+                <ul>
+                  <li>
+                    <a href="#initial-page-setup">Initial page setup</a>
+                  </li>
+                  <li><a href="#css-box-model">CSS box model</a></li>
+                  <li><a href="#box-sizing">Box sizing</a></li>
+                  <li><a href="#grid">Grid</a></li>
+                  <li><a href="#flexbox">Flexbox</a></li>
+                  <li>
+                    <a href="#columns-with-column-width"
+                      >Columns with column-width</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#position-top-right-left-bottom-z-index"
+                      >Position, top right left bottom, z-index</a
+                    >
+                  </li>
+                  <li><a href="#float">Float</a></li>
+                  <li><a href="#display">Display</a></li>
+                  <li><a href="#divider">Divider</a></li>
+                  <li><a href="#margin">Margin</a></li>
+                  <li><a href="#padding">Padding</a></li>
+                  <li>
+                    <a href="#accessibility-media"
+                      >Accessibility (<span
+                        class="citation"
+                        data-cites="media"
+                        >@media</span
+                      >)</a
+                    >
+                  </li>
+                  <li><a href="#overflow">Overflow</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#element-properties">Element properties</a>
+                <ul>
+                  <li><a href="#variables">Variables</a></li>
+                  <li>
+                    <a href="#font-text-list">Font, text, list</a>
+                    <ul>
+                      <li><a href="#font">Font</a></li>
+                      <li><a href="#text">Text</a></li>
+                      <li><a href="#letters">Letters</a></li>
+                      <li><a href="#list-styles">List styles</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#dimensions--shapes"
+                      >Dimensions &amp; shapes</a
+                    >
+                    <ul>
+                      <li><a href="#widthheight">Width/height</a></li>
+                      <li><a href="#aspect-ratio">Aspect ratio</a></li>
+                      <li><a href="#gap">Gap</a></li>
+                      <li><a href="#object-fit">Object-fit</a></li>
+                      <li><a href="#shapes">Shapes</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#borders--backgrounds"
+                      >Borders &amp; backgrounds</a
+                    >
+                    <ul>
+                      <li><a href="#borders">Borders</a></li>
+                      <li><a href="#border-radius">Border radius</a></li>
+                      <li><a href="#box-shadow">Box shadow</a></li>
+                      <li>
+                        <a href="#background-image">Background-image</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#color">Color</a>
+                    <ul>
+                      <li><a href="#basics">Basics</a></li>
+                      <li>
+                        <a href="#linear-gradient">Linear gradient</a>
+                      </li>
+                      <li>
+                        <a href="#repeating-linear-gradient"
+                          >Repeating linear gradient</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#radial-gradient">Radial gradient</a>
+                      </li>
+                      <li><a href="#opacity">Opacity:</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#other-topics-filter-transform-content"
+                      >Other topics (filter, transform, content)</a
+                    >
+                    <ul>
+                      <li><a href="#filter">Filter</a></li>
+                      <li><a href="#transform">Transform</a></li>
+                      <li><a href="#content">Content</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#tables">Tables</a></li>
+                  <li>
+                    <a href="#functions-minmax-calc-repeat"
+                      >Functions (minmax, calc, repeat)</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#user-interface">User interface</a>
+                <ul>
+                  <li><a href="#cursor">Cursor</a></li>
+                  <li><a href="#scroll-behaviour">scroll behaviour</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#animation">Animation</a> -
+                <a href="#basic-settings-with-keyframes"
+                  >Basic settings with
+                  <span class="citation" data-cites="keyframes"
+                    >@keyframes</span
+                  ></a
+                >
+                <ul>
+                  <li>
+                    <a href="#motion-based-animations-media-rule"
+                      >Motion based animations
+                      <span class="citation" data-cites="media"
+                        >@media</span
+                      >
+                      rule</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#accessibility">Accessibility</a>
+                <ul>
+                  <li><a href="#general-notes">General notes</a></li>
+                  <li><a href="#screen-readers">Screen readers</a></li>
+                  <li>
+                    <a href="#navigation-key-shortcuts"
+                      >Navigation key shortcuts</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#html-and-css-to-reverse-heading-order"
+                      >HTML and CSS to reverse heading order</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#useful-formats">Useful formats</a>
+                <ul>
+                  <li>
+                    <a href="#draw-a-cat-eye-drawing-shapes"
+                      >Draw a cat eye (drawing shapes)</a
+                    >
+                  </li>
+                  <li><a href="#quotation-format">Quotation format</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#design-theory">Design theory</a>
+                <ul>
+                  <li><a href="#colours">Colours</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </div>
+      </div>
+      </nav>
+    </header>
+    <main>
+      <h1 id="respWebDesign"><span class="callout">Unofficial</span> Responsive Web Design Quick Reference</h1>
+      <h2 id="intro">Introduction</h2>
+      <p>This is a quick reference covering freeCodeCamp's Responsive Web Design and Javascript Algorithms and Data Structures courses. It's simply a translation of my notes in markdown into HTML. I found it useful to jog my memory when tackling projects. Credit for the content goes to the <a href="https://www.freecodecamp.org/">freeCodeCamp</a> authors. And further credit to websites like developers.mozilla and w3schools where I found additional information.</p>
+      <p id="name">- Alexander</p>
+      <h2 id="html">HTML</h2>
+      <h3 id="basic-layout">Basic layout</h3>
+      <p>
+        The basic layout of an html document includes several key tags which
+        provide information about the document and provide the structure for the
+        page. The basic order is:
+      </p>
+      <ul>
+        <li>!DOCTYPE: declares the document as html</li>
+        <li>html: starts html and specify language</li>
+        <li>
+          head <code>&lt;head&gt;&lt;/head&gt;</code> - contains the title, meta
+          information and link information
+          <ul>
+            <li>
+              Title contains the page title
+              <code>&lt;title&gt;page title&lt;/title&gt;</code>
+              <ul>
+                <li>This determines what is shown in the title bar</li>
+                <li>
+                  Also determines what is shown when hovering on a browser tab
+                </li>
+              </ul>
+            </li>
+            <li>
+              Meta declare key characteristics for the page
+              <ul>
+                <li>These are self closing <code>&lt;meta... &gt;</code></li>
+                <li>Multiple meta elements can exist for a page</li>
+              </ul>
+            </li>
+            <li>
+              Link declares external information utilised by the html
+              <ul>
+                <li>These are self closing <code>&lt;link... &gt;</code></li>
+                <li>Multiple link elements can exist for a page</li>
+                <li>Examples include CSS stylesheets and google fonts</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          body <code>&lt;body&gt;&lt;/body&gt;</code>
+          <ul>
+            <li>
+              header <code>&lt;header&gt;&lt;/header&gt;</code>
+              <ul>
+                <li>
+                  In general this section is used to Introduce the page &amp;
+                  provide a menu
+                </li>
+                <li>
+                  The main navigation menu should be placed inside
+                  <code>&lt;nav&gt;&lt;/nav&gt;</code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Main <code>&lt;main&gt;&lt;/main&gt;</code>
+              <ul>
+                <li>In general contains the core content of the page</li>
+              </ul>
+            </li>
+            <li>
+              Footer <code>&lt;footer&gt;&lt;/footer&gt;</code>
+              <ul>
+                <li>May include information such as author and address</li>
+                <li>
+                  For example may include address with
+                  <code>&lt;address&gt;&lt;/address&gt;</code>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint">
+        <code>
+          &lt;!DOCTYPE html&gt;
+          &lt;html lang=&quot;en&quot;&gt;
+            &lt;head&gt;
+              &lt;title&gt;Example page title&lt;/title&gt;
+              &lt;meta name=&quot;description&quot; content=&quot;example description text&quot; /&gt;
+              &lt;meta charset=&quot;UTF-8&quot; /&gt;
+              &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+              &lt;link href=&quot;styles.css&quot; rel=&quot;stylesheet&quot; /&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;header&gt;&lt;/header&gt;
+              &lt;main&gt;&lt;/main&gt;
+              &lt;footer&gt;&lt;/footer&gt;
+            &lt;/body&gt;
+          &lt;/html&gt;
+        </code>
+      </pre>
+      <h3 id="google-fonts-and-fontawesome-icons">
+        Google fonts and fontawesome icons
+      </h3>
+      <p>
+        During the exercises additional links were added to the html head to
+        access additional fonts from google fonts and icons from fontawesome.
+        Detailed instructions are available at:
+      </p>
+      <ul>
+        <li>
+          <a href="https://developers.google.com/fonts/docs/getting_started"
+            >Get started with google fonts</a
+          >
+        </li>
+        <li><a href="https://fontawesome.com/">fontawesome</a></li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;head&gt;
+    &lt;!-- example to get Open Sans font family from google --&gt;
+    &lt;link href=&quot;https//fonts.googleapis.com/css?family=Open+Sans:400,700,800&quot; rel=&quot;stylesheet&quot;/&gt;
+
+    &lt;!-- register at fontawesome to get a personalised url --&gt;
+    &lt;link href=&quot;url from fontawesome&quot; rel=&quot;stylesheet&quot;/&gt;
+&lt;/head&gt;</code></pre>
+      <h3 id="general">General</h3>
+      <ul>
+        <li>In general 2 spaces are used for html code indentation</li>
+        <li>
+          Comments are placed using the following syntax:
+          <code>&lt;!-- comment here --&gt;</code>
+        </li>
+        <li>
+          All html elements have borders, but the border property is normally
+          set to none by default
+        </li>
+        <li>
+          Basic styling can be done directly in CSS with the
+          <style></style>
+          tags
+        </li>
+      </ul>
+      <h3 id="identifying-elements-id-class">
+        Identifying elements (id class)
+      </h3>
+      <h4 id="id">Id</h4>
+      <p>
+        In general id is used to identify specific html elements. In CSS a
+        hashtag is used to refer to an id e.g. <code>#exampleID</code>
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>&lt;input type=&quot;radio&quot; id=&quot;exampleID&quot;&gt;</code></pre>
+      <h4 id="class">Class</h4>
+      <p>
+        In general class is used to identify html elements. One class can be
+        applied to many elements. In CSS a full stop is used to refer to a class
+        e.g. <code>.exampleClass</code>
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>&lt;div class=&quot;exampleClass1&quot;&gt;&lt;/div&gt;
+&lt;!-- More than one class can be used separated by a space --&gt;
+&lt;div class=&quot;exampleClass1 exampleClass2&quot;&gt;&lt;/div&gt;</code></pre>
+      <h3 id="layout-elements">Layout elements</h3>
+      <h4 id="heading-h1">Heading h1</h4>
+      <ul>
+        <li>
+          Headings are defined with the <code>&lt;h1&gt;</code> to
+          <code>&lt;h6&gt;</code> tags
+        </li>
+        <li>
+          In general limit the use of <code>&lt;h1&gt;</code> to once per page
+        </li>
+        <li>
+          These are block-level by default (use
+          <code>display: inline-block;</code> to change)
+        </li>
+      </ul>
+      <h4 id="paragraph-p">Paragraph p</h4>
+      <ul>
+        <li>Paragraph is the main element to mark text</li>
+        <li>
+          These are block-level by default (use
+          <code>display: inline-block;</code> to change)
+        </li>
+      </ul>
+      <h4 id="list-ul">List ul</h4>
+      <p>
+        An unordered list starts with the <code>&lt;ul&gt;</code> tag. Each list
+        item starts with the <code>&lt;li&gt;</code> tag. While an ordered list
+        starts with
+        <code>&lt;ol&gt;</code>
+      </p>
+      <ul>
+        <li>
+          Tips
+          <ul>
+            <li>
+              List items can have header elements and paragraph elements
+              embedded within
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;ul&gt;  
+  &lt;li&gt;list item 1&lt;/li&gt;  
+  &lt;li&gt;list item 2&lt;/li&gt;  
+  &lt;li&gt;list item 3&lt;/li&gt;  
+&lt;/ul&gt;</code></pre>
+      <h4 id="div">Div</h4>
+      <p>
+        Div is an element that is primarily used to provide structure and
+        formatting to a page where other more specific elements are not
+        available
+      </p>
+      <ul>
+        <li>This is a block level container</li>
+        <li>Often used for formatting</li>
+        <li>
+          For design it can group elements so that formatting can be applied to
+          a number together
+        </li>
+        <li>
+          Multiple div elements can be stacked together. To separate them out
+          use margin-top and margin-bottom values
+        </li>
+        <li>CSS height width values can be used to give them size<br /></li>
+        <li>
+          CSS properties such as <code>background-color</code> can be used to
+          add formatting
+        </li>
+        <li>
+          Div can also be used to push or move other elements (see the marker
+          cap exercise)
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;div class=&quot;classOne classTwo&quot;&gt; &lt;/div&gt; &lt;!-- attaching multiple classes --&gt;
+&lt;div id=&quot;id&quot;&gt; &lt;/div&gt; &lt;!-- using id to connect items to CSS --&gt;</code></pre>
+      <h4 id="span">Span</h4>
+      <p>
+        Span is typically used to mark text or part of a document for formatting
+      </p>
+      <ul>
+        <li>This is an inline-element</li>
+        <li>
+          Similar usage to div as in terms of a formatting tool, but on an
+          inline basis
+        </li>
+      </ul>
+      <h4 id="section">Section</h4>
+      <p>
+        Section is used to mark generic standalone section of a document, it
+        should always have a heading. As it can be tricky to know whether to use
+        a section or more specific CSS element here are some guidelines found on
+        Mozilla:
+      </p>
+      <ul>
+        <li>Section examples: A list of search results, a map element</li>
+        <li>
+          Each section should have a heading <code>&lt;h1&gt;</code> -
+          <code>&lt;h6&gt;</code> as the child of the section (note that
+          headings are key for screen readers and SEO)
+        </li>
+        <li>
+          Only use when there isn’t a more specific element.
+          <ul>
+            <li>A menu should be wrapped in <code>&lt;nav&gt;</code></li>
+            <li>
+              For standalone atomic units of content that make sense e.g. blog
+              post, comment, newspaper article use <code>&lt;article&gt;</code>
+            </li>
+            <li>
+              For useful tangential information alongise main content
+              e.g. related links, author bio use <code>&lt;aside&gt;</code>
+            </li>
+            <li>For main contents use <code>&lt;main&gt;</code></li>
+            <li>
+              If you are using only for styling purposes use a
+              <code>&lt;div&gt;</code> instead
+            </li>
+          </ul>
+        </li>
+        <li>
+          Sections without a heading may occur:
+          <ul>
+            <li>
+              In web application/UI rather than traditional content structures
+            </li>
+            <li>
+              If global menu already utilises <code>&lt;nav&gt;</code> you could
+              use section for an alternate menu e.g. previous / next button bars
+              for controlling apps
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section"
+          >Developers Mozilla - section</a
+        >
+      </p>
+      <h4 id="article">Article</h4>
+      <p>
+        Article is commonly used to group multiple elements with related
+        information. For example in the exercises an article with a class
+        attribute is used to style all nested elements of a particular type:
+      </p>
+      <ul>
+        <li>html: <code>&lt;article class=”item”&gt;</code></li>
+        <li>css: <code>CSS .item p* {}</code></li>
+      </ul>
+      <h4 id="divider-hr">Divider hr</h4>
+      <p>
+        W3 schools defines the purpose of hr to make a thematic break or shift
+        of topic.
+      </p>
+      <ul>
+        <li>This is a self closing element</li>
+        <li>Default thickness is 1px</li>
+        <li>
+          For design, it’s common to adjust height, border colour, background
+          colour, thickness
+        </li>
+        <li>
+          Tip: this can be used with CSS to add margin space e.g. <code
+            >margin-top</code
+          >
+        </li>
+      </ul>
+      <h4 id="line-break-br">Line break br</h4>
+      <p>The br element inserts a single line break.</p>
+      <h4 id="table">Table</h4>
+      <p>Tables can be created in CSS with a set structure of elements.</p>
+      <ul>
+        <li>
+          <code>&lt;thead&gt;&lt;/thead&gt;</code> - is used to identify the
+          header
+        </li>
+        <li>
+          <code>&lt;tr&gt;&lt;/tr&gt;</code> - is used for table rows, initially
+          for the header row
+        </li>
+        <li>
+          <code>&lt;td&gt;&lt;/td&gt;</code> - is used for table data cell:
+          <ul>
+            <li>
+              One is also added to the header to ensure correct layout data
+              association
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>&lt;th&gt;&lt;/th&gt;</code> - is used for header cell i.e
+          column lables
+          <ul>
+            <li>
+              Add one per column. Use <code>&lt;span&gt;&lt;/span&gt;</code> to
+              add column labels
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>&lt;tbody&gt;&lt;/tbody&gt;</code> - is used to identify table
+          data
+        </li>
+        <li>
+          <code>&lt;tr&gt;&lt;/tr&gt;</code> - table row - add one per row of
+          data (and total if relevant)
+        </li>
+        <li>
+          <code>&lt;th&gt;&lt;/th&gt;</code> - row labels - add one per row with
+          the row title
+        </li>
+        <li>
+          <code>&lt;td&gt;&lt;/td&gt;</code> - data - add one per number of
+          columns
+        </li>
+        <li>
+          Tips:
+          <ul>
+            <li>
+              Add a class to each <code>&lt;td&gt;</code> in a specific column
+              to apply a format to that column
+            </li>
+            <li>
+              Grouping several tables into a <code>&lt;div&gt;</code> and using
+              CSS can help screen readers understand document flow
+            </li>
+            <li>
+              Use caption <code>&lt;caption&gt;&lt;/caption&gt;</code> with
+              tables to describe the table. Caption should be placed as the
+              first child of a table
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;!-- to illustrate, here is a table from the exercises --&gt;
+&lt;table&gt;
+    &lt;caption&gt;Assets&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;
+            &lt;th&gt;&lt;span class=&quot;sr-only year&quot;&gt;2019&lt;/span&gt;&lt;/th&gt;
+            &lt;th&gt;&lt;span class=&quot;sr-only year&quot;&gt;2020&lt;/span&gt;&lt;/th&gt;
+            &lt;th class=&quot;current&quot;&gt;&lt;span class=&quot;sr-only year&quot;&gt;2021&lt;/span&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;!-- repeat following for each row, only 1 row shown --&gt;
+        &lt;tr class=&quot;data&quot;&gt;
+            &lt;th&gt;Cash &lt;span class=&quot;description&quot;&gt;Current cash on hand.&lt;/span&gt;&lt;/th&gt;
+            &lt;td&gt;$25&lt;/td&gt;
+            &lt;td&gt;$30&lt;/td&gt;
+            &lt;td class=&quot;current&quot;&gt;$28&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+      <h3 id="inputs">Inputs</h3>
+      <h4 id="form">Form</h4>
+      <p>
+        The form element is used to create an HTML form for user input. It can
+        contain various input elements. Form attributes:
+      </p>
+      <ul>
+        <li>action: the url for the page that form-data is sent to</li>
+        <li>method: how to send form-data. =”GET”` or `“POST”`</li> 
+        <ul>
+          <li>Use `GET` to append form-data into the URL as name/value pairs (data is visible)</li>
+          <li>Use `POST` to append form-data inside the body of the http request (data is not shown in the url)</li>
+        </ul>
+      </ul>
+      <p>
+        When a form element contains a button element and the button attribute
+        type is set to submit the button will trigger sending the nearest parent
+        form. Form data for a button is based on it’s name and value attributes.
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>&lt;form action=&quot;https://freecodecamp.org/practice-project/accessibility-quiz&quot; method=&quot;POST&quot;&gt;
+&lt;button type=&quot;submit&quot;&gt;Submit&lt;/Submit&gt;
+&lt;/form&gt;</code></pre>
+      <h4 id="fieldset">Fieldset</h4>
+      <p>
+        Fieldset is used to group various form elements. It draws a box around
+        them. It is block level by default.
+      </p>
+      <pre class="prettyprint"><code>&lt;fieldset&gt;&lt;/fieldset&gt;</code></pre>
+      <h4 id="legend">Legend</h4>
+      <ul>
+        <li>
+          Legend is used inside of a fieldset and defines a caption for the
+          fieldset
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;legend&gt;&lt;/legend&gt;</code></pre>
+      <h4 id="label">Label</h4>
+      <p>
+        Label associates text with an input element. These are inline by
+        default. Add display: block to CSS to change
+      </p>
+      <ul>
+        <li>
+          Attributes:
+          <ul>
+            <li>for: use to associate with input element by common id</li>
+          </ul>
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;label for=&quot;id&quot;&gt;&lt;/label&gt;</code></pre>
+      <h4 id="input">Input</h4>
+      <p>
+        The input element is used to get user-input. It has a wide range of
+        types with specific formats and behaviours.
+      </p>
+      <ul>
+        <li>
+          Input can be nested in label, in this case <code>for="id"</code> is
+          not required, but it’s good practice to include
+        </li>
+        <li>Input is self closing</li>
+        <li>
+          Attributes:
+          <ul>
+            <li>id: element id</li>
+            <li>
+              name: A name is required to make data accessible by submit-url
+              defined in form action
+              <ul>
+                <li>
+                  Make name the same for groups of radiobox to make only one
+                  selectable
+                </li>
+                <li>
+                  Use attribute to link radio buttons and make only one
+                  selectable
+                </li>
+                <li>
+                  Adding name for checkboxes makes it easier for a server to
+                  process web form, especially with multiple checkboxes
+                </li>
+              </ul>
+            </li>
+            <li>
+              types
+              <ul>
+                <li>
+                  type =“text”: The default type if not specified is a text box
+                </li>
+                <li>
+                  type=“email”: Only allows emails with a @ and a . in the
+                  domain
+                </li>
+                <li>
+                  type=“password”: Obscures the input and warns if site does not
+                  use https
+                </li>
+                <li>
+                  type=“submit”: Adds a submit button where the first added is
+                  automatically set to submit nearest parent form
+                </li>
+                <li>type=“radio”: For radiobox</li>
+                <li>
+                  type=“checkbox”: For checkbox
+                  <ul>
+                    <li>
+                      Note for checkbox value is optional, but good practice is
+                      to include, can be set to same as id
+                    </li>
+                    <li>Use attribute “checked” to set as default checkbox</li>
+                  </ul>
+                </li>
+                <li>type=“file”: Collect an input file</li>
+              </ul>
+            </li>
+            <li>
+              value: This must be specified to identify value of submitted forms
+            </li>
+            <li>
+              placeholder=“example text”: Not necessarily good practice as may
+              confuse. Suggested to use labels instead
+            </li>
+            <li>required: Used to identify an input as required</li>
+            <li>
+              min=“” max=““: Min and max can be used with numbers to specify min
+              / max values
+            </li>
+            <li>
+              minlength=”8”: Add a minimum length requirement e.g. for a
+              password field
+            </li>
+            <li>
+              pattern=”[a-z0-5]{8,}”: Specify allowable format for passwords
+              e.g. in the example 8 or more lowercase letters or digits 0-5
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;label for=&quot;id&quot;&gt;&lt;/label&gt;
+&lt;input id=&quot;id&quot; name=&quot;name&quot; /&gt;
+&lt;label&gt;&lt;input id=&quot;id&quot; name=&quot;name&quot;&gt;&lt;/label&gt;</code></pre>
+      <h4 id="select">Select</h4>
+      <p>
+        Select is a container for a group of option elements. Think of a
+        dropdown list. The option element acts as a label for each possible
+        dropdown selection
+      </p>
+      <ul>
+        <li>
+          Attributes:
+          <ul>
+            <li>
+              id: in forms id is used to link input elements to labels (with
+              label attribute ‘for’)
+            </li>
+            <li>
+              value: specifies the value to be sent to the server. If missing
+              text will be sent
+            </li>
+            <li>required: make the select a required entry</li>
+            <li>
+              selected: define the default option to show in the select dropdown
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;select required&gt;
+&lt;option value=&quot;1&quot;&gt;option text&lt;/option&gt;
+&lt;option value=&quot;2&quot; selected&gt;option text 2&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+      <h4 id="textarea">Textarea</h4>
+      <p>Textarea provides a sinple text entry box</p>
+      <ul>
+        <li>
+          Attributes:
+          <ul>
+            <li>rows: define size in rows</li>
+            <li>cols: define size in cols</li>
+            <li>placeholder: specify default initial text</li>
+          </ul>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>&lt;textarea&gt;&lt;/textarea&gt;</code></pre>
+      <h4 id="button">Button</h4>
+      <ul>
+        <li>
+          In addition to submitting forms buttons can be added and used to
+          trigger other actions.
+        </li>
+        <li>
+          Attributes
+          <ul>
+            <li>
+              type=“button”: use this to prevent automatic form submission
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;button type=&quot;button&quot;&gt;text&lt;/button&gt;</code></pre>
+      <h3 id="images-links-icons">Images, links, icons</h3>
+      <h4 id="image">Image</h4>
+      <p>Image is used to insert an image based on a url</p>
+      <ul>
+        <li>This is a self closing tag</li>
+        <li>Width can be specified directly in HTML as well as in CSS</li>
+        <li>Image acts as an ‘inline’ element</li>
+        <li>
+          Attributes:
+          <ul>
+            <li>
+              alt: used to specify accessibility text (description of the
+              picture)
+            </li>
+            <li>
+              loading=”lazy”: This can be used to tell the browser not to fetch
+              the image resource until it is needed (when the user scrolls the
+              image into view). Lazy loaded elements will not load until the
+              non-lazy elements are loaded
+            </li>
+            <li>
+              path=““: use with scalable vector graphics (SVG) to scale without
+              affecting resolution
+            </li>
+          </ul>
+        </li>
+        <li>
+          Tips
+          <ul>
+            <li>
+              Use margin-top with negative numbers in CSS to pull images closer
+              to headings
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;img src=&quot;https://address.jpg&quot; alt=&quot;accessibility text&quot;&gt;
+&lt;img src=&quot;https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png&quot;
+alt=&quot;freecodecamp logo&quot;
+class=&quot;hero-img&quot;
+loading=&quot;lazy&quot;
+width=&quot;400&quot;&gt;
+
+&lt;a href=&quot;https://link.com&quot;&gt;&lt;img src=&quot;https://address.jpg&quot;&gt;&lt;/a&gt; // img with link</code></pre>
+      <h4 id="anchor">Anchor</h4>
+      <p>Anchor is used for links</p>
+      <ul>
+        <li>
+          Attributes:
+          <ul>
+            <li>href=”url-link”</li>
+            <li>
+              href=”#id”: An id can be used in place of a url to link to another
+              element on a page
+            </li>
+            <li>target=”blank”: Use to open link in a new tab/page</li>
+            <li>
+              rel:“noreferrer”: Use to omit referrer information from the HTTP
+              request
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;a href=&quot;https://link.com&quot;&gt;link text&lt;/a&gt;
+&lt;a href=#student-info&gt;INFO&lt;/a&gt; &lt;!-- link within a page by id --&gt;
+&lt;p class=&quot;author-name&quot;&gt;&lt;a href=&quot;https://freecodecamp.org&quot; target=&quot;_blank&quot;&gt;By freeCodeCamp&lt;/a&gt;&lt;/p&gt;</code></pre>
+      <h4 id="icon">Icon</h4>
+      <p>
+        In the exercises icons are used, these can be sourced from fontawesome
+      </p>
+      <ul>
+        <li>
+          Get a <code>&lt;link&gt;</code> reference to include in the html head
+          from
+          <a href="https://fontawesome.com/">fontawesome</a>
+        </li>
+        <li>
+          Then search for icons at
+          <a href="https://fontawesome.com/">fontawesome</a> and
+        </li>
+        <li>Insert the provided <code>&lt;i&gt;&lt;/i&gt;</code> html code</li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>&lt;!-- a few examples from the course exercises --&gt;
+&lt;i class=&quot;fab fa-facebook-f&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fab fa-twitter&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fab fa-instagram&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fab fa-linkedin-in&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fab fa-youtube&quot;&gt;&lt;/i&gt;
+&lt;i class=&quot;fa fa-github&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;</code></pre>
+      <h3 id="other-topics">Other topics</h3>
+      <h4 id="html-formatting">HTML formatting</h4>
+      <p>
+        While the focus is on formatting with CSS the exercises include a number
+        of examples of formatting directly in HTML
+      </p>
+      <pre class="prettyprint"><code>&lt;em&gt;text&lt;/em&gt; // emphasis
+&lt;strong&gt;text&lt;/strong&gt; // bold
+&lt;ul&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ul&gt; // unordered list
+&lt;ol&gt;&lt;li&gt;text&lt;/li&gt;&lt;/ol&gt; // ordered list
+&lt;blockquote&gt;text&lt;/blockquote&gt; // blockquote</code></pre>
+      <h2 id="css">CSS</h2>
+      <h3 id="general-1">General</h3>
+      <ul>
+        <li>
+          Comments
+          <ul>
+            <li>To add comments in CSS: /* This is a single-line comment */</li>
+          </ul>
+        </li>
+        <li>
+          Relative units
+          <ul>
+            <li>
+              CSS supports units that are relative to something else. The
+              following are used in the exercises
+              <ul>
+                <li>em: relative to size of parent</li>
+                <li>rem: relative to size of root element</li>
+                <li>
+                  vw / vh: % of the viewport width and height respectively
+                </li>
+              </ul>
+            </li>
+            <li>
+              With rem note that by default, most browsers use a font size value
+              of 16px. So, if the root element is 16px, an element with the
+              value 1 rem will also equal 16px
+            </li>
+          </ul>
+        </li>
+        <li>
+          Browser defaults
+          <ul>
+            <li>Every browser has it’s default HTML formatting</li>
+            <li>
+              Examples
+              <ul>
+                <li>Default padding and margins</li>
+                <li>Heading element typography</li>
+              </ul>
+            </li>
+            <li>
+              A number of CSS settings can be made at the outself to ‘normalise’
+              or ‘reset’ the display
+            </li>
+          </ul>
+        </li>
+        <li>
+          Keyword <code>Inherit:</code>: allows you to apply properties from
+          parent items
+        </li>
+        <li>
+          Keyword <code>!important</code>: can be added to properties that you
+          want to ensure are not overwritten
+        </li>
+      </ul>
+      <h3 id="selectors">Selectors</h3>
+      <p>
+        These are used to target html and apply CSS. The
+        <code>:root</code> (root), and <code>*</code> (global) selectors are
+        higher level and apply across the html document. Below that individual
+        html elements can be selected by directly using html tags;
+        <code>h1</code>, <code>header</code>, <code>main</code>,
+        <code>nav</code>, <code>p</code> etc.
+      </p>
+      <p>
+        More control can be achieved by using <strong>id</strong> and
+        <strong>class</strong>
+      </p>
+      <ul>
+        <li>
+          id: unique and should only be used with one element. These are denoted
+          with hashtags <code>#idName</code>.
+        </li>
+        <li>
+          class: not unique and can be used on one or more html elements. Class
+          is denoted by full stop <code>.className</code>
+        </li>
+        <li>
+          Within html id and class are added within html tags
+          <code>&lt;p id="id" class=”class”&gt;&lt;/p&gt;</code>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>* {
+    border: 1px solid black;    
+}
+
+:root { } /* root selector is the highest level in CSS */
+* { } /* global selector */
+element1, element2, element3 { } /* select multiple elements */
+header h1 { } /* select elements based on hierarchy */
+.name { } /* class selector */
+#name { } /* id selector */
+.className1, .className2 { } /* multiple class selector */
+.gallery img { } /* select element within a class */
+.className1 * {} /* all descendent selectors in a class */
+nav &gt; ul { } /* child combinator selector: target elements that match the second selector and are a direct child of the first */
+.info &gt; input, .info &gt; label { } /* selecting two with child combinator */
+element[class=&quot;className&quot;] {} /* select specific elements with a specific class name */
+element.className {} /* the above will select element where the only class is className, this will select those that include */
+span[class~=&quot;sr-only&quot;] {} /* select any &lt;span&gt; whose class includes sr-only */
+#id span[class] { } /* target any &lt;span&gt; within #id that has a class */</code></pre>
+      <h3 id="psuedo-selectors">Psuedo selectors</h3>
+      <p>
+        Pseudo selectors provide additional control. These can be used to affect
+        an item relative to an element (e.g. before), they can also be used to
+        apply CSS to links, and also to set rules based on language. Tips:
+      </p>
+      <ul>
+        <li>::before and ::after are often used to create cosmetic content</li>
+        <li>
+          when using :first-letter it can shift text out of place. This can be
+          fixed using float and margin settings e.g. Set
+          <code>float: left</code> and
+          <code>margin-right: 1rem</code>
+        </li>
+        <li>
+          ‘:after’ can be used to add an empty elements after the last child
+          item in a gallery or grid to force the last visible item to move from
+          center to left
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>p::before {} /* insert content before every &lt;p&gt; element */
+p::after {} /* insert content after every &lt;p&gt; element */
+p::first-letter {} /* select the first letter of every &lt;p&gt; element */
+p:first-of-type {} /* Selects every &lt;p&gt; element that is the first &lt;p&gt; element of its parent */
+p:first-child {} /* selects every &lt;p&gt; element that is the first child of its parent */
+p:nth-of-type(2) {} /* select every &lt;p&gt; element that is the 2nd &lt;p&gt; element of it&#39;s parent */*
+p:last-of-type {} /* Selects every &lt;p&gt; element that is the last &lt;p&gt; element of its parent */
+
+.class1 p:not(.class2) {} /* select all elements (class1) that do no match a given CSS rule (class2) */
+
+:lang {} /* different rules for different languages */
+
+a:link {}
+a:visited {}
+a:hover {} /* must come after a:link */
+a:active {} /* must come after a:hover */</code></pre>
+      <h3 id="layout">Layout</h3>
+      <h4 id="initial-page-setup">Initial page setup</h4>
+      <p>
+        Browsers apply some default settings to a page. The following settings
+        remove default margin, padding, scrollbars and help to normalise the
+        window.
+      </p>
+      <pre class="prettyprint"><code>body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}</code></pre>
+      <p>
+        Layout tip: Add border: 1px solid black to everything to aid with design
+        process as you can see all your element shapes
+        <code>* {border: 1px solid black;}</code>
+      </p>
+      <h4 id="css-box-model">CSS box model</h4>
+      <ul>
+        <li>
+          <p>
+            Content: an area with height and width Every html element is treated
+            as a box with 4 areas:
+          </p>
+        </li>
+        <li><p>Padding: an area of space surrounding the content</p></li>
+        <li><p>Border: the outside edges of an element</p></li>
+        <li><p>Margin: an area of space outside the borders</p></li>
+      </ul>
+      <h4 id="box-sizing">Box sizing</h4>
+      <p>
+        Box sizing controls whether padding and borders are added on top of
+        content width or if content is shrunk to include them.
+      </p>
+      <ul>
+        <li>
+          Browsers apply default margin and padding values to specific elements.
+          To make sure things look correct set box-sizing to border-box
+        </li>
+        <li>
+          Set for html, then use inherit with ::before, ::after to apply to all
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>html {
+box-sizing: border-box;　/* Elements include padding &amp; borders in dimensions. */
+box-sizing: content-box; 
+}
+
+*, ::before, ::after {
+box-sizing: inherit
+}</code></pre>
+      <h4 id="grid">Grid</h4>
+      <p>
+        Grid provides the ability to define a grid-container using
+        <code>display: grid;</code>. The number of columns and rows of the grid
+        can be specified with <code>grid-template-columns</code> &amp;
+        <code>grid-template-rows</code>. Child elements can then be placed
+        inside the grid with <code>grid-colum</code> and <code>grid-row</code>.
+      </p>
+      <pre class="prettyprint"><code>/* set up grid */
+display: grid;
+
+/* examples of defining grid dimensions */
+grid-template-columns: 200px 600px; /* 2 columns */
+
+/* example of gap */
+row-gap: 3rem;
+gap: 2rem; /* sets row and column gap. With 2 values sets row, then column */
+
+/* item placement */
+align-items: center; /* align on vertical */
+justify-content: center; /* align on horizontal */
+place-items: center; /* align-items &amp; justify-content at same time. If two values 1st is used for align-items */
+
+/* properties for child-items */
+grid-column: 2 / 3; /* Determines which column an element starts and ends in */
+grid-auto-flow: column; /* autoplacement based on content */
+grid-auto-columns: 1fr; /* overide grid-auto-flow */
+
+/* sizing examples */
+grid-template-columns: 1fr 94rem 1fr; /* 3 columns using fractions */
+grid-template-columns: repeat(3, 1fr); /* 3 columns using a fracation */
+grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr); /* 3 columns using minmax */
+grid-template-rows: repeat(3, min-content); /* rows that size based on content */</code></pre>
+      <p>Terminology:</p>
+      <ul>
+        <li>Grid container: the element that contains or holds the grid</li>
+        <li>Grid item: the elements that sit in the grid</li>
+        <li>
+          Grid line: vertical and horizontal lines that separate columns and
+          rows
+        </li>
+        <li>Grid cell: a single unit of the grid</li>
+        <li>Grid track: individual columns or rows of the grid</li>
+        <li>Grid area: a number of grid cells</li>
+      </ul>
+      <p>Parent properties:</p>
+      <ul>
+        <li>
+          display: set to either grid (block level) or inline grid (inline
+          level)
+        </li>
+        <li>
+          grid-template-rows: define rows with space separated values
+          representing track size
+        </li>
+        <li>
+          grid-template-columns: define columns with space separated values
+          representing track size
+        </li>
+        <li>column-gap: specifies size of grid lines</li>
+        <li>row-gap: specifies size of grid lines</li>
+        <li>gap: shorthand to specify column and row gap together</li>
+        <li>
+          justify-items: align grid items on the horizontal / row (start, end,
+          center, stretch)
+        </li>
+        <li>
+          align-items: align grid items on the vertical / column (stretch,
+          start, end, center, baseline)
+        </li>
+        <li>place-items: sets both justify-items and align-items</li>
+        <li>
+          In the case where the grid is smaller than the container:
+          <ul>
+            <li>
+              justify-content: align the grid within the container on horizontal
+              / row (start, end, center, stretch, space-around, space-between,
+              space-evenly)
+            </li>
+            <li>
+              align-content: align the grid within the container on vertical /
+              column (start, end, center, stretch, space-around, space-between,
+              space-evenly)
+            </li>
+            <li>place-content: set both align-content and justify-content</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Child properties:</p>
+      <ul>
+        <li>
+          grid-column-start &amp; grid-column-end: refer to grid lines where
+          item starts and ends
+          <ul>
+            <li>grid-column: shorthand for the above</li>
+          </ul>
+        </li>
+        <li>
+          grid-row-start &amp; grid-row-end: refer to grid lines where item
+          starts and ends
+          <ul>
+            <li>grid-row: shorthand for the above</li>
+          </ul>
+        </li>
+        <li>
+          justify-self: aligns an item inside a cell on horizontal / row (start,
+          end, center, stretch)
+        </li>
+        <li>
+          align-self: aligns an item inside a cell on the vertical / column
+          (start, end, center, stretch)
+        </li>
+        <li>place-self: sets justify-self and align-self</li>
+      </ul>
+      <p>Special units &amp; sizing</p>
+      <ul>
+        <li>
+          fr units: fractional units, means portion of the remaining space
+        </li>
+        <li>sizing: you can use all usual lengths px, rem, % etc.</li>
+        <li>min-content: minimum size of content</li>
+        <li>max-content: maximum size of content</li>
+        <li>auto: a lot like fr except fr take precedence over auto</li>
+        <li>
+          fit-content(): uses space available, never less than min-content,
+          never more than max-content
+        </li>
+        <li>minmax(): sets minimum and maximum value for length</li>
+        <li>min()</li>
+        <li>max()</li>
+        <li>repeat(): allows to repeat values</li>
+        <li>subgrid(): allows grid items to have a grid of their own</li>
+      </ul>
+      <h4 id="flexbox">Flexbox</h4>
+      <p>
+        Flexbox provides the ability to define an element as a flex container.
+        Direct children of the container are then known as flex items. The
+        children can then be arranged in a row or column direction. Alignment
+        and wrapping can also be controlled. Alignment options are similar to
+        those described in grid
+      </p>
+      <ul>
+        <li>
+          To perfectly centre an item: set both justify-content and align-items
+          to center
+        </li>
+        <li>
+          When using flexbox with the <code>space-evenly</code> use empty
+          <code>&lt;div&gt;</code> elements to move visible
+          <code>&lt;div&gt;</code> elements around e.g. (at start and end to
+          move middle elements closer together)
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>display: flex;
+flex-direction: row; /* stack items in a row */
+flex-direction: column; /* stack items in a column */
+flex-wrap: wrap; /* specify if items should wrap */
+flex-flow: row wrap; /* shorthand for direction + wrap */
+justify-content: center; /* options: flex-start, flex-end, space-around, space-evenly, space-between */
+align-items: center; /* options: flex-start, flex-end, stretch, baseline */
+align-content: space-between; /* options: space-around, stretch, center, flex-start, flex-end */</code></pre>
+      <h4 id="columns-with-column-width">Columns with column-width</h4>
+      <p>
+        As an alternative to using grid columns can be created by specifying
+        width.
+      </p>
+      <pre class="prettyprint"><code>column-width: 25rem;</code></pre>
+      <h4 id="position-top-right-left-bottom-z-index">
+        Position, top right left bottom, z-index
+      </h4>
+      <p><strong>Position</strong></p>
+      <p>
+        There are a choice of position properties for elements within CSS.
+        Depending on the proprty selected the top, right, left and bottom values
+        can be set to move elements around.
+      </p>
+      <ul>
+        <li>
+          <strong>Static</strong> (default): elements are positioned according
+          to the normal document flow. top, right, left and bottom values have
+          no effect
+        </li>
+        <li>
+          <strong>Relative</strong>: elements are positioned according to the
+          normal document flow. The element can be offset relative to its normal
+          position using top, right, left and bottom values
+        </li>
+        <li>
+          <strong>Absolute</strong>: elements are removed from the normal
+          document flow. No space is created in the doc layout. The position is
+          determined by top, right, left and bottom values
+        </li>
+        <li>
+          <strong>Sticky</strong>: elements are positioned according to the
+          normal document flow. The element sticks to a specific position within
+          the containing element or viewport based on the scroll position.
+          Sticky moves the element into its own stack. To ensure the element
+          does not get hidden by different stacks, add a
+          <code>z-index</code> property set to
+          <code>999</code>
+        </li>
+        <li>
+          <strong>Fixed</strong>: fixed to the page no matter where the user
+          scrolls
+        </li>
+      </ul>
+      <p><strong>Top, right, left, bottom</strong></p>
+      <ul>
+        <li>Specified using % or px values</li>
+      </ul>
+      <p><strong>Z-Index</strong></p>
+      <ul>
+        <li>
+          Used to define the order of overlapping HTML elements. Any element
+          with a higher z-index will always be positioned over an element with a
+          lower z-index
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>position: fixed;
+top: 0; // fix to the top of a container
+z-index: 999;
+
+/* center an item with CSS */
+position: absolute;
+right: 0;
+left: 0;
+top: 0;
+bottom: 0;
+margin: auto;</code></pre>
+      <h4 id="float">Float</h4>
+      <p>
+        Places an element on the left or right side of its container, allowing
+        text and inline elements to wrap around it.
+      </p>
+      <pre class="prettyprint"><code>float: left; /* </code></pre>
+      <h4 id="display">Display</h4>
+      <p>Display options:</p>
+      <ul>
+        <li>
+          <code>inline-block</code>
+          <ul>
+            <li>
+              Allows for height and width, top/bottom margins/paddings are
+              respected, does not add line break after element
+            </li>
+            <li>
+              Causes items to group up. To separate them out you give them
+              separate classes &amp; then assign the classes width e.g. 49 / 50%
+              (depending on added space)
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>inline</code>
+          <ul>
+            <li>
+              cannot set width, height, top/bottom margins/paddings not
+              respected
+            </li>
+          </ul>
+        </li>
+        <li>
+          <code>block</code>
+          <ul>
+            <li>
+              compared to inline-block, adds a line break after so can’t sit
+              next to other elements
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 id="divider">Divider</h4>
+      <p>
+        An easy way to create dividers is to use
+        <code>&lt;div&gt;</code> elements, and assign them to a specific class
+        with border values
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;</code></pre>
+      <pre class="prettyprint"><code>.divider {
+bottom-border: 1px solid #888989;
+margin: 2px 0;
+}</code></pre>
+      <h4 id="margin">Margin</h4>
+      <p>
+        The space surrounding an element. - Top, bottom, left and right values
+        can be set in a variety of ways. - Add a <code>&lt;p&gt;</code> selector
+        and set margins to 0 to remove default whitespace - Setting margin to 0
+        will remove scrollbars (added by default by some browsers)
+      </p>
+      <pre class="prettyprint"><code>margin: 0; /* remove all margins */
+margin: auto; /* set all to auto */
+margin: 10px 20px 10px 15px; /* top, right, bottom, left */
+margin: 0 auto 20; /* top, left and right, bottom 20 */
+margin: 0 auto; /* top and bottom, left and right */
+margin-top: 20px; /* specify top, right, bottom or left */</code></pre>
+      <h4 id="padding">Padding</h4>
+      <p>
+        The space between an elements content and border. Top, bottom, left and
+        right values can be set in a variety of ways.
+      </p>
+      <ul>
+        <li>
+          Adding padding changes the size of a <code>&lt;div&gt;</code> element
+        </li>
+        <li>Padding is useful in positioning captions</li>
+        <li>
+          To replace a top margin with top padding remember to first set the
+          <code>margin: 0;</code>
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>padding: auto; /* set all to autio */
+padding: 10px 0; /* top and bottom, left and right */
+padding-left: 20px; /* specify top, right, bottom or left */
+padding: 0.5rem calc(1.25rem +2px) 0.5rem 0; /* top, right, bottom, left */</code></pre>
+      <h4 id="accessibility-media">
+        Accessibility (<span class="citation" data-cites="media">@media</span>)
+      </h4>
+      <p>
+        The <span class="citation" data-cites="media">@media</span> query can be
+        used to conditionally apply CSS. Commonly used with viewport width by
+        setting max-width and min-width values. This provides the ability to
+        adjust layout/format for small screens, mobile etc.
+      </p>
+      <pre class="prettyprint"><code>/* examples from exercises */
+@media (max-width: 960px) {
+    .card {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 1000px){
+}
+
+@media only screen and (max-width: 720px) {
+    .image-wrapper {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+      <h4 id="overflow">Overflow</h4>
+      <p>
+        Can be used with <code>hidden</code> to stop scrollbars from appearing
+      </p>
+      <pre class="prettyprint"><code>overflow: hidden; </code></pre>
+      <h3 id="element-properties">Element properties</h3>
+      <h4 id="variables">Variables</h4>
+      <p>
+        CSS supports variables. These should be defined in the
+        <code>:root</code> selector. These are then available to all following
+        selectors.
+      </p>
+      <pre class="prettyprint"><code>/* set variable */
+root: {
+--building-color1: #999; /* &#39;--&#39; variable name &#39;:&#39; value */
+}
+
+/* use variable */
+building-color: var(--building-color1); /* var(variableName) */
+background-color: var(--building-color2, green); /* fall-back value */</code></pre>
+      <h4 id="font-text-list">Font, text, list</h4>
+      <h5 id="font">Font</h5>
+      <p>Font properties that can be set include family, size, weight etc.</p>
+      <p>
+        Each browser has some common font families available to it. Fall back
+        fonts can be added after the first separated by commas. Fonts with open
+        space in the name must be surrounded with quotes (“Open Sans”).
+      </p>
+      <p>
+        Additional fonts are available by linking to external sources such as
+        google.
+        <a href="https://developers.google.com/fonts/docs/getting_started"
+          >Google fonts guide</a
+        >.
+      </p>
+      <p>Font tips:</p>
+      <ul>
+        <li>
+          <code>Font-size: 62.5%;</code> will set font to 10px (browser default
+          is 16px)
+        </li>
+        <li>
+          If font-size = 62.5%, it is easy to work with rem as 2rem will equal
+          20px
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>font-family: &quot;Open Sans&quot;, sans-serif; /* fall back font follows the first after a &#39;,&#39; */
+font-size: 16px;
+font-size: **min(5vw, 1.2em);**
+font-weight: 800; /* increases &#39;boldness&#39; of font */
+font-weight: bold;</code></pre>
+      <pre class="prettyprint"><code>/* link to google to get Open Sans font */
+&lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+      <h5 id="text">Text</h5>
+      <p>
+        Text properties that can be set include alignment, indentation,
+        decoration (e.g. underline). CSS also has properties for letters and
+        list styling.
+      </p>
+      <pre class="prettyprint"><code>text-align: center;
+text-indent: -4px;
+text-decoration: none; /* remove underline from anchor */
+vertical-align: top;</code></pre>
+      <h5 id="letters">Letters</h5>
+      <pre class="prettyprint"><code>letter-spacing: 0.15px;</code></pre>
+      <h5 id="list-styles">List styles</h5>
+      <pre class="prettyprint"><code>list-style-type: none;
+list-style: none;</code></pre>
+      <h4 id="dimensions-shapes">Dimensions &amp; shapes</h4>
+      <h5 id="widthheight">Width/height</h5>
+      <p>
+        Width and height of elements can be set using in a fixed way using px.
+        They can also be set relative to parent elements using %. Another
+        options is to use vw (viewport width) and vh (viewport height)
+      </p>
+      <p>Tip:</p>
+      <ul>
+        <li>
+          Use <code>width: 100vw; min-width: 4rem; max-width: 4rem;</code> to
+          ensure that the width is fixed, whereas setting width specifically
+          would allow elements to shrink to the container
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>width: 80% /* sets to % of parent element */
+**max-width: 500px; /* use e.g. 40rem for responsive */
+min-width: 300px;
+min-height: 2em;
+width: 60vw; /* vh/vw: set height relative to viewport 1vw = 1% */
+width: max(250px, 25vw); /* return largest of comma separated values */
+width: unset; /* remove earlier specified rules */**</code></pre>
+      <h5 id="aspect-ratio">Aspect ratio</h5>
+      <pre class="prettyprint"><code>aspect-ratio: 35 / 4;</code></pre>
+      <h5 id="gap">Gap</h5>
+      <p>
+        Sets gaps (gutters) between rows and columns. For flex, grid and
+        multi-column layouts. Apply the property to the container element.
+        Row-gap and column-gap sub properties
+      </p>
+      <pre class="prettyprint"><code>gap: 16px;
+row-gap: 10px;
+column-gap: 10px;</code></pre>
+      <h5 id="object-fit">Object-fit</h5>
+      <p>Maintains aspect ratio and crops images to fit in containers</p>
+      <pre class="prettyprint"><code>object-fit: cover; // </code></pre>
+      <h5 id="shapes">Shapes</h5>
+      <p>
+        Shapes can be created in CSS usually by using a combination of width,
+        height, top, right, left, border, bottom and transform properties along
+        with pseudo :before and :after selectors.
+      </p>
+      <p>Examples:</p>
+      <ul>
+        <li>
+          Squares &amp; rectanges: use a <code>&lt;div&gt;</code> with width,
+          height and background-color
+        </li>
+        <li>Circles: create a square then set border-radius to 50%</li>
+        <li>Ovals: create a rectangle then set border-readius to 50%</li>
+        <li>
+          Triangles:
+          <ul>
+            <li>
+              The CSS method is to use a <code>&lt;div&gt;</code> and manipulate
+              width, height and borders to create a triangle
+            </li>
+            <li>This works based on border edges being at a 45 degree angle</li>
+            <li>
+              Watchout: text will not flow around the ‘shape’, but the
+              <code>&lt;div&gt;</code> which remains square despite the visual
+              changes
+            </li>
+            <li>
+              Method
+              <ul>
+                <li>
+                  First set the width and height of the
+                  <code>&lt;div&gt;</code> to 0;
+                </li>
+                <li>
+                  Next make the borders thickers and set one border edge to a
+                  colour and the others to transparant
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h4 id="borders-backgrounds">Borders &amp; backgrounds</h4>
+      <h5 id="borders">Borders</h5>
+      <p>
+        Elements border properties include width, color, style. Black is used by
+        default, however if setting borders it is best practice to set black
+        explicitly. Tips:
+      </p>
+      <ul>
+        <li>
+          Use border-bottom with elements such as <code>&lt;div&gt;</code>,
+          <code>&lt;fieldset&gt;</code> to create a horizontal divider
+        </li>
+        <li>
+          Temporary set borders globally <code>*</code> during design to
+          visualise all elements
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>border: 0; /* remove all borders */
+
+border-left-width: 10px; /* specify border on one side */
+border-left-style: solid; /* or dashed or dotted or double */
+
+border-left-color: black;
+border-color: #000000 #0000ff #00ff00 #ff0000 /* set colours individually */
+
+border-bottom: 4px solid #fdb347; /* quick format width, style and colour */</code></pre>
+      <h5 id="border-radius">Border radius</h5>
+      <p>
+        Border radius can be used to round corners of elements such as
+        <code>div</code>
+      </p>
+      <ul>
+        <li>
+          Tip: use a high radius e.g. 46% on a <code>&lt;div&gt;</code> with
+          width of 250px and height of 100px to create an oval
+        </li>
+      </ul>
+      <pre
+        class="prettyprint"
+      ><code>border-radius: 9px; /* set all corners based on px */
+border-radius: 46%; /* set all corners based on % */
+border-top-left-radius: 90px; /* set one corner only */
+border-radius: 40% 50%; /* set top &amp; bottom vs. left &amp; right */
+border-radius: 190% 150px 0 0; /* set 4 corners individually */</code></pre>
+      <h5 id="box-shadow">Box shadow</h5>
+      <p>
+        Add a shadow to an element. The height and width of the shadow is based
+        on the height and width of the element it’s applied to, but optional
+        spreadRadius can be used to adjust this.
+      </p>
+      <p>
+        Syntax:
+        <code>box-shadow: offsetX offsetY blurRadius spreadRadius color;</code>
+        where:
+      </p>
+      <ul>
+        <li>
+          <code>offsetX</code> and <code>offsetY</code> accept number values in
+          px and other CSS units
+          <ul>
+            <li>Positive offsetX moves shadow right, negative left,</li>
+            <li>Positive offsetY moves shadow up, negative down</li>
+          </ul>
+        </li>
+        <li>
+          <code>blurRadius</code> is optional and specified in px (or other
+          units?) like offsetY and offsetY
+        </li>
+        <li><code>spreadRadius</code> is optional</li>
+        <li>For zero values units do not need to be specified</li>
+      </ul>
+      <pre class="prettyprint"><code>box-shadow: 0 0 3px 3px #efb762;</code></pre>
+      <h5 id="background-image">Background-image</h5>
+      <p>Specify an image by url to use as the background of an element</p>
+      <ul>
+        <li>By default repeated so it covers the entire element</li>
+        <li>
+          Images are drawn on stacking context layers on top of each other. 1st
+          layer drawn as if it is closest to user. Borders are drawn on top.
+          Background-colour is drawn below
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>/* from url */*
+background-image: url(https//weburl.jpg);</code></pre>
+      <h4 id="color">Color</h4>
+      <h5 id="basics">Basics</h5>
+      <p>
+        Color can be defined in several ways. This includes keywords:
+        <code>red</code>, rgb values: <code>rgb(0,255, 0)</code>, hsl values:
+        <code>hsl(240, 100%, 50%</code> and hex values: <code>f7f7f7</code>
+      </p>
+      <pre class="prettyprint"><code>color: f7f7f7; /* change font color */
+background-color: burlywood; /* change background color by keyword */
+background-color: rgb(0,255,0); /* change background color by RGB */
+background-color: #00FF00; /* change background color by hex */
+background-color: hsl(240,100%,50%) /* change background color by hsl */</code></pre>
+      <h5 id="linear-gradient">Linear gradient</h5>
+      <p>
+        These are used to create a transition of specified colors along a line.
+        This method creates an image element and usually paired with a
+        background element which can take an image as a value. It requires a
+        minumum of two colours, but can accept many. Syntax:
+        <code
+          >linear-gradient(gradientDirection, color1 colourstop%, color2
+          colourstop%, color3, colourstop%)</code
+        >
+        where:
+      </p>
+      <ul>
+        <li>GradientDirection: Specified in degrees. Defaults top to bottom</li>
+        <li>Colour: The colour specified in rgb, hex, hsl</li>
+        <li>
+          Colorstop: As a % places the point where the specified color is 100%
+          pure
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>background: linear-gradient(90deg, 
+rgb(255,0,0) 10%, 
+rbg(0,255,0) 30%, 
+rgb(0,0,255 90%)
+);
+
+/* example from cityskylines */
+background: linear-gradient(
+orange,
+var(--building-color1) 80%,
+var(--window-color1)
+);
+
+/* to make gradient change a solid line repeat % for 2 colors */
+background: linear-gradient(
+var(--building-color2) 0%,
+var(--building-color2) 6%,
+var(--window-color2) 6%,
+var(--window-color2) 9%,
+)</code></pre>
+      <h5 id="repeating-linear-gradient">Repeating linear gradient</h5>
+      <p>
+        A repeating linear gradient causes the specified gradient to repeat
+        until reaching the end of the element. This can be used to create a
+        stripe effect.
+      </p>
+      <pre class="prettyprint"><code>/* examples from cityskylines */
+background: repeating-linear-gradient(
+var(--building-color2),
+var(--building-color2) 6%,
+var(--window-color2) 6%,
+var(--window-color2) 9%
+);
+
+background:
+repeating-linear-gradient(
+90deg,
+var(--building-color4),
+var(--building-color4) 10%,
+transparent 10%,
+transparent 15%
+);</code></pre>
+      <h5 id="radial-gradient">Radial gradient</h5>
+      <p>
+        These are defined at their centre and require at least two color stops.
+        Syntax: background-image: radial-gradient(<em>shape size</em> at
+        <em>position, start-color, …, last-color</em>);
+      </p>
+      <ul>
+        <li>The shape parameter defines the shape: circle or elipse</li>
+        <li>
+          The size parameter defines size: closest side, farthest side, closest
+          corner, farthest corner
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>/* sun example from cityskylines */
+background: radial-gradient(
+circle closest-corner at 15% 15%,
+#ffcf33 0%,
+#ffcf33 20%,
+#ffff66 21%,
+#bbeeff 100%
+);</code></pre>
+      <h5 id="opacity">Opacity:</h5>
+      <p>
+        A value for opacity can be added to color properties. The value of 100%
+        or 1.0 represents opaque as in a solid wall. At 0% it represents
+        completely transparant. With the <code>rgb()</code> color property
+        opacity can be added by using <code>rgba()</code> and specifying a value
+        between 0 and 1.
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>background-color: rgba(255,255,255,0.5); /* white with 50% opacity</code></pre>
+      <h4 id="other-topics-filter-transform-content">
+        Other topics (filter, transform, content)
+      </h4>
+      <h5 id="filter">Filter</h5>
+      <p>
+        Filter was used to create a blur effect during one of the exercises.
+      </p>
+      <pre class="prettyprint"><code>filter: blur(2px);</code></pre>
+      <h5 id="transform">Transform</h5>
+      <p>
+        Transform can be used to modify a shape, it’s position and size etc. by
+        changing layout or affecting surrounding elements. The
+        <code>transform-origin</code> can be specified which sets the point
+        around which a CSS transformation is applied. This takes two values
+        representing the top and left offset.
+      </p>
+      <pre class="prettyprint"><code>/* selection of transform examples */
+transform-origin: 0% 0%; /* point to transform around. top &amp; left offsets.*/
+transform: rotate(-0.6deg);
+transform: rotate(130deg)scaleX(-1); /* rotate and retain scale */
+transform: translate();
+transform: scale();
+transform: matrix;
+transform: uppercase;
+transform: skew(0deg, 44deg); /* two values - where to shear on x &amp; y axis */</code></pre>
+      <h5 id="content">Content</h5>
+      <p>
+        Content can be used to set or override the content of an element. Tip:
+        in one of the exercises <code>content: "";</code> was used to make empty
+        <code>::before</code> and <code>::after</code> pseudo-selectors render
+        to the page.
+      </p>
+      <pre class="prettyprint"><code>content: &quot;&quot;;</code></pre>
+      <h4 id="tables">Tables</h4>
+      <p>
+        One property used in one of the exercises was
+        <code>border-collapse</code> to allow cell borders in a table to
+        collapse into a single border.
+      </p>
+      <pre class="prettyprint"><code>border-collapse: collapse;</code></pre>
+      <h4 id="functions-minmax-calc-repeat">
+        Functions (minmax, calc, repeat)
+      </h4>
+      <p>
+        Throughout the exercises a few functions were utilised to set CSS
+        values. These included <code>minmax()</code>, <code>calc()</code> and
+        <code>repeat()</code>.
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>/* minmax can be used with px, %, fr or keyword such as max-content */
+grid-template-columns: minmax(2rem, 1fr) minmax(94rem, min-content), minmax(2rem,1fr); 
+
+/* calculate can be used to perform simple calculations when setting values */
+padding: 0.5rem calc(1.25rem + 2px) 0.5rem0; /* calculate values */
+
+/* repeat can be used to easily create multiple columns */
+grid-template-columns: repeat(2, 1fr); </code></pre>
+      <h3 id="user-interface">User interface</h3>
+      <h4 id="cursor">Cursor</h4>
+      <p>
+        Cursor can be used to control how the mouse pointer displays. During the
+        exercises this is commonly set to a pointer when hovering over buttons
+      </p>
+      <pre class="prettyprint"><code>.btn:hover {
+cursor: pointer;
+}</code></pre>
+      <h4 id="scroll-behaviour">scroll behaviour</h4>
+      <p>
+        This sets the behavior for a scrolling box when scrolling is triggered
+        by the navigation. This can be set to auto (for instant scrolling) or
+        smooth
+      </p>
+      <pre class="prettyprint"><code>scroll-behavior: smooth;</code></pre>
+      <h3 id="animation">Animation</h3>
+      <h5 id="basic-settings-with-keyframes">
+        Basic settings with
+        <span class="citation" data-cites="keyframes">@keyframes</span>
+      </h5>
+      <p>
+        The
+        <span class="citation" data-cites="keyframes">@keyframes</span> at-rule
+        is used to define the flow of a CSS animation. Within the
+        <span class="citation" data-cites="keyframes">@keyframes</span> rule,
+        you can create selectors for specific points in the animation sequence,
+        such as 0% or 25%, or you can use <code>from</code> and
+        <code>to</code> to define the start and end of the sequence.
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>/* keyframes example showing a change of position */*
+@keyframes wheel {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    30% {
+        top: 50px;
+    }
+}</code></pre>
+      <p>
+        The animation settings are then set using full stop followed by the
+        keyframe name:
+      </p>
+      <pre class="prettyprint"><code>/* example from wheel exercise */
+
+.wheel {
+animation-name: wheel;    /* link keyframe animation to CSS object */
+animation-duration: 10s;    /* Time in seconds (s) or milliseconds (ms) */
+animation-iteration-count: infinite;
+animation-timing-function: linear; /* `ease-in-out` start/end at a slower pace */  
+}
+
+.wheel {
+animation: cabins 10s linear infinite; /* quick-format */
+}</code></pre>
+      <h4 id="motion-based-animations-media-rule">
+        Motion based animations
+        <span class="citation" data-cites="media">@media</span> rule
+      </h4>
+      <p>
+        Certain types of motion-based animations can cause discomfort for some
+        users. In particular, people with vestibular disorders have sensitivity
+        to certain motion triggers. The <code>@media</code> at-rule has a media
+        feature called <code>prefers-reduced-motion</code> to set CSS based on
+        the user’s preferences. It can take one of the following values:
+      </p>
+      <ul>
+        <li><code>reduce</code></li>
+        <li><code>no-preference</code></li>
+      </ul>
+      <pre class="prettyprint"><code>@media (feature: value) {
+    selector {
+        styles
+    }
+}</code></pre>
+      <h3 id="accessibility">Accessibility</h3>
+      <h4 id="general-notes">General notes</h4>
+      <ul>
+        <li>
+          Use <span class="citation" data-cites="media">@media</span> to ensure
+          design works on target devices
+        </li>
+        <li>
+          Follow color theory principles particularly around contrast for
+          readability
+        </li>
+        <li>
+          Take care with justify text which can present an issue on the web for
+          readers with dyslexia
+        </li>
+      </ul>
+      <h4 id="screen-readers">Screen readers</h4>
+      <ul>
+        <li>
+          To hide content from screen readers use
+          <code>aria-hidden="true"</code>
+        </li>
+        <li>
+          To make content visible to screen readers only put the text in a span
+          or other element with <code>class=”sr-only”</code>. Then add standard
+          CSS as follows:
+        </li>
+      </ul>
+      <pre class="prettyprint"><code>.sr-only {
+position: absolute; /* take out of document flow */
+width: 1px;
+height: 1px;
+padding: 0; /* take out of document flow */
+margin: -1px; /* take out of document flow */
+overflow: hidden; /* prevent overflow */
+clip: rect(0, 0, 0, 0); /* define visible portions of an element */
+clip-path: inset(50%); /* determine shape clip property should take */
+white-space: nowrap; /* prevent overflow */
+border: 0;
+}</code></pre>
+      <h4 id="navigation-key-shortcuts">Navigation key shortcuts</h4>
+      <p>
+        Navigation accessibility can be improved by providing keyboard
+        shortcuts. The
+        <code>accesskey</code> attribute accepts a space-separated list of
+        access keys
+      </p>
+      <pre
+        class="prettyprint"
+      ><code>&lt;button type=&quot;submit&quot; accesskey=&quot;s&quot;&gt;Submit&lt;/button&gt;</code></pre>
+      <h4 id="html-and-css-to-reverse-heading-order">
+        HTML and CSS to reverse heading order
+      </h4>
+      <p>For visual display vs. screen reader (from the exercises)</p>
+      <pre class="prettyprint"><code>&lt;h1&gt;
+&lt;span class=&quot;flex&quot;&gt;
+&lt;span&gt;AcmeWidgetCorp&lt;/span&gt;
+&lt;span&gt;Balance Sheet&lt;/span&gt;
+&lt;/span&gt;
+&lt;/h1&gt;</code></pre>
+      <pre class="prettyprint"><code>h1 .flex {
+display: flex;
+flex-direction: column-reverse;
+gap: 1rem;
+}</code></pre>
+      <h3 id="useful-formats">Useful formats</h3>
+      <h4 id="draw-a-cat-eye-drawing-shapes">
+        Draw a cat eye (drawing shapes)
+      </h4>
+      <pre class="prettyprint"><code>&lt;div class=&quot;cat-left-eye&quot;&gt;
+&lt;div class=&quot;cat-left-inner-eye&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <pre class="prettyprint"><code>.cat-left-eye {
+position: absolute;
+top: 54px;
+left: 39px;
+border-radius: 60%;
+transform: rotate(25deg);
+width: 30px;
+height: 40px;
+background-color: #000;
+}
+.cat-left-inner-eye {
+position: absolute;
+top: 8px;
+left: 2px;
+width: 10px;
+height: 20px;
+transform: rotate(10deg);
+background-color: #fff;
+border-radius: 60%;
+}</code></pre>
+      <h4 id="quotation-format">Quotation format</h4>
+      <pre class="prettyprint"><code>.quote {
+color: #00beef;
+font-size: 2.4rem;
+text-align: center;
+font-family: &quot;Raleway&quot;, sans-serif;
+}
+.quote:before {
+content: &#39;&quot; &#39;;
+}
+.quote:after {
+content: &#39; &quot;&#39;;
+}</code></pre>
+      <h3 id="design-theory">Design theory</h3>
+      <h4 id="colours">Colours</h4>
+      <p>
+        Key notes taken from the crayon exercise that went into details on
+        colour theory for html and css:
+      </p>
+      <ul>
+        <li>
+          Primary colours: In the RGB colour model primary colours are those
+          that when combined create pure white (e.g. Red, Blue, Green)
+        </li>
+        <li>
+          Color can be specified in CSS using the RGB function which accepts
+          values, or arguments, for red, green, blue:
+          <ul>
+            <li><code>RGB(red, green, blue)</code></li>
+            <li>
+              Values are specified between 0 and 255 where 0 represents 0 of
+              that color and 255 represents 100% of that colour
+            </li>
+            <li>For example red = <code>rgb(255,0,0)</code></li>
+          </ul>
+        </li>
+        <li>
+          Secondary colors occur when 2 primary colors are combiend. The CYMK
+          color model is used for secondary colors. For example:
+          <ul>
+            <li>Cyan = RGB(0,255,255)</li>
+            <li>Yellow = RGB(255,255,0)</li>
+            <li>Magenta = RGB(255,0,255)</li>
+          </ul>
+        </li>
+        <li>
+          Tertiary colours occure when one primary colour is combined with a
+          nearby secondary colour. For example:
+          <ul>
+            <li>
+              Orange = RGB(255, 127, 0) // decrease green because orange is a
+              mix of red and yellow (where yellow is red and green)
+            </li>
+            <li>Spring green = RGB(0,255,127) // decrease blue</li>
+            <li>Voilet = RGB(127,0,255) // decrease red</li>
+            <li>Chartreuse green = RGB(127, 255, 0)</li>
+            <li>Azure = RGB(0, 127, 255)</li>
+            <li>Rose = RGB(255, 0, 127)</li>
+          </ul>
+        </li>
+        <li>
+          The <strong>colour wheel</strong> shows colors with similar hues near
+          to each other, different hues further apart. For example pure red is
+          between rose and orange
+          <ul>
+            <li>
+              <strong>Complimentary colours</strong> are opposite each other. If
+              combined they produce grey. Side by side they produce strong
+              visual contrast &amp; appear brighter
+            </li>
+          </ul>
+        </li>
+        <li>
+          Red (255,0,0) &amp; Cyan (0,255,255) next to each other look very
+          bright. This can be distracting if overused. It can make text hard to
+          read if on a complimentary-coloured background
+        </li>
+        <li>
+          Best practice is to choose one colour as dominant and use its
+          complimentary colour as an accent.
+        </li>
+        <li>
+          Colors can also be represented by hex values. Hex colour values start
+          with # and take six characters (0-9 then A-F). Hex is a base-16
+          counting system. Two hex digits ff are the equivelant of 255 in
+          base-10
+          <ul>
+            <li>
+              Hex values for <code>rgb()</code> are written as red, green, blue
+              e.g. green is <code>#00FF00</code>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Colors can also be represented with HSL: hue, saturation, and
+          lightness, where:
+          <ul>
+            <li>Hue: 0 to 360</li>
+            <li>Saturation 0 to 100%</li>
+            <li>Lightness 0 to 100%</li>
+          </ul>
+        </li>
+        <li>
+          Hue wheel: red at 0 degrees, green at 120 degrees, blue at 240 degrees
+        </li>
+        <li>
+          Saturation: intensity from 0% (grey) to 100% (pure colour) - must use
+          a % sign
+        </li>
+        <li>
+          Lightness: brightness from 0% (complete black) to 100% (complete
+          white), with 50% being neutral
+        </li>
+        <li>
+          The contrast between the text and the background of a heading should
+          be at least 4.5:1
+        </li>
+      </ul>
+      <p>
+        <a
+          href="https://medium.muz.li/the-science-of-color-contrast-an-expert-designers-guide-33e84c41d156"
+          >A useful article on color contrast</a
+        >
+      </p>
+      <div id="sep"></div>
+      <footer>
+        <p>Prepared by <a href="https://alexroan.com/" target="_blank"><span class="footlink" >Alexander Roan<span></a></p>
+        <p>As part of the <a class="footlink" href="https://www.freecodecamp.org" target="_blank"><span class="underline">freeCodeCamp</span></a> Responsive Web Design course</p>
+        <p>Colours inspired by the freeCodeCamp branding</p>
+      </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+  </body>
+</html>

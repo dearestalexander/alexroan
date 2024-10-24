@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=display-width" initial-scale="1.0">
+
+    <title>{{ title }}</title>
+
+    <link href="/styles.css" rel="stylesheet">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    {% include 'header__small.njk' %}
+    <main class="main__centered">
+      {{ content | safe }}
+    </main>
+    {% include 'footer.njk' %}  
+  </body>
+
+</html>

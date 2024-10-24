@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=display-width" initial-scale="1.0">
+
+    <title>Blockchain - how it works</title>
+
+    <link href="/styles.css" rel="stylesheet">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header class="heading__frame--small">
+  <h1 class="heading__title--small">
+    <span class="heading__title-one--small"> Blockchain - how it works </span>
+    <span class="heading__title-two--small">  </span>
+  </h1>
+  <nav class="nav__container--small">
+    <ul class="nav__ul">
+      <li class="nav__li"><a class="nav__link--small" href="/index">Home</a></li>
+      <li class="nav__li"><a class="nav__link--small" href="/services">Services</a></li>
+      <li class="nav__li"><a class="nav__link--small" href="/experience">Experience</a></li>
+      <li class="nav__li dropdown">
+        <a class="nav__link--small" href="/more">More <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="nav__more">
+          <li class="nav__li"><a class="nav__link--small" href="/more/photography">Photography</a></li>
+          <li class="nav__li"><a class="nav__link--small" href="/more/programming">Programming</a></li>
+          <li class="nav__li"><a class="nav__link--small" href="/more/classic-cars">Classic cars</a></li>   
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="mobile-nav__container">
+    <a href="/menu"><i class="fa-solid fa-bars hamburger"></i></a>
+  </div>
+</header>
+<div class="divider-one"></div>
+<div class="divider-one"></div>
+    <main class="main__centered">
+      
+<div class="posts__frame__post">
+  <article>
+    <div class="container container--narrow flow">
+      <h1 class="article-title">
+        Blockchain - how it works
+      </h1>
+      <figure class="main-article__figure">
+        <img src="/assets/images/blog/blockchain__cover.jpg" art"">
+        <figcaption>
+        
+        </figcation>
+      </figure>
+
+      <p>Blockchain has been one of the most hyped technologies of the last decade thanks to the massive profits that were made from bitcoin and other cryptocurrencies. Despite a lot of of the smoke and mirrors that surrounds blockchain it is a fascinating technology.</p>
+<p>This post is based on a presentation I gave to my fellow international coleagues in Japan in 2019. I was motivated to create and deliver this presentation to combat a lot of the misinformation around blockchain solutions and when they should and shouldn’t be considered. To understand the benefits and use cases for blockchain it’s useful to understand how it works.</p>
+<p>This requires a brief walk through of various concepts including mathematics and cryptography which have a big role in making blockchain possible. Bear with me as we work through some of the concepts it will hopefully all make sense by the end of the post.</p>
+<h2>The big idea</h2>
+<h3>A decentralised ledger</h3>
+<p>Blockchain can be considered simply as a ledger, what makes it unique is it’s decentralised nature. Blockchain has various key properites:</p>
+<ul>
+<li>It’s a ledger records transactions between parties, but as we will see we can track anything – more than a traditional ledger.</li>
+<li>Transactions are verified using cryptography</li>
+<li>Data is decentralized; transactions are stored and verified across all computers in the network (nodes)</li>
+<li>Therefore no need for an intermediary (e.g. bank / data centre / government body)</li>
+<li>Transparent – data is public; anyone can view transaction history</li>
+<li>Immutable – unchangeable</li>
+<li>Partial privacy / anonymity – while data is public it is not connected to real IDs.</li>
+</ul>
+<p>Don’t worry if these don’t make sense now, we will cover them during this discussion.</p>
+<h3>A traditional ledger - bank account example</h3>
+<p>A bank account is a simple example of a ledger. However a ledger can be any book of record; shipments, patient records, insurance policies etc. Consider the properties of a traditional bank acocunt:</p>
+<ul>
+<li>Account holder has no direct control</li>
+<li>Central authorities have power over the account (the bank; government etc.)</li>
+<li>Data is stored centrally; vulnerability to hardware failure or attack</li>
+<li>Privacy is limited; all transactions require proof of ID / address</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__one.png" alt="An illustration of how a user accesses money from a bank"></p>
+<h3>Decentralisation</h3>
+<p>As with the bank account example a 3rd party acts as a central authority to control and manage the account. What if it was possible to keep a book of record without relying on a central authority, this would provid the following:</p>
+<ul>
+<li>Architectural independence (no reliance on a single physical server)</li>
+<li>Political independence (no single point of control from any organisation)</li>
+<li>Logical independence (data is duplicated across many physical machines).</li>
+</ul>
+<p>The potential benefits of these include:</p>
+<ul>
+<li>Less susceptible to attack</li>
+<li>Less susceptible to failure</li>
+<li>Improved privacy / anonymity (partial)</li>
+<li>Improved transparency (records are publically traceable and unchangeable)</li>
+<li>Not susceptible to control by a single authority.</li>
+</ul>
+<h2>Blockchain origins</h2>
+<p>In 1991 a paper entitled “How to Time-Stamp a Digital Document” presented a major landmark in cryptography and provided the concept which would allow us to send and receive documents across a public internet with trust. This provided the foundation for blockchain.</p>
+<p><img src="/assets/images/blog/blockchain__two.png" alt="A screenshot of the 'how to time-stamp a digital document' paper"></p>
+<p>In 2001 Satoshi Nakamoto published a paper entitled, “Bitcoin: A Peer to Peer Electronic Cash System” which outlined how blockchain works. Satoshi Nakamoto is the name used by the person or group of people who developed bitcoin, but this is not a real person.</p>
+<p><img src="/assets/images/blog/blockchain__three.png" alt="A screenshot of the 'bitcoin' paper"></p>
+<p>You could read through these two papers and peice together everything we will talk about here, however it does get rather technical and I’ve included a number of diagrams in this post that I hope will make the concepts easy to grasp.</p>
+<h3>A brief history of blockchain</h3>
+<ul>
+<li>1991 Stuart Haber and W. Scott Stornetta – 1st paper outlining the use of cryptographically secured blocks to preserve integrity of past information</li>
+<li>1993 Proof of work concept established as a countermeasure to spam / network abuse</li>
+<li>2008 Satoshi Nakamoto published famous white paper “Bitcoin: A peer-to-peer electronic cash system”</li>
+<li>2014 Ethereum – a blockchain that can be programmed and can run computation – world computer “Ethereum virtual machine”</li>
+<li>2015 Bitcoin gets serious attention</li>
+<li>2016 Bitcoin embraced by FSI</li>
+<li>2017 Blockchain named foundational technology in HBR</li>
+</ul>
+<h3>No need for a trusted party</h3>
+<p>One of the most noteworthy benefits of blockchain is that no central authority is required.</p>
+<p><img src="/assets/images/blog/blockchain__four.png" alt="An illustration of how bitcoin doesn't rely on traditional banks"></p>
+<p>This means blockchain can be used for an electronic currency; as is the case with bitcoin, without any involvement from banks, central banks, or governments etc.</p>
+<h3>Cryptocurrencies market</h3>
+<p>Blockchain has multiple applications, cryptocurrencies being the original and one of the most popular use cases. For context the cryptocurrnecy market currently stands at around US $250,000,000,000. May 2020 data from <a href="http://coinmarketcap.com/">coinmarketcap.com</a>:</p>
+<ul>
+<li>Cryptocurrencies: 5,500</li>
+<li>Markets: 22,416</li>
+<li>Market Cap: $255,219,845,520</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__five.png" alt="A screenshot of a web page showing data on the size of the cryptocurrency market"></p>
+<h2>Cryptography as an enabler of blockchain</h2>
+<p>To understand the concept of blockchain and some of the terminology involved we need to understand some number formats used in mathematics and technology.</p>
+<h3>A 256 bit number</h3>
+<p><img src="/assets/images/blog/blockchain__six.png" alt="An illustration of the size of a 256 bit number in base, binary and hex"></p>
+<p>What do the three sets of digits above have in common?</p>
+<p>They all represent the same number, but in three different formats.</p>
+<p>We normally count in decimal; also known as base 10. This simply refers to counting with 10 digits; 0,1,2,3,4,5,6,7,8,9. There are two other ways of counting that are important. Binary which uses 2 digits 0 and 1. And Hexadecimal which uses 16 digits; 0-9 and A-F. Binary is used by computers and hexadecimal is commonly used as a short form to record long numbers.</p>
+<p>A 256 bit number is simply a number that when written in binary has 256 digits. These numbers are commonly used in cryptography and blockchain as they are hard to guess.</p>
+<p>How hard is a 256 bit number to guess?</p>
+<ul>
+<li>They have 2256 possible combinations</li>
+<li>116,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 combinations</li>
+</ul>
+<p>Because long numbers of this nature are very hard to guess they play a critical role in cryptography, unlike a 10 digit password they can’t easily be brute force guessed by computers (i.e. trying all combinations).</p>
+<h3>Basics of cryptography – can you de-crypt this?</h3>
+<p>In cryptography we apply a rule known as a cipher to a message (sometimes called plain text) to create a cipher text. For example:</p>
+<p><img src="/assets/images/blog/blockchain__seven.png" alt="An illustration showing an original message and a cipher based on it"></p>
+<p>A cipher was applied to a message to create the text Mjqqt, Btwqi! – can you figure out what the original message was.</p>
+<p>In this case it’s quite simple to break. The cipher is a simple and fairly easy rule. It’s known as a Caesar Sipher; it was first used by the Roman Empire, and simply involves shifting the digits a number of spaces up or down the alphabet.</p>
+<p><img src="/assets/images/blog/blockchain__eight.png" alt="An illustration showing an original message and a cipher based on it with additional annotation of the cipher used"></p>
+<p>In this case we moved each digit 5 characters down the alphabet. This is also known as a map function.</p>
+<h3>About functions</h3>
+<ul>
+<li>A function takes an input and produces and output f(x) = y</li>
+<li>An input is part of a whole (domain) e.g. integers, prime numbers</li>
+<li>A function where N inputs produces N outputs is a map function e.g. f(1,2,3,4) = (1, 4, 9, 16)</li>
+<li>A function where N inputs produces 1 output is a reduce function e.g. f(1,2,3,4) = 10</li>
+<li>An example of a famous function is e = mc2</li>
+</ul>
+<p>There are two key ‘cryptographic’ functions that enable blockchain, these are:</p>
+<ul>
+<li>Hashing functions</li>
+<li>Elliptic curve digital signature functions.</li>
+</ul>
+<p>For general purposes the term algorithm can be considered synonymous with function, however in certain areas of maths and computer science the term may be used with slightly different meanings.</p>
+<h3>Hashing functions</h3>
+<p>A hashing algorithm creates a short ‘fingerprint number’ which can represent an arbitrary large amount of information.</p>
+<ul>
+<li>Use a ‘hash’ function to product an output</li>
+<li>Examples are SHA256, MD5, Bcrypt, RIPEMD</li>
+<li>A hash takes an input of any size (e.g. from one word to the entire works of shakespeare)</li>
+<li>Produces an output of a fixed size (referred to as a digest)</li>
+<li>Computational efficiency: for a given input the output should be easy to compute</li>
+<li>Deterministic: for a given input, must always give the same output</li>
+<li>Pre-image resistant: the output must not reveal anything about the input</li>
+<li>It has to be practically impossible to reverse engineer to derive an input (one-way function)</li>
+<li>Collision resistant: it must be practically impossible to find two different inputs that produce the same output.</li>
+</ul>
+<p>To provide an illustration of how a hashing function works, it does something like the following:</p>
+<ul>
+<li>Convert english letters (e.g ASCII) into 1s and 0s</li>
+<li>Move the first four bits from left to right</li>
+<li>Separate every other bit</li>
+<li>Convert those two parts into base 10 numbers</li>
+<li>Multiply the two numbers together</li>
+<li>Square that number</li>
+<li>Convert the numbers back to binary</li>
+<li>Chop 9 bits of the right side to get exactly 16 bits</li>
+<li>Convert the binary numbers back to english letters.</li>
+</ul>
+<p>There are online tools that will convert any data into a hash. Here are three examples of some short, simple text fed into a SHA256 hash function:</p>
+<p><img src="/assets/images/blog/blockchain__nine.png" alt="An illustration of different messages and their correponding hash values"></p>
+<ul>
+<li>No matter the size of the input, the output will always be 256 bit</li>
+<li>Even minor changes to the input “Alexander” &gt; “AleXAndeR” will dramatically and unpredictably change the output.</li>
+</ul>
+<h3>Elliptic curve digital signature functions</h3>
+<p>Elliptic curve functions are used for digital signatures, these are used to:</p>
+<ul>
+<li>Validate the sender of an electronic message</li>
+<li>Ensure the message wasn’t tampered with</li>
+</ul>
+<p>The mathematics is complex, so we will skip the mathematics on how the required numbers (known as “key pair”) are generated, but will look at how the process works in detail.</p>
+<p>A good starting point for more detail is wikipedia:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Digital_Signature_Algorithm">Digital signature algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm">Elliptic curve digital signature algorithm</a></li>
+</ul>
+<h2>Digital signatures</h2>
+<h3>Public and private key cryptography</h3>
+<p>We can use the elliptic curve function to create two connected numbers which are known as public private key pairs and are used in cryptography.</p>
+<p><img src="/assets/images/blog/blockchain__ten.png" alt="An illustration of a user having a secret key and a public key">!</p>
+<ul>
+<li>A key is used to encrypt and decrypt data</li>
+<li>Symmetric cryptography: the same key encrypts / decrypts</li>
+<li>Asymmetric cryptography: a different key encrypts / decrypts</li>
+<li>Key-pairs are generated using the elliptic curve function</li>
+<li>A key-pair is a private (aka secret key) and a public key</li>
+<li>A public key is announced and known to the world</li>
+<li>A private key is kept secret</li>
+<li>It’s hard (practically impossible) to know someone’s private key if you know their public key</li>
+<li>Order is not important, private key to encrypt and public to decrypt, or public to encrypt and private to decrypt.</li>
+</ul>
+<h3>Encryption for confidentiality</h3>
+<p>The following diagram shows how one party can encrypt a document, then send it across a public network, where it can be decrypted by another party. In this diagram pk represents a persons public key while sk represents their private / secret key. Each person has their own key pair that they will generate, they will only share or publish their public keys.</p>
+<p><img src="/assets/images/blog/blockchain__eleven.png" alt="An illustration of the a cryptography matching the description below"></p>
+<ul>
+<li>Party A has some sensitive data they want to send to party B (they want to ensure no one other than party B can see the data)</li>
+<li>Party A has access to party Bs public key (everyone does)</li>
+<li>Party A uses a cryptography function along with party Bs public key to convert the data to encrypted data</li>
+<li>Party A publishes this encrypted data on the public internet or sends it to party B via e-mail etc.</li>
+<li>This encrypted data can now only be unencrypted by party Bs private (secret) key.</li>
+<li>Remember party B keeps their private (secret) key a secret, no one else has access to it.</li>
+<li>Party B uses a cryprography function along with their private (secret) key to unencrypt the data.</li>
+</ul>
+<p>This is a simple example of the basics of cryptography that allow us to send secure data across the internet.</p>
+<p>However there are some problems with this data. How does party B know that the encrypted data they received came from party A? How do they know it wasn’t intercepted and modified.</p>
+<p>This is where we need to take things further and look at a more complicated and complete example of the use of digital signatures.</p>
+<h3>Encryption using digital signatures</h3>
+<p>Step 1: Party A encrypts data with their private key</p>
+<p><img src="/assets/images/blog/blockchain__twelve.png" alt="An illustration of the above point"></p>
+<p>Step 2: Party A combines the original data with the ‘Party A private key’ encrypted data and then encrypts this package with party Bs public key.</p>
+<p><img src="/assets/images/blog/blockchain__thirteen.png" alt="An illustration of the above point"></p>
+<p>Step 3: The package of encrypted data is sent over the public network.</p>
+<p><img src="/assets/images/blog/blockchain__fourteen.png" alt="An illustration of the above point"></p>
+<p>Step 4: Decrypt the package of encrypted data with the party Bs private key to reveal the data and the ‘party A private key’ encrypted data</p>
+<p><img src="/assets/images/blog/blockchain__fifteen.png" alt="An illustration of the above point"></p>
+<p>Step 5: Decrypt the ‘party A private key’ encrypted data with party As public key and then compare this data with the other data file, if they match you can trust that the encrypted data you received was sent by party A and was not tampered with or changed.</p>
+<p><img src="/assets/images/blog/blockchain__sixteen.png" alt="An illustration of the above point"></p>
+<p>This is a little difficult to follow, it’s worth reading through a few times, it’s quite straightforward once you get used to working with key-pairs.</p>
+<h3>Generating a key-pair</h3>
+<ul>
+<li>Choose a random 256 bit number as a private key</li>
+<li>Use the elliptic curve function to generate the private – public key pairs</li>
+<li>Key pairs form the basis of bitcoin addresses</li>
+</ul>
+<p>A fun way to geneate a 256-bit number is to use bit-address.org which will generate a key-pair that can be used for bitcoin.</p>
+<p>With bitcoin your public key is your bitcoin address.</p>
+<p>It’s critical to keep your private key secret as this will allow complete access to any bitcoin you own or in another blockchain any encrypted data etc.</p>
+<p><img src="/assets/images/blog/blockchain__seventeen.png" alt="A screenshot of the bit-address.org website"></p>
+<p><img src="/assets/images/blog/blockchain__eighteen.png" alt="A screenshot of a generated addresses from bit-address.org "></p>
+<p>Digital signatures:</p>
+<ul>
+<li>More secure than physical signatures</li>
+<li>Change with every message – altering messages even slightly completely changes the signature</li>
+<li>It’s infeasible to find a valid signature if you don’t know the secret key. Therefore they cannot be forged.</li>
+</ul>
+<h2>Building a decentralised ledger</h2>
+<p>Consider a ledger to track transactions between 4 parties:</p>
+<p><img src="/assets/images/blog/blockchain__nineteen.png" alt="An illustration of transactions between 4 parties with a table of example transactions with values"></p>
+<p>To manage this without a central authority there are a number of requirements:</p>
+<ul>
+<li>We need to allow everyone to add transactions</li>
+<li>We need to make sure periodic settlement is done</li>
+<li>We need to decide where the data is stored and how everyone agrees on ‘the truth’</li>
+</ul>
+<h3>Developing a blockchain protocol</h3>
+<p>The original bitcoin paper looked at each challenge and proposed a solution</p>
+<p><img src="/assets/images/blog/blockchain__twenty.png" alt="An illustration of three challenges for developing a blockchain protocal which are described in the following section"></p>
+<h3>Challenge 1 - transaction trust</h3>
+<p>What stops party B adding a transaction saying that party A owes them $20?</p>
+<p><img src="/assets/images/blog/blockchain__twentyone.png" alt="An illustration showing party A sends to party B"></p>
+<p><img src="/assets/images/blog/blockchain__twentytwo.png" alt="An illustration expanding on the above to show the value sent from party A to party B is £20"></p>
+<p>Traditionally we trade with cash on delivery or use payment systems with some inbuilt protection e.g. credit cards or paypal.</p>
+<p>This is where digital signatures can help:</p>
+<ul>
+<li>A digital signature can be used to prove that the transaction is verified</li>
+<li>Party A adds a digital signature to transactions in the ledger which validate they have seen them and agree with them</li>
+<li>These signature must be infeasible to forge. This is where cryptography makes blockchain possible.</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__twentythree.png" alt="An illustration of a digital signature on the example transaction"></p>
+<p>We can now update the first challenge in our blockchain protocol:</p>
+<p><img src="/assets/images/blog/blockchain__twentyfour.png" alt="An illustration updating challenge 1 as resolvable with digital signatures"></p>
+<h3>Challenge 2 - ensuring settlement</h3>
+<p>What if party A racks up debt and refuses to settle?</p>
+<p><img src="/assets/images/blog/blockchain__twentyfive.png" alt="An illustration of various transactions between parties"></p>
+<p>Instead of solving the problem of making the parties settle, the blockchain paper raises the questions, “What if we can remove the need to settle”?This can be done by preventing people from spending more than they take in.</p>
+<p>Step 1: Start by giving all participants an opening balance</p>
+<p><img src="/assets/images/blog/blockchain__twentysix.png" alt="An update to the above illustration to add initial balances for each oarty"></p>
+<p>Step 2: Only allow transactions where no overspending occurs</p>
+<p><img src="/assets/images/blog/blockchain__twentyseven.png" alt="An update to the above to show how a transaction could be invalid"></p>
+<p>We can update our blockchain protocol for the second challenge:</p>
+<p><img src="/assets/images/blog/blockchain__twentyeight.png" alt="An illustration of how the second challenge can be resolved by not allowing overspending"></p>
+<p>An interesting note is that blockchain does not keep a running balance, each new transaction checks the complete bitcoin history.</p>
+<h3>Challenge 3 - storage and management</h3>
+<p>Without a central authority how do we manage the ledger:</p>
+<ul>
+<li>Who hosts the storage</li>
+<li>Who controls the rules of adding new transactions</li>
+<li>etc.</li>
+</ul>
+<p>Let everyone keep their own copy of the ledger, whenever someone has a new transaction they broadcast it out to the network.</p>
+<p><img src="/assets/images/blog/blockchain__twentynine.png" alt="An illustration of a new transaction going to multiple ledger copies"></p>
+<p>How can you be sure that each ledger picks up every transaction that is broadcast out and in the right order?</p>
+<p>We can update the blockchain protocol:</p>
+<p><img src="/assets/images/blog/blockchain__thirty.png" alt="An update to the challenges to show challenge three can be resolved by multiple copies"></p>
+<p>The final challenge we will cover deals with how the network stays aligned. For this we need to deep dive into the structure of blocks and look at how the chain is managed.</p>
+<h2>Blocks and the blockchain</h2>
+<h3>Blockchain and proof of work</h3>
+<p>How do we ensure the network stays aligned?</p>
+<p>Transactions are bundled into blocks. And those blocks are validated in a way that allows the network to reach consensus.</p>
+<p>The method bitcoin uses to validate blocks is known as ‘proof of work’. This is made possible because of the foundational concepts discussed thus far:</p>
+<ul>
+<li>Cryptography</li>
+<li>Hash functions</li>
+<li>(and computational work)</li>
+</ul>
+<h3>How blocks are created</h3>
+<p>In the diagram I’ve included a screenshot of the bitcoin wallet mycellium as an example of how a user might interact with a blockchain. Using mycellium a user may create a transaction; a request to send bitcoing from their address to another address. This transaction then enters the ‘mempool’ which can be considered as a waiting room for the transaction to be added to the blockchain. Miners pick transactions from the mempool and create ‘blocks’ of transactions which they then compete with other miners to validate and add to the chain.</p>
+<p><img src="/assets/images/blog/blockchain__thirtyone.png" alt="An illustration as described in the above text"></p>
+<h3>Anatomy of a block</h3>
+<p>Using a slightly simplified block design for the purposes of illustration we can consider a block to be something like the below.</p>
+<ol>
+<li>Sequential ID: to ensure the same transaction / block cannot be copied</li>
+<li>Nonce (number used only once): a number the miner can vary to validate the block</li>
+<li>Data / message: the transactions in the block – normally hundreds or thousands, only a few shown for illustration purposes.</li>
+<li>Previous block hash</li>
+<li>Hash signature of the current block</li>
+</ol>
+<p><img src="/assets/images/blog/blockchain__thirtytwo.png" alt="A simplified illustration of a block"></p>
+<h3>Many miners build blocks in parallel</h3>
+<p>Miners are constantly picking up transactions from the mempool and competing to make a block. This is all part of a system to ensure that blocks are created with a certainy frequency and that the network will agree on the order of the blocks and hence the transactions that are contained within.</p>
+<p><img src="/assets/images/blog/blockchain__thirtythree.png" alt="An illustration showing how multiple blocks are being picked up by miners"></p>
+<p>By competing to make a block we refer to a competition that miners are taking part in. Understanding this competition is key to understanding how blockchain works and where it’s weaknesses lie. This competition is called proof of work.</p>
+<h3>Proof of work</h3>
+<p>Proof of work involves using a cryptographic hash function to encode the data contained in the block into a hash.</p>
+<p>The format of the hash is unpredictable.</p>
+<p>So blockchain set’s a competition for miners to find a hash with a certain number of preceding zeros. This is known as a difficulty threshold.</p>
+<p>The only way to do this is by changing the nonce. The timestamp will also change as time progresses. The miner will keep generating a hash with this info. until eventually one miner finds a hash that wins.</p>
+<p>Recall that the data we put into a hash function changes the hash output. Therefore changing the nonce or timestamp provides an opportunity to hash the same block of transactions over and over and generate different hash outputs.</p>
+<p>If we take a look recent blockchain blocks; which we can do via a number of online explorers:</p>
+<p><img src="/assets/images/blog/blockchain__thirtyfour.png" alt="A screenshot from a blockchain explorer showing block details for one block"></p>
+<p>We can see that the winning block hash start with a certain number of leading zeros; currently 19 for blockchain.</p>
+<h3>Proof of work - step by step</h3>
+<ul>
+<li>Miners hash the block data using a hashing function e.g. SHA256</li>
+<li>It is likely the results of hash will not have a number of leading zeros.</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__thirtyfive.png" alt="An illustration of how a block is encrypted"></p>
+<ul>
+<li>The miners adjust the Nonce</li>
+<li>The timestamp may also change</li>
+<li>They will continue to run this until a hash is generated with the desired number of leading zeros.</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__thirtysix.png" alt="An illustration of the hash value with leading zeros"></p>
+<ul>
+<li>The hash results of SHA256 in hexadecimal has 1664 possible combinations</li>
+<li>(each digit has 16 possible combinations 0-F and there are 64 digits)</li>
+<li>To be valid a hash has to meet a certain threshold of difficulty set by the network</li>
+<li>As of 25th May 2020 the latest winning block hash for blockchain was:</li>
+<li>0000000000000000000bea250e982735d2d6a92bf9b21ec222e1394c4c0746f4</li>
+<li>This block has 19 leading zeros – the difficulty current difficulty threshold</li>
+<li>This block contained 2598 transactions</li>
+<li>The probability of SHA256 returning a hash with 19 leading zeros is extremely low</li>
+<li>Who ever finds a valid block is rewarded with bitcoin, the above noted winning block won 6.25 bitcoin.
+– The goal of the difficulty threshold is to control how quickly blocks are added to the chain; and hence how quickly transactions are processed</li>
+<li>Miners are working on different blocks at the same time, if a block is not validated the transactions will remain in the mempool to be processed</li>
+<li>Miners also get transaction fees which incentivise miners to pick certain transactions from the mempool</li>
+<li>Blocks in bitcoin are limited to around 2500 transactions</li>
+<li>For comparison, VISA processes around 1700 transactions per second, but is capable to handle much higher levels, so blockchain is relatively slow compared to other payment systems.</li>
+</ul>
+<h3>Block demo</h3>
+<p>As we talk through this section, please expirement with the excellent online demo available on <a href="https://andersbrownworth.com/blockchain/hash">andersbrownworth.com</a></p>
+<ul>
+<li>You can experiment with creating blocks using the ‘block’ menu item</li>
+<li>You can view how the chain builds up and how changing blocks affects the chain</li>
+</ul>
+<p><img src="/assets/images/blog/blockchain__thirtyseven.png" alt="A screenshot of the above mentioned block demo tool"></p>
+<h3>How blocks are connected</h3>
+<p>After a block is validated via proof of work, the hash of that block is then used as part of the construction of the next block</p>
+<p>This means that any change to any previously validated block will make all blocks since then invalid.</p>
+<p><img src="/assets/images/blog/blockchain__thirtyeight.png" alt="An illustration showing how each block is connected to the previous block"></p>
+<h3>The synchronisation challenge</h3>
+<ul>
+<li>The blockchain is decentralized</li>
+<li>The complete chain exists on every participating node</li>
+<li>Nodes are spread all over the world</li>
+<li>In the short term nodes will not be aligned due to: computer processing speeds, network speed, isolated downtime and failures etc.</li>
+</ul>
+<p>The protocol deals with this by always trusting the longest chain:</p>
+<ul>
+<li>With bitcoin, around 6 blocks back is considered to be trusted</li>
+<li>With 1 block per 10 mins this means blocks created around an hour ago are trusted</li>
+<li>Blocks which are not accepted as part of this longest chain have their transactions returned to the mempool to be processed as part of future blocks</li>
+</ul>
+<p>Consider 3 nodes participating in a blockchain network at a given moment. The recent blocks may be different, but as node c is the longest it will be trusted and node a and b will eventually synchronise with node c.</p>
+<p><img src="/assets/images/blog/blockchain__thirtynine.png" alt="An illustration showing how recent blocks may vary across different nodes"></p>
+<h2>55% attacks</h2>
+<p>One of the commonly talked about weaknesses of public blockchains is the 51% attack. This is based on the computational feasibility to have a node or set of nodes that can validate new blocks on the network faster than anyone else for an extended period of time; there is no longer true consensus across the distributed network and a single party has taken control.</p>
+<p><img src="/assets/images/blog/blockchain__fourty.png" alt="An illustration of a 55% attack as described"></p>
+<p>Recall that each transaction that enters the mempool is verified by digital signatures.</p>
+<p>This means an attack cannot add false transactions.</p>
+<p>However there is a way to fraudulently attack the network called the ‘double spend’ attack.</p>
+<p>To execute the double spend attack, the attacker must be able to validate blocks faster than the rest of the network hence &gt; 51% of computational power is needed. The first step is to take the latest block offline.</p>
+<p>Step 1: The attacker takes the latest block offline</p>
+<p><img src="/assets/images/blog/blockchain__fourtyone.png" alt="An illustration showing an offline copy"></p>
+<p>Step 2: The attacker mines faster than the network and
+Step 3: Spends their cryptocurrency on the main network.</p>
+<p><img src="/assets/images/blog/blockchain__fourtytwo.png" alt="An illustration of step 3"></p>
+<p>Step 4: The attacker goes online, as they have the longer chain the rest of the network will trust it and
+Step 5: They can then double spend.</p>
+<p><img src="/assets/images/blog/blockchain__fourtythree.png" alt="An illustration of step 5"></p>
+<p>Step 6: Eventually the attacker will cease the attack, but will have by then double spent their funds.</p>
+<p><img src="/assets/images/blog/blockchain__fourtyfour.png" alt="An illustration of step 6"></p>
+<h2>Public, private and consortium blockchains</h2>
+<h3>Public</h3>
+<p>Bitcoin is a public blockchain is where the technology shines. The network is open for anyone to use, there is not central authority and proof of work is used to validate blocks.</p>
+<ul>
+<li>Zero trust</li>
+<li>Anyone can take part</li>
+<li>Must adhere to protocol</li>
+<li>Maintains protocol specification and decentralization via consensus algorithms such as proof of work</li>
+<li>Allows entities that don’t trust one another to collaborate</li>
+<li>Issues exist with privacy and scalability</li>
+<li>Large number of participants protects the network; the higher the number the better.</li>
+</ul>
+<h3>Private (permissioned)</h3>
+<p>As people have tried to take advantage of blockchain they have developed so called private blockchains. The idea is that many organisations see some benefit to blockchain, but they don’t want it to be truly public. They want control of who can enter transactions and who can validate transactions / blocks.</p>
+<ul>
+<li>High trust</li>
+<li>Block creation power granted to set number of participants</li>
+<li>Could have a single entity responsible for syncing the entire network (proof of authority)
+– A business can have full control</li>
+<li>Removes need to incentivize individuals to create blocks</li>
+<li>Alleviates transparency concerns</li>
+<li>Better scalability and transaction throughput</li>
+<li>Attacks would come from nodes known to the network &amp; users can be blacklisted</li>
+<li>Just a database but with cryptography, immutability and transparency benefits.</li>
+</ul>
+<h3>Consortium</h3>
+<ul>
+<li>Low trust</li>
+<li>Consensus mechanism controlled by a limited number of nodes</li>
+<li>Right of access can be limited to the predetermined nodes or made public</li>
+<li>Partially decentralized</li>
+<li>Could be set up in such a way that all nodes have to sign transactions</li>
+<li>Power isn’t centralized to one party.</li>
+</ul>
+<h3>Alternatives to proof of work</h3>
+<p>Proof of work presents some issues. On the one hand it’s extremely processing intensive and has received criticism from an environmental perspective. On the other hand not every organisation is comfortable with an open model where anyone has authority to verify blocks based on processing power. Alternatives are always under investigation, some examples include:</p>
+<p>Proof of work</p>
+<ul>
+<li>Computationally intensive</li>
+<li>51% attacks exist as a risk</li>
+<li>Incentivisation costs are need for transactions</li>
+<li>Reliance on a high number of nodes / high participation</li>
+</ul>
+<p>Proof of stake</p>
+<ul>
+<li>Ability to create new nodes is based on proportion of currency held</li>
+<li>Solves computational issue</li>
+<li>Can lead to hoarding</li>
+</ul>
+<p>Proof of authority</p>
+<ul>
+<li>One or more nodes are certified as authorised to create new blocks</li>
+<li>Essentially reduces blockchain to a something more similar to a traditional database from a centralization perspective.</li>
+</ul>
+<h2>Other topics</h2>
+<h3>Cryptocurrency vs. token</h3>
+<p>Cryptocurrencies have been around since bitcoin. More recently ‘tokens’ have become a popular topic.</p>
+<ul>
+<li>A mechanism to represent a physical item / value in a digital way</li>
+<li>Could be considered as a share in a company rather than a currency unit</li>
+<li>Ethereum works by using the token called ‘Ether’</li>
+<li>Can be created arbitrarily on a network (e.g. create a project and sell to fundraise)</li>
+<li>Governed in a similar way to coins</li>
+<li>ICO – initial coin offering; crypto version of IPO, these are not well regulated.</li>
+</ul>
+<h3>Ethereum smart contracts</h3>
+<ul>
+<li>Ethereum supports smart contracts</li>
+<li>Ethereum has the ability to store and execute code on the blockchain</li>
+<li>This code; written in assembly / solidity (similar to javascript), can allow you to create, “IF.. AND.. THEN” type of executable version of a traditional contract</li>
+<li>For example: IF a deposit is paid AND property checks are confirmed AND funds + deeds are made available THEN transfer money and ownership deeds between parties.</li>
+<li>The code is executed by the Ethereum virtual machine (EVM)</li>
+<li>The EVM runs on every node, so it works as a distributed computer</li>
+<li>Processing isn’t free, it’s pay per computation (with Ether)</li>
+</ul>
+<p>Advantages</p>
+<ul>
+<li>Blockchain is immutable so once the contract is created, it cannot be changed</li>
+<li>No central party is required to hold / execute the contract</li>
+<li>Contracts can engage with other contracts so complex chains of business events can be handled</li>
+<li>As EVM is distributed it’s highly reliable</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>If there is an error in a contract it’s very difficult to fix</li>
+<li>Processing time is slow</li>
+<li>Due to the distributed nature of EVM every computer on a network has to process</li>
+<li>Storage of data / information and processing fees are expensive</li>
+<li>Not widely proven with scaled live examples</li>
+<li>While blockchain itself is immutable and transparent the triggers or rules for the contract can easily be manipulated potentially defeating the benefit of using blockchain.</li>
+</ul>
+<h3>dApps</h3>
+<ul>
+<li>Higher level apps that use smart contracts</li>
+<li>i.e. connecting together more advanced logic across one or more contract</li>
+<li>Web or mobile app front end, digital connecter for blockchain, then decentralized networks (EVM)</li>
+</ul>
+<p>Advantages</p>
+<ul>
+<li>Robust to attack</li>
+<li>High fault tolerance</li>
+<li>Access to value, tokens, currency</li>
+<li>Easy payment processing</li>
+<li>User verification simplified</li>
+<li>Self-sovereign data management</li>
+<li>User data more protected</li>
+<li>Higher trust with public trust</li>
+</ul>
+<p>Disadvantages</p>
+<ul>
+<li>Running code is expensive</li>
+<li>Storage on the blockchain is expensive</li>
+<li>Every node runs every process</li>
+<li>Must wait for transactions</li>
+<li>Smart contracts are permanent</li>
+<li>Scaling is a concern (speed of the slowest computer)</li>
+</ul>
+<h2>Final thoughts</h2>
+<p>There are a number of questions to ask when considering blockchain as a solution. From my perspective if we are considering a truly public application where we have solid requirements such as:</p>
+<ul>
+<li>We don’t want any party to have sole authority</li>
+<li>We want an immutable record (unchanegable)</li>
+</ul>
+<p>Then blockchain makes sense.</p>
+<p>For other cases where we are considering a non public network where we might restrict who can add transactions and how blocks are verified then it might be better to consider traditional database. Keep in mind blockchain comes with a number of disadvantages:</p>
+<ul>
+<li>It’s slow (for various architectural reasons)</li>
+<li>It’s difficult / impossible to resolve any errors with historic transactions</li>
+<li>It’s not computationally efficient.</li>
+</ul>
+<p>Questions to consider:</p>
+<ul>
+<li>Do I need a database – if so what architcture is optimum?</li>
+<li>Are there multiple writers?</li>
+<li>What level of trust exists between writers?</li>
+<li>Can I / do I want to rely on a trusted party?</li>
+<li>Do I want to limit access or validation control?</li>
+<li>What’s more important immutability or efficiency?</li>
+<li>Do I need to make it public?</li>
+</ul>
+<p>While we considered the concepts of blockchain and the history up to early 2019, recent advancements and use cases are not discussed here. What are your thoughts on blockchain in 2020?</p>
+<h2>References</h2>
+<p>I found the following resources extremely helpful when first using blockchain. You will find the inspiration for some of my diagrams here:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=tY72NO1LsZU">But how does bitcoin actually work</a></li>
+<li><a href="https://andersbrownworth.com/blockchain/">Blockchain demo</a></li>
+<li><a href="https://www.youtube.com/watch?v=Lx9zgZCMqXE">How bitcoin works under the hood</a></li>
+</ul>
+
+
+    </div>
+
+  </article>
+</div>
+    </main>
+        <footer>
+    
+      <div class="footer__container">
+
+        <h2 class="footer__subtitle-one">Contact:</h2>
+        <form class="contact-form"
+          action="https://formspree.io/f/movqvvgv"
+          method="POST"
+          >  
+          <div class="contact-form__row">
+            <label for="name" class="contact__label">Name: </label>
+            <input class="contact__input" id="name" type="text" name="name" />
+          </div>
+          <div class="contact-form__row">
+            <label for="email" class="contact__label">E-mail: </label> 
+            <input class="contact__input" id="email" type="email" name="email" />
+          </div>
+          <label for="textarea" class="contact__label" name="message">Message: </label> 
+          <textarea class="contact__input contact__input-message" name="message"></textarea>
+          <button type="submit">Send</button>
+        </form>
+
+        <h2 class="footer__subtitle-one">Site map:</h2>
+        <div class="sitemap">
+          <div class="sitemap-column">
+            <h3 class="footer__subtitle-two">Posts:</h3>
+            <ul class="ul--plain">              
+              <li><a class="li--plain" href="/posts">All</a></li>
+              <li><a class="li--plain" href="/categories/finance">Finance transformation</a></li>
+              <li><a class="li--plain" href="/categories/operations">Operations</a></li>
+              <li><a class="li--plain" href="/categories/programming">Programming</a></li>
+              <li><a class="li--plain" href="/categories/project">Project management</a></li>
+              <li><a class="li--plain" href="/categories/consulting">Consulting</a></li>
+              <li><a class="li--plain" href="/categories/strategy">Strategy</a></li>
+              <li><a class="li--plain" href="/categories/technology">Technology</a></li>
+            </ul>
+          </div>
+          <div class="sitemap-column">
+            <h3 class="footer__subtitle-two">About:</h3>
+            <ul class="ul--plain">
+              <li><a class="li--plain" href="/services">Services</a></li>
+              <li><a class="li--plain" href="/experience">Experience</a></li>
+            </ul>
+          </div>
+          <div class="sitemap-column">
+            <h3 class="footer__subtitle-two">More:</h3>
+            <ul class="ul--plain">
+              <li><a class="li--plain" href="/more/photography">Photography</a></li>
+              <li><a class="li--plain" href="/more/programming">Programming</a></li>
+              <li><a class="li--plain" href="/more/classic-cars">Classic cars</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="footer__text">Built by Alex Roan using HTML, CSS and 11ty</p>
+      </div>
+  
+    </footer>  
+  </body>
+
+</html>
