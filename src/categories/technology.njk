@@ -6,11 +6,12 @@ main__class: main-technology
 ---
 
 <div class="posts__frame">
+  <h2>Posts: Technology</h2>
   <ul class="ul--plain">
     {%- for technology in collections.technology | reverse -%}
       <li class="li--plain">
         <article class="snippet__article">
-          <h2 class="snippet__title">{{ technology.data.title }}</h3>
+          <h3 class="snippet__title">{{ technology.data.title }}</h3>
           <img class="snippet__image" src="{{ technology.data.image }}" />
           <p class="snippet__meta">by <span>{{ technology.data.author }}</span> on <span>{{ technology.data.date | postDate }}</span></p>
           <p class="snippet__description">{{ technology.data.description }}</p>

@@ -6,11 +6,12 @@ main__class: main-all
 ---
 
 <div class="posts__frame">
+  <h2>Posts: All</h2>
   <ul class="ul--plain">
     {%- for post in collections.post | reverse -%}
       <li class="li--plain">
         <article class="snippet__article">
-          <h2 class="snippet__title">{{ post.data.title }}</h2>
+          <h3 class="snippet__title">{{ post.data.title }}</h3>
           <img class="snippet__image" src="{{ post.data.image }}" />
           <p class="snippet__meta">by <span>{{ post.data.author }}</span> on <span>{{ post.data.date | postDate }}</span></p>
           <p class="snippet__description">{{ post.data.description }}</p>

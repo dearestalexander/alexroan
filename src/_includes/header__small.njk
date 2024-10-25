@@ -5,15 +5,15 @@
   </h1>
   <nav class="nav__container--small">
     <ul class="nav__ul">
-      <li class="nav__li"><a class="nav__link--small" href="/index">Home</a></li>
-      <li class="nav__li"><a class="nav__link--small" href="/services">Services</a></li>
-      <li class="nav__li"><a class="nav__link--small" href="/experience">Experience</a></li>
+      <li class="nav__li"><a class="nav__link--small" href="{{ '/index/' | url }}">Home</a></li>
+      <li class="nav__li"><a class="nav__link--small" href="{{ '/services/' | url }}"">Services</a></li>
+      <li class="nav__li"><a class="nav__link--small" href="{{ '/experience/' | url }}">Experience</a></li>
       <li class="nav__li dropdown">
         <a class="nav__link--small" href="/more">More <i class="fa-solid fa-chevron-down"></i></a>
         <ul class="nav__more">
-          <li class="nav__li"><a class="nav__link--small" href="/more/photography">Photography</a></li>
-          <li class="nav__li"><a class="nav__link--small" href="/more/programming">Programming</a></li>
-          <li class="nav__li"><a class="nav__link--small" href="/more/classic-cars">Classic cars</a></li>   
+          <li class="nav__li"><a class="nav__link--small" href="{{ '/more/photography/' | url }}">Photography</a></li>
+          <li class="nav__li"><a class="nav__link--small" href="{{ '/more/programming/' | url }}">Programming</a></li>
+          <li class="nav__li"><a class="nav__link--small" href="{{ '/more/classic-cars/' | url }}">Classic cars</a></li>   
         </ul>
       </li>
     </ul>

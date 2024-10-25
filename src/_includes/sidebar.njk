@@ -10,23 +10,24 @@
   <aside class="sidebar__aside">
     <h2 class="sidebar__title">Browse by post type</h2>
     <div class="sidebar__box">
-      <a href="/posts" class="sidebar__link type-all-link">All</a>
-      <a href="/types/blog" class="sidebar__link blog-link">Blog posts</a>
-      <a href="/types/articles" class="sidebar__link articles-link">Articles</a>
+      <a href="{{ '/posts/' | url }}" class="sidebar__link type-all-link">All</a>
+      <a href="{{ '/types/blog/' | url }}" class="sidebar__link blog-link">Blog posts</a>
+      <a href="{{ '/types/articles/' | url }}" class="sidebar__link articles-link">Articles</a>
     </div>
   </aside>
   <aside class="sidebar__aside">
     <h2 class="sidebar__title">Browse by post category</h2>
     <div class="sidebar__box">
-        <a href="/posts" class="sidebar__link category-all-link">All</a>  
-        <a href="/categories/consulting" class="sidebar__link consulting-link">Consulting</a>
-        <a href="/categories/finance" class="sidebar__link finance-link">Finance</a>
-        <a href="/categories/operations" class="sidebar__link operations-link">Operations</a>
-        <a href="/categories/project" class="sidebar__link project-link">Project management</a>
-        <a href="/categories/strategy" class="sidebar__link strategy-link">Strategy</a>
-        <a href="/categories/technology" class="sidebar__link technology-link">Technology</a>
+        <a href="{{ '/posts/' | url }}" class="sidebar__link category-all-link">All</a>  
+        <a href="{{ '/categories/consulting/' | url }}" class="sidebar__link consulting-link">Consulting</a>
+        <a href="{{ '/categories/finance/' | url }}" class="sidebar__link finance-link">Finance</a>
+        <a href="{{ '/categories/operations/' | url }}" class="sidebar__link operations-link">Operations</a>
+        <a href="{{ '/categories/project/' | url }}" class="sidebar__link project-link">Project management</a>
+        <a href="{{ '/categories/strategy/' | url }}" class="sidebar__link strategy-link">Strategy</a>
+        <a href="{{ '/categories/technology/' | url }}" class="sidebar__link technology-link">Technology</a>
     </div>
   </aside>
+  {#
   <aside class="sidebar__featured-container">
     <h2 class="sidebar__title">Featured posts</h2>
     <div class="sidebar__featured">
@@ -38,4 +39,5 @@
       </ul>
     </div>
   <aside>
+    #}
 </div>

@@ -6,11 +6,12 @@ main__class: main-consulting
 ---
 
 <div class="posts__frame">
+  <h2>Posts: Consulting</h2>
   <ul class="ul--plain">
     {%- for consulting in collections.consulting | reverse -%}
       <li class="li--plain">
         <article class="snippet__article">
-          <h2 class="snippet__title">{{ consulting.data.title }}</h3>
+          <h3 class="snippet__title">{{ consulting.data.title }}</h3>
           <img class="snippet__image" src="{{ consulting.data.image }}" />
           <p class="snippet__meta">by <span>{{ consulting.data.author }}</span> on <span>{{ consulting.data.date | postDate }}</span></p>
           <p class="snippet__description">{{ consulting.data.description }}</p>

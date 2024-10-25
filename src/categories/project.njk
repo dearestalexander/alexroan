@@ -6,11 +6,12 @@ main__class: main-project
 ---
 
 <div class="posts__frame">
+  <h2>Posts: Project management</h2>
   <ul class="ul--plain">
     {%- for project in collections.project | reverse -%}
       <li class="li--plain">
         <article class="snippet__article">
-          <h2 class="snippet__title">{{ project.data.title }}</h3>
+          <h3 class="snippet__title">{{ project.data.title }}</h3>
           <img class="snippet__image" src="{{ project.data.image }}" />
           <p class="snippet__meta">by <span>{{ project.data.author }}</span> on <span>{{ project.data.date | postDate }}</span></p>
           <p class="snippet__description">{{ project.data.description }}</p>
