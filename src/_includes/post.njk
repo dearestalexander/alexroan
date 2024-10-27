@@ -4,20 +4,8 @@ layout: 'post-layout.njk'
 
 <div class="posts__frame__post">
   <article>
-    <div class="container container--narrow flow">
-      <h1 class="article-title">
-        {{ title }}
-      </h1>
-      <figure class="main-article__figure">
-        <img src="{{ image }}" art"{{ imageAlt}}">
-        <figcaption>
-        {#  {{ imageAlt }} #}
-        </figcation>
-      </figure>
-
+      <h2 class="article-title"> {{ subtitle }} </h2>
+      <img src="{{ image }}">
       {{ content | safe }}
-
-    </div>
-
   </article>
 </div>

@@ -44,7 +44,8 @@ img {
 }
 
 a {
-  color: var(--color-red);
+  color: var(--color-lightyellow);
+  text-decoration: none;
 }
 
 
@@ -96,12 +97,13 @@ a {
 /* ========== DESIGN - HEADER ========== *
 /* ===================================== */
 
-/* ---------- Large header (used on home/index.njk) ----------  */
+/* ---------- Main header (used on home page) ----------  */
 .heading__frame {
-  padding: 6rem 0;
+  max-width: 90svw;
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  padding: 6rem 0;
   color: black;
 }
 
@@ -123,6 +125,7 @@ a {
 .nav__ul {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -131,6 +134,7 @@ a {
 
 .nav__li {
   text-decoration: none;
+  border-radius: 0.5rem;
 }
 
 .nav__link {
@@ -141,8 +145,9 @@ a {
   text-decoration: none;
 }
 
-.nav__li:hover {
-  background-color: var(--color-lightgrey);
+.nav__link:hover {
+  background-color: var(--color-lightyellow);
+  color: var(--color-white);
 }
 
 .dropdown {
@@ -153,67 +158,77 @@ a {
 .nav__more {
   display: none;
   position: absolute;
-  background-color: var(--color-lightgrey);
   list-style-type: none;
   color: black;
   top: 100%;
   left: 0%;
   margin: 0;
-  padding: 0;
+  padding: 0.2rem 0 0 0;
 }
 
 .dropdown:hover .nav__more {
   display: block;
 }
 
-.nav__more a:hover {
-  background-color: var(--color-grey);
-  color: white;
-}
 
-
-/* ---------- Large header (used on post and other pages) ----------  */
-.mobile-nav__container { 
-  display: none; /* hide mobile nav */
-}
-
-.heading__frame {
-  min-width: (105ch, 90%);
-}
-
+/* ---------- smaller header (used on content pages) ----------  */
 .heading__frame--small {
-  width: min(105ch, 90%);
+  width: 90svw;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin: 1rem 0;
+  padding: 1rem;
 }
 
 .heading__title--small {
+  padding-right: 4rem;
   font-size: 1.2rem;
+  text-wrap: nowrap;
+}
+
+.heading__title-one--small {
+  text-wrap: nowrap;
 }
 
 .heading__title-two--small {
   color: var(--color-red);
   font-style: italic;
+  text-wrap: nowrap;
 }
 
-/*   - navigation  */
+.nav__ul--small {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__li--small {
+  display: flex;
+  align-items: center;  
+}
+
 .nav__link--small {
-  display: block;
-  padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
+  padding: 0.5rem;
   text-decoration: none;
   color: black;
 }
 
 .nav__link--small:hover {
-  background-color: var(--color-lightgrey);
+  background-color: var(--color-lightyellow);
+  color: white;
 }
 
 .divider-one {
   border: 1px solid var(--color-lightgrey);
   margin-bottom: 0.1rem;
+}
+
+/* ---------- Mobile navigation (hide) ---------- */
+.mobile-nav__container { 
+  display: none; /* hide mobile nav */
 }
 
 
@@ -421,13 +436,13 @@ footer {
 }
 
 .footer__subtitle-one {
-  color: var(--color-lightyellow);
+  color: var(--color-black);
   font-weight: bold;
   font-size: 1.2rem;
 }
 
 .footer__subtitle-two {
-  color: var(--color-lightyellow);
+  color: var(--color-grey);
   font-weight: bold;
   font-size: 1rem;
   margin: 0;
@@ -470,6 +485,11 @@ footer {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4rem;
   padding-bottom: 2rem;
+}
+
+.sitemap a {
+  color: var(--color-lightyellow);
+  padding-left: 0.5rem;
 }
 
 
@@ -552,7 +572,7 @@ footer {
   flex-direction: column;
   align-items: center;
   border-radius: 1rem;
-  border: 1px solid var(--color-lightyellow);
+  border: 1px solid var(--color-grey);
   padding: 1rem;
 }
 
@@ -593,8 +613,30 @@ The approach is
 - The menu page has a 'x' top right to close and return
 */
 
+@media (max-width: 1100px) {
+  .heading__title--small {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 950px) {
+  .sitemap {
+    grid-template-columns: 1fr
+  }
+}
 
 @media (max-width: 600px) {
+  .heading__frame--small {
+    width: 80%;
+    align-self: flex-start;
+  }
+
+  .hamburger {
+    font-size: 2rem;
+    padding: 1rem;
+    color: var(--color-lightyellow);
+  }
 
   main {
     display: flex;
@@ -603,29 +645,15 @@ The approach is
     max-width: 90%;
   }
 
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
   .footer__site-map {
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-  }
-
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-
-  .sitemap {
-    grid-template-columns: 1fr
-  }
-
-  .heading__frame {
-    padding: 0;
-  }
-
-  .heading__frame--small {
-    width: 80%;
-    font-size: 1rem;
-    hyphens: none;
   }
 
   .nav__container, .nav__container--small, .sidebar__container, .sidebar__container--content {
@@ -639,10 +667,5 @@ The approach is
     right: 0.5rem;
     align-items: center;
     justify-content: space-around;
-  }
-  
-  .hamburger {
-    font-size: 2rem;
-    padding: 1rem;
   }
 }
