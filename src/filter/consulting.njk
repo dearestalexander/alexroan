@@ -1,0 +1,18 @@
+---
+title: Business and technology transformation
+titletwo: ~ by Alex Roan
+layout: 'content.njk'
+main__class: main-consulting
+---
+
+{%- for consulting in collections.consulting | reverse -%}
+  <li class="flow blog-card">
+    <article class="flow">
+      <h3>{{ consulting.data.title }}</h3>
+      <img src="{{ consulting.data.image }}" />
+      <p>by <span>{{ consulting.data.author }}</span> on <span>{{ consulting.data.date | postDate }}</span></p>
+      <p>{{ consulting.data.description }}</p>
+      <a href="{{ consulting.url }}">Continue reading</a>
+    </article>
+  </li>
+{%- endfor -%}

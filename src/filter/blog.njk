@@ -1,0 +1,18 @@
+---
+title: Business and technology transformation
+titletwo: ~ by Alex Roan
+layout: 'content.njk'
+main__class: main-blog
+---
+
+{%- for blog in collections.blog | reverse -%}
+  <li class="flow blog-card">
+    <article class="flow">
+      <h3>{{ blog.data.title }}</h3>
+      <img src="{{ blog.data.image }}" />
+      <p>by <span>{{ blog.data.author }}</span> on <span>{{ blog.data.date | postDate }}</span></p>
+      <p>{{ blog.data.description }}</p>
+      <a href="{{ blog.url }}">Continue reading</a>
+    </article>
+  </li>
+{%- endfor -%}
