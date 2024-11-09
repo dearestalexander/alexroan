@@ -2,8 +2,7 @@
 title: Improving the record to report process
 author: Alex Roan
 date: 2020-05-18
-tags: ["post", "blog", "finance"]
-image:
+tags: ["post", "blog", "finance", "featured"]
 imageAlt: 
 description: Starting from business transactions such as the purchase of materials, payments to employees and sale of goods and services. Ending with reporting and decision making including the submission of detailed annual reports. The 'record to report' process (RtR) is a long, complex process that involves people from across the enterprise. Despite the critical nature of this process, it’s rare to find RtR clearly documented from start to finish. I've found that few finance employees can describe the complete process. In part, this is because the process touches core operational transactions (purchases, manufacturing, sales etc.). From another perspective, it's because certain parts of the process require a high level of expertise.
 ---

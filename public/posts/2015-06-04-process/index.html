@@ -1,58 +1,43 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=display-width" initial-scale="1.0">
-
-    <title>Business and technology transformation</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan</title>
     <link href="/styles.css" rel="stylesheet">
-
-    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-  
-    <!-- icons -->
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <header class="heading__frame--small">
-  <h1 class="heading__title--small">
-    <span class="heading__title-one--small"> Tools &amp; techniques to manage business processes </span>
-    <span class="heading__title-two--small">  </span>
-  </h1>
-  <nav class="nav__container--small">
-    <ul class="nav__ul--small">
-      <li class="nav__li--small"><a class="nav__link--small" href="/index/">Home</a></li>
-      <li class="nav__li--small"><a class="nav__link--small" href="/services/"">Services</a></li>
-      <li class="nav__li--small"><a class="nav__link--small" href="/experience/">Experience</a></li>
-      <li class="nav__li--small dropdown">
-        <a class="nav__link--small" href="/more">More <i class="fa-solid fa-chevron-down"></i></a>
-        <ul class="nav__more">
-          <li class="nav__li--small"><a class="nav__link--small" href="/more/photography/">Photography</a></li>
-          <li class="nav__li--small"><a class="nav__link--small" href="/more/programming/">Programming</a></li>
-          <li class="nav__li--small"><a class="nav__link--small" href="/more/classic-cars/">Classic cars</a></li>   
+    <header>
+      <h1 class="hi-im-alex-container-alt flex">
+        <span class="hi-alt flex">Business and technology transformation</span><span class="im-alex-alt">By Alex Roan</span>
+      </h1>
+      <div class="divider"></div>
+      <nav>
+        <ul role="list" class="flex">
+          <li><a class="btn-link" href="/index/">Home</a></li>
+          <li><a class="btn-link" href="/blog/">Blog</a></li>
+          <li><a class="btn-link" href="/experience/">Experience</a></li>
+          <li><a class="btn-link" href="/more/photography/">Photography</a></li>
+          <li><a class="btn-link" href="/more/programming/">Programming</a></li>
+          <li><a class="btn-link" href="/more/classic-cars/">Classic cars</a></li> 
         </ul>
-      </li>
-    </ul>
-  </nav>
-  <div class="mobile-nav__container">
-    <a href="/menu"><i class="fa-solid fa-bars hamburger"></i></a>
-  </div>
-</header>
-<div class="divider-one"></div>
-<div class="divider-one"></div>
-    <main class="main__centered">
-      
-<div class="posts__frame__post">
-  <article>
-      <h2 class="article-title">  </h2>
-      <img src="">
-      <h3>Business Process - Tools &amp; Techniques To Help Your Business</h3>
+      </nav>
+    </header>
+    <main>
+      <div class="layout flex">
+        <section class="main">
+          <article class="single-post flow">
+
+          
+<h2 class="article-title">  </h2>
+<img src="">
+
+<h3>Business Process - Tools &amp; Techniques To Help Your Business</h3>
 <p>Working on improving business processes is popular, but sometimes organisations do the wrong things at the wrong time; spending money on process related projects which underdeliver on benefits. Often times the actual value of process work is hidden behind various technical sounding methods, tools, techniques and software. The first step to choosing the right process improvement approach is to understand some of the terminology out there. Here is a run down of various process terms, methods, tools and software followed up with some thoughts on choosing the right approach.</p>
 <h3>Business Process Management - BPM</h3>
 <p>What is it?</p>
@@ -172,66 +157,95 @@
 <li>Did I miss any terms or tools that you have found useful? do you disagree with my definitions or thoughts? please let me know.</li>
 </ul>
 
-  </article>
-</div>
-    </main>
-        <footer>
-    
-      <div class="footer__container">
 
-        <h2 class="footer__subtitle-one">Contact:</h2>
-        <form class="contact-form"
+          </article>
+          
+        </section>
+        <section class="sidebar hide">
+          <aside>
+            <h2>About</h2>
+            <div>
+              <p>Hi, I'm Alex, I work in business and technology transformation.</p>
+              <p>I'm also interested in photography, classic cars and programming.</p>
+            </div>
+          </aside>
+          <aside>
+            <h2>Browse by post type</h2>
+            <ul role="list">
+              <li><a href="#">All</a></li>
+              <li><a href="#">Blog posts</a></li>
+              <li><a href="#">Articles</a></li>
+            </ul>
+          </aside>
+          <aside>
+            <h2>Browse by post category</h2>
+            <ul role="list">
+              <li><a href="#">All</a>  </li>
+              <li><a href="#">Consulting</a></li>
+              <li><a href="#">Finance</a></li>
+              <li><a href="#">Operations</a></li>
+              <li><a href="#">Project management</a></li>
+              <li><a href="#">Strategy</a></li>
+              <li><a href="#">Technology</a></li>
+          </aside>
+        </section>
+      <div>
+    </main>
+    <footer class="flow">  
+      <aside class="flex column flow">
+        <h2>Contact:</h2>
+        <form class="flow"
           action="https://formspree.io/f/movqvvgv"
           method="POST"
           >  
-          <div class="contact-form__row">
-            <label for="name" class="contact__label">Name: </label>
-            <input class="contact__input" id="name" type="text" name="name" />
+          <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" />
           </div>
-          <div class="contact-form__row">
-            <label for="email" class="contact__label">E-mail: </label> 
-            <input class="contact__input" id="email" type="email" name="email" />
+          <div>
+            <label for="email">E-mail: </label> 
+            <input id="email" type="email" name="email" />
           </div>
-          <label for="textarea" class="contact__label" name="message">Message: </label> 
-          <textarea class="contact__input contact__input-message" name="message"></textarea>
+          <div>
+            <label for="textarea" name="message">Message: </label> 
+            <textarea name="message"></textarea>
+          </div>
           <button type="submit">Send</button>
         </form>
-
-        <h2 class="footer__subtitle-one">Site map:</h2>
-        <div class="sitemap">
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">Posts:</h3>
-            <ul class="ul--plain">              
-              <li><a class="li--plain" href="posts">All</a></li>
-              <li><a class="li--plain" href="/categories/finance/">Finance transformation</a></li>
-              <li><a class="li--plain" href="/categories/operations/">Operations</a></li>
-              <li><a class="li--plain" href="/categories/project/">Project management</a></li>
-              <li><a class="li--plain" href="/categories/consulting/">Consulting</a></li>
-              <li><a class="li--plain" href="/categories/strategy/">Strategy</a></li>
-              <li><a class="li--plain" href="/categories/technology/">Technology</a></li>
+      </aside>
+      <aside class="flow">
+        <h2 id="site-map">Site map:</h2>
+          <div>
+            <h3>Posts:</h3>
+            <ul role="list">              
+              <li><a href="#">All</a></li>
+              <li><a href="#">Finance transformation</a></li>
+              <li><a href="#">Operations</a></li>
+              <li><a href="#">Project management</a></li>
+              <li><a href="#">Consulting</a></li>
+              <li><a href="#">Strategy</a></li>
+              <li><a href="#">Technology</a></li>
             </ul>
           </div>
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">About:</h3>
-            <ul class="ul--plain">
-              <li><a class="li--plain" href="/services/">Services</a></li>
-              <li><a class="li--plain" href="/experience/">Experience</a></li>
+          <div>
+            <h3>About:</h3>
+            <ul role="list">
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Experience</a></li>
             </ul>
           </div>
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">More:</h3>
-            <ul class="ul--plain">
-              <li><a class="li--plain" href="/more/photography/">Photography</a></li>
-              <li><a class="li--plain" href="/more/programming/">Programming</a></li>
-              <li><a class="li--plain" href="/more/classic-cars/">Classic cars</a></li>
+          <div>
+            <h3 href="#">More:</h3>
+            <ul role="list">
+              <li><a href="#">Photography</a></li>
+              <li><a href="#">Programming</a></li>
+              <li><a href="#">Classic cars</a></li>
             </ul>
           </div>
-        </div>
-
-        <p class="footer__text">Built by Alex Roan using HTML, CSS and 11ty</p>
-      </div>
-  
-    </footer>  
+      </aside>
+      <aside>
+        <p>Built by Alex Roan using HTML, CSS and 11ty</p>
+      </aside>
+    </footer>
   </body>
-
 </html>

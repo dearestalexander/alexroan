@@ -1,671 +1,403 @@
-/* ======================================= */
-/* ========== VARIABLES & RESET ========== *
-/* ======================================= */
+
+/*
+=====================
+------ RESET --------
+=====================
+*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control */
+body, h1, h2, h3, h4, p,
+figure, blockquote, ul, ol {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+/*
+========================
+------ VARIABLES -------
+========================
+*/
+
 :root {
-  /* alexroan.com colours */
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step-2: clamp(0.6944rem, 0.692rem + 0.0122vw, 0.7035rem);
+  --step-1: clamp(0.8333rem, 0.805rem + 0.1416vw, 0.9377rem);
+  --step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
+  --step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
+  --step-3: clamp(1.728rem, 1.3937rem + 1.6715vw, 2.9607rem);
+  --step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
+  --step-5: clamp(2.4883rem, 1.7364rem + 3.7594vw, 5.2609rem);
+  --step-6: clamp(2.986rem, 1.894rem + 5.4601vw, 7.0128rem);
+  --step-7: clamp(3.5832rem, 2.0198rem + 7.8168vw, 9.3481rem);
+
+
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1500,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4661rem + 0.1695vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6992rem + 0.2542vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3983rem + 0.5085vw, 1.875rem);
+  --space-l: clamp(2rem, 1.8644rem + 0.678vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.7966rem + 1.0169vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.7288rem + 1.3559vw, 5rem);
+  --space-3xl: clamp(6rem, 5.5932rem + 2.0339vw, 7.5rem);
+
   --color-red: #EB0A1E;
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-grey: #58595B;
   --color-lightgrey: #f6f6f6;
   --color-lightyellow: #f1be32;
+  --font-family: "Manrope", sans-serif;
+  --font-family-alt: "EB Garamond", sans-serif;
+  --gutter: var(--space-s);
+  --border-radius: var(--step-1);
+  --transition-base: 250ms ease;
+  --transition-movement: 200ms linear;
+  --transition-fade: 200ms ease;
+  --transition-bounce: 500ms cubic-bezier(0.5, 0.05, 0.2, 1.5);
+  --tracking: -0.02ch;
+  --tracking-s: -0.075ch;
 }
 
-html, body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  text-rendering: optimizeLegibility;
-  font-kerning: normal;
-}
+/*
+============================
+------ GLOBAL DESIGN -------
+============================
+*/
 
-
-
-
-/* =================================== */
-/* ========== DESIGN - BODY ========== *
-/* =================================== */
 body {
-  font-family: "Manrope", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-img {
-  max-width: 100%;
+  color: var(--color-grey);
+  background: var(--color-white);
+  font-size: var(--step-0);
+  font-family: var(--font-family);
+  line-height: 1.4;
+  letter-spacing: var(--tracking);
   margin: auto;
 }
 
-a {
-  color: var(--color-lightyellow);
-  text-decoration: none;
+h1, h2, h3 {
+  line-height: 1;
+  letter-spacing: var(--tracking-s);
 }
 
-
-/* general bullets */
-
-.ul--plain {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.li--plain {
-  color: black;
-  text-decoration: none;
-}
-
-
-/* bullet styleing for recent updates */
-.ul--recent {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-
-.ul--recent > li {
-  padding-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.ul--recent ul {
-  margin-top: 0.2rem;
-  padding-left: 1rem;
-}
-
-.ul--recent ul > li {
-  font-weight: normal;
-  padding: 0.2rem 0;
-  line-height: 1.6;
-}
-
-.ul--recent p, .ul--recent a {
-  font-weight: normal;
-}
-
-
-/* ===================================== */
-/* ========== DESIGN - HEADER ========== *
-/* ===================================== */
-
-/* ---------- Main header (used on home page) ----------  */
-.heading__frame {
-  max-width: 90svw;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  padding: 6rem 0;
-  color: black;
-}
-
-.heading__title-one {
-  display: block;
-  background-color: var(--color-red);
-  font-size: 3rem;
-  width: 8rem;
-  padding: 4rem 0.5rem 0rem 4rem;
-}
-
-.heading__title-two {
-  display: block;
-  width: 16rem;
-  font-size: 4rem;
-  margin: -0.4rem 1rem 1rem 1.4rem;
-}
-
-.nav__ul {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.nav__li {
-  text-decoration: none;
-  border-radius: 0.5rem;
-}
-
-.nav__link {
-  display: block;
-  padding: 0.5rem 0.5rem;
-  border-radius: 0.5rem;
-  color: black;
-  text-decoration: none;
-}
-
-.nav__link:hover {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.nav__more {
-  display: none;
-  position: absolute;
-  list-style-type: none;
-  color: black;
-  top: 100%;
-  left: 0%;
-  margin: 0;
-  padding: 0.2rem 0 0 0;
-}
-
-.dropdown:hover .nav__more {
-  display: block;
-}
-
-
-/* ---------- smaller header (used on content pages) ----------  */
-.heading__frame--small {
-  width: 90svw;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.heading__title--small {
-  padding-right: 4rem;
-  font-size: 1.2rem;
-  text-wrap: nowrap;
-}
-
-.heading__title-one--small {
-  text-wrap: nowrap;
-}
-
-.heading__title-two--small {
-  color: var(--color-red);
-  font-style: italic;
-  text-wrap: nowrap;
-}
-
-.nav__ul--small {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav__li--small {
-  display: flex;
-  align-items: center;  
-}
-
-.nav__link--small {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  text-decoration: none;
-  color: black;
-}
-
-.nav__link--small:hover {
-  background-color: var(--color-lightyellow);
-  color: white;
-}
-
-.divider-one {
-  border: 1px solid var(--color-lightgrey);
-  margin-bottom: 0.1rem;
-}
-
-/* ---------- Mobile navigation (hide) ---------- */
-.mobile-nav__container { 
-  display: none; /* hide mobile nav */
-}
-
-
-
-
-/* ===================================== */
-/* ========== DESIGN - MAIN ========== *
-/* ===================================== */
-
-
-/* ---------- Large header & general (used on home/index.njk) ----------  */
-main {
-  width: min(105ch, 90%);
-  display: flex;
-  flex-direction: row;
-  margin-top: 4rem;
-  font-size: 1rem;
-  line-height: 1.5;
+h1 {
+  font-size: var(--step-5);
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: var(--step-4);
 }
 
-.posts__frame {
-  width: min(65ch, 90%);
-  margin: 0ch 5ch 0ch 5ch;
+h3 {
+  font-size: var(--step-3);
 }
 
-.snippet__article {
-  border-radius: 0.5rem;
-  background-color: var(--color-lightgrey);
-  padding: 1rem;
-}
-
-.snippet__title {
-  font-size: 1rem;
-  font-weight: bold;
-  hyphens: none;
-  padding: 0 0 1rem 0;
-  margin: 0;
-}
-
-.snippet__image {
-  display: block;
-  width: 90%;
-  margin: auto;
-}
-
-.snippet__meta {
-  color: var(--color-grey);
-  font-style: italic;
-}
-
-.divider-two {
-  border: 1px solid var(--color-lightgrey);
-  width: 40%;
-  margin: 4rem auto;
-}
-
-
-/* ---------- Adjust main for single posts pages (post-layout.njk) ----------  */
-.main__centered {
-  flex-direction: column;
-  align-items: center;
-}
-
-.posts__frame__post {
-  width: min(75ch, 90%);
-}
-
-
-/* ---------- Sidebar menu on home/index and posts pages ----------  */
-.sidebar__container {
-  width: 40ch;
-  padding: 0ch 2ch 0ch 2ch;
-}
-
-.sidebar__container--content {
-  padding-top: 4rem;
-}
-
-.sidebar__aside {
-  border-radius: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.sidebar__text {
-  margin: 0;
+[role="list"] {
   padding: 0;
-  hyphens: none;
 }
 
-.sidebar__title {
-  padding: 0.5rem 1rem;
-  margin: 0;
-  font-size: 1.2rem;
-  color: var(--color-lightyellow);
-  font-weight: bold;
+a {
+  color: currentColor;
 }
 
-.sidebar__box {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  padding: 0.6rem 1rem 1.2rem 1rem;
-}
-
-.sidebar__link {
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-lightyellow);
+a:hover {
   text-decoration: none;
-  color: var(--color-grey);
 }
 
-.sidebar__link:hover {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+a:focus {
+  outline: 2px solid;
+  outline-offset: 0.3ch;
 }
 
-/* higlight the 'filter link' based on the content page being viewed
-    - The frontmatter on content pages has a field 'main__class'
-    - This is used to update the class of main in the content template
-    - e.g. <main class="articles"> or <main class="finance"> depending on the content page
-    - Each link in the sidebar has a class matching it's name e.g. <a class="article">
-    - Styles can then be applied using descendent selector to highlight the link for the current page
-      - .articles .article {background-color: grey} would apply grey to the articles link on the article page
-      - .finance .finance {background-color: grey} would apply gret to teh finance link on the finance page
-    - (This allows for dynamic update of the sidebar template)
+.divider {
+  width: 100vw;
+  margin: 0;
+  border: 1px solid var(--color-grey);
+}
+
+/*
+===============================
+------ RE-USABLE CLASSES ------
+===============================
 */
 
-.main-all .type-all-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+/* flex with wrap */
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.main-articles .articles-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.column {
+  flex-direction: column;
 }
 
-.main-blog .blog-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.hide {
+  display:none;
 }
 
-.main-all .category-all-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+/*
+====================================
+------ BLOCK SPECIFIC STYLING ------
+====================================
+*/
+
+/* Heading text - home page style */
+.hi-im-alex-container {
+  width: 100vw;
+  align-items: baseline;
+  padding-bottom: var(--space-3xl);
+  background-color: var(--color-lightgrey);
 }
 
-.main-consulting .consulting-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.hi {
+  font-size: var(--step-7);
+  padding: 0.5em 0.1em 0.1em 0.5em;
+  margin: 0.5em 0.1em 0em 0.5em;
+  background-color: var(--color-red);
+  color: var(--color-lightgrey);
 }
 
-.main-finance .finance-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.im-alex {
+  font-size: var(--step-3);
 }
 
-.main-operations .operations-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+/* Heading text - blog and content pages */
+.hi-im-alex-container-alt {
+  max-width: 100%vw;
+  align-items: baseline;
+  margin: var(--space-3xs);
+  background-color: var(--color-lightgrey);
+  letter-spacing: var(--tracking);
+  gap: var(--space-xs);
 }
 
-.main-project .project-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.hi-alt {
+  font-size: var(--step-2);
+  padding: var(--space-s) var(--space-3xs) var(--space-3xs) var(--space-s);
+  background-color: var(--color-red);
+  color: var(--color-lightgrey);
 }
 
-.main-strategy .strategy-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+.im-alex-alt {
+  font-size: var(--step-0);
+  font-style: italic;
 }
 
-.main-technology .technology-link {
-  background-color: var(--color-lightyellow);
-  color: var(--color-white);
+/* Main nav bar - flex & link button customisation */
+
+nav > ul {
+  gap: var(--space-3xs);
 }
 
+.btn-link {
+  background-color: var(--color-grey);
+  color: var(--color-lightgrey);
+  border-radius: 0.2rem;
+  padding: 0.2em 0.4em;
+  display: block;
+  text-decoration: none;
+}
 
+.btn-link:hover {
+  background-color: var(--color-red);
+}
 
+/* Content layout and spacing */
+.main {
+  flex-basis:0;
+  flex-shrink:1;
+  flex-grow: 3;
+  
+}
 
-/* ===================================== */
-/* ========== DESIGN - FOOTER ========== *
-/* ===================================== */
+.sidebar {
+  flex-basis: 0;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
 
-footer {
-  width: 100svw;
+.flow > * + * {
+  margin-top: var(--space-l, 1em);
+}
+
+nav, footer, .region__dark__single-col, .featured {
+  padding: var(--space-m);
+}
+
+/* Dark, single column area on home page - for recent news */
+.region__dark__single-col {
+  background-color: var(--color-black);
+  color: var(--color-lightgrey);
+  margin: var(--space-xl) 0;
+}
+
+.region__dark__single-col li {
+  max-width: min(65ch, 95%);
+}
+
+/* Grid area - for featured articles */
+.featured {
+  background-color: var(--color-white);
+}
+
+.blog-grid {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+  grid-auto-flow: dense;
+}
+
+.blog-card {
+  border: 1px solid var(--color-grey);
+  border-radius: 0.5em;
+  padding: var(--space-m);
+  margin: var(--space-s) 0;
   background-color: var(--color-lightgrey);
   color: var(--color-grey);
-  margin-top: 4rem;
+  max-width: min(65ch, 95%);
 }
 
-.footer__container {
-  width: min(105ch, 80%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 4rem;
-  margin: auto;
+/* Sidebar */
+.sidebar {
+  max-width: 30ch;
+  margin: var(--space-xl) 0;
+  padding: 0 var(--space-s);
 }
 
-.footer__subtitle-one {
-  color: var(--color-black);
-  font-weight: bold;
-  font-size: 1.2rem;
+.sidebar h2 {
+  font-size: var(--step-2);
 }
 
-.footer__subtitle-two {
-  color: var(--color-grey);
-  font-weight: bold;
-  font-size: 1rem;
-  margin: 0;
-  padding-bottom: 0.5rem;
+.socials {
+  font-size: var(--step-2);
+  gap: var(--space-s);
 }
 
 
-/* ---------- Contact form ----------  */
-
-.contact-form {
-  width: min(50ch, 100%);
-  display: grid;
-  grid-template-columns: auto 1fr; /* content size for label, remainder for input */
-  gap: 1rem;
-  padding-bottom: 1rem;
+/* Footer */
+footer {
+  background-color: var(--color-grey);
+  color: var(--color-lightgrey);
+  margin-top: var(--space-3xl);
+}
+input {
+  max-width: 20ch;
+}
+textarea {
+  display: block;
+  max-width: 20ch;
+}
+button {
+  display: block;
 }
 
-.contact-form__row {
-  display: contents; /* ensure divs don't interfere with grid layout */
-}
-
-.contact__label {
-  width: 10ch;
-  padding-right: 10px;
-}
-
-.contact__input {
-  width: 100%;
-}
-
-.contact__message {
-  height: 10ch;
-}
-
-
-/* ---------- Sitemap ----------  */
-.sitemap {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4rem;
-  padding-bottom: 2rem;
-}
-
-.sitemap a {
-  color: var(--color-lightyellow);
-  padding-left: 0.5rem;
-}
-
-
-/* ---------- Attribution ----------  */
-.footer__text {
-  font-size: 1rem;
-  padding: 2rem;
-  align-self: center;
-  font-style: italic;
-  text-align: center;
-}
-
-
-
-/* ====================================== */
-/* ========== Photography page ========== *
-/* ====================================== */
-
-/* remove sidebar (which is part of content.njk layout) */
-.photography > .sidebar__container {
-  display: none;
-}
-
-/* adjust flex to centre content after removing sidebar */
-.photography {
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-}
-
-.photography__h2 {
-  font-size: 1rem;
-}
-
-/* Design for single photo post (photo.njk and template file photo-layout.njk) */
-.photo-page__image {
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.posts__frame__post {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: 0ch 5ch 0ch 5ch;
-}
-
-
-
-/* ====================================== */
-/* ========== Programming page ========== *
-/* ====================================== */
-
-/* remove sidebar (which is part of content.njk layout) */
-.programming > .sidebar__container {
-  display: none;
-}
-
-/* adjust flex to centre content after removing sidebar */
-.programming {
-  flex-direction: column;
-  align-items: center;
-}
-
-.article__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.grid-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 1rem;
-  border: 1px solid var(--color-grey);
-  padding: 1rem;
-}
-
-.grid-item:nth-child(5) {
-  grid-column: 1 / span 2;
-  justify-self: center;
-}
-
-
-
-/* ====================================== */
-/* ========== Classic cars page ========== *
-/* ====================================== */
-
-/* remove sidebar (which is part of content.njk layout) */
-.classics > .sidebar__container {
-  display: none;
-}
-
-/* adjust flex to centre content after removing sidebar */
-.classics {
-  flex-direction: column;
-  align-items: center;
-}
-
-
-/* ===================================================== */
-/* ========== DESIGN - SMALL SCREENS / MOBILE ========== *
-/* ===================================================== */
-
-/* 
-As there are several pages and filters to navigage between
-The approach is 
-- Hide main nav menu
-- Hide sidebar filters
-- Add a 'hamburger' menu top right
-- On click this links to a separate menu page
-- The menu page has a 'x' top right to close and return
+/*
+===============================
+------ SINGLE POST PAGE -------
+===============================
 */
 
-@media (max-width: 1100px) {
-  .heading__title--small {
-    display: flex;
-    flex-direction: column;
-  }
+/* Add posts filter for when sidebar isn't visible */
+.btn-link-2 {
+  font-size: var(--step-0);
+  color: var(--color-grey);
+  text-decoration: none;
 }
 
-@media (max-width: 950px) {
-  .sitemap {
-    grid-template-columns: 1fr
-  }
+.inline {
+  display: inline;
 }
 
-@media (max-width: 600px) {
-  .heading__frame--small {
-    width: 80%;
-    align-self: flex-start;
-  }
 
-  .hamburger {
-    font-size: 2rem;
-    padding: 1rem;
-    color: var(--color-lightyellow);
-  }
+/*
+===============================
+------ SINGLE POST PAGE -------
+===============================
+*/
 
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 90%;
-  }
-
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-
-  .footer__site-map {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .nav__container, .nav__container--small, .sidebar__container, .sidebar__container--content {
-    display: none;
-  }
-
-  .mobile-nav__container {
-    display: flex;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    align-items: center;
-    justify-content: space-around;
-  }
+.single-post {
+  max-width: min(65ch, 90vw);
+  margin: auto;
+  overflow-wrap: break-word; /* Prevent long words from causing overflow */
 }
+
+.single-post > * {
+  max-width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+
+
+
+

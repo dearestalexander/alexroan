@@ -1,228 +1,234 @@
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" initial-scale="1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Roan - Home</title>
-
     <link href="/styles.css" rel="stylesheet">
-
-    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-  
-    <!-- icons -->
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <header class="heading__frame">
-  <h1 class="heading__title">
-    <span class="heading__title-one">Hi</span>
-    <span class="heading__title-two">I'm Alex</span>
-  </h1>
-  <nav class="nav__container">
-    <ul class="nav__ul">
-      <li class="nav__li"><a class="nav__link" href="/index/">Home</a></li>
-      <li class="nav__li"><a class="nav__link" href="/services/">Services</a></li>
-      <li class="nav__li"><a class="nav__link" href="/experience/">Experience</a></li>
-      <li class="nav__li dropdown">
-        <a class="nav__link" href="/more">More <i class="fa-solid fa-chevron-down"></i></a>
-        <ul class="nav__more">
-          <li class="nav__li"><a class="nav__link" href="/more/photography/">Photography</a></li>
-          <li class="nav__li"><a class="nav__link" href="/more/programming/">Programming</a></li>
-          <li class="nav__li"><a class="nav__link" href="/more/classic-cars/">Classic cars</a></li>   
+    <header>
+      <h1 class="hi-im-alex-container flex">
+        <span class="hi flex">Hi,</span><span class="im-alex">I'm Alex</span>
+      </h1>
+      <div class="divider"></div>
+      <nav>
+        <ul role="list" class="flex">
+          <li><a class="btn-link" href="/index/">Home</a></li>
+          <li><a class="btn-link" href="/blog/">Blog</a></li>
+          <li><a class="btn-link" href="/experience/">Experience</a></li>
+          <li><a class="btn-link" href="/more/photography/">Photography</a></li>
+          <li><a class="btn-link" href="/more/programming/">Programming</a></li>
+          <li><a class="btn-link" href="/more/classic-cars/">Classic cars</a></li>   
         </ul>
-      </li>
-    </ul>
-  </nav>
-  <div class="mobile-nav__container">
-    <a href="/menu/"><i class="fa-solid fa-bars hamburger"></i></a>
-  </div>
-</header>
+      </nav>
+    </header>
     <main>
       
-<div class="posts__frame">
-  <article>
-    <h2>Recent highlights</h2>
-    <ul class="ul--recent">
-      <li>October '24
-        <ul>
-          <li>I've updated this website. It is written in plain HTML and CSS with <a href="https://www.11ty.dev">11ty</a> to publish posts automatically based on markdown files. This is useful as my posts aren't locked into any propriety tools or websites and I can easily maintain and adapt them (I still need to fix some of the formatting).</li>
-        </ul> 
-      </li>
-      <li> September '24
-        <ul>
-          <li>I wrote a brief post on <a href="https://www.linkedin.com/posts/activity-7247874597109334016-joXX?utm_source=share&utm_medium=member_desktop">Ansoff's grid</a> - a useful tool for strategic planning</li>
-          <li>I wrote a brief post on <a href="https://www.linkedin.com/posts/activity-7247492434241171456-ZtnW?utm_source=share&utm_medium=member_desktop">scope creep</a> - a consistent challenge on business and Tech projects</li>
-        </ul>
-      </li>
-      <li>August '24
-        <ul>
-          <li>I added a new <a href="/more/programming/">page</a> to track my studies
-          <li>I finished the first <a href="/fcc/javascript/">draft</a> of my JavaScript quick reference
-        </ul>
-      </li>
-      <li>June '24
-        <ul>
-          <li>I <a href="https://www.linkedin.com/posts/activity-7209203691155775488-mmmA?utm_source=share&utm_medium=member_desktop" target="_blank">posted</a> about frameworks to help structure transformation programs</li>
-          <li>I <a href="https://www.linkedin.com/posts/activity-7206637113411334144-cQ86?utm_source=share&utm_medium=member_desktop" target="_blank">posted</a> about gathering information for transformation projects</li>
-          <li>I wrote an in depth <a href="https://www.linkedin.com/pulse/how-assess-operations-part-1-alexander-roan-jouxc/?trackingId=32g0W05z3RqD3%2FdSc4hVdg%3D%3D" target="_blank">guide</a> to assessing an organisations operations</li>
-        </ul>
-      </li>
-      <li>March '24
-        <ul>
-          <li>I created a <a href="https://raw.githack.com/dearestalexander/RWBQuickRef/main/rwb.html" target="_blank">quick reference</a> for the Responsive Web Design course by freeCodeCamp.</li> 
-        </ul>
-      </li>
-      <li>August '23 to March '24
-        <ul>
-          <li>I worked with a global recruitment company on the assessment of the operations of potential acquisitions</li>
-          <li>I travelled around Asia including Tokyo, Bangkok, DaNang, Kuala Lumpur and Singapore</li>
-          <li>I studied VBA, HTML, CSS and  JavaScript.</li>
-        </ul>
-      </li>
-      <li>June '22 to July '23
-        <ul>
-          <li>I moved back to the Scottish Highlands and lived in the hills above Loch Ness</li>
-          <li>I spent a year buying, fixing and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
-        </ul>
-      </li>
-      <li>September '20 to  '22
-        <ul>
-          <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA for a global consumer goods company.</li>
-        </ul>  
-      </li>
-    </ul>
-  </article>
+<div class="layout flex">
+  <section class="main">
+    <article class="region__dark__single-col region-large flow">
+      <h2>Recent highlights</h2>
+      <ul role="list" class="flow">
+        <li>
+          <h3>October '24</h3>
+          <ul role="list" >
+            <li>I updated this website. It is now written in plain HTML and CSS. It uses <a href="https://www.11ty.dev">11ty</a> to automatically generate post pages based on markdown files. This allows me to manage blog posts in markdown without getting locked into any proprietary content management systems, websites or tools.</li>
+          </ul> 
+        </li>
+        <li> 
+          <h3>September '24</h3>
+          <ul role="list">
+            <li>I wrote a post on <a href="https://www.linkedin.com/posts/activity-7247874597109334016-joXX?utm_source=share&utm_medium=member_desktop">Ansoff's Grid</a> - a simple, but useful tool for strategic planning.</li>
+            <li>I wrote another post on <a href="https://www.linkedin.com/posts/activity-7247492434241171456-ZtnW?utm_source=share&utm_medium=member_desktop">scope creep</a> - a consistent challenge on business and technology projects.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>August '24</h3>
+          <ul role="list">
+            <li>I added a new <a href="/more/programming/">page</a> to track programming projects.
+            <li>I finished the first <a href="/fcc/javascript/">draft</a> of my JavaScript quick reference. This is a summary of everything covered in freeCodeCamp's JavaScript data structures and algorithms course.
+          </ul>
+        </li>
+        <li>
+          <h3>June '24</h3>
+          <ul role="list">
+            <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7209203691155775488-mmmA?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about frameworks that can be useful tools to help structure transformation programs.</li>
+            <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7206637113411334144-cQ86?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about gathering information for transformation projects.</li>
+            <li>I wrote an in depth <a href="https://www.linkedin.com/pulse/how-assess-operations-part-1-alexander-roan-jouxc/?trackingId=32g0W05z3RqD3%2FdSc4hVdg%3D%3D" target="_blank">article</a> about assessing operations. This is a key part of many transformations from acquisitions integration to the rollout of new processes and systems.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>March '24</h3>
+          <ul role="list">
+            <li >I created a <a href="https://raw.githack.com/dearestalexander/RWBQuickRef/main/rwb.html" target="_blank">quick reference</a> for the Responsive Web Design course by freeCodeCamp. This summarises everything on HTML and CSS covered in the course.</li> 
+          </ul>
+        </li>
+        <li>
+          <h3>August '23 to March '24</h3>
+          <ul role="list">
+            <li>I worked with a global recruitment company on the assessment of the operations of potential acquisitions.</li>
+            <li>I travelled around Asia including Tokyo, Bangkok, DaNang, Kuala Lumpur and Singapore.</li>
+            <li>I studied VBA, HTML, CSS and  JavaScript.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>June '22 to July '23</h3>
+          <ul role="list">
+            <li>I moved back to the Scottish Highlands and lived in the hills above Loch Ness.</li>
+            <li>I spent a year buying, fixing and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>September '20 to  '22</h3>
+          <ul role="list">
+            <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA for a global consumer goods company.</li>
+          </ul>  
+        </li>
+      </ul>
+    </article>
+    <article class="featured">
+      <h2>Featured posts</h2>
+      <ul role="list" class="blog-grid"><li class="flow blog-card">
+          <article class="flow">
+            <h3>Operations assessment</h3>
+            <img src="/assets/images/blog/ops-asses__cover.jpg" />
+            <p>by <span>Alex Roan</span> on <span>1 Jul 2024</span></p>
+            <p>Business transformation is a process where an organisation changes from an existing to a target operational state. Organisations spend a significant amount of effort identifying these improved target states. Corporate strategy drives this at macro level while team, department, function and business area managers are responsible for the execution at a lower level.</p>
+            <a href="/posts/2024-06-07-operations-assessment/">Continue reading</a>
+          </article>
+        </li><li class="flow blog-card">
+          <article class="flow">
+            <h3>Business and technology transformation</h3>
+            <img src="/assets/images/blog/coa__cover.jpg" />
+            <p>by <span>Alex Roan</span> on <span>25 Jun 2020</span></p>
+            <p>The chart of account (CoA) is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting. Correct use of the chart of accounts can both simplify operations and improve decision making capability.</p>
+            <a href="/posts/2020-06-25-chart-of-accounts/">Continue reading</a>
+          </article>
+        </li><li class="flow blog-card">
+          <article class="flow">
+            <h3>SAP HANA and S/4HANA - A simple guide</h3>
+            <img src="/assets/images/blog/saphana__cover.jpg" />
+            <p>by <span>Alex Roan</span> on <span>3 Jun 2020</span></p>
+            <p>Recent years have seen a resurgence in large organisations taking on major SAP upgrades with the relatively new SAP business suite 4 HANA (S/4HANA) collection of applications. But what exactly is HANA? and what is S/4HANA? How is implementing or upgrading to it different from the R/3 upgrades that were significant programs for many organizations over the last few decades?</p>
+            <a href="/posts/2020-06-03-sap-s4-hana/">Continue reading</a>
+          </article>
+        </li><li class="flow blog-card">
+          <article class="flow">
+            <h3>Improving the record to report process</h3>
+            <img src="" />
+            <p>by <span>Alex Roan</span> on <span>18 May 2020</span></p>
+            <p>Starting from business transactions such as the purchase of materials, payments to employees and sale of goods and services. Ending with reporting and decision making including the submission of detailed annual reports. The &#39;record to report&#39; process (RtR) is a long, complex process that involves people from across the enterprise. Despite the critical nature of this process, it’s rare to find RtR clearly documented from start to finish. I&#39;ve found that few finance employees can describe the complete process. In part, this is because the process touches core operational transactions (purchases, manufacturing, sales etc.). From another perspective, it&#39;s because certain parts of the process require a high level of expertise.</p>
+            <a href="/posts/2020-05-18-record-to-report/">Continue reading</a>
+          </article>
+        </li></ul>
+    </article>
+  </section>
+  <section class="sidebar flow">
+    <aside>
+      <h2>About</h2>
+      <div>
+        <p>Hi, I'm Alex, I work in business and technology transformation.</p>
+        <p>I'm also interested in photography, classic cars and programming.</p>
+      </div>
+    </aside>
+    <aside>
+      <h2>Browse by post type</h2>
+      <ul role="list">
+        <li><a href="/blog/">All</a></li>
+        <li><a href="/filter/blog/">Blog posts</a></li>
+        <li><a href="/filter/articles/">Articles</a></li>
+      </ul>
+    </aside>
+    <aside>
+      <h2>Browse by post category</h2>
+      <ul role="list">
+        <li><a href="/blog/">All</a>  </li>
+        <li><a href="/filter/consulting/">Consulting</a></li>
+        <li><a href="/filter/finance/">Finance</a></li>
+        <li><a href="/filter/operations/">Operations</a></li>
+        <li><a href="/filter/project/">Project management</a></li>
+        <li><a href="/filter/strategy/">Strategy</a></li>
+        <li><a href="/filter/technology/">Technology</a></li>
+      </ul>
+    </aside>
+    <aside>
+      <h2>My liked songs</h2>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6ChjnI7zN70CAqUJTeROJd?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </aside>
+    <aside>
+      <h2>Socials</h2>
+      <ul role="list" class="flex socials">
+        <li><a href="https://www.linkedin.com/in/alexanderroan/"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="https://x.com/xander_roan"><i class="fa-brands fa-x-twitter"></i></a></li>
+        <li><a href="https://github.com/dearestalexander"><i class="fa-brands fa-github"></i></a></li>
+      </ul>
 
-  <div class="divider-two"></div>
-
-  <h2>Posts: Featured</h2>
-  <ul class="ul--plain"><li class="li--plain">
-        <article class="snippet__article">
-          <h3 class="snippet__title">Operations assessment</h3>
-          <img class="snippet__image" src="/assets/images/blog/ops-asses__cover.jpg" />
-          <p class="snippet__meta">by <span>Alex Roan</span> on <span>1 Jul 2024</span></p>
-          <p class="snippet__description">Business transformation is a process where an organisation changes from an existing to a target operational state. Organisations spend a significant amount of effort identifying these improved target states. Corporate strategy drives this at macro level while team, department, function and business area managers are responsible for the execution at a lower level.</p>
-          <a class="snippet__link" href="/posts/2024-06-07-operations-assessment/">Continue reading</a>
-        </article>
-      </li>
-      <div class="divider-two"></div><li class="li--plain">
-        <article class="snippet__article">
-          <h3 class="snippet__title">Business and technology transformation</h3>
-          <img class="snippet__image" src="/assets/images/blog/coa__cover.jpg" />
-          <p class="snippet__meta">by <span>Alex Roan</span> on <span>25 Jun 2020</span></p>
-          <p class="snippet__description">The chart of account (CoA) is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting. Correct use of the chart of accounts can both simplify operations and improve decision making capability.</p>
-          <a class="snippet__link" href="/posts/2020-06-25-chart-of-accounts/">Continue reading</a>
-        </article>
-      </li>
-      <div class="divider-two"></div><li class="li--plain">
-        <article class="snippet__article">
-          <h3 class="snippet__title">SAP HANA and S/4HANA - A simple guide</h3>
-          <img class="snippet__image" src="/assets/images/blog/saphana__cover.jpg" />
-          <p class="snippet__meta">by <span>Alex Roan</span> on <span>3 Jun 2020</span></p>
-          <p class="snippet__description">Recent years have seen a resurgence in large organisations taking on major SAP upgrades with the relatively new SAP business suite 4 HANA (S/4HANA) collection of applications. But what exactly is HANA? and what is S/4HANA? How is implementing or upgrading to it different from the R/3 upgrades that were significant programs for many organizations over the last few decades?</p>
-          <a class="snippet__link" href="/posts/2020-06-03-sap-s4-hana/">Continue reading</a>
-        </article>
-      </li>
-      <div class="divider-two"></div></ul>
-</div>
-
-
-      <div class="sidebar__container">
-  <aside class="sidebar__aside">
-    <h2 class="sidebar__title">About</h2>
-    <div class="sidebar__box">
-      <p class="sidebar__text">Hi, I'm Alex, I work in business and technology transformation.</p>
-      <p class="sidebar__text">I'm also interested in photography, classic cars and programming.</p>
-    </div>
-  </aside>
-
-  <aside class="sidebar__aside">
-    <h2 class="sidebar__title">Browse by post type</h2>
-    <div class="sidebar__box">
-      <a href="/posts/" class="sidebar__link type-all-link">All</a>
-      <a href="/types/blog/" class="sidebar__link blog-link">Blog posts</a>
-      <a href="/types/articles/" class="sidebar__link articles-link">Articles</a>
-    </div>
-  </aside>
-  <aside class="sidebar__aside">
-    <h2 class="sidebar__title">Browse by post category</h2>
-    <div class="sidebar__box">
-        <a href="/posts/" class="sidebar__link category-all-link">All</a>  
-        <a href="/categories/consulting/" class="sidebar__link consulting-link">Consulting</a>
-        <a href="/categories/finance/" class="sidebar__link finance-link">Finance</a>
-        <a href="/categories/operations/" class="sidebar__link operations-link">Operations</a>
-        <a href="/categories/project/" class="sidebar__link project-link">Project management</a>
-        <a href="/categories/strategy/" class="sidebar__link strategy-link">Strategy</a>
-        <a href="/categories/technology/" class="sidebar__link technology-link">Technology</a>
-    </div>
-  </aside>
-  
-</div>  
+    </aside>
+  </section>
+<div>
     </main>
-        <footer>
-    
-      <div class="footer__container">
-
-        <h2 class="footer__subtitle-one">Contact:</h2>
-        <form class="contact-form"
+    <footer class="flow">  
+      <aside class="flex column flow">
+        <h2>Contact</h2>
+        <form class="flow"
           action="https://formspree.io/f/movqvvgv"
           method="POST"
           >  
-          <div class="contact-form__row">
-            <label for="name" class="contact__label">Name: </label>
-            <input class="contact__input" id="name" type="text" name="name" />
+          <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" />
           </div>
-          <div class="contact-form__row">
-            <label for="email" class="contact__label">E-mail: </label> 
-            <input class="contact__input" id="email" type="email" name="email" />
+          <div>
+            <label for="email">E-mail: </label> 
+            <input id="email" type="email" name="email" />
           </div>
-          <label for="textarea" class="contact__label" name="message">Message: </label> 
-          <textarea class="contact__input contact__input-message" name="message"></textarea>
+          <div>
+            <label for="textarea" name="message">Message: </label> 
+            <textarea name="message"></textarea>
+          </div>
           <button type="submit">Send</button>
         </form>
-
-        <h2 class="footer__subtitle-one">Site map:</h2>
-        <div class="sitemap">
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">Posts:</h3>
-            <ul class="ul--plain">              
-              <li><a class="li--plain" href="posts">All</a></li>
-              <li><a class="li--plain" href="/categories/finance/">Finance transformation</a></li>
-              <li><a class="li--plain" href="/categories/operations/">Operations</a></li>
-              <li><a class="li--plain" href="/categories/project/">Project management</a></li>
-              <li><a class="li--plain" href="/categories/consulting/">Consulting</a></li>
-              <li><a class="li--plain" href="/categories/strategy/">Strategy</a></li>
-              <li><a class="li--plain" href="/categories/technology/">Technology</a></li>
+      </aside>
+      <aside class="flow">
+        <h2 id="site-map">Site map</h2>
+          <div>
+            <h3>Posts:</h3>
+            <ul role="list">              
+              <li><a href="/blog/">All</a></li>
+              <li><a href="/filter/blog/">Blog</a></li>
+              <li><a href="/filter/articles/">Articles</a></li>
+              <li><a href="/filter/operations/">Operations</a></li>
+              <li><a href="/filter/project/">Project management</a></li>
+              <li><a href="/filter/consulting/">Consulting</a></li>
+              <li><a href="/filter/strategy/">Strategy</a></li>
+              <li><a href="/filter/technology/">Technology</a></li>
             </ul>
           </div>
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">About:</h3>
-            <ul class="ul--plain">
-              <li><a class="li--plain" href="/services/">Services</a></li>
-              <li><a class="li--plain" href="/experience/">Experience</a></li>
+          <div>
+            <h3>About</h3>
+            <ul role="list">
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Experience</a></li>
             </ul>
           </div>
-          <div class="sitemap-column">
-            <h3 class="footer__subtitle-two">More:</h3>
-            <ul class="ul--plain">
-              <li><a class="li--plain" href="/more/photography/">Photography</a></li>
-              <li><a class="li--plain" href="/more/programming/">Programming</a></li>
-              <li><a class="li--plain" href="/more/classic-cars/">Classic cars</a></li>
+          <div>
+            <h3 href="#">More:</h3>
+            <ul role="list">
+              <li><a href="#">Photography</a></li>
+              <li><a href="#">Programming</a></li>
+              <li><a href="#">Classic cars</a></li>
             </ul>
           </div>
-        </div>
-
-        <p class="footer__text">Built by Alex Roan using HTML, CSS and 11ty</p>
-      </div>
-  
-    </footer>  
+      </aside>
+      <aside>
+        <p>Built by Alex Roan using HTML, CSS and 11ty</p>
+      </aside>
+    </footer>
   </body>
-
 </html>

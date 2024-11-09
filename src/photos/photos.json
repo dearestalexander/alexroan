@@ -1,4 +1,4 @@
 {
   "tags": "photography",
-  "layout": "photo.njk"
+  "layout": "post.njk"
 }
