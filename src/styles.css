@@ -335,7 +335,7 @@ nav > ul {
 
 .region__sidebar {
   background-color: white;
-  width: min(35ch, 95%);
+  width: min(60ch, 95%);
   padding: var(--space-m) 2vw;
   flex: 1;
 }
