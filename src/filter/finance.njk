@@ -1,15 +1,32 @@
 ---
 title: Business and technology transformation
 titletwo: ~ by Alex Roan
-layout: 'content.njk'
+layout: 'content-layout.njk'
 main__class: main-finance
 ---
 
+<nav aria-label="a set of filters which change the articles listed">
+  <ul role="list" class="flex">
+    <li class="btn-link-2"><strong>Filters:</strong></li>
+    <li class="btn-link-2"><a href="{{ '/filter/posts/' | url }}">All</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/blog/' | url }}">Blog</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
+    <li class="filter--highlight btn-link-2"><a href="{{ '/filter/finance/' | url }}">Finance</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/project/' | url }}">Project management</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/strategy/' | url }}">Strategy</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/technology/' | url }}">Technology</a></li>
+  </ul>
+</nav>
+
+<ul role="list" class="blog-grid">
+
 {%- for finance in collections.finance | reverse -%}
   <li class="flow blog-card">
-    <article class="flow">
-      <h3>{{ finance.data.title }}</h3>
-      <img src="{{ finance.data.image }}" />
+    <article class="flow" aria-labelledby="{{finance.data.title}}">
+      <h3 id="{{finance.data.title}}">{{ finance.data.title }}</h3>
+      <img src="{{ finance.data.image }}" alt=""/>
       <p>by <span>{{ finance.data.author }}</span> on <span>{{ finance.data.date | postDate }}</span></p>
       <p>{{ finance.data.description }}</p>
       <a href="{{ finance.url }}">Continue reading</a>

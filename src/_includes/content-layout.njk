@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Roan</title>
+    <title>{{ title }}</title>
     <link href="{{ '/styles.css' | url }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,14 +14,16 @@
   <body>
     {% include 'header--small.njk' %}
     <main id="main">
-      <article class="single-post flow">
+      <div class="layout flex">
+        <section class="section__main-content">
+          <article class="region__posts">
 
-      <h1>{{title}}</h1>
-      <p class="single-post__attribution">by {{author}} on {{ date | postDate}}
+            {{ content | safe }}
 
-      {{ content | safe }}
-
-      </article>
+          </article>
+        </section>
+        {% include 'sidebar.njk' %}
+      <div>
     </main>
     {% include 'footer.njk' %}
   </body>

@@ -1,0 +1,56 @@
+    <footer class="flow">
+      <aside class="contact flex column flow">
+        <h2>Contact</h2>
+        <form class="flow"
+          action="https://formspree.io/f/movqvvgv"
+          method="POST"
+          >  
+          <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" />
+          </div>
+          <div>
+            <label for="email">E-mail: </label> 
+            <input id="email" type="email" name="email" />
+          </div>
+          <div>
+            <label for="textarea" name="message">Message: </label> 
+            <textarea id="textarea" name="message"></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+      <aside class="site-map flow">
+        <h2 id="site-map">Site map</h2>
+          <div>
+            <h3>Posts:</h3>
+            <ul role="list">              
+              <li><a href="{{ '/filter/posts/' | url }}">All</a></li>
+              <li><a href="{{ '/filter/blog/' | url }}">Blog</a></li>
+              <li><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
+              <li><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
+              <li><a href="{{ '/filter/project/' | url }}">Project management</a></li>
+              <li><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
+              <li><a href="{{ '/filter/strategy/' | url }}">Strategy</a></li>
+              <li><a href="{{ '/filter/technology/' | url }}">Technology</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>About</h3>
+            <ul role="list">
+              <li><a href="{{ '/experience/' | url}}">Experience</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 href="#">More:</h3>
+            <ul role="list">
+              <li><a href="{{ 'more/photography/' | url }}">Photography</a></li>
+              <li><a href="{{ 'more/programming/' | url }}">Programming</a></li>
+              <li><a href="{{ 'more/classics/' | url }}">Classic cars</a></li>
+            </ul>
+          </div>
+      </aside>
+      <aside class="attribution">
+        <p>Built by Alex Roan using HTML, CSS and 11ty</p>
+      </aside>
+    </footer>

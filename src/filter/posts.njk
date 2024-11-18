@@ -8,9 +8,9 @@ main__class: main-articles
 <nav aria-label="a set of filters which change the articles listed">
   <ul role="list" class="flex">
     <li class="btn-link-2"><strong>Filters:</strong></li>
-    <li class="btn-link-2"><a href="{{ '/filter/posts/' | url }}">All</a></li>
+    <li class="filter--highlight btn-link-2"><a href="{{ '/filter/posts/' | url }}">All</a></li>
     <li class="btn-link-2"><a href="{{ '/filter/blog/' | url }}">Blog</a></li>
-    <li class="filter--highlight btn-link-2"><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
     <li class="btn-link-2"><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
     <li class="btn-link-2"><a href="{{ '/filter/finance/' | url }}">Finance</a></li>
     <li class="btn-link-2"><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
@@ -22,16 +22,14 @@ main__class: main-articles
 
 <ul role="list" class="blog-grid">
 
-{%- for article in collections.article | reverse -%}
+{%- for post in collections.post | reverse -%}
   <li class="flow blog-card">
-      <article class="flow" aria-labelledby="{{article.data.title}}">
-      <h3 id="{{article.data.title}}">{{ article.data.title }}</h3>
-      <img src="{{ article.data.image }}" alt=""/>
-      <p>by <span>{{ article.data.author }}</span> on <span>{{ article.data.date | postDate }}</span></p>
-      <p>{{ article.data.description }}</p>
-      <a href="{{ article.url }}">Continue reading</a>
+      <article class="flow" aria-labelledby="{{post.data.title}}">
+      <h3 id="{{post.data.title}}">{{ post.data.title }}</h3>
+      <img src="{{ post.data.image }}" alt=""/>
+      <p>by <span>{{ post.data.author }}</span> on <span>{{ post.data.date | postDate }}</span></p>
+      <p>{{ post.data.description }}</p>
+      <a href="{{ post.url }}">Continue reading</a>
     </article>
   </li>
 {%- endfor -%}
-
-</ul>

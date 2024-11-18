@@ -1,15 +1,32 @@
 ---
 title: Business and technology transformation
 titletwo: ~ by Alex Roan
-layout: 'content.njk'
+layout: 'content-layout.njk'
 main__class: main-operations
 ---
 
+<nav aria-label="a set of filters which change the articles listed">
+  <ul role="list" class="flex">
+    <li class="btn-link-2"><strong>Filters:</strong></li>
+    <li class="btn-link-2"><a href="{{ '/filter/posts/' | url }}">All</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/blog/' | url }}">Blog</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/finance/' | url }}">Finance</a></li>
+    <li class="filter--highlight btn-link-2"><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/project/' | url }}">Project management</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/strategy/' | url }}">Strategy</a></li>
+    <li class="btn-link-2"><a href="{{ '/filter/technology/' | url }}">Technology</a></li>
+  </ul>
+</nav>
+
+<ul role="list" class="blog-grid">
+
 {%- for operations in collections.operations | reverse -%}
   <li class="flow blog-card">
-    <article class="flow">
-      <h3>{{ operations.data.title }}</h3>
-      <img src="{{ operations.data.image }}" />
+    <article class="flow" aria-labelledby="{{operations.data.title}}">
+      <h3 id="{{operations.data.title}}">{{ operations.data.title }}</h3>
+      <img src="{{ operations.data.image }}" alt=""/>
       <p>by <span>{{ operations.data.author }}</span> on <span>{{ operations.data.date | postDate }}</span></p>
       <p>{{ operations.data.description }}</p>
       <a href="{{ operations.url }}">Continue reading</a>

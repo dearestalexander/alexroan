@@ -1,129 +1,86 @@
 ---
 title: Alex Roan - Home
-layout: 'base.njk'
+layout: 'base-layout.njk'
 ---
 
-<div class="layout flex">
-  <section class="main">
-    <article class="region__dark__single-col region-large flow">
-      <h2>Recent highlights</h2>
-      <ul role="list" class="flow">
-        <li>
-          <h3>October '24</h3>
-          <ul role="list" >
-            <li>I updated this website. It is now written in plain HTML and CSS. It uses <a href="https://www.11ty.dev">11ty</a> to automatically generate post pages based on markdown files. This allows me to manage blog posts in markdown without getting locked into any proprietary content management systems, websites or tools.</li>
-          </ul> 
-        </li>
-        <li> 
-          <h3>September '24</h3>
-          <ul role="list">
-            <li>I wrote a post on <a href="https://www.linkedin.com/posts/activity-7247874597109334016-joXX?utm_source=share&utm_medium=member_desktop">Ansoff's Grid</a> - a simple, but useful tool for strategic planning.</li>
-            <li>I wrote another post on <a href="https://www.linkedin.com/posts/activity-7247492434241171456-ZtnW?utm_source=share&utm_medium=member_desktop">scope creep</a> - a consistent challenge on business and technology projects.</li>
-          </ul>
-        </li>
-        <li>
-          <h3>August '24</h3>
-          <ul role="list">
-            <li>I added a new <a href="{{ '/more/programming/' | url }}">page</a> to track programming projects.
-            <li>I finished the first <a href="{{ '/fcc/javascript/' | url }}">draft</a> of my JavaScript quick reference. This is a summary of everything covered in freeCodeCamp's JavaScript data structures and algorithms course.
-          </ul>
-        </li>
-        <li>
-          <h3>June '24</h3>
-          <ul role="list">
-            <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7209203691155775488-mmmA?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about frameworks that can be useful tools to help structure transformation programs.</li>
-            <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7206637113411334144-cQ86?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about gathering information for transformation projects.</li>
-            <li>I wrote an in depth <a href="https://www.linkedin.com/pulse/how-assess-operations-part-1-alexander-roan-jouxc/?trackingId=32g0W05z3RqD3%2FdSc4hVdg%3D%3D" target="_blank">article</a> about assessing operations. This is a key part of many transformations from acquisitions integration to the rollout of new processes and systems.</li>
-          </ul>
-        </li>
-        <li>
-          <h3>March '24</h3>
-          <ul role="list">
-            <li >I created a <a href="https://raw.githack.com/dearestalexander/RWBQuickRef/main/rwb.html" target="_blank">quick reference</a> for the Responsive Web Design course by freeCodeCamp. This summarises everything on HTML and CSS covered in the course.</li> 
-          </ul>
-        </li>
-        <li>
-          <h3>August '23 to March '24</h3>
-          <ul role="list">
-            <li>I worked with a global recruitment company on the assessment of the operations of potential acquisitions.</li>
-            <li>I travelled around Asia including Tokyo, Bangkok, DaNang, Kuala Lumpur and Singapore.</li>
-            <li>I studied VBA, HTML, CSS and  JavaScript.</li>
-          </ul>
-        </li>
-        <li>
-          <h3>June '22 to July '23</h3>
-          <ul role="list">
-            <li>I moved back to the Scottish Highlands and lived in the hills above Loch Ness.</li>
-            <li>I spent a year buying, fixing and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
-          </ul>
-        </li>
-        <li>
-          <h3>September '20 to  '22</h3>
-          <ul role="list">
-            <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA for a global consumer goods company.</li>
-          </ul>  
-        </li>
-      </ul>
-    </article>
-    <article class="featured">
-      <h2>Featured posts</h2>
-      <ul role="list" class="blog-grid">
+<!-- recent news, hard coded in HTML, not from markdown -->
+<article class="region__news flow">
+  <div class="region__news__text">
+    <h1>Recent highlights</h1>
+    <ul role="list" class="flow">
+      <li>
+        <h2>October '24</h2>
+        <ul role="list" >
+          <li>I updated this website. It is now written in plain HTML and CSS. It uses <a href="https://www.11ty.dev">11ty</a> to automatically generate post pages based on markdown files. This allows me to manage blog posts in markdown without getting locked into any proprietary content management systems, websites or tools.</li>
+        </ul> 
+      </li>
+      <li> 
+        <h2>September '24</h2>
+        <ul role="list">
+          <li>I wrote a post on <a href="https://www.linkedin.com/posts/activity-7247874597109334016-joXX?utm_source=share&utm_medium=member_desktop">Ansoff's Grid</a> - a simple, but useful tool for strategic planning.</li>
+          <li>I wrote another post on <a href="https://www.linkedin.com/posts/activity-7247492434241171456-ZtnW?utm_source=share&utm_medium=member_desktop">scope creep</a> - a consistent challenge on business and technology projects.</li>
+        </ul>
+      </li>
+      <li>
+        <h2>August '24</h2>
+        <ul role="list">
+          <li>I added a new <a href="{{ '/more/programming/' | url }}">page</a> to track programming projects.
+          <li>I finished the first <a href="{{ '/fcc/javascript/' | url }}">draft</a> of my JavaScript quick reference. This is a summary of everything covered in freeCodeCamp's JavaScript data structures and algorithms course.
+        </ul>
+      </li>
+      <li>
+        <h3>June '24</h2>
+        <ul role="list">
+          <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7209203691155775488-mmmA?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about frameworks that can be useful tools to help structure transformation programs.</li>
+          <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7206637113411334144-cQ86?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about gathering information for transformation projects.</li>
+          <li>I wrote an in depth <a href="https://www.linkedin.com/pulse/how-assess-operations-part-1-alexander-roan-jouxc/?trackingId=32g0W05z3RqD3%2FdSc4hVdg%3D%3D" target="_blank">article</a> about assessing operations. This is a key part of many transformations from acquisitions integration to the rollout of new processes and systems.</li>
+        </ul>
+      </li>
+      <li>
+        <h2>March '24</h2>
+        <ul role="list">
+          <li >I created a <a href="https://raw.githack.com/dearestalexander/RWBQuickRef/main/rwb.html" target="_blank">quick reference</a> for the Responsive Web Design course by freeCodeCamp. This summarises everything on HTML and CSS covered in the course.</li> 
+        </ul>
+      </li>
+      <li>
+        <h2>August '23 to March '24</h2>
+        <ul role="list">
+          <li>I worked with a global recruitment company on the assessment of the operations of potential acquisitions.</li>
+          <li>I travelled around Asia including Tokyo, Bangkok, DaNang, Kuala Lumpur and Singapore.</li>
+          <li>I studied VBA, HTML, CSS and  JavaScript.</li>
+        </ul>
+      </li>
+      <li>
+        <h2>June '22 to July '23</h2>
+        <ul role="list">
+          <li>I moved back to the Scottish Highlands and lived in the hills above Loch Ness.</li>
+          <li>I spent a year buying, fixing and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
+        </ul>
+      </li>
+      <li>
+        <h2>September '20 to  '22</h2>
+        <ul role="list">
+          <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA for a global consumer goods company.</li>
+        </ul>  
+      </li>
+    </ul>
+  </div>
+</article>
 
-        {%- for featured in collections.featured | reverse -%}
-        <li class="flow blog-card">
-          <article class="flow">
-            <h3>{{ featured.data.title }}</h3>
-            <img src="{{ featured.data.image }}" />
-            <p>by <span>{{ featured.data.author }}</span> on <span>{{ featured.data.date | postDate }}</span></p>
-            <p>{{ featured.data.description }}</p>
-            <a href="{{ featured.url }}">Continue reading</a>
-          </article>
-        </li>
-      {%- endfor -%}
-
-      </ul>
-    </article>
-  </section>
-  <section class="sidebar flow">
-    <aside>
-      <h2>About</h2>
-      <div>
-        <p>Hi, I'm Alex, I work in business and technology transformation.</p>
-        <p>I'm also interested in photography, classic cars and programming.</p>
-      </div>
-    </aside>
-    <aside>
-      <h2>Browse by post type</h2>
-      <ul role="list">
-        <li><a href="{{ '/blog/' | url }}">All</a></li>
-        <li><a href="{{ '/filter/blog/' | url }}">Blog posts</a></li>
-        <li><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
-      </ul>
-    </aside>
-    <aside>
-      <h2>Browse by post category</h2>
-      <ul role="list">
-        <li><a href="{{ '/blog/' | url }}">All</a>  </li>
-        <li><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
-        <li><a href="{{ '/filter/finance/' | url }}">Finance</a></li>
-        <li><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
-        <li><a href="{{ '/filter/project/' | url }}">Project management</a></li>
-        <li><a href="{{ '/filter/strategy/' | url }}">Strategy</a></li>
-        <li><a href="{{ '/filter/technology/' | url }}">Technology</a></li>
-      </ul>
-    </aside>
-    <aside>
-      <h2>My liked songs</h2>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6ChjnI7zN70CAqUJTeROJd?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </aside>
-    <aside>
-      <h2>Socials</h2>
-      <ul role="list" class="flex socials">
-        <li><a href="https://www.linkedin.com/in/alexanderroan/"><i class="fa-brands fa-linkedin"></i></a></li>
-        <li><a href="https://x.com/xander_roan"><i class="fa-brands fa-x-twitter"></i></a></li>
-        <li><a href="https://github.com/dearestalexander"><i class="fa-brands fa-github"></i></a></li>
-      </ul>
-
-    </aside>
-  </section>
-<div>
+<!-- featured posts, from 'posts' markdown filder based on tag 'featured' -->
+<section class="region__featured">
+  <h1>Featured posts</h1>
+  <ul role="list" class="blog-grid">
+    {%- for featured in collections.featured | reverse -%}
+    <li class="flow blog-card">
+      <article class="flow" aria-labelledby="{{featured.data.title}}">
+        <h1 id="{{featured.data.title}}">{{ featured.data.title }}</h1>
+        <img src="{{ featured.data.image }}" alt=""/>
+        <p>by <span>{{ featured.data.author }}</span> on <span>{{ featured.data.date | postDate }}</span></p>
+        <p>{{ featured.data.description }}</p>
+        <a href="{{ featured.url }}">Continue reading</a>
+      </article>
+    </li>
+  {%- endfor -%}
+  </ul>
+</section>

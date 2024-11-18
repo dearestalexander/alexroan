@@ -13,31 +13,30 @@
   </head>
   <body>
     <header>
-      <h1 class="hi-im-alex-container-alt flex">
-        <span class="hi-alt flex">Business and technology transformation</span><span class="im-alex-alt">By Alex Roan</span>
-      </h1>
-      <div class="divider"></div>
-      <nav>
-        <ul role="list" class="flex">
-          <li><a class="btn-link" href="/index/">Home</a></li>
-          <li><a class="btn-link" href="/blog/">Blog</a></li>
-          <li><a class="btn-link" href="/experience/">Experience</a></li>
-          <li><a class="btn-link" href="/more/photography/">Photography</a></li>
-          <li><a class="btn-link" href="/more/programming/">Programming</a></li>
-          <li><a class="btn-link" href="/more/classic-cars/">Classic cars</a></li> 
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div class="layout flex">
-        <section class="main">
-          <article class="single-post flow">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="heading__container--content flex">
+    <span class="heading__span-one--content flex">Business and technology transformation</span><span class="heading__span-two--content
+    ">By Alex Roan</span>
+  </p>
+  <div class="divider"></div>
+  <nav>
+    <ul role="list" class="flex">
+      <li><a class="btn-link" href="/">Home</a></li>
+      <li><a class="btn-link" href="/filter/posts/">Blog</a></li>
+      <li><a class="btn-link" href="/experience/">Experience</a></li>
+      <li><a class="btn-link" href="/more/photography/">Photography</a></li>
+      <li><a class="btn-link" href="/more/programming/">Programming</a></li>
+      <li><a class="btn-link" href="/more/classics/">Classic cars</a></li>   
+    </ul>
+  </nav>
+</header>
+    <main id="main">
+      <article class="single-post flow">
 
-          
-<h2 class="article-title">  </h2>
-<img src="/assets/images/blog/cost-reduction__cover.jpg">
+      <h1>A simple guide to cost reduction</h1>
+      <p class="single-post__attribution">by Alex Roan on 19 Jun 2020
 
-<h2>Cost reduction and CSR</h2>
+      <h2>Cost reduction and CSR</h2>
 <p>Whenever discussing cost reduction it's important to consider corporate social responsibility as a starting point. Ideally, companies can find the right balance between reducing costs and thinking about employee and business partner (e.g. supplier) impacts. Employee layoffs can have a devastating effect on individuals. Business partner changes can put companies out of business. When planning and executing cost reduction these impacts should be considered. In real life, this might mean trying to offer employees other options (reduced hours / different contract terms / new profit-generating roles) or business partners a revised agreement.</p>
 <h2>A model for cost reduction</h2>
 <p>A good starting point for cost reduction is to consider the type of costs incurred within the business. Accounting provides a consistent way to look at this. Costs are either tied directly to production or not. For example; in a manufacturing environment there are factories with machines, operated by people to produce products. Cost accounting is used to calculate 'cost of goods sold (COGS)'. This is the cost that can be directly tied to converting the input materials to the finished product. In this case by adding the raw material, labour and utility costs.</p>
@@ -110,42 +109,11 @@
 <p><img src="/assets/images/blog/cost-reduction__six.png" alt="An illustration from PwC showing their approach"></p>
 
 
-          </article>
-          
-        </section>
-        <section class="sidebar hide">
-          <aside>
-            <h2>About</h2>
-            <div>
-              <p>Hi, I'm Alex, I work in business and technology transformation.</p>
-              <p>I'm also interested in photography, classic cars and programming.</p>
-            </div>
-          </aside>
-          <aside>
-            <h2>Browse by post type</h2>
-            <ul role="list">
-              <li><a href="#">All</a></li>
-              <li><a href="#">Blog posts</a></li>
-              <li><a href="#">Articles</a></li>
-            </ul>
-          </aside>
-          <aside>
-            <h2>Browse by post category</h2>
-            <ul role="list">
-              <li><a href="#">All</a>  </li>
-              <li><a href="#">Consulting</a></li>
-              <li><a href="#">Finance</a></li>
-              <li><a href="#">Operations</a></li>
-              <li><a href="#">Project management</a></li>
-              <li><a href="#">Strategy</a></li>
-              <li><a href="#">Technology</a></li>
-          </aside>
-        </section>
-      <div>
+      </article>
     </main>
-    <footer class="flow">  
-      <aside class="flex column flow">
-        <h2>Contact:</h2>
+        <footer class="flow">
+      <aside class="contact flex column flow">
+        <h2>Contact</h2>
         <form class="flow"
           action="https://formspree.io/f/movqvvgv"
           method="POST"
@@ -160,42 +128,42 @@
           </div>
           <div>
             <label for="textarea" name="message">Message: </label> 
-            <textarea name="message"></textarea>
+            <textarea id="textarea" name="message"></textarea>
           </div>
           <button type="submit">Send</button>
         </form>
       </aside>
-      <aside class="flow">
-        <h2 id="site-map">Site map:</h2>
+      <aside class="site-map flow">
+        <h2 id="site-map">Site map</h2>
           <div>
             <h3>Posts:</h3>
             <ul role="list">              
-              <li><a href="#">All</a></li>
-              <li><a href="#">Finance transformation</a></li>
-              <li><a href="#">Operations</a></li>
-              <li><a href="#">Project management</a></li>
-              <li><a href="#">Consulting</a></li>
-              <li><a href="#">Strategy</a></li>
-              <li><a href="#">Technology</a></li>
+              <li><a href="/filter/posts/">All</a></li>
+              <li><a href="/filter/blog/">Blog</a></li>
+              <li><a href="/filter/articles/">Articles</a></li>
+              <li><a href="/filter/operations/">Operations</a></li>
+              <li><a href="/filter/project/">Project management</a></li>
+              <li><a href="/filter/consulting/">Consulting</a></li>
+              <li><a href="/filter/strategy/">Strategy</a></li>
+              <li><a href="/filter/technology/">Technology</a></li>
             </ul>
           </div>
           <div>
-            <h3>About:</h3>
+            <h3>About</h3>
             <ul role="list">
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Experience</a></li>
+              <li><a href="/experience/">Experience</a></li>
             </ul>
           </div>
           <div>
             <h3 href="#">More:</h3>
             <ul role="list">
-              <li><a href="#">Photography</a></li>
-              <li><a href="#">Programming</a></li>
-              <li><a href="#">Classic cars</a></li>
+              <li><a href="more/photography/">Photography</a></li>
+              <li><a href="more/programming/">Programming</a></li>
+              <li><a href="more/classics/">Classic cars</a></li>
             </ul>
           </div>
       </aside>
-      <aside>
+      <aside class="attribution">
         <p>Built by Alex Roan using HTML, CSS and 11ty</p>
       </aside>
     </footer>

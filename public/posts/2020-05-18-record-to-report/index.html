@@ -13,31 +13,30 @@
   </head>
   <body>
     <header>
-      <h1 class="hi-im-alex-container-alt flex">
-        <span class="hi-alt flex">Business and technology transformation</span><span class="im-alex-alt">By Alex Roan</span>
-      </h1>
-      <div class="divider"></div>
-      <nav>
-        <ul role="list" class="flex">
-          <li><a class="btn-link" href="/index/">Home</a></li>
-          <li><a class="btn-link" href="/blog/">Blog</a></li>
-          <li><a class="btn-link" href="/experience/">Experience</a></li>
-          <li><a class="btn-link" href="/more/photography/">Photography</a></li>
-          <li><a class="btn-link" href="/more/programming/">Programming</a></li>
-          <li><a class="btn-link" href="/more/classic-cars/">Classic cars</a></li> 
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div class="layout flex">
-        <section class="main">
-          <article class="single-post flow">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="heading__container--content flex">
+    <span class="heading__span-one--content flex">Business and technology transformation</span><span class="heading__span-two--content
+    ">By Alex Roan</span>
+  </p>
+  <div class="divider"></div>
+  <nav>
+    <ul role="list" class="flex">
+      <li><a class="btn-link" href="/">Home</a></li>
+      <li><a class="btn-link" href="/filter/posts/">Blog</a></li>
+      <li><a class="btn-link" href="/experience/">Experience</a></li>
+      <li><a class="btn-link" href="/more/photography/">Photography</a></li>
+      <li><a class="btn-link" href="/more/programming/">Programming</a></li>
+      <li><a class="btn-link" href="/more/classics/">Classic cars</a></li>   
+    </ul>
+  </nav>
+</header>
+    <main id="main">
+      <article class="single-post flow">
 
-          
-<h2 class="article-title">  </h2>
-<img src="">
+      <h1>Improving the record to report process</h1>
+      <p class="single-post__attribution">by Alex Roan on 18 May 2020
 
-<h2>“A complex, lengthy process, often not well understood”</h2>
+      <h2>“A complex, lengthy process, often not well understood”</h2>
 <p>Starting from business transactions such as the purchase of materials, payments to employees and sale of goods and services. Ending with reporting and decision making including the submission of detailed annual reports. The 'record to report' process (RtR) is a long, complex process that involves people from across the enterprise.</p>
 <p>Despite the critical nature of this process, it’s rare to find RtR clearly documented from start to finish. I've found that few finance employees can describe the complete process. In part, this is because the process touches core operational transactions (purchases, manufacturing, sales etc.). From another perspective, it's because certain parts of the process require a high level of expertise.</p>
 <p>To illustrate this consider the differences between manufacturing and banking. In manufacturing, entire finance teams specialise in product cost accounting and profitability analysis. In banking entire teams specialise in liquidity analysis.</p>
@@ -345,42 +344,11 @@ c. Shadow IT within business functions building product or unit-specific technol
 <p>These are worthwhile topics to discuss one by one, however, at this point, none of them will solve the end to end problem of making 'record to report' effective for most large multi-nationals. The less exciting topics of studying policy, roles &amp; org design, process steps will likely deliver the biggest benefits.</p>
 
 
-          </article>
-          
-        </section>
-        <section class="sidebar hide">
-          <aside>
-            <h2>About</h2>
-            <div>
-              <p>Hi, I'm Alex, I work in business and technology transformation.</p>
-              <p>I'm also interested in photography, classic cars and programming.</p>
-            </div>
-          </aside>
-          <aside>
-            <h2>Browse by post type</h2>
-            <ul role="list">
-              <li><a href="#">All</a></li>
-              <li><a href="#">Blog posts</a></li>
-              <li><a href="#">Articles</a></li>
-            </ul>
-          </aside>
-          <aside>
-            <h2>Browse by post category</h2>
-            <ul role="list">
-              <li><a href="#">All</a>  </li>
-              <li><a href="#">Consulting</a></li>
-              <li><a href="#">Finance</a></li>
-              <li><a href="#">Operations</a></li>
-              <li><a href="#">Project management</a></li>
-              <li><a href="#">Strategy</a></li>
-              <li><a href="#">Technology</a></li>
-          </aside>
-        </section>
-      <div>
+      </article>
     </main>
-    <footer class="flow">  
-      <aside class="flex column flow">
-        <h2>Contact:</h2>
+        <footer class="flow">
+      <aside class="contact flex column flow">
+        <h2>Contact</h2>
         <form class="flow"
           action="https://formspree.io/f/movqvvgv"
           method="POST"
@@ -395,42 +363,42 @@ c. Shadow IT within business functions building product or unit-specific technol
           </div>
           <div>
             <label for="textarea" name="message">Message: </label> 
-            <textarea name="message"></textarea>
+            <textarea id="textarea" name="message"></textarea>
           </div>
           <button type="submit">Send</button>
         </form>
       </aside>
-      <aside class="flow">
-        <h2 id="site-map">Site map:</h2>
+      <aside class="site-map flow">
+        <h2 id="site-map">Site map</h2>
           <div>
             <h3>Posts:</h3>
             <ul role="list">              
-              <li><a href="#">All</a></li>
-              <li><a href="#">Finance transformation</a></li>
-              <li><a href="#">Operations</a></li>
-              <li><a href="#">Project management</a></li>
-              <li><a href="#">Consulting</a></li>
-              <li><a href="#">Strategy</a></li>
-              <li><a href="#">Technology</a></li>
+              <li><a href="/filter/posts/">All</a></li>
+              <li><a href="/filter/blog/">Blog</a></li>
+              <li><a href="/filter/articles/">Articles</a></li>
+              <li><a href="/filter/operations/">Operations</a></li>
+              <li><a href="/filter/project/">Project management</a></li>
+              <li><a href="/filter/consulting/">Consulting</a></li>
+              <li><a href="/filter/strategy/">Strategy</a></li>
+              <li><a href="/filter/technology/">Technology</a></li>
             </ul>
           </div>
           <div>
-            <h3>About:</h3>
+            <h3>About</h3>
             <ul role="list">
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Experience</a></li>
+              <li><a href="/experience/">Experience</a></li>
             </ul>
           </div>
           <div>
             <h3 href="#">More:</h3>
             <ul role="list">
-              <li><a href="#">Photography</a></li>
-              <li><a href="#">Programming</a></li>
-              <li><a href="#">Classic cars</a></li>
+              <li><a href="more/photography/">Photography</a></li>
+              <li><a href="more/programming/">Programming</a></li>
+              <li><a href="more/classics/">Classic cars</a></li>
             </ul>
           </div>
       </aside>
-      <aside>
+      <aside class="attribution">
         <p>Built by Alex Roan using HTML, CSS and 11ty</p>
       </aside>
     </footer>
