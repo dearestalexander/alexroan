@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="heading__container--small flex">
+    <span class="heading__span-one--content flex">Programming</span><span class="heading__span-two--content
+    ">By Alex Roan</span>
+  </p>
+  <div class="divider"></div>
+  <nav>
+    <ul role="list" class="flex">
+      <li><a class="btn-link" href="/">Home</a></li>
+      <li><a class="btn-link" href="/filter/posts/">Blog</a></li>
+      <li><a class="btn-link" href="/experience/">Experience</a></li>
+      <li><a class="btn-link" href="/more/photography/">Photography</a></li>
+      <li><a class="btn-link" href="/more/programming/">Programming</a></li>
+      <li><a class="btn-link" href="/more/classics/">Classic cars</a></li>   
+    </ul>
+  </nav>
+</header>
+    <main id="main">
+      <article class="single-post flow">
+
+      <h1>freeCodeCamp JavaScript Algorithms and Data Structures</h1>
+      <p class="single-post__attribution">by Alex Roan on 22 Aug 2024
+
+      <p>Continuing with my journey through freeCodeCamp's <a href="https://www.freecodecamp.org">curriculum</a> I've just finished been working through the JavaScript course.</p>
+<p>JavaScript was split five sections with the following certification projects</p>
+<ul>
+<li>Building a Palindrom Checker</li>
+<li>Building a Roman Numeral Converter</li>
+<li>Building a Telephone Number Validator</li>
+<li>Build a Cash Register</li>
+<li>Build a Pokemon Search App</li>
+</ul>
+<p>A lot of hours went into this. Several of the exercises had over a hundred steps. On some of the more difficult topics you'd be lucky to do more than a few steps in an hour, especially if taking the time to fully understand and experiment.</p>
+<p>JavaScript is quite forgiving compared to lower level languages like C when it comes to type and memory management. However it has a huge range of functions to learn and a big part of it is understanding the HTML document object model.</p>
+<h2>Palindrome Checker</h2>
+<p><a href="/coding/palindrome/index.html"><img src="/assets/images/programming/palindrome.png" alt="A screenshot of a palindrome checker page"></a></p>
+<h2>Roman Numeral Converter</h2>
+<p><a href="/coding/roman/index.html"><img src="/assets/images/programming/roman.png" alt="A screenshot of a roman numeral converter"></a></p>
+<h2>Telephone Number Validator</h2>
+<p><a href="/coding/telephone/index.html"><img src="/assets/images/programming/telephone.png" alt="A screenshot of a telephone number validator"></a></p>
+<h2>Cash Register</h2>
+<p><a href="/coding/cash/index.html"><img src="/assets/images/programming/cash.png" alt="A screenshot of a cash register"></a></p>
+<h2>Pokemon Search App</h2>
+<p><a href="/coding/pokemon/index.html"><img src="/assets/images/programming/pokemon.png" alt="A screenshot of a pokemon search app"></a></p>
+
+
+      </article>
+    </main>
+        <footer class="flow">
+      <aside class="contact flex column flow--small">
+        <h2>Contact</h2>
+        <form class="flow--small"
+          action="https://formspree.io/f/movqvvgv"
+          method="POST"
+          >  
+          <div>
+            <label for="name">Name: </label>
+            <input id="name" type="text" name="name" />
+          </div>
+          <div>
+            <label for="email">E-mail: </label> 
+            <input id="email" type="email" name="email" />
+          </div>
+          <div>
+            <label for="textarea" name="message">Message: </label> 
+            <textarea id="textarea" name="message"></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+      <aside class="site-map flow--small">
+        <h2 id="site-map">Site map</h2>
+          <div>
+            <h3>Posts:</h3>
+            <ul role="list">              
+              <li><a href="/filter/posts/">All</a></li>
+              <li><a href="/filter/blog/">Blog</a></li>
+              <li><a href="/filter/articles/">Articles</a></li>
+              <li><a href="/filter/operations/">Operations</a></li>
+              <li><a href="/filter/project/">Project management</a></li>
+              <li><a href="/filter/consulting/">Consulting</a></li>
+              <li><a href="/filter/strategy/">Strategy</a></li>
+              <li><a href="/filter/technology/">Technology</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>About</h3>
+            <ul role="list">
+              <li><a href="/experience/">Experience</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 href="#">More:</h3>
+            <ul role="list">
+              <li><a href="more/photography/">Photography</a></li>
+              <li><a href="more/programming/">Programming</a></li>
+              <li><a href="more/classics/">Classic cars</a></li>
+            </ul>
+          </div>
+      </aside>
+      <aside class="flex attribution">
+        <p>Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+      </aside>
+    </footer>
+  </body>
+</html>

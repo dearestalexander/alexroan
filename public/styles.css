@@ -4,27 +4,27 @@
 
 :root {
   /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1500,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-  --step-2: clamp(0.6944rem, 0.692rem + 0.0122vw, 0.7035rem);
-  --step-1: clamp(0.8333rem, 0.805rem + 0.1416vw, 0.9377rem);
-  --step-0: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
-  --step-1: clamp(1.2rem, 1.0736rem + 0.6322vw, 1.6663rem);
-  --step-2: clamp(1.44rem, 1.2282rem + 1.0591vw, 2.2211rem);
-  --step-3: clamp(1.728rem, 1.3937rem + 1.6715vw, 2.9607rem);
-  --step-4: clamp(2.0736rem, 1.5656rem + 2.5398vw, 3.9467rem);
-  --step-5: clamp(2.4883rem, 1.7364rem + 3.7594vw, 5.2609rem);
-  --step-6: clamp(2.986rem, 1.894rem + 5.4601vw, 7.0128rem);
-  --step-7: clamp(3.5832rem, 2.0198rem + 7.8168vw, 9.3481rem);
+  --step--2: clamp(0.6331rem, 0.6559rem + -0.0243vw, 0.651rem);
+  --step--1: clamp(0.7813rem, 0.7642rem + 0.085vw, 0.844rem);
+  --step-0: clamp(0.9375rem, 0.8867rem + 0.2542vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.0234rem + 0.508vw, 1.4996rem);
+  --step-2: clamp(1.35rem, 1.174rem + 0.88vw, 1.999rem);
+  --step-3: clamp(1.62rem, 1.3367rem + 1.4165vw, 2.6647rem);
+  --step-4: clamp(1.944rem, 1.5079rem + 2.1803vw, 3.552rem);
+  --step-5: clamp(2.3328rem, 1.6814rem + 3.257vw, 4.7348rem);
+  --step-6: clamp(2.7994rem, 1.8469rem + 4.7622vw, 6.3115rem);
+  --step-7: clamp(3.3592rem, 1.9887rem + 6.8529vw, 8.4132rem);
 
   /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1500,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
   --space-3xs: clamp(0.25rem, 0.2331rem + 0.0847vw, 0.3125rem);
-  --space-2xs: clamp(0.5rem, 0.4661rem + 0.1695vw, 0.625rem);
-  --space-xs: clamp(0.75rem, 0.6992rem + 0.2542vw, 0.9375rem);
-  --space-s: clamp(1rem, 0.9322rem + 0.339vw, 1.25rem);
-  --space-m: clamp(1.5rem, 1.3983rem + 0.5085vw, 1.875rem);
-  --space-l: clamp(2rem, 1.8644rem + 0.678vw, 2.5rem);
-  --space-xl: clamp(3rem, 2.7966rem + 1.0169vw, 3.75rem);
-  --space-2xl: clamp(4rem, 3.7288rem + 1.3559vw, 5rem);
-  --space-3xl: clamp(6rem, 5.5932rem + 2.0339vw, 7.5rem);
+  --space-2xs: clamp(0.5rem, 0.4831rem + 0.0847vw, 0.5625rem);
+  --space-xs: clamp(0.6875rem, 0.6367rem + 0.2542vw, 0.875rem);
+  --space-s: clamp(0.9375rem, 0.8867rem + 0.2542vw, 1.125rem);
+  --space-m: clamp(1.4375rem, 1.3697rem + 0.339vw, 1.6875rem);
+  --space-l: clamp(1.875rem, 1.7733rem + 0.5085vw, 2.25rem);
+  --space-xl: clamp(2.8125rem, 2.66rem + 0.7627vw, 3.375rem);
+  --space-2xl: clamp(3.75rem, 3.5466rem + 1.0169vw, 4.5rem);
+  --space-3xl: clamp(5.625rem, 5.3199rem + 1.5254vw, 6.75rem);
 
   --color-red: #EB0A1E;
   --color-white: #FFFFFF;
@@ -47,77 +47,64 @@
 /*===================
 ------ RESET --------
 ===================*/
-
-/* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Prevent font size inflation */
 html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
-/* Remove default margin in favour of better control */
 body, h1, h2, h3, h4, p,
 figure, blockquote, ul, ol {
   margin: 0;
   padding: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list */
 ul[role='list'], ol[role='list'] {
   list-style: none;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   line-height: 1.5;
 }
 
-/* Set shorter line heights on headings and interactive elements */
 h1, h2, h3, h4,
 button, input, label {
   line-height: 1.1;
 }
 
-/* Balance text wrapping on headings */
 h1, h2,
 h3, h4 {
   text-wrap: balance;
 }
 
-/* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
   color: currentColor;
 }
 
-/* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input, button,
 textarea, select {
   font-family: inherit;
   font-size: inherit;
 }
 
-/* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
   min-height: 10em;
 }
 
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
 }
@@ -188,6 +175,14 @@ a:focus {
   flex-direction: column;
 }
 
+.flow > * + * {
+  margin-top: var(--space-l, 1em);
+}
+
+.flow--small > * + * {
+  margin-top: var(--space-s, 0.5em);
+}
+
 .hide {
   display:none;
 }
@@ -214,6 +209,7 @@ a:focus {
   align-items: baseline;
   padding-bottom: var(--space-3xl);
   background-color: var(--color-lightgrey);
+  font-family: var(--font-family-alt);
 }
 
 .header__span-one {
@@ -229,17 +225,16 @@ a:focus {
   font-size: var(--step-3);
 }
 
-.heading__container--content {
-  max-width: 100%vw;
+.heading__container--small {
+  max-width: 100vw;
   align-items: baseline;
-  margin: var(--space-3xs);
   background-color: var(--color-lightgrey);
   letter-spacing: var(--tracking);
   gap: var(--space-xs);
 }
 
 .heading__span-one--content {
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   padding: var(--space-s) var(--space-3xs) var(--space-3xs) var(--space-s);
   background-color: var(--color-red);
   color: var(--color-lightgrey);
@@ -277,10 +272,6 @@ nav > ul {
 /*=======================
 ------ MAIN LAYOUT ------
 =======================*/
-.flow > * + * {
-  margin-top: var(--space-l, 1em);
-}
-
 .region__news {
   background-color: var(--color-black);
   color: var(--color-lightgrey);
@@ -335,7 +326,7 @@ nav > ul {
 
 .region__sidebar {
   background-color: white;
-  width: min(35ch, 95%);
+  min-width: 40ch;
   padding: var(--space-m) 2vw;
   flex: 1;
 }
@@ -358,31 +349,6 @@ nav > ul {
 .socials p {
   display: inline;
   padding-left: 0.5em;
-}
-
-/* Footer */
-footer {
-  background-color: var(--color-grey);
-  color: var(--color-lightgrey);
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-2xl);
-}
-
-.contact,
-.site-map,
-.attribution {
-  padding-left: 2vw;
-  display: inline-block;
-}
-input {
-  max-width: 20ch;
-}
-textarea {
-  display: block;
-  max-width: 20ch;
-}
-button {
-  display: block;
 }
 
 /*=============================
@@ -447,23 +413,159 @@ button {
   margin: 1em;
 }
 
+.single-post img {
+  max-width: 100%;
+  margin: auto;
+}
+
+/*========================
+------ STATIC PAGE -------
+=========================*/
+.main--static-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main-article--static-page {
+  max-width: 65ch;
+  margin: auto;
+}
+
+.main-article--static-page ul {
+  padding-left: 1rem;
+}
 
 /*=============================
 ------ PHOTOGRAPHY PAGE -------
 =============================*/
-.divider--small {
-  width: 40%;
-  border: 1px solid var(--color-grey);
-  margin: var(--space-2xl) auto
+.main--photography {
+  display: flex;
+  justify-content: center;
 }
+
+.main-article--photography {
+  padding: 2vw;
+}
+
+.main-article--photography h2 {
+  margin: 1rem 0;
+}
+
+.card--photography {
+  max-width: min(80%, 1100px);
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+.main-article--photography img {
+  max-height: 800px;
+  margin: auto;
+}
+
+/*=============================
+------ PROGRAMMING PAGE -------
+==============================*/
+.main--programming {
+  display: flex;
+  justify-content: center;
+}
+
+.main-article--programming h1 {
+  padding: 1rem;
+}
+
+.grid--programming {
+  display: grid;
+  grid-template-columns: 40ch 40ch;
+  gap: var(--space-m);
+}
+
+.card--programming {
+  width: min(40ch, 90svw);
+  border: 3px solid var(--color-grey);
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.card--programming p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.card--programming .card__attribution {
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.card--programming span {
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+.card--programming .card__author {
+  background-color: black;
+  color: white;
+}
+
+
+/*===================
+------ FOOTER -------
+=====================*/
+footer {
+  background-color: var(--color-grey);
+  color: var(--color-lightgrey);
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
+}
+
+footer label {
+  padding-right: 1rem;
+}
+
+.contact,
+.site-map {
+  padding-left: 2vw;
+}
+
+.attribution {
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+.site-map ul {
+  list-style-type: square;
+  padding-left: 2rem;
+}
+
+input {
+  width: 20ch;
+}
+textarea {
+  display: block;
+  width: 30ch;
+}
+button {
+  display: block;
+}
+
 
 /*====================================
 ------ WRAP SIDEBAR FOR MOBILE -------
 =====================================*/
-
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;
+  }
+
+  .grid--programming {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
+  .card--programming {
   }
 }
 

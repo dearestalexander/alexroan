@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan</title>
+    <link href="{{ '/styles.css' | url }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {% include 'header--small-programming.njk' %}
+    <main id="main">
+      <article class="single-post flow">
+
+      <h1>{{title}}</h1>
+      <p class="single-post__attribution">by {{author}} on {{ date | postDate}}
+
+      {{ content | safe }}
+
+      </article>
+    </main>
+    {% include 'footer.njk' %}
+  </body>
+</html>

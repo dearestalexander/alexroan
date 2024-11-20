@@ -1,19 +1,20 @@
 ---
-title: Photography
-titletwo: ~ by Alex Roan
 author: Alex Roan
-layout: 'photo-layout.njk'
+layout: 'blogroll-photography.njk'
 main__class: photography
 ---
 
-{%- for photo in collections.photography | reverse -%}
-    <article class="flow" aria-labelledby="{{photo.data.title}}>
-      <h2 id="{{photo.data.title}}">{{ photo.data.subtitle }}</h2>
-      <a href="{{ photo.url }}">
-        <img src="{{ photo.data.image}}" alt="{{ photo.data.imageAlt }}" /></a>
+<ul role="list" class="container--photography">
+  {%- for photo in collections.photography | reverse -%}
+    <li class="flow card--photography">
+      <article class="flow--small" aria-labelledby="{{photo.data.title}}">
+        <h2 id="{{photo.data.title}}">{{ photo.data.title }}</h2>
+        <a href="{{ photo.url }}">
+          <img src="{{ photo.data.image}}" alt="{{ photo.data.imageAlt }}" /></a>
+      <p>{{ photo.data.date | postDate }}</p>
       <p>{{ photo.data.description }}</p>
-      {# <a href="{{ photo.data.location }}">location</a> #}
-      <div class="divider--small"></div>
-    </article>
-{%- endfor -%}
-
+      <p><a href="{{ photo.data.location }}">location</a><p>
+      </article>
+    </li>
+  {%- endfor -%}
+</ul>

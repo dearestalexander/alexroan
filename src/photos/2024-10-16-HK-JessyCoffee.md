@@ -1,12 +1,11 @@
 ---
-title: Photography
-titletwo: ~ by Alex Roan
-subtitle: Back in the 852 - Jessy Coffee @ PMQ
+title: Back in the 852 - Jessy Coffee @ PMQ
 author: Alex Roan
 date: 2024-10-16
 tags: ["photography"]
 image: /assets/images/photography/DSC01206.jpg
-imageAlt:
+imageAlt: Photographs in a coffee shop in Hong Kong
+description: More photos from Hong Kong
 location: https://maps.app.goo.gl/bN7TZoAonUcq4XUk8
 ---
 
