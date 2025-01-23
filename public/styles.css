@@ -195,7 +195,6 @@ a:focus {
 /*==========================
 ------ HEADER STYLING ------
 ==========================*/
-/* Heading text - home page style */
 .skip {
   position: absolute;
   left: 0px;
@@ -207,14 +206,14 @@ a:focus {
 
 .header__container {
   align-items: baseline;
-  padding-bottom: var(--space-3xl);
+  padding-bottom: var(--space-m);
   background-color: var(--color-lightgrey);
   font-family: var(--font-family-alt);
 }
 
 .header__span-one {
   display: inline;
-  font-size: var(--step-7);
+  font-size: var(--step-4);
   padding: 0.5em 0.1em 0.1em 0.5em;
   margin: 0.5em 0.1em 0em 0.5em;
   background-color: var(--color-red);
@@ -222,29 +221,8 @@ a:focus {
 }
 
 .header__span-two {
-  font-size: var(--step-3);
+  font-size: var(--step-2);
 }
-
-.heading__container--small {
-  max-width: 100vw;
-  align-items: baseline;
-  background-color: var(--color-lightgrey);
-  letter-spacing: var(--tracking);
-  gap: var(--space-xs);
-}
-
-.heading__span-one--content {
-  font-size: var(--step-1);
-  padding: var(--space-s) var(--space-3xs) var(--space-3xs) var(--space-s);
-  background-color: var(--color-red);
-  color: var(--color-lightgrey);
-}
-
-.heading__span-two--content {
-  font-size: var(--step-0);
-  font-style: italic;
-}
-
 
 /*===================
 ------ NAV BAR ------
@@ -272,6 +250,25 @@ nav > ul {
 /*=======================
 ------ MAIN LAYOUT ------
 =======================*/
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.section__main-content {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 60%;
+}
+
+.region__sidebar {
+  flex-basis: 20rem;
+  flex-grow: 1;
+  background-color: white;
+  padding: var(--space-m) 2vw;
+}
+
 .region__news {
   background-color: var(--color-black);
   color: var(--color-lightgrey);
@@ -305,7 +302,7 @@ nav > ul {
 .blog-grid {
   display: grid;
   gap: 2vw;
-  grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(40ch, 1fr));
 }
 
 .blog-card {
@@ -322,13 +319,6 @@ nav > ul {
 
 .blog-card a {
   color: var(--color-red);
-}
-
-.region__sidebar {
-  background-color: white;
-  min-width: 40ch;
-  padding: var(--space-m) 2vw;
-  flex: 1;
 }
 
 .region__sidebar h1 {
@@ -354,7 +344,6 @@ nav > ul {
 /*=============================
 ------ CONTENT PAGE -------
 =============================*/
-
 .region__posts {
   background-color: var(--color-white);
   padding-left: 2vw;
@@ -371,26 +360,9 @@ nav > ul {
   padding-top: var(--space-m);
 }
 
-/* Add posts filter for when sidebar isn't visible */
-.btn-link-2 {
-  font-size: var(--step-0);
-  color: var(--color-grey);
-}
-
-.btn-link-2 > a {
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-grey);
-}
-
-.filter--highlight a {
-  border-bottom: 3px solid var(--color-red);
-}
-
-
 /*=============================
 ------ SINGLE POST PAGE -------
 =============================*/
-
 .single-post {
   max-width: min(65ch, 90vw);
   margin: auto;
@@ -398,6 +370,12 @@ nav > ul {
 }
 
 .single-post h1 {
+  padding-top: var(--space-m);
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.single-post h2 {
   padding-top: var(--space-m);
   padding-bottom: 0;
   margin: 0;
@@ -415,51 +393,6 @@ nav > ul {
 
 .single-post img {
   max-width: 100%;
-  margin: auto;
-}
-
-/*========================
------- STATIC PAGE -------
-=========================*/
-.main--static-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.main-article--static-page {
-  max-width: 65ch;
-  margin: auto;
-}
-
-.main-article--static-page ul {
-  padding-left: 1rem;
-}
-
-/*=============================
------- PHOTOGRAPHY PAGE -------
-=============================*/
-.main--photography {
-  display: flex;
-  justify-content: center;
-}
-
-.main-article--photography {
-  padding: 2vw;
-}
-
-.main-article--photography h2 {
-  margin: 1rem 0;
-}
-
-.card--photography {
-  max-width: min(80%, 1100px);
-  margin: auto;
-  margin-bottom: 5rem;
-}
-
-.main-article--photography img {
-  max-height: 800px;
   margin: auto;
 }
 
@@ -549,24 +482,6 @@ textarea {
 }
 button {
   display: block;
-}
-
-
-/*====================================
------- WRAP SIDEBAR FOR MOBILE -------
-=====================================*/
-@media (max-width: 900px) {
-  .layout {
-    flex-direction: column;
-  }
-
-  .grid--programming {
-    grid-template-columns: 1fr;
-    justify-content: center;
-  }
-
-  .card--programming {
-  }
 }
 
 
