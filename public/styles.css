@@ -388,12 +388,41 @@ nav > ul {
 }
 
 .single-post ul {
-  margin: 1em;
+  list-style-position: inside;
+}
+
+.single-post ul ul {
+  padding-left: 1.5em; /* Adjust as needed */
 }
 
 .single-post img {
   max-width: 100%;
-  margin: auto;
+}
+
+/*==========================
+------ SERVICES PAGE -------
+===========================*/
+.services__grid {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  gap: var(--space-m);
+  grid-auto-rows: auto;
+  border: 1px solid var(--color-grey);
+  padding: var(--space-m);
+}
+
+.services__img {
+  align-self: start;
+  margin: 0; /* Remove any default margin */
+  display: block; /* Treat the image as a block-level element */
+}
+
+
+/*============================
+------ EXPERIENCE PAGE -------
+=============================*/
+.experience__h2 {
+
 }
 
 /*=============================

@@ -1,7 +1,5 @@
 ---
-title: Business and technology transformation
-titletwo: ~ by Alex Roan
-subtitle: The chart of accounts, concept & design
+title: The chart of accounts, concept & design
 author: Alex Roan
 date: 2020-06-25
 tags: ["post", "article", "finance", "featured"]
