@@ -8,9 +8,6 @@ imageAlt:
 description: Succesful large scale transformation requires a handoff and ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. This is a crucial part of the successful delivery of complex intiiatives such as SAP S/4HANA implementation or an acquisition integration.
 ---
 
-Title: The leadership-project team gap
-Subtitle: Improving collaboration for large transformations such as SAP S/4HANA, acquisitions integration or corporate restructuring
-
 ## Introduction
 
 A key enabler of successful large scale transformation is an effective relationship between senior management and project teams.
