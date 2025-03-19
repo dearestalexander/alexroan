@@ -399,6 +399,12 @@ nav > ul {
   max-width: 100%;
 }
 
+.comments {
+  border-top: 1px solid grey;
+  margin-top: 2em;
+  padding-top: 2em;
+}
+
 /*==========================
 ------ SERVICES PAGE -------
 ===========================*/

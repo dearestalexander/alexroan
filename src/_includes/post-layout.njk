@@ -21,6 +21,20 @@
 
       {{ content | safe }}
 
+      <div class="comments flow">
+        <strong>Comments and discussion</strong>
+
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+          data-page-id="{{ page.url | url }}"
+          data-page-url="{{ page.url | url }}"
+          data-page-title="{{ title }}">
+        </div>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+      </div>
+
+
       </article>
     </main>
     {% include 'footer.njk' %}
