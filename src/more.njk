@@ -4,5 +4,20 @@ titletwo: ~ by Alex Roan
 layout: 'static-page-layout.njk'
 ---
 
+<h2>Guestbook</h2>
+
+</p>Thank you for visiting my webpage, feel free to say hello, leave a comment, feedback or ask a question:</p>
+
+<div id="cusdis_thread"
+     data-host="https://cusdis.com"
+     data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+     data-page-id="{{ page.fileSlug }}"
+     data-page-url="https://your-live-site.com{{ page.url }}"
+     data-page-title="{{ title }}"
+     data-max-height="none"> <!-- Prevent scroll and allow full height -->
+</div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
 <h2>Programming & front end design</h2>
+
 <p>I've been doing a little frontend web design in my free time. Here is a page with a few <a href="{{ '/more/programming/' | url }}">designs.</a></p>

@@ -401,8 +401,13 @@ nav > ul {
 
 .comments {
   border-top: 1px solid grey;
-  margin-top: 2em;
+  margin-top: 4em;
   padding-top: 2em;
+}
+
+#cusdis_thread iframe {
+  min-height: 600px;
+  width: 100% !important; /* Ensure full width */
 }
 
 /*==========================
@@ -427,9 +432,7 @@ nav > ul {
 /*============================
 ------ EXPERIENCE PAGE -------
 =============================*/
-.experience__h2 {
 
-}
 
 /*=============================
 ------ PROGRAMMING PAGE -------
