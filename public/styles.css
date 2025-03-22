@@ -32,8 +32,10 @@
   --color-grey: #58595B;
   --color-lightgrey: #f6f6f6;
   --color-lightyellow: #f1be32;
-  --font-family: "Manrope", sans-serif;
-  --font-family-alt: "EB Garamond", sans-serif;
+/*  --font-family: "Manrope", sans-serif;
+  --font-family-alt: "EB Garamond", sans-serif; */
+  --font-family: "EB Garamond", serif;
+  --font-family-alt: "Pacifico", cursive; 
   --gutter: var(--space-s);
   --border-radius: var(--step-1);
   --transition-base: 250ms ease;
@@ -76,12 +78,13 @@ body {
 
 h1, h2, h3, h4,
 button, input, label {
-  line-height: 1.1;
+  line-height: 1.5;
 }
 
 h1, h2,
 h3, h4 {
   text-wrap: balance;
+  font-family: "Quattrocento Sans", sans-serif;
 }
 
 a:not([class]) {
@@ -115,7 +118,7 @@ textarea:not([rows]) {
 body {
   color: var(--color-grey);
   background: var(--color-white);
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   font-family: var(--font-family);
   letter-spacing: var(--tracking);
   margin: auto;
@@ -127,7 +130,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: var(--step-3);
-  font-family: var(--font-family-alt);
+  /* font-family: var(--font-family-alt); */
 }
 
 h2 {
@@ -213,15 +216,15 @@ a:focus {
 
 .header__span-one {
   display: inline;
-  font-size: var(--step-4);
-  padding: 0.5em 0.1em 0.1em 0.5em;
+  font-size: var(--step-5);
+  padding: 0.8em 0.1em 0.1em 0.8em;
   margin: 0.5em 0.1em 0em 0.5em;
   background-color: var(--color-red);
   color: var(--color-lightgrey);
 }
 
 .header__span-two {
-  font-size: var(--step-2);
+  font-size: var(--step-3);
 }
 
 /*===================
@@ -269,6 +272,19 @@ nav > ul {
   padding: var(--space-m) 2vw;
 }
 
+.region__intro {
+  color: var(black);
+  padding-left: 2vw;
+  padding-top: var(--space-m);
+  padding-bottom: var(--space-m);
+}
+
+.region__intro img {
+  max-width: 80%;
+  margin: auto;
+  padding: 2em 0;
+}
+
 .region__news {
   background-color: var(--color-black);
   color: var(--color-lightgrey);
@@ -280,11 +296,20 @@ nav > ul {
 .region__news__text {
   max-width: min(65ch, 95%);
   flex: 3;
+  padding-bottom: 4em;
 }
 
 .region__news h1 {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.region__news h2 {
+  margin-top: 2em;
+}
+
+.region__news li {
+  font-family: "Manrope", sans-serif;
 }
 
 .region__featured {
@@ -297,6 +322,19 @@ nav > ul {
 .region__featured > h1 {
   margin-top: 1em;
   margin-bottom: 1em;
+  color: black;
+}
+
+.region__featured__spotlight {
+  margin: 2rem auto;
+  max-width: 80%;
+  padding: 2rem;
+  color: black;;
+  border: 1px solid var(--color-grey);
+}
+
+.region__featured__spotlight img {
+  margin: 2rem auto;
 }
 
 .blog-grid {
@@ -309,7 +347,7 @@ nav > ul {
   max-width: min(65ch, 95%);
   padding: 1rem;
   background-color: var(--color-lightgrey);
-  color: var(--color-grey);
+  color: black;;
   border: 1px solid var(--color-grey);
 }
 
@@ -321,6 +359,21 @@ nav > ul {
   color: var(--color-red);
 }
 
+.region__cta {
+  color: var(black);
+  padding-left: 2vw;
+  padding-top: var(--space-m);
+  padding-bottom: var(--space-m);
+}
+
+.region__cta form {
+  margin: 2em 0;
+}
+
+.region__cta label {
+  display: block;
+}
+
 .region__sidebar h1 {
   font-size: var(--step-2);
 }
@@ -329,6 +382,7 @@ nav > ul {
   display: inline-block;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  color: black;
 }
 
 .socials {

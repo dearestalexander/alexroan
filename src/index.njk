@@ -3,11 +3,17 @@ title: Alex Roan - Home
 layout: 'base-layout.njk'
 ---
 
+
+<!-- introduction -->
+<article class="region__intro flow">
+  <p>I work in strategy and operations. I've experienced a broad range of projects, but specialise in acquisitions integration, ERP implementation (SAP), shared services, outsourcing and finance function processes improvement. I've been lucky enough to work with a range of leading companies. Past employers and clients include:</p>
+  <img src="{{ '/assets/images/clients__one.jpg' | url }}" alt="diagram showing client names" loading="lazy">
+</article>
 <!-- recent news, hard coded in HTML, not from markdown -->
-<article class="region__news flow">
+<article class="region__news">
   <div class="region__news__text">
     <h1>Recent highlights</h1>
-    <ul role="list" class="flow">
+    <ul role="list">
       <li>
         <h2>October '24</h2>
         <ul role="list" >
@@ -29,7 +35,7 @@ layout: 'base-layout.njk'
         </ul>
       </li>
       <li>
-        <h3>June '24</h2>
+        <h2>June '24</h2>
         <ul role="list">
           <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7209203691155775488-mmmA?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about frameworks that can be useful tools to help structure transformation programs.</li>
           <li>I wrote a <a href="https://www.linkedin.com/posts/activity-7206637113411334144-cQ86?utm_source=share&utm_medium=member_desktop" target="_blank">post</a> about gathering information for transformation projects.</li>
@@ -67,9 +73,16 @@ layout: 'base-layout.njk'
   </div>
 </article>
 
-<!-- featured posts, from 'posts' markdown filder based on tag 'featured' -->
+<!-- featured posts, from 'posts' markdown filter based on tag 'featured' -->
 <section class="region__featured">
   <h1>Featured posts</h1>
+  <div class="region__featured__spotlight">
+    <h2>Spotlight: The leadership-project team gap</h2>
+    </p>I recently had a conversation about the challenges a board were facing in understanding the status of an ERP transformation program. In this case the IT function were building their own custom ERP solution. The board members were unclear on why the project was both delayed but under budget. Normally you would expect a delay to be accompanied by being over budget. The conversation I had brought in this case brought to light one of the classic discussions around ERP - buy vs. build. I think buy vs. build was a bigger discussion in the past. It's more or less accepted that in most cases 'off the shelf' is better. This is a long discussion, but it allows for a leaner IT function and less complexity to manage.</p>
+    <p>So it was a surprise for me to hear of a company building their own ERP in 2024/25. Further to that I couldn't guess at why they were underbudget. My only idea is that being behind schedule they hadn't made progress towards steps with specific costs. This conversation brought to mind the challenges that can happen when leadership and project teams don't have the right clarity and communication around objective/value, scope and progress and I spent some time thinking through this and putting my thoughts down on paper. Click on the article cover image to read my thoughts in details</p>
+    <a href="https://alexroan.com/posts/2025-03-14-strategy-project/" target="_blank"><img src="{{ '/assets/images/blog/strategy-project/strategy-project_0.jpg' | url }}" alt="diagram showing client names" loading="lazy"></a>
+  </div>
+  <h2>Other featured posts</h2>
   <ul role="list" class="blog-grid">
     {%- for featured in collections.featured | reverse -%}
     <li class="flow blog-card">
@@ -83,4 +96,26 @@ layout: 'base-layout.njk'
     </li>
   {%- endfor -%}
   </ul>
+</section>
+
+<section class="region__cta">
+  <h1>Connect</h1>
+  <div>
+    <p>I'm currently available for work.</p>
+    <p>I'm also always interested to discuss anything related to strategy and operations transformation</p>
+    <p>You can connect with me on <a name="LinkedIn link" href="https://www.linkedin.com/in/alexanderroan/"><i class="fa-brands fa-linkedin"></i>LinkedIn</a></li> or by submitting the below form:</p>
+  </div>
+  <form
+    action="https://formspree.io/f/movqvvgv"
+    method="POST">
+    <label>
+      Your email:
+      <input type="email" name="email">
+    </label>
+    <label>
+      Your message:
+      <textarea name="message"></textarea>
+    </label>
+    <button type="submit">Send</button>
+  </form>
 </section>
