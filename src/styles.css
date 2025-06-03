@@ -164,6 +164,12 @@ a:focus {
   border: 1px solid var(--color-grey);
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 0.5rem;
+}
+
 
 /*=============================
 ------ RE-USABLE CLASSES ------
@@ -444,7 +450,8 @@ nav > ul {
 }
 
 .single-post ul {
-  list-style-position: inside;
+  list-style-position: outside;
+  padding-left: 1em;
 }
 
 .single-post ul ul {
