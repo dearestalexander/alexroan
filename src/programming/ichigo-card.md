@@ -1,5 +1,6 @@
 ---
-title: Ichigo card page
+title: Frontend Mentor
+subtitle: Card - 'Ichigo' design
 author: Alex Roan
 date: 2024-11-13
 tags: ["programming"]

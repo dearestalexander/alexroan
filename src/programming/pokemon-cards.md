@@ -1,5 +1,6 @@
 ---
-title: Pokemon four card page
+title: Frontend Mentor
+subtitle: Four cards - 'Pokemon' design
 author: Alex Roan
 date: 2024-11-17
 tags: ["programming"]

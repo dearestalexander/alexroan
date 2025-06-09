@@ -24,7 +24,7 @@
       <li><a class="btn-link" href="/filter/posts/">Blog</a></li>
       <li><a class="btn-link" href="/services/">Services</a></li>
       <li><a class="btn-link" href="/experience/">Experience</a></li>
-      <li><a class="btn-link" href="/more/">More</a></li>
+      <li><a class="btn-link" href="/more/">Side projects</a></li>
     </ul>
   </nav>
 </header>
@@ -35,38 +35,37 @@
       <p class="single-post__attribution">by Alexander Roan on 3 Jun 2025
 
       <h2>Introduction</h2>
-<p>The main purpose of Enterprise Resource Planning (ERP) for the finance function could be summarised as collecting inforamtion about business activities and preparing it for financial and management analysis.</p>
-<p>At its core this involves saving, manipulating and retrieving data.</p>
-<p>In this context, it's useful for both business and IT people to understand the SAP data model. This is particularly useful useful when discussing the limitations of systems and possible enhancements to systems.</p>
-<p>It also reduces the potential for misunderstandings.</p>
-<p>In this article I'll look at the evolution of the finance data model from SAP R/3 to SAP S/4HANA. The focus will be on a number of important tables.</p>
+<p>The main purpose of Enterprise Resource Planning (ERP) for the finance function is to collect information about business activities and prepare it for financial and management analysis.</p>
+<p>At its core, this involves saving, manipulating, and retrieving data.</p>
+<p>In this context, it's useful for both business and IT people to understand the SAP data model. This is particularly useful when discussing the limitations of systems and considering possible enhancements.</p>
+<p>It also reduces the potential for misunderstandings. The interpretation of financial and management results requires a good understanding of the source data and the logic applied to apply any classifications or calculations.</p>
+<p>In this article, I'll look at the evolution of the finance data model from SAP R/3 to SAP S/4HANA. The focus will be on several important tables.</p>
 <h2>SAP R/3 Architecture</h2>
 <p>SAP R/3 is an application built on a '3-tier architecture'.</p>
-<p><img src="/assets/images/blog/sap-data/architecture.jpg" alt="SAP finance 3-tier architecture"></p>
-<p>The architecture is commonly used for systems with multiple users and large data sets.</p>
-<p><strong>The user interface</strong></p>
+<p><img src="../assets/images/blog/sap-data/architecture.jpg" alt="SAP finance 3-tier architecture"></p>
+<p>This architecture is commonly used for systems with multiple users and large data sets.</p>
+<p>The user interface</p>
 <ul>
 <li>Also known as the client</li>
-<li>Installed locally on the desktop</li>
-<li>The user point of interaction</li>
-<li>Sends and retrieves requests to the server</li>
+<li>Locally installed on the desktop</li>
+<li>This is the user point of interaction</li>
+<li>It sends and retrieves data to and from the server</li>
 </ul>
-<p><strong>The application</strong></p>
+<p>The application</p>
 <ul>
-<li>Executes programs</li>
-<li>Responsible for sending data to the database and receiving data back from the database</li>
+<li>Executes programs with business logic</li>
+<li>It sends and retrieves data to and from the database</li>
 </ul>
-<p><strong>The database</strong></p>
+<p>The database</p>
 <ul>
-<li>Where data is stored</li>
+<li>Manages create, update, and delete processes for data</li>
 </ul>
-<p>The database layer for SAP R/3 utilises a relational database management systems (RDBMS).</p>
-<p>'Relational' is quite descriptive here. A RDMBS stores data separated across multiple small tables.</p>
-<p>Consider the scope of data in an ERP system; purchase orders, sales orders, customers, vendors, production orders, invoices, payments and much more. This is a high volume of data, much of it connected according to the flow of business transactions. A purchase order leads to a goods receipt, an invoice leads and a payment. All of these need to be stored in separate, but connected tables.</p>
-<p>RDBMS was the only feasible option for ERP systems at the time when faced with high volumes of a wide range of data.</p>
-<p>Later in the article we will see how SAP HANA has changed this.</p>
+<p>The database layer for SAP R/3 utilises a relational database management system (RDBMS).</p>
+<p>'Relational' is quite descriptive here. An RDBMS typically stores data separated across many small tables.</p>
+<p>Consider the scope of data in an ERP system: purchase orders, sales orders, customers, vendors, production orders, invoices, payments, and more. This is a high volume of data, much of it connected according to the flow of business transactions. A purchase order leads to a goods receipt, an invoice, and a payment. All need to be stored in separate but connected tables.</p>
+<p>RDBMS was the only feasible option for ERP systems at the time. Later in the article, we will see how SAP HANA has changed this.</p>
 <h2>SAP R/3 Modules</h2>
-<p>SAP R/3 has an internal structure. It's broken down into functionally orientated modules. In more recent times SAP doesn't always refer to the traditional modules, but if you look at the configuration in S/4HANA it's still structured this way.</p>
+<p>SAP R/3 has an internal structure. It's broken down into functionally oriented modules. In recent times, SAP has shifted away from talking about modules. However, if you look at the configuration in S/4HANA, it's still structured this way.</p>
 <p>The classic list of modules includes:</p>
 <ul>
 <li>SD - sales &amp; distribution</li>
@@ -84,60 +83,66 @@
 <li>WF - workflow</li>
 <li>IS - industry solutions</li>
 </ul>
-<p>The classic diagram:</p>
-<p><img src="/assets/images/blog/sap-data/modules.jpg" alt="SAP finance 3-tier architecture"></p>
-<p>Generally speaking each of these modules has it's own set of tables and programs.</p>
-<p>The modules that we are most interested with for finance and will cover in this article are:</p>
+<p>SAP’s classic illustration of the modules:</p>
+<p><img src="../assets/images/blog/sap-data/modules.jpg" alt="SAP finance 3-tier architecture"></p>
+<p>Each of these modules has its own set of tables and programs.</p>
+<p>The modules that we are most interested in for finance and will cover in this article are:</p>
 <ul>
-<li><strong>FI</strong>: financial accounting</li>
-<li><strong>CO</strong>: controlling</li>
-<li><strong>EC</strong>: enterprise controlling</li>
+<li>FI financial accounting</li>
+<li>CO controlling</li>
+<li>EC enterprise controlling</li>
 </ul>
-<p>Asset management is also finance orientated, but as a special topic is best addressed separately. Other modules such as materials management can also lead to the generation of finance and controlling postings, so can be considered important interfaces to finance.</p>
+<p>Asset management (AM) is also part of finance. However, for brevity, I will skip discussing AM tables here. This is not a big omission, as the finance postings generated in AM end up in FI and CO tables.</p>
+<p>Other modules, such as sales and distribution (SD) and materials management (MM), also generate finance postings. Think of these as interfaces to FI and CO.</p>
 <h2>Finance (FI and CO) tables</h2>
 <p>Let's clear up some potential naming confusion.</p>
-<p>In general 'finance' means both financial accounting and management accounting.</p>
-<p>In SAP terms:</p>
+<p>In business terms, 'finance' usually means both financial accounting and management accounting.</p>
+<p>In SAP terms, it is slightly different:</p>
 <ul>
-<li>FI = finance = financial accounting</li>
-<li>CO = controlling = management accounting.</li>
+<li>FI; finance; financial accounting</li>
+<li>CO; controlling; management accounting</li>
 </ul>
-<p>When I write 'finance' I refer to the whole of finance, if I only want to talk about FI I will use FI or financial accounting.</p>
-<p>When it comes to FI and CO tables I would suggest we make an informal split into three categories:</p>
-<p><strong>Category 1: configuration tables</strong></p>
+<p>When I use 'finance', I refer to the whole of finance from a business perspective. If I want to refer to a part of SAP, I will use either ‘FI’ or ‘financial accounting’.</p>
+<p>It’s helpful to think of FI and CO tables in categories:</p>
+<p>Category 1: configuration tables:</p>
 <ul>
 <li>Long-term fixed data</li>
-<li>Represents static data about the organisation (legal entity, reporting currency..)</li>
-<li>Represents settings on how transactions are processed (tolerances, default values..)</li>
-<li>Must be carefully managed as a baseline for reporting comparability over time</li>
-</ul>
-<p><strong>Category 2: master data tables</strong></p>
+<li>Static data about the organisation (legal entity, reporting currency, etc.)</li>
+<li>Settings on how transactions are processed (tolerances, default values, etc.)</li>
+<li>These must be carefully managed
 <ul>
-<li>Relatively stable data, but may change as an organisation changes / grows etc.</li>
-<li>General ledger accounts, vendors, suppliers</li>
+<li>To ensure stability in how the system works</li>
+<li>To ensure posts are captured in a ‘like for like’ way. Comparability of information is a critical concept in finance.</li>
 </ul>
-<p><strong>Category 3: transaction tables</strong></p>
+</li>
+</ul>
+<p>Category 2: master data tables:</p>
 <ul>
-<li>Point in time data that reflects a single business activity</li>
-<li>Orders, invoices etc.</li>
+<li>Relatively stable data, but may change as an organisation does</li>
+<li>For example, general ledger accounts, vendors, and suppliers.</li>
 </ul>
-<p>There are a few items in finance such as cost centers and profit centers that we generally 'configure' but are somewhat changeable, these can be considered as a subset of category 1 that share some of the same attributes of category 2.</p>
+<p>Category 3: transaction tables:</p>
+<ul>
+<li>Point-in-time data that reflects a single business activity</li>
+<li>For example, orders and invoices.</li>
+</ul>
+<p>Certain category 1 items, such as cost centers and profit centers, are ‘configured’ however, they lean towards category 2 master data. They are more ‘changeable’ than things like company code, but also need to be carefully managed to ensure reporting consistency and comparability over time.</p>
 <h2>A business activity</h2>
-<p>To discuss tables from a solid foundation it's best to start from a business transaction. An ideal candidate is an Accounts Payable invoice as it allows us to discuss a typical finance posting.</p>
-<p>Below is a 'mock' invoice I put together for this discussion.</p>
-<p><img src="/assets/images/blog/sap-data/invoice.jpg" alt="sample invoice"></p>
-<p>Invoice standards do vary by geography, but generally include items similar to those shown.</p>
-<p><strong>Typical invoice fields</strong></p>
+<p>Systems make more sense when we view them from a business process perspective. We can look at the SAP finance tables through the lens of a finance activity, such as posting an invoice.</p>
+<p>Below is a 'mock' invoice I put together for this discussion:</p>
+<p><img src="../assets/images/blog/sap-data/invoice.jpg" alt="sample invoice"></p>
+<p>Invoice standards vary by geography but generally include items like those shown.</p>
+<p>Typical invoice fields:</p>
 <ul>
 <li>Invoicing party details: name and address of the party that issued the invoice</li>
 <li>Invoiced party details: name and address of the party receiving the invoice</li>
 <li>Invoice date</li>
 <li>A unique reference number</li>
 <li>A purchase order number or a contact name (if no PO)</li>
-<li>Details of the goods or service provided
+<li>Details of the goods or services provided
 <ul>
 <li>Description</li>
-<li>Period</li>
+<li>When the goods or services were provided</li>
 <li>Quantity</li>
 <li>Unit price</li>
 <li>Total price</li>
@@ -145,7 +150,7 @@
 </li>
 <li>Tax amounts</li>
 <li>Discount amounts</li>
-<li>Terms of payment: at minimum the number of days before it's due for payment</li>
+<li>Terms of payment: at a minimum, the number of days before it's due for payment</li>
 <li>Payment method</li>
 <li>Bank details</li>
 </ul>
@@ -153,10 +158,10 @@
 <p>Finance is unique in that we need to translate business activities into double-entry accounting entries.</p>
 <p>The accounting equation is:</p>
 <blockquote>
-<p>Asset = Liabililities + Equity</p>
+<p>Asset = Liabilities + Equity</p>
 </blockquote>
 <p>Every entry into accounting involves at least two 'line items' that balance to zero according to the above accounting equation.</p>
-<p>For the above invoice. As a business activity it states that</p>
+<p>For the above invoice. As a business activity, it states that</p>
 <ul>
 <li>Example client owns Alexander Roan Limited £12,000</li>
 </ul>
@@ -167,44 +172,41 @@
 <li>A recoverable item of £2,000 should be recorded on the tax account</li>
 </ul>
 <p>Or summarised as the accounting equation:</p>
-<ul>
-<li>2,000 (tax recoverable) = 12,000 (liability) + (-10,000) (P&amp;L / equity)</li>
-</ul>
+<blockquote>
+<p>2,000 (tax recoverable) = 12,000 (liability) + (-10,000) (P&amp;L / equity)</p>
+</blockquote>
 <p>Which balances to zero.</p>
-<p>I go into more detail on this in my article on the chart of accounts - <a href="https://alexroan.com/posts/2020-06-25-chart-of-accounts/">Chart of accounts - concept and design</a>.</p>
+<p>I go into more detail on this in my article on the chart of accounts:</p>
+<p><a href="https://alexroan.com/posts/2020-06-25-chart-of-accounts/">Chart of accounts - concept and design</a>.</p>
 <h2>Finance document posting in SAP</h2>
 <p>The example invoice translates to one document with three line items.</p>
-<p>One of the classic transactions in SAP R/3 to enter an invoice is FB60. We use this transaction to 'post' the invoice.</p>
-<p><img src="/assets/images/blog/sap-data/FB60.jpg" alt="FB60"></p>
-<p>A common structure for documents in business systems is to break the document down into a <strong>header</strong> section and a <strong>line items</strong> section.</p>
+<p>One of the classic transactions in SAP R/3 to enter an invoice is FB60. We use this transaction to 'post' the invoice:</p>
+<p><img src="../assets/images/blog/sap-data/FB60.jpg" alt="FB60"></p>
+<p>A common structure for documents in business systems is to break the document down into a header section and a line items section.</p>
 <p>In our invoicing scenario:</p>
-<ul>
-<li><strong>Invoice header</strong>
+<p>Invoice header:</p>
 <ul>
 <li>General information relevant to the entire transaction</li>
-<li>Invoice date, posting date, reference, header text, currency etc.</li>
+<li>Invoice date, posting date, reference, header text, currency, etc.</li>
 </ul>
-</li>
-<li><strong>Line items</strong>
+<p>Line items:</p>
 <ul>
-<li>Individual accounting entries (i.e. postings to accounts)</li>
-<li>In this example three line items; vendor, expense, tax</li>
+<li>Individual accounting entries (i.e., postings to accounts)</li>
+<li>In this example, three line items: vendor, expense, and tax</li>
 </ul>
-</li>
-</ul>
-<p>The FB60 transaction is visually split into two sections. The top half contains fields related to both the header and vendor line item while the bottom half has a set of rows that are used to enter additional 'offsetting' line items.</p>
-<p>The top half of the screen defaults to basic data, but has tabs to switch to views for payment data, tax data etc.</p>
-<p>The information entered in this transaction will be saved to a number of FI and CO tables. In this example two or potentially three documents will be created depending on whether profit center accounting is active.</p>
-<p>The data saved in tables relating to this transaction goes beyond what is seen on the invoice, it includes internal information and derived or calculated information. You could consider three types of data:</p>
-<p><strong>A: Internal information</strong></p>
+<p>The FB60 transaction is visually split into two sections. The top half contains fields related to both the header and vendor line item, while the bottom half has a set of rows that are used to enter additional 'offsetting' line items.</p>
+<p>The top half of the screen defaults to basic data, but has tabs to switch to views for payment data, tax data, etc.</p>
+<p>The information entered in this transaction will be saved to several FI and CO tables. In this example, two or potentially three documents will be created depending on whether profit center accounting is active.</p>
+<p>The data saved in tables relating to this transaction goes beyond what is seen on the invoice; it includes internal information and derived or calculated information. You could consider three types of data:</p>
+<p>A: Internal information:</p>
 <p>Information that is known to SAP and will be added to the tables by default.</p>
 <ul>
 <li>The 'document type' for 'invoice' will be recorded based on using transaction FB60</li>
-<li>The 'user' posting the invoice will be added based on the user login id</li>
-<li>The entry time (document created date) will be added based on the system date/time</li>
+<li>The 'user' posting the invoice will be added based on the user login ID</li>
+<li>The entry time (document creation date) will be added based on the system date/time</li>
 <li>etc.</li>
 </ul>
-<p><strong>B: Invoice information</strong></p>
+<p>B: Invoice information:</p>
 <p>Relevant details from the invoice will be entered.</p>
 <ul>
 <li>The vendor</li>
@@ -212,16 +214,16 @@
 <li>Payment terms</li>
 <li>Tax amounts</li>
 </ul>
-<p><strong>C: Derived and calculated information</strong></p>
+<p>C: Derived and calculated information:</p>
 <p>Some data will be either validated or calculated.</p>
 <ul>
-<li>The expense account will be derived based on the service description. The AP clerk will search for the best matching account</li>
+<li>The expense account will be derived based on the service description. The AP clerk will search for the best-matching account</li>
 <li>Payment terms may be included on the invoice, but the default value will be proposed from the vendor master data</li>
 <li>Tax amounts may be automatically calculated based on a tax code and then checked against the invoice rather than entered directly</li>
 </ul>
 <h2>Finance document tables</h2>
-<p>To start let's look at key accounting tables that will be referenced or updated with this transaction.</p>
-<p><strong>Category 1: Configuration data</strong></p>
+<p>To start, let's look at key accounting tables that will be referenced or updated with this transaction.</p>
+<p>Category 1: Configuration data:</p>
 <ul>
 <li>Information that controls how transactions process data</li>
 <li>Organisation data that will be included in the transaction posting.</li>
@@ -234,12 +236,12 @@
 <li>T003: document types</li>
 <li>(and many more)</li>
 </ul>
-<p><strong>Category 2: Master data</strong></p>
+<p>Category 2: Master data:</p>
 <ul>
 <li>Information about the organisation model</li>
 <li>Information about its operating environment</li>
 </ul>
-<p>Example of this are general ledger accounts, vendors, customers, cost centers, profit centers.</p>
+<p>Examples of this are general ledger accounts, vendors, customers, cost centers, and profit centers.</p>
 <p>Some of the important tables for finance:</p>
 <ul>
 <li>General ledger master data
@@ -265,13 +267,12 @@
 </li>
 <li>Enterprise controlling master data
 <ul>
-<li>CEPC: profit center master data</li>
+<li>CEPC: profit center master data.</li>
 </ul>
 </li>
-<li>(and more)</li>
 </ul>
-<p><strong>Category 3: Transactional data</strong></p>
-<p>Accounting is structured around two main tables BKPF for header information and BSEG for line item information. General ledger journals, accounts payable invoices and accounts receivable invoices all go to these tables. Financial postings from materials management, asset management etc. also go to these tables.</p>
+<p>Category 3: Transactional data:</p>
+<p>Accounting is structured around two main tables, BKPF for header information and BSEG for line item information. General ledger journals, accounts payable invoices, and accounts receivable invoices all go to these tables. Financial postings from materials management, asset management, etc., also go to these tables.</p>
 <ul>
 <li>Accounting documents: line items
 <ul>
@@ -304,438 +305,47 @@
 </ul>
 </li>
 </ul>
-<p>BSIS, BSAS, BSIK, BSAK are not additional tables they are secondary indexes on BSEG.</p>
-<p>There is also the totals table GLT0 which includes transaction totals per account per period. This helps with reporting performance when only reporting on balances.</p>
+<p>BSIS, BSAS, BSIK, and BSAK are not additional tables; they are secondary indexes on BSEG.</p>
+<p>There is also the totals table GLT0, which includes transaction totals per account per period. This helps with reporting performance when only reporting on balances.</p>
 <h2>Accounting document - header (BKPF)</h2>
-<p>As we enter values in fields in FB60 SAP will validate them. Validations range from 'format' to 'value' checks. For example, a format check would apply to a date field, while a value check may apply to something like the vendor field.</p>
-<p>Only once all fields are entered and validated can the document be 'psoted'. At this point SAP will assign a document number.</p>
+<p>As we enter values in fields in FB60, SAP will validate them. Validations range from 'format' to 'value' checks. For example, a format check would apply to a date field, while a value check may apply to something like the vendor field.</p>
+<p>Only once all fields are entered and validated can the document be 'posted'. At this point, SAP will assign a document number.</p>
 <p>Let's look at a selection of key fields from the accounting header table (BKPF).</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Information from the invoice</th>
-<th style="text-align:left">SAP field / notes</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">'INVOICE'</td>
-<td style="text-align:left">Document type<br>The invoice is marked 'INVOICE' so transaction FB60 is used which updates the document type field</td>
-<td style="text-align:left">Document types<br>T003</td>
-<td style="text-align:left">BKPF-BLART</td>
-</tr>
-<tr>
-<td style="text-align:left">'Invoice to' party</td>
-<td style="text-align:left">Company code<br>The user selects the company code based on the party the invoice is addressed to</td>
-<td style="text-align:left">Company code<br>T001</td>
-<td style="text-align:left">BKPF-BUKRS</td>
-</tr>
-<tr>
-<td style="text-align:left">Invoice date</td>
-<td style="text-align:left">Invoice date</td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">BKPF-BLDAT</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Posting date<br>The posting date usually defaults to the current date</td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">BKPF-BUDAT</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Fiscal year<br>Calculated based on the posting date</td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">BKPF-GJAHR</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Posting period<br>Calculated based on the posting date</td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">BKPF-MONAT</td>
-</tr>
-<tr>
-<td style="text-align:left">Reference</td>
-<td style="text-align:left">Reference<br>The original reference number form the invoice</td>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">BKPF-XLBNR</td>
-</tr>
-<tr>
-<td style="text-align:left">Currency</td>
-<td style="text-align:left">Currency<br>The currency from the invoice</td>
-<td style="text-align:left">TCURC/TCURT</td>
-<td style="text-align:left">BKPF-WAERS</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Exchange rate <br>If the invoice is in a currency other than the company code currency an exchange rate is derived</td>
-<td style="text-align:left">TCURR</td>
-<td style="text-align:left">BKPF-KURSF</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Local currency<br>Populated automatically based on the company code currency.</td>
-<td style="text-align:left">T001</td>
-<td style="text-align:left">BKPF-HWAER</td>
-</tr>
-</tbody>
-</table>
+<p><img src="../assets/images/blog/sap-data/BKPF.jpg" alt="FB60"></p>
 <p>All of this information is relevant to the entire invoice (all line items). Note that this is not a complete list of fields, just a sample of fields of interest.</p>
 <p>BKPF will also include the accounting document number, but only when posted.</p>
 <h2>Accounting document - vendor line item (BSEG)</h2>
-<p>The first line item to enter is the vendor line item. As transaction FB60 is being used SAP can default various values for this line item such as account type, debit/credit, posting key etc. It also knows that certain vendor line related items such as payment term and payment method is required.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Information from the invoice</th>
-<th style="text-align:left">SAP field</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Company code<br>(inherited from header)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BUKRS</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Line item number</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BUZID</td>
-</tr>
-<tr>
-<td style="text-align:left">Invoicing party</td>
-<td style="text-align:left">Vendor<br>Usually the AP clerk will search for the vendor code based on the name</td>
-<td style="text-align:left">Vendor master tables<br>LFA1, LFB1</td>
-<td style="text-align:left">BSEG-LIFNR</td>
-</tr>
-<tr>
-<td style="text-align:left">Total</td>
-<td style="text-align:left">Amount</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-DMBTR<br>(doc currency)</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Local currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-WRBTR<br>(local currency)</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Line item<br>Will always be the 1st line item</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BUZID</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Posting key<br>Defaults to credit posting for a vendor</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BSCHL</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Account type<br>Defaults to vendor</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-KOART</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Debit / credit indicator<br>Defaults to credit</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-SHKZG</td>
-</tr>
-<tr>
-<td style="text-align:left">Payment details</td>
-<td style="text-align:left">Payment method<br>Will default from vendor master data, but can be changed</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-ZLSCH</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Payment Block Key</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-ZLSPR</td>
-</tr>
-<tr>
-<td style="text-align:left">Payment details</td>
-<td style="text-align:left">Terms of Payment Key<br>Will default from vendor master data, but can be changed</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-ZTERM</td>
-</tr>
-<tr>
-<td style="text-align:left">Tax details</td>
-<td style="text-align:left">Tax on sales/purchases code<br>Can be entered based on invoice tax rate and goods/service description</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-MWSKZ</td>
-</tr>
-<tr>
-<td style="text-align:left">...</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<p>When creating invoices it's helpful to include clear information to ensure the AP clerk can easily post them. This may include adding things like:</p>
+<p>The first line item to enter is the vendor line item. As transaction FB60 is being used, SAP can default various values for this line item, such as account type, debit/credit, posting key, etc. It also knows that certain vendor-line related items, such as payment terms and payment method, are required.</p>
+<p><img src="../assets/images/blog/sap-data/BSEG.jpg" alt="FB60"></p>
+<p>When creating invoices, it's helpful to include clear information to ensure the AP clerk can easily post them. This may include adding things like:</p>
 <ul>
-<li>The customers reference number for your account (i.e. their vendor number)</li>
+<li>The customer's reference number for your account (i.e., their vendor number)</li>
 <li>A clear description of the nature of the services</li>
 <li>A clear description of the tax type and rate</li>
 </ul>
 <h2>Accounting document - general ledger line item</h2>
-<p>After entering header and vendor line item details, next comes the 'offsetting' line items to G/L accounts.</p>
-<p>The example invoice is for consultancy services. In this case it's an overhead cost that is charged to a single expense account.</p>
-<p>In some cases an invoice may total up various sub services and may need to be split across multiple accounts.</p>
+<p>After entering the header and vendor line item details, next comes the 'offsetting' line items to G/L accounts.</p>
+<p>The example invoice is for consultancy services. In this case, it's an overhead cost that is charged to a single expense account.</p>
+<p>In some cases, an invoice may total up various sub-services and may need to be split across multiple accounts.</p>
 <p>The AP clerk will search for the right expense account based on the description of the goods or services on the invoice.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Info. from invoice</th>
-<th style="text-align:left">SAP field</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Company code<br>(inherited from header)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BUKRS</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Line item number<br>Populated automatically based on row information is entered on</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BUZID</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Posting key<br>Updates based on account type and debit/credit indicator</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-BSCHL</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Account type<br>AP clerk will select</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-KOART</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Debit/credit indicator<br>AP clerk will select</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-SHKZG</td>
-</tr>
-<tr>
-<td style="text-align:left">Service description</td>
-<td style="text-align:left">Account<br>The clerk will search for the account based on the invoice details (goods or service description)</td>
-<td style="text-align:left">G/L master data tables<br>SKA1, SKB1</td>
-<td style="text-align:left">BSEG-HKONT</td>
-</tr>
-<tr>
-<td style="text-align:left">Total</td>
-<td style="text-align:left">Amount</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-DMBTR</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Loc.curr.amount</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-WRBTR</td>
-</tr>
-<tr>
-<td style="text-align:left">Contact name / department</td>
-<td style="text-align:left">Cost center<br>(clerk will search for cost center based on the service description)</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">BSEG-KOSTL</td>
-</tr>
-</tbody>
-</table>
-<p>(Again this is just a subset of fields).</p>
-<p>In this line item an entry of £10,000 is recorded on the consulting expense account.</p>
-<p>But what if we want to analyse and report on the department that was the source of the cost? Was it £10,000 spent by marketing, or IT, or £5,000 each.</p>
+<p><img src="../assets/images/blog/sap-data/BSEG2.jpg" alt="FB60"></p>
+<p>(This is just a subset of fields.)</p>
+<p>In this line item, an entry of £10,000 is recorded on the consulting expense account.</p>
+<p>But what if we want to analyse and report on the department that was the source of the cost? Was it £10,000 spent by marketing, or IT, or £5,000 each?</p>
 <p>This is where Controlling (CO) and cost centres come in.</p>
-<p>In the accounting posting to the financial account we enter a cost centre in the field BSEG-KOSTL.</p>
+<p>In the accounting posting to the financial account, we enter a cost centre in the field BSEG-KOSTL.</p>
 <p>While accounts represent the nature of a transaction, a cost centre represents the source of the cost. This usually equates to a team or department within a function.</p>
-<p>In order to enter a cost centre with an account that account must be activated as a primary cost element. This means the account can be used in CO.</p>
-<p>When an account is activated as a cost element and a line item is entered to it with a cost center this leads to the creation of a controlling document.</p>
+<p>In order to enter a cost centre with an account, it must be activated as a primary cost element. This means the account can be used in CO.</p>
+<p>When an account is activated as a cost element and a line item is entered to it with a cost center, this leads to the creation of a controlling document.</p>
 <h2>Controlling document - header (COBK)</h2>
 <p>As with accounting documents, controlling documents are split into header data and line item data.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Info. from invoice</th>
-<th style="text-align:left">SAP field</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Controlling area</td>
-<td style="text-align:left">TKA01 / T001</td>
-<td style="text-align:left">COBK-KOKRS</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Document number</td>
-<td style="text-align:left">T003</td>
-<td style="text-align:left">CO_BELNR</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Fiscal year</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GJAHR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Document date</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_ BLDAT</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Posting date</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_BUDAT</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Document header text</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_BLTXT</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Reference document number</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_REFBN</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Company code of FI document</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_REFBK</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Document type of FI reference document</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_REFBA</td>
-</tr>
-</tbody>
-</table>
+<p><img src="../assets/images/blog/sap-data/COBK.jpg" alt="FB60"></p>
 <p>Note that the controlling document header includes some references to the originating FI document.</p>
 <h2>Controlling document - line item (COEP)</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Info. from invoice</th>
-<th style="text-align:left">SAP field</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Controlling area</td>
-<td style="text-align:left">TKA01 / T001</td>
-<td style="text-align:left">COBK-KOKRS</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Document number</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_BELNR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Posting row</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_BUZEI</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Period</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_PERIO</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Total value in transaction currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">WTGBTR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Total value in object currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">WOGBTR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Total value in controlling area currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">WKGBTR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Fiscal year</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GJAHR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Version</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">VERSN</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Cost element</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">KSTAR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Source object</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">KOSTL</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Profit center</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">PRCTR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Transaction Currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">TWAER</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Posting row of reference document</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">CO_REFBZ</td>
-</tr>
-</tbody>
-</table>
-<p>Note that rather than company code, the controlling tables contain controlling area. Controlling is structured by controlling area. If we want to compare management costs across different parts of our business we should make sure they are in the same controlling areas.</p>
-<p><strong>How FI and CO work</strong></p>
-<p>In this example our accounting document posts to an expense account with a cost centre so two documents are created:</p>
+<p><img src="../assets/images/blog/sap-data/COEP.jpg" alt="FB60"></p>
+<p>Note that rather than company code, the controlling tables contain a controlling area. Controlling is structured by controlling areas. If we want to compare management costs across different parts of our business, we should make sure they are in the same controlling areas.</p>
+<h3>How FI and CO work</h3>
+<p>In this example, our accounting document posts to an expense account with a cost centre, so two documents are created:</p>
 <ul>
 <li>An accounting document
 <ul>
@@ -753,15 +363,15 @@
 <p>Why does this split exist? Why isn't everything all in one document?</p>
 <p>The design of finance in R/3 was to have a split between financial accounting and management accounting. There are various ways to look at why it's done like this, two that stand out are:</p>
 <ul>
-<li>Hardware and software limitations required data to be split up across multiple small tables</li>
+<li>Hardware and software limitations required the data to be split up across multiple small tables</li>
 <li>Auditability of financial information is improved if any management 'manipulation' is done separately</li>
 </ul>
 <p>Consider the example of a management allocation.</p>
-<p>Assume our £10,000 consultancy service was delivered over 10 days with 2 days spent with individual functions. From a financial accounting perspective all we need to record is:</p>
+<p>Assume our £10,000 consultancy service was delivered over 10 days, with 2 days spent with individual functions. From a financial accounting perspective, all we need to record is:</p>
 <ul>
 <li>£10,000 spent on consultancy</li>
 </ul>
-<p>However from a management perspective we may want to record:</p>
+<p>However, from a management perspective, we may want to record:</p>
 <ul>
 <li>£2,000 spent on consultancy by the IT department</li>
 <li>£2,000 spent on consultancy by the logistics department</li>
@@ -769,145 +379,40 @@
 <li>£2,000 spent on consultancy by the marketing department</li>
 <li>£2,000 spent on consultancy by the facilities department</li>
 </ul>
-<p>To keep financial accounting as efficient as possible we can post £10,000 to a simple 'overheads' cost center. We can then distribute the costs in CO to the five functions without affecting the original posting.</p>
+<p>To keep financial accounting as efficient as possible, we can post £10,000 to a simple 'overheads' cost center. We can then distribute the costs in CO to the five functions without affecting the original posting.</p>
 <p>This works because CO allows you to make postings within CO that don't affect FI. These are known as secondary postings.</p>
-<p>When we posted to a cost centre with an account in FI we had to activate that account as a primary cost element. To post to an account in CO only we need to activate it as a secondary cost element.</p>
-<p>Many of the financial reports in R/3 allow us to make selections on whether we want to see only primary postings or whether we want to see secondary postings. Using that logic we could view the above example as either just £10,000 or we could view it split over the five areas.</p>
-<p>This brings use to the topic of reconciliation ledger. Due to this ability to post to FI and CO separately SAP R/3 has a process and set of tables to reconcile FI and CO. These will be noted later in the table diagrams.</p>
+<p>When we posted to a cost centre with an account in FI, we had to activate that account as a primary cost element. To post to an account in CO only, we need to activate it as a secondary cost element.</p>
+<p>Many of the financial reports in R/3 allow us to make selections on whether we want to see only primary postings or whether we want to see secondary postings. Using that logic, we could view the above example as either just £10,000 or we could view it split over the five areas.</p>
+<p>This brings us to the topic of reconciliation ledger. Due to this ability to post to FI and CO separately, SAP R/3 has a process and set of tables to reconcile FI and CO. These will be noted later in the table diagrams.</p>
 <h2>Enterprise controlling - profit center accounting document (GLPCA)</h2>
 <p>Time to introduce a potential third document!</p>
 <p>R/3 has an option to activate profit center accounting.</p>
-<p>Profit centers are used to collect revenue and costs. They are orientated towards calculating and reporting profit. Profit centers are generally created by area of profit responsibility. This will vary depending on the organisation, but typically it will often represent a set of products or a brand.</p>
-<p>As profit centers collect costs we add them to overhead cost centres to capture those costs. This means that with PCA active if we post to a cost centre we also post to a profit centre which creates and additional document.</p>
-<p>This time there is no header / line items, just one main table GLPCA</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Info. from invoice</th>
-<th style="text-align:left">SAP field</th>
-<th style="text-align:left">SAP data referenced</th>
-<th style="text-align:left">SAP table updated<br>(table-field)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Record number</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-GU-RECID</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td style="text-align:left">Ledger</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-RLDNR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Record type</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-RRCTY</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Version</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-RVERS_PCA</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Fiscal year</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-GJAHR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Currency key</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-RTCUR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Debit / credit indicator</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-SHKZG</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Posting period</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-POPER</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Document type</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-DOCCT</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Accounting document number</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-BELNR_D</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Document line</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-DOCLN</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Company code</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-BUKRS</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Profit center</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-PRCTR</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Amount in transaction currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">GLPCA-VTCUR_PCA</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Amount in company code currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">VLCUR_PCA</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left">Amount in profit center local currency</td>
-<td style="text-align:left"></td>
-<td style="text-align:left">VGCUR_PCA</td>
-</tr>
-</tbody>
-</table>
+<p>Profit centers are used to collect revenue and costs. They are oriented towards calculating and reporting profit. Profit centers are generally created by area of profit responsibility. This will vary depending on the organisation, but typically it will often represent a set of products or a brand.</p>
+<p>As profit centers collect costs, we add them to overhead cost centres to capture those costs. This means that with PCA active, if we post to a cost centre, we also post to a profit centre, which creates an additional document.</p>
+<p>This time, there is no header and line items split, just one main table GLPCA</p>
+<p><img src="../assets/images/blog/sap-data/GLPCA.jpg" alt="FB60"></p>
 <h2>Document numbers</h2>
-<p>After all required information is entered in FB60 and the document is posted the tables will all be updated with document numbers. For the accounting document the number goes into the field BKPF-BELNR. This number links header and line item information on a one to many basis.</p>
+<p>After all required information is entered in FB60 and the document is posted, the tables will all be updated with document numbers. For the accounting document, the number goes into the field BKPF-BELNR. This number links header and line item information on a one-to-many basis.</p>
 <p>SAP identifies individual documents by the combination of:</p>
 <ul>
 <li>Accounting document number: BKPF-BELNR</li>
 <li>Fiscal year: BKPF-GJAHR</li>
 <li>Company code: BKPF-BUKRS</li>
 </ul>
-<p>Profit center and controlling documents are linked back to FI documents and it's easy to navigate between them.</p>
+<p>Profit center and controlling documents are linked back to FI documents, and it's easy to navigate between them.</p>
 <h2>Summary of postings</h2>
-<p><img src="/assets/images/blog/sap-data/flow.jpg" alt="posting flow via tables"></p>
+<p><img src="../assets/images/blog/sap-data/flow.jpg" alt="posting flow via tables"></p>
 <p>To summarise the process for posting an invoice and updating transactional tables:</p>
 <ol>
 <li>Accounting information is entered that updates BKPF and BSEG, there will be at least two line items</li>
-<li>If a cost center (or other cost object is used) a controlling document will also be created. This will udpate tables COBK and COEP</li>
-<li>If PCA is active a profit center document will also be created. This will updated table GLPCA</li>
-<li>During this process configuration and master data tables will be referenced both to control how the transaction processes, to add default values and to check and derive values.</li>
+<li>If a cost center (or other cost object is used), a controlling document will also be created. This will update tables COBK and COEP</li>
+<li>If PCA is active, a profit center document will also be created. This will update table GLPCA</li>
+<li>During this process, configuration and master data tables will be referenced both to control how the transaction processes, to add default values, and to check and derive values.</li>
 </ol>
+<p>We can adjust this diagram to  represent the table hierarchy better and add some of the additional finance tables for reference.</p>
+<p><img src="../assets/images/blog/sap-data/R3tables.jpg" alt="posting flow via tables"></p>
 <p>Note that the process is different for purchase order based invoices.</p>
-<p>If instead of an invoice we looked at a payment posting, this would likely post a line item to a bank account and a line item to a vendor account. There is no expense account here and hence not cost centre and no controlling document or profit center accounting document.</p>
+<p>If, instead of an invoice, we looked at a payment posting, this would likely post a line item to a bank account and a line item to a vendor account. There is no expense account, and hence no cost centre, and no controlling document or profit center accounting document.</p>
 <h2>List of noteworthy finance tables</h2>
 <p>Here is a fuller list of tables for reference:</p>
 <p>Noteworthy tables where configuration is stored</p>
@@ -963,7 +468,7 @@
 </ul>
 </li>
 </ul>
-<p>FI-AP:</p>
+<p>FInance - Accounts Payable (FI-AP) tables:</p>
 <ul>
 <li>Master data
 <ul>
@@ -980,7 +485,7 @@
 </ul>
 </li>
 </ul>
-<p>FI-AA</p>
+<p>FInance - Asset Accounting (FI-AA)</p>
 <ul>
 <li>Master data
 <ul>
@@ -1037,7 +542,7 @@
 </ul>
 <p>Finance special ledger (FI-SL)</p>
 <ul>
-<li>The special ledger utilises BKPF, BSEG etc. and adds custom totals tables.</li>
+<li>The special ledger utilises BKPF, BSEG, etc., and adds custom totals tables.</li>
 <li>GLT1, GLT2, etc. typical names for custom totals tables used in FI-SL</li>
 </ul>
 <p>Finance reconciliation ledger (FI-RE)</p>
@@ -1046,15 +551,17 @@
 <li>COSS_RE: Secondary cost postings</li>
 </ul>
 <h2>Evolution from R/3 to ECC and NewGL</h2>
-<p>As R/3 evolved, SAP re-branded it to ECC (enterprise core component).</p>
-<p>The new branding represented the strategy of a 'core ERP' connected to various specialist applications. Think of ECC feeding BW, business objects, BPC etc.</p>
-<p>As part of ECC the NewGL (new general ledger) was introduced. Activation of NewGL was optional. This lead to the terms NewGL and classic GL.</p>
+<p>As R/3 evolved, SAP rebranded it to ECC (enterprise core component).</p>
+<p>I discuss this in more detail in my post on HANA and S/4HANA.</p>
+<p><a href="https://alexroan.com/posts/2020-06-03-sap-s4-hana/">SAP HANA and SAP S/4HANA - A Simple Guide</a></p>
+<p>The new branding represented the strategy of a 'core ERP' connected to various specialist applications. Think of ECC feeding BW, business objects, BPC, etc.</p>
+<p>As part of ECC, the NewGL (new general ledger) was introduced. Activation of NewGL was optional. This led to the terms NewGL and classic GL.</p>
 <p>NewGL removed a lot of complexity from FI-CO, while also providing new solutions for some challenging requirements.</p>
-<p>For context let's summarise the bniggest challenges with SAP R/3 prior to NewGL</p>
+<p>For context, let's summarise the biggest challenges with SAP R/3 before NewGL</p>
 <ul>
 <li>Multiple reporting standards / multiple valuation
 <ul>
-<li>Think of international organisation that need to report in e.g. US GAAP, IFRS, Indian GAAP</li>
+<li>Think of an international organisation that reports according to multiple standards: US GAAP, IFRS, Indian GAAP, etc.</li>
 <li>Think of organisations that may want to value things differently for different purposes. This is particularly relevant for fixed assets and other financial items.</li>
 </ul>
 </li>
@@ -1063,13 +570,13 @@
 <li>A company may want to see complete financials for a brand or location, not just a statutory legal entity.</li>
 </ul>
 </li>
-<li>The need to maintain a 'FAT' G/L (more on this later)</li>
+<li>The need to maintain a 'fat' G/L (more on this later)</li>
 </ul>
 <p>NewGL provided improved solutions to these. The main functions of NewGL were:</p>
 <ul>
 <li>Introduce multiple ledgers using <strong>leading</strong> and <strong>non-leading</strong> ledgers
 <ul>
-<li>Meets the requirement of multiple reporting standards or multiple valuations</li>
+<li>Meets the requirements of multiple reporting standards or multiple valuations</li>
 <li>Replace legacy solutions, commonly the 'accounts' approach and special ledger (FI-SL)</li>
 </ul>
 </li>
@@ -1081,7 +588,7 @@
 </li>
 <li>Introduction of <strong>functional area</strong> for cost of sales reporting
 <ul>
-<li>Cost of sales reporting focusses on classifying expenses by function)</li>
+<li>Cost of sales reporting focuses on classifying expenses by function</li>
 </ul>
 </li>
 <li>Introduction of <strong>document splitting</strong>
@@ -1090,39 +597,39 @@
 <li>The most common use case is splitting on 'profit center' or 'segment' levels</li>
 </ul>
 </li>
-<li>Add real time integration - most usefully between FI and CO
+<li>Add real-time integration - most usefully between FI and CO
 <ul>
 <li>This removed the need to use the FI/CO reconciliation ledger</li>
 </ul>
 </li>
-<li>Enable faster closing: this is really a benefit of all of the above:
+<li>Enable faster closing: this is a benefit of all of the above:
 <ul>
-<li>Elimination of special purpose ledger or reduction in number of accounts</li>
-<li>Elimination of reconciliation ledger</li>
+<li>Elimination of special-purpose ledger or reduction in the number of accounts</li>
+<li>Elimination of the reconciliation ledger</li>
 <li>Inclusion of all account assignment objects in the ledgers</li>
 </ul>
 </li>
 </ul>
-<p>As part of the NewGL solution there are various changes to the tables. Let's visualise</p>
+<p>As part of the NewGL solution, there are various changes to the tables. Let's visualise</p>
 <ul>
 <li>No longer used / retired tables in orange</li>
 <li>Enhanced tables in green</li>
 <li>New tables in blue</li>
 </ul>
-<p><img src="/assets/images/blog/sap-data/newGLtables.jpg" alt="posting flow via tables"></p>
+<p><img src="../assets/images/blog/sap-data/newGLtables.jpg" alt="posting flow via tables"></p>
 <p>Retired / no longer used tables:</p>
 <ul>
-<li>Profit center accounting tables (GLPCT, GLPCA, FLPCO): now that profit center is integrated within NewGL separate tables were no longer required</li>
+<li>Profit center accounting tables (GLPCT, GLPCA, GLPCO): now that profit center is integrated within NewGL, separate tables are no longer required</li>
 <li>GL totals tables (GLT0): replaced by NewGL totals tables</li>
-<li>Special purpose ledger (GLT1 etc.): theoretically no longer needed due to new multiple ledger functionality which utilises new tables</li>
-<li>Reconciliation ledger (COSP etc.): NewGL included real time integration between CO and FI removing the need for a periodic process and set of reconciliation tables</li>
+<li>Special purpose ledger (GLT1, etc.): theoretically no longer needed due to new multiple ledger functionality, which utilises new tables</li>
+<li>Reconciliation ledger (COSP, etc.): NewGL included real-time integration between CO and FI, removing the need for a periodic process and set of reconciliation tables</li>
 </ul>
 <p>Enhanced tables:</p>
 <ul>
 <li>Accounting tables BKPF and BSEG:
 <ul>
-<li>Addition of the new fields; functional area, segment etc.</li>
-<li>Addition of the possibility for customer defined fields</li>
+<li>Addition of the new fields: functional area, segment, etc.</li>
+<li>Addition of the possibility for customer-defined fields</li>
 </ul>
 </li>
 </ul>
@@ -1131,51 +638,53 @@
 <li>FAGLFLEXT: NewGL totals table</li>
 <li>FAGLFLEXH: NewGL header table</li>
 <li>FAGLFLEXA: NewGL line items table</li>
-<li>BSEG_ADD: Ledger specific valuation postings (for year-end / periodic parallel valuation)</li>
+<li>BSEG_ADD: Ledger-specific valuation postings (for year-end / periodic parallel valuation)</li>
 </ul>
-<p><strong>Extended field set</strong></p>
-<p>As we are discussing tables and fields it's worthwhile to discuss the set of fields available in the accounting tables.</p>
-<p>As discussed BKPF and BSEG contain the header and line item information for accounting documents. The line items in BSEG may represent vendor line items, customer line items or G/L line items. The G/L line items may relate to balance sheet or profit and loss accounts. This could represent cash, fixed assets, revenue, costs, tax etc.</p>
-<p>When we post an accounting document against a general ledger account we capture a lot of information. As discussed earlier this may include things like posting date, document type, G/L account, credit / debit, amount etc.</p>
+<h3>Extended field set</h3>
+<p>As we are discussing tables and fields, it's worthwhile to discuss the set of fields available in the accounting tables.</p>
+<p>As discussed BKPF and BSEG contain the header and line item information for accounting documents. The line items in BSEG may represent vendor line items, customer line items, or G/L line items. The G/L line items may relate to balance sheet or profit and loss accounts. This could represent cash, fixed assets, revenue, costs, tax etc.</p>
+<p>When we post an accounting document against a general ledger account, we capture a lot of information. As discussed earlier, this may include things like posting date, document type, G/L account, credit/debit, amount, etc.</p>
 <p>This set of fields is sometimes referred to as the <strong>G/L code block</strong>.</p>
-<p>When ERP was first introduced the code block was relatively small. Only a limited number of values were captured with accounting postings.</p>
-<p>Accounts are supposed to represent the nature of a financial item or activity. In the past if an organisation wanted to see more detail than the nature of an activity, they typically created multiple accounts. This is known colloquially as a &quot;Fat G/L&quot;. For example:</p>
+<p>When ERP was first introduced, the G/L code block was small. Only a limited number of values were captured with accounting postings.</p>
+<p>Accounts should represent the nature of a financial item or activity. In the past if an organisation wanted to see more detail, they typically added additional accounts. This is known colloquially as a 'fat' G/L.</p>
+<p>To illustrate:</p>
 <ul>
 <li>Account 60001001: Consulting - IT</li>
 <li>Account 60001002: Consulting - Strategy</li>
-<li>Account 60001003: Consulting - Logistics</li>
+<li>Account 60001003: Consulting - Logistics.</li>
 </ul>
-<p>Three accounts which represent an activity of one nature 'consulting service' utilised by three different functions in an organisation - IT, strategy, logistics.</p>
-<p>As we move from a &quot;Fat G/L&quot; to a &quot;Thin G/L&quot; we strip accounts back to 'nature' and use other dimensions to meet other management reporting needs. In the above example we would typically use cost centre which is designed to represent a team, department etc.</p>
+<p>In this scenario, three accounts were created. These represent a single nature 'consulting', split across three functions: IT, strategy, and logistics.</p>
+<p>As we move from a 'fat' to a 'thin' G/L, we strip accounts back to 'nature' and use other dimensions to meet management reporting needs. In the above example, we would typically use a cost centre to represent a team, department, or function.</p>
 <ul>
 <li>Account 60001001 Consulting:
 <ul>
 <li>Posted with cost centre 1001 - IT department</li>
-<li>Posted with cost centre 1002 - Head office department (assuming corporate strategy)</li>
-<li>Posted with cost centre 1003 - Logistics department</li>
+<li>Posted with cost centre 1002 - Head office department (corporate strategy)</li>
+<li>Posted with cost centre 1003 - Logistics department.</li>
 </ul>
 </li>
 </ul>
-<p>As time has progressed both financial and management reporting have added requirements for more and more dimensions. A modern finance code blocks includes many fields; multiple currencies, transaction type, business area, cost centre, profit centre, material, plant, sales org, functional area, consolidation entity etc. These and more are all in high demand for analytics programs.</p>
-<p>In the past I've worked on a few consulting engagements that involved re-design of the code block. It get's surprisingly complex when you start to consider the logic of how different values are sourced for different posting types.</p>
-<p>To re-cap NewGL was instrumental in bringing the following fields into the main ledger:</p>
+<p>Over time, both financial and management reporting have added requirements for additional dimensions. A modern finance G/L code block includes fields such as: multiple currencies, transaction type, business area, cost centre, profit centre, material, plant, sales org, functional area, consolidation entity, etc. These and more are all in high demand for analytics programs.</p>
+<p>In the past, I've worked on consulting engagements that involved redesign of the code block. It can be surprisingly complex when you consider the logic of how different values are sourced for different posting types.</p>
+<p>To recap, NewGL was instrumental in bringing the following fields into the main ledger:</p>
 <ul>
 <li>Profit center (in a more complete way)</li>
 <li>Segment (usually derived from profit center)</li>
 <li>Functional area (usually derived from cost center)</li>
-<li>Allowance for custom defined fields (via various customising steps)</li>
-<li>Ledger (as part of the ability to post to multiple ledgers)</li>
+<li>Allowance for custom-defined fields (via various customising steps)</li>
+<li>Ledger (as part of the ability to post to multiple ledgers).</li>
 </ul>
-<p>These fields can be combined with <strong>document splitting</strong> to allow for the creation of a full set of financial statements by those dimensions. This was very hard to achieve prior to NewGL.</p>
-<p>I won't go into detail on document splitting here. But in simple terms if you want to split on a field included in a GL line item entry you will split all other lines on the same basis. Let's illustrate</p>
-<p>Basic posting to two profit centers without splitting</p>
+<p>These fields can be combined with <strong>document splitting</strong> to allow for the creation of a full set of financial statements by those dimensions. This was very hard to achieve before NewGL.</p>
+<p>I won't go into detail on document splitting here. But in simple terms, if you want to split on a field included in a GL line item entry, you will split all other lines on the same basis.</p>
+<p>Let's illustrate</p>
+<p>Basic posting to two profit centers without splitting:</p>
 <ul>
 <li>Vendor: 12,000</li>
 <li>Expense account with cost centre 1 &amp; profit center 1: 5,000</li>
 <li>Expense account with cost centre 2 &amp; profit center 2: 5,000</li>
 <li>Tax: 2,000</li>
 </ul>
-<p>Posting with document splitting on profit center</p>
+<p>Posting with document splitting on a profit center basis:</p>
 <ul>
 <li>Vendor: 6,000 with profit center 1</li>
 <li>Vendor: 6,000 with profit center 2</li>
@@ -1184,54 +693,54 @@
 <li>Tax: 1,000 with profit center 1</li>
 <li>Tax: 1,000 with profit center 2</li>
 </ul>
-<p>As you can see with splitting we can now split financial information across all accounts by profit center.</p>
-<p><strong>Old accounting tables vs. new tables</strong></p>
-<p>Looking at the diagram you may wonder why accounting data is duplicated across BKPF/BSEG and FAGLFLEXA / FAGLFLEXH.</p>
-<p>The elephant in the room is that changing or removing BKPF and BSEG is near impossible.</p>
+<p>As you can see with splitting, we can now split financial information across all accounts by profit center.</p>
+<h3>Old accounting tables vs. new tables</h3>
+<p>Looking at the diagram, you may wonder why accounting data is duplicated across BKPF/BSEG and FAGLFLEXA / FAGLFLEXH.</p>
+<p>The elephant in the room is that changing or removing BKPF and BSEG is nearly impossible.</p>
 <ul>
 <li>NewGL was optional at first</li>
 <li>BKPF and BSEG are integrated into many hundreds of transactions, reports etc.</li>
 </ul>
-<p>Secondly the tables are not identical, they do serve different purposes.</p>
+<p>Secondly, the tables are not identical; they do serve different purposes.</p>
 <p>Role of BKPF/BSEG:</p>
 <ul>
-<li>Focus: Holds original FI entry data aka 'entry view'</li>
+<li>Focus: Holds original FI entry data, aka 'entry view'</li>
 <li>Primary source of truth for financial audit</li>
-<li>Captures new fields (segment, functional area, customer-fields)</li>
+<li>Captures new fields (segment, functional area, customer fields)</li>
 <li>No document splitting</li>
-<li>No ledger specific postings</li>
+<li>No ledger-specific postings</li>
 </ul>
 <p>Role of FAGLFLEXA / FAGLFLEXH:</p>
 <ul>
-<li>Focus: Ledger based reporting / management reporting</li>
+<li>Focus: Ledger-based reporting/management reporting</li>
 <li>Secondary source of truth for financial audit</li>
-<li>Captures new fields (segment, functional area, customer-fields)</li>
+<li>Captures new fields (segment, functional area, customer fields)</li>
 <li>Applies document splitting</li>
-<li>Applies ledger specific postings</li>
+<li>Applies ledger-specific postings</li>
 </ul>
-<p>Think of BKPF / BSEG as being the source of accounting truth. Think of FAGLFLEXA / FAGLFLEXH as the source for ledger-based on management based reporting.</p>
-<p>As I write this I do wish the NewGL tables were more concisely named!</p>
+<p>Think of BKPF / BSEG as being the source of accounting truth. Think of FAGLFLEXA / FAGLFLEXH as the source of either alternate ledger-based reporting or alternate management views.</p>
+<p>As I write this, I do wish the NewGL tables were more concisely named!</p>
 <h2>Evolution with 'S/4HANA'</h2>
-<p>NewGL brought a significant change to finance. However possibilities were still limited by the IT hardware and RDBMS database.</p>
-<p>I have previously written a blog post about HANA and S/4HANA which might be useful before continuing.</p>
+<p>NewGL brought a significant change to finance. However, possibilities were still limited by the IT hardware and RDBMS database.</p>
+<p>I have previously written a blog post about HANA and S/4HANA, which might be useful before continuing.</p>
 <p><a href="https://alexroan.com/posts/2020-06-03-sap-s4-hana/">SAP HANA and S/4HANA - a simple guide</a></p>
-<p>As a re-cap the HANA database allowed ERP to operate as both a transactional and analytical application, this was due to HANA's</p>
+<p>As a recap the HANA database allowed ERP to operate as both a transactional and analytical application, this was due to HANA's</p>
 <ul>
 <li>In-memory computing</li>
 <li>Columnar database</li>
 <li>Parallel processing</li>
 </ul>
-<p>ECC therefore evolved into S/4HANA; an ERP running on the HANA database.</p>
-<p>I'd like to be both honest and give credit to SAP. At it's core S/4HANA is still very much R/3. The financial transctions are similar. The processes you work through are similar. However the core is greatly improved by the NewGL and HANA changes. I do feel that SAP sometimes tries to brand S/4HANA as something completely new. That's not right, it's an evolution of R/3.</p>
-<p>The major benefit with S/4HANA is that the RDBMS constraints are gone. The design paradigm of having many tables; BKPF, BSEG, COBK, COEP, FAGLFLEXT, FAGLFLEXH, FAGLFLEXH etc. is no longer necessary.</p>
-<p>To take advantage of this SAP created the 'Universal Journal' based on the new table ACDOCA. A lot of the complexity of FI-CO is replaced with a single actuals table.</p>
-<p>Let's visualise S/4HANA the changes</p>
+<p>ECC therefore, evolved into S/4HANA, an ERP running on the HANA database.</p>
+<p>I'd like to be both honest and give credit to SAP. At its core, S/4HANA is still very much R/3. The financial transactions are similar. The processes you work through are similar. However, the core is greatly improved by the NewGL and HANA changes. I do feel that SAP sometimes tries to brand S/4HANA as something completely new. That's not right, it's an evolution of R/3.</p>
+<p>The major benefit of S/4HANA is that the RDBMS constraints are gone. The design paradigm of having many tables: BKPF, BSEG, COBK, COEP, FAGLFLEXT, FAGLFLEXH, FAGLFLEXH, etc. is no longer necessary.</p>
+<p>To take advantage of this, SAP created the 'Universal Journal' based on the new table ACDOCA. A lot of the complexity of FI-CO is replaced with a single actuals table.</p>
+<p>Let's visualise the S/4HANA changes</p>
 <ul>
 <li>Orange: no longer required or retired</li>
 <li>Blue: new</li>
 <li>Grey: tables replaced with 'compatibility views'</li>
 </ul>
-<p><img src="/assets/images/blog/sap-data/S4GLtablesChanges.jpg" alt="posting flow via tables"></p>
+<p><img src="../assets/images/blog/sap-data/S4GLtablesChanges.jpg" alt="posting flow via tables"></p>
 <ul>
 <li>
 <p>ACDOCA is introduced</p>
@@ -1239,7 +748,6 @@
 <li>Central table for all finance information</li>
 <li>FI, CO (primary and secondary postings)</li>
 <li>Stores line items, but S/4HANA can calculate totals easily on the fly</li>
-<li>Also AA, ML, CO-PA (not discussed in this article)</li>
 </ul>
 </li>
 <li>
@@ -1261,37 +769,37 @@
 </ul>
 </li>
 </ul>
-<p>Note that I have excluded planning tables for simplicity. In my experience planning is not often done in S/4HANA directly.</p>
+<p>Note that I have excluded planning tables for simplicity. In my experience, planning is not often done in S/4HANA directly.</p>
 <p>This brings us to a simplified view for S/4HANA</p>
-<p><img src="/assets/images/blog/sap-data/S4GLtables.jpg" alt="posting flow via tables"></p>
-<p>As you might imagine there are thousands of standard and customer programs that reference the old tables BSEG, GLT0, FAGFLEXA etc. so these remain in SAP, but not exactly as 'tables'. They exist as 'compatability views' which allow old programs to access the data in the historical structure of those tables.</p>
-<p><strong>What about secondary cost element postings</strong></p>
-<p>If you were paying attention you might ask about what happened to this separation between FI and CO. What if we want to make allocations in CO only for management purposes?</p>
-<p>This is managed using statistical postings. An assessment can be done on a statistical basis. A flag is used to choose whether to view financial information with or without these kind of allocations.</p>
+<p><img src="../assets/images/blog/sap-data/S4GLtables.jpg" alt="posting flow via tables"></p>
+<p>As you might imagine, there are thousands of standard and customer programs that reference the old tables BSEG, GLT0, FAGFLEXA, etc. These remain in SAP, but not exactly as 'tables'. They exist as 'compatibility views' which allow old programs to access the data in the historical structure of those tables.</p>
+<h3>What about secondary cost element postings</h3>
+<p>If you were paying attention, you might ask about what happened to this separation between FI and CO. What if we want to make allocations in CO only for management purposes?</p>
+<p>This is managed using statistical postings. An assessment can be done on a statistical basis. A flag is used to choose whether to view financial information with or without these kinds of allocations.</p>
 <h2>Core data services (CDS)</h2>
-<p>If you've read about SAP Fiori, Embedded Analytics or SAP Analytics Cloud (SAC) you may have seen the term CDS view.</p>
+<p>If you've read about SAP Fiori, Embedded Analytics, or SAP Analytics Cloud (SAC), you may have seen the term CDS view.</p>
 <p>CDS views have become a very important concept within SAP architecture.</p>
-<p><strong>From tables to views</strong></p>
-<p>In R/3 we often developed custom reports. In these reports we used ABAP (SAP's proprietary programming language) to lookup data.</p>
+<h3>From tables to views</h3>
+<p>In R/3, we often developed custom reports. In these reports, we used ABAP (SAP's proprietary programming language) to look up data.</p>
 <p>ABAP code for looking up data is quite similar to SQL. For example</p>
 <p><code>SELECT BUKRS from BSEG</code>
 (select company code from table BSEG)</p>
-<p><strong>Modern reporting and S/4HANA</strong></p>
-<p>With increasing focus on reporting and analytics we have come along way from the occasional custom report. ERP now needs to provide a variety of data sets for different applications.</p>
+<h3>Modern reporting and S/4HANA</h3>
+<p>With increasing focus on reporting and analytics, we have come along way from the occasional custom report. ERP now needs to provide a variety of data sets for different applications.</p>
 <p>This is where core data services come in.</p>
-<p>In IT we call CDS views 'semantic layers'. At a basic level it means that a CDS view specifics a set of data with information about that data and how it can be utilised.</p>
-<p>Rather than having to code which tables to look up and how to join them a developer can now refer to a CDS view.</p>
-<p>One of the great things about CDS views are that if a standard one doesn't quite fit your need you can just put a new view on top of it and make adjustments.</p>
+<p>In IT, we call CDS views 'semantic layers'. At a basic level, it means that a CDS view specifies a set of data with information about that data and how it can be utilised.</p>
+<p>Rather than having to code which tables to look up and how to join them, a developer can now refer to a CDS view.</p>
+<p>One of the great things about CDS views is that if a standard one doesn't quite fit your need, you can just put a new view on top of it and make adjustments.</p>
 <p>Which brings me to layers. CDS views work in layers. Often you have:</p>
 <ul>
-<li>A top level 'consumption layer' designed to present data to an app</li>
+<li>A top-level 'consumption layer' designed to present data to an app</li>
 <li>Intermediate views</li>
-<li>Bottom level views that get data from tables.</li>
+<li>Bottom-level views that get data from tables.</li>
 </ul>
-<p>The layering of the views gets complicated. I was looking at a commitment report CDS view in SAP and I think it had about 10 layers accessing various accounting and purchasing tables at different points.</p>
-<p>However, this ability to build in layers does make things easier for developers especially when it comes to re-usability.</p>
-<p>In terms of application runtime the S/4HANA simply flattens all the CDS layers down into a single set of lookup statements from the database tables.</p>
-<p>In terms of examples some common CDS views are:</p>
+<p>The layering of the views gets complicated. I was looking at a commitment report CDS view in SAP, and I think it had about 10 layers accessing various accounting and purchasing tables at different points.</p>
+<p>However, this ability to build in layers does make things easier for developers, especially when it comes to re-usability.</p>
+<p>In terms of application runtime, S/4HANA simply flattens all the CDS layers down into a single set of lookup statements from the database tables. There is no added effort from the system to work with multiple layers.</p>
+<p>In terms of examples, some common CDS views are:</p>
 <ul>
 <li>I_GLAccountLineItemCube
 <ul>
@@ -1302,7 +810,7 @@
 <li>I_GLAccountBalanceCube
 <ul>
 <li>Main cube for GL balances</li>
-<li>Actually derives from the line items cube</li>
+<li>Derives from the line items cube</li>
 </ul>
 </li>
 <li>I_ActualJournalEntryItem
@@ -1311,21 +819,30 @@
 </ul>
 </li>
 </ul>
-<p>These start with 'I' indicating they should be used as a basis for other views.</p>
-<p>As an example of a view ready to be used, we have for example 'C_GLLineItemRawData' which is a 'C' or consumption view that is designed to provide raw data for anlaytics. This is fed by I_GLAccountLineItemCube.</p>
+<p>These start with 'I', indicating they should be used as a basis for other views.</p>
+<p>As an example of a view ready to be used, we have, for example, 'C_GLLineItemRawData', which is a 'C' or consumption view that is designed to provide raw data for analytics. This is fed by I_GLAccountLineItemCube.</p>
 <h2>Accessing S/4HANA financial data</h2>
 <p>One of the practical points of understanding the financial data model in S/4HANA is preparing and accessing data for external usage:</p>
 <ul>
 <li>Sending data to analytics</li>
-<li>Sending data to consoliation</li>
+<li>Sending data to financial consolidation systems</li>
 <li>Extracting data for audit</li>
 <li>Extracting data for systems upgrade</li>
 </ul>
-<p>Within S/4HANA the aforementioned CDS views can be used to access ACDOCA. The current recommended integration service is SAPs OData service.</p>
-<p>Alternatively ABAP can still be used with Select statements to access ACDOCA.</p>
-<p>And there are also standard data extractors for BW, Data Warehouse Cloud, DataSphere.</p>
+<p>Within S/4HANA, the aforementioned CDS views can be used to access ACDOCA. The current recommended integration service is SAP's OData service.</p>
+<p>Alternatively, ABAP can still be used with Select statements to access ACDOCA.</p>
+<p>And there are also standard data extractors for BW, Data Warehouse Cloud, and DataSphere.</p>
 <h2>Final words</h2>
-<p>Hopefully this provides some useful context around tables. I realise we very lightly touched on some functional topics without detail explanations. Please comment if there are any topics you'd be interested to read about.</p>
+<p>Hopefully, this provides some useful context around tables. I realise we very lightly touched on some functional topics without detailed explanations. Let me know if you have questions.</p>
+<p>Please also feel free to comment on topics of interest for my next post.</p>
+<p>You may find other posts of interest on my website:</p>
+<p>https://alexroan.com/filter/posts/</p>
+<p>Finance systems-related posts include:</p>
+<ul>
+<li>SAP HANA and S/4HANA a simple guide</li>
+<li>The chart of accounts - concept and design</li>
+<li>Improving the record-to-report process.</li>
+</ul>
 
 
       <div class="comments flow">

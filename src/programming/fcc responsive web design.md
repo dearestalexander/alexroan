@@ -1,5 +1,6 @@
 ---
-title: freeCodeCamp Responsive Web Design
+title: freeCodeCamp 
+subtitle: Responsive Web Design
 author: Alex Roan
 date: 2024-02-16
 tags: ["programming"]

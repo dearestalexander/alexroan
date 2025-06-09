@@ -4,20 +4,34 @@ titletwo: ~ by Alex Roan
 layout: 'static-page-layout.njk'
 ---
 
-<h2>Guestbook</h2>
+<h2 class="more-heading">Programming</h2>
 
-</p>Thank you for visiting my webpage, feel free to say hello, leave a comment, feedback or ask a question:</p>
+<ul class="more-ul" role="list">
+  {%- for programming in collections.programming | reverse -%}
+  <li class="more-grid">
+    <article class="more-card" aria-labelledby="{{programming.data.title}}">
+      <div class="more-card-left flow">
+        <h2>{{ programming.data.title }}</h2> 
+        <h3>{{ programming.data.subtitle }}</h3>
+        <p>{{ programming.data.description }}</p>
+        <p class="card__attribution"><span class="card__author">by {{ programming.data.author }}</span><span>{{ programming.data.date | postDate }}</span></p>
+      </div>
+      <a class="more-card-right" href="{{ programming.url }}">
+        <img src="{{ programming.data.image}}" alt="{{ programming.data.imageAlt }}" />
+      </a>
+    </article>
+  </li>
+  {%- endfor -%}
+</ul>
 
-<div id="cusdis_thread"
-     data-host="https://cusdis.com"
-     data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
-     data-page-id="{{ page.fileSlug }}"
-     data-page-url="https://your-live-site.com{{ page.url }}"
-     data-page-title="{{ title }}"
-     data-max-height="none"> <!-- Prevent scroll and allow full height -->
-</div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<h2 class="more-heading">Classic cars</h2>
 
-<h2>Programming & front end design</h2>
+Under construction...  will be updated soon...  (I was last here 09/06/25)
 
-<p>I've been doing a little frontend web design in my free time. Here is a page with a few <a href="{{ '/more/programming/' | url }}">designs.</a></p>
+<h2 class="more-heading">Teching English as a foreign language</h2>
+
+Under construction... will be updated soon..  (I was last here 09/06/25)
+
+<h2 class="more-heading">Photography</h2>
+
+Under construction... will be updated soon..  (I was last here 09/06/25)

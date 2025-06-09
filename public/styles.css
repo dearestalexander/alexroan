@@ -496,9 +496,54 @@ nav > ul {
 ------ EXPERIENCE PAGE -------
 =============================*/
 
+/*==================
+------  MORE -------
+==================*/
+
+.single-post > .more-ul {
+  padding-left: 0;
+}
+
+.more-heading {
+  color: white;
+  width: max-content;
+  background: black;
+  padding: 0.5rem 1rem;
+  transform:skew(-5deg);
+}
+
+.more-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s);
+}
+
+.more-card {
+  display:grid;
+  grid-template-columns: 30ch 25ch;
+  gap: 5ch;
+  border: 1px solid var(--color-grey);
+  padding: 1rem;
+  margin: 0.5rem auto;
+}
+
+.more-card .card__author {
+  background-color: black;
+  color: white;
+}
+
+.more-card .card__attribution {
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.more-card span {
+  display: inline-block;
+  padding: 0.5rem;
+}
 
 /*=============================
------- PROGRAMMING PAGE -------
+------  PAGE -------
 ==============================*/
 .main--programming {
   display: flex;
@@ -509,38 +554,14 @@ nav > ul {
   padding: 1rem;
 }
 
-.grid--programming {
-  display: grid;
-  grid-template-columns: 40ch 40ch;
-  gap: var(--space-m);
-}
-
-.card--programming {
-  width: min(40ch, 90svw);
-  border: 3px solid var(--color-grey);
-  padding: 1rem;
-  margin: 0 auto;
-}
-
 .card--programming p {
   font-size: 1rem;
   line-height: 1.4;
 }
 
-.card--programming .card__attribution {
-  display: inline-block;
-  border: 1px solid black;
-}
 
-.card--programming span {
-  display: inline-block;
-  padding: 0.5rem;
-}
 
-.card--programming .card__author {
-  background-color: black;
-  color: white;
-}
+
 
 
 /*===================

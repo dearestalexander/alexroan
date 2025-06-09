@@ -1,5 +1,6 @@
 ---
-title: freeCodeCamp JavaScript Algorithms and Data Structures
+title: freeCodeCamp 
+subtitle: JavaScript Algorithms and Data Structures
 author: Alex Roan
 date: 2024-08-22
 tags: ["programming"]
