@@ -66,15 +66,6 @@ layout: 'base-layout.njk'
 <!-- featured posts, from 'posts' markdown filter based on tag 'featured' -->
 <section class="region__featured">
   <h1>Featured posts</h1>
-  <div class="region__featured__spotlight flow">
-    <h2>Spotlight: The leadership-project team gap</h2>
-    <p>I recently had a conversation about an organisation struggling with business and IT misalignment. IT were reporting a key project was delayed, but still underbudget.</p>
-    <p>The project objective was the in-house development of a new ERP system. This in itself is an unusual approach in 2025 when most organisations opt for 'off the shelf' applications, often delivered on a 'software as a service' basis.</p>
-    <p>In situations like this, business leaders may lack to the knowledge and experience to understand or challenge IT. Similarily in some situations IT may lack the ability to challenge business requirements.</p>
-    <p>Clear communication between leadership and project teams is essential -  especially regarding objectives, benefits, scope and execution status. I explore this topic in more detail in my latest article.</p>
-    <a href="https://alexroan.com/posts/2025-03-14-strategy-project/" target="_blank"><img src="{{ '/assets/images/blog/strategy-project/strategy-project_0.jpg' | url }}" alt="diagram showing client names" loading="lazy"></a>
-  </div>
-  <h2>Other featured posts</h2>
   <ul role="list" class="blog-grid">
     {%- for featured in collections.featured | reverse -%}
     <li class="flow blog-card">
@@ -90,6 +81,7 @@ layout: 'base-layout.njk'
   </ul>
 </section>
 
+<!--
 <section class="region__cta">
   <h1>Connect</h1>
   <div>
@@ -111,3 +103,4 @@ layout: 'base-layout.njk'
     <button type="submit">Send</button>
   </form>
 </section>
+-->

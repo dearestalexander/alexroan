@@ -2,7 +2,7 @@
 title: Operations assessment
 author: Alex Roan
 date: 2024-07-01
-tags: ["post", "article", "operations", "featured"]
+tags: ["post", "article", "operations"]
 image: /assets/images/blog/ops-asses__cover.jpg
 imageAlt: A cover illustration
 description: Business transformation is a process where an organisation changes from an existing to a target operational state. Organisations spend a significant amount of effort identifying these improved target states. Corporate strategy drives this at macro level while team, department, function and business area managers are responsible for the execution at a lower level.

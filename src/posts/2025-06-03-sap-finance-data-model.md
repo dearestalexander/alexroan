@@ -24,7 +24,7 @@ In this article, I'll look at the evolution of the finance data model from SAP R
 
 SAP R/3 is an application built on a '3-tier architecture'.
 
-![SAP finance 3-tier architecture](../assets/images/blog/sap-data/architecture.jpg)
+![SAP finance 3-tier architecture](/assets/images/blog/sap-data/architecture.jpg)
 
 This architecture is commonly used for systems with multiple users and large data sets.
 
@@ -75,7 +75,7 @@ The classic list of modules includes:
 
 SAP’s classic illustration of the modules:
 
-![SAP finance 3-tier architecture](../assets/images/blog/sap-data/modules.jpg)
+![SAP finance 3-tier architecture](/assets/images/blog/sap-data/modules.jpg)
 
 Each of these modules has its own set of tables and programs.
 
@@ -131,7 +131,7 @@ Systems make more sense when we view them from a business process perspective. W
 
 Below is a 'mock' invoice I put together for this discussion:
 
-![sample invoice](../assets/images/blog/sap-data/invoice.jpg)
+![sample invoice](/assets/images/blog/sap-data/invoice.jpg)
 
 Invoice standards vary by geography but generally include items like those shown.
 
@@ -190,7 +190,7 @@ The example invoice translates to one document with three line items.
 
 One of the classic transactions in SAP R/3 to enter an invoice is FB60. We use this transaction to 'post' the invoice:
 
-![FB60](../assets/images/blog/sap-data/FB60.jpg)
+![FB60](/assets/images/blog/sap-data/FB60.jpg)
 
 A common structure for documents in business systems is to break the document down into a header section and a line items section.
 
@@ -313,7 +313,7 @@ Only once all fields are entered and validated can the document be 'posted'. At 
 
 Let's look at a selection of key fields from the accounting header table (BKPF).
 
-![FB60](../assets/images/blog/sap-data/BKPF.jpg)
+![FB60](/assets/images/blog/sap-data/BKPF.jpg)
 
 All of this information is relevant to the entire invoice (all line items). Note that this is not a complete list of fields, just a sample of fields of interest.
 
@@ -323,7 +323,7 @@ BKPF will also include the accounting document number, but only when posted.
 
 The first line item to enter is the vendor line item. As transaction FB60 is being used, SAP can default various values for this line item, such as account type, debit/credit, posting key, etc. It also knows that certain vendor-line related items, such as payment terms and payment method, are required.
 
-![FB60](../assets/images/blog/sap-data/BSEG.jpg)
+![FB60](/assets/images/blog/sap-data/BSEG.jpg)
 
 When creating invoices, it's helpful to include clear information to ensure the AP clerk can easily post them. This may include adding things like:
 
@@ -341,7 +341,7 @@ In some cases, an invoice may total up various sub-services and may need to be s
 
 The AP clerk will search for the right expense account based on the description of the goods or services on the invoice.
 
-![FB60](../assets/images/blog/sap-data/BSEG2.jpg)
+![FB60](/assets/images/blog/sap-data/BSEG2.jpg)
 
 (This is just a subset of fields.)
 
@@ -363,13 +363,13 @@ When an account is activated as a cost element and a line item is entered to it 
 
 As with accounting documents, controlling documents are split into header data and line item data.
 
-![FB60](../assets/images/blog/sap-data/COBK.jpg)
+![FB60](/assets/images/blog/sap-data/COBK.jpg)
 
 Note that the controlling document header includes some references to the originating FI document.
 
 ## Controlling document - line item (COEP)
 
-![FB60](../assets/images/blog/sap-data/COEP.jpg)
+![FB60](/assets/images/blog/sap-data/COEP.jpg)
 
 Note that rather than company code, the controlling tables contain a controlling area. Controlling is structured by controlling areas. If we want to compare management costs across different parts of our business, we should make sure they are in the same controlling areas.
 
@@ -427,7 +427,7 @@ As profit centers collect costs, we add them to overhead cost centres to capture
 
 This time, there is no header and line items split, just one main table GLPCA
 
-![FB60](../assets/images/blog/sap-data/GLPCA.jpg)
+![FB60](/assets/images/blog/sap-data/GLPCA.jpg)
 
 ## Document numbers
 
@@ -443,7 +443,7 @@ Profit center and controlling documents are linked back to FI documents, and it'
 
 ## Summary of postings
 
-![posting flow via tables](../assets/images/blog/sap-data/flow.jpg)
+![posting flow via tables](/assets/images/blog/sap-data/flow.jpg)
 
 To summarise the process for posting an invoice and updating transactional tables:
 
@@ -454,7 +454,7 @@ To summarise the process for posting an invoice and updating transactional table
 
 We can adjust this diagram to  represent the table hierarchy better and add some of the additional finance tables for reference.
 
-![posting flow via tables](../assets/images/blog/sap-data/R3tables.jpg)
+![posting flow via tables](/assets/images/blog/sap-data/R3tables.jpg)
 
 Note that the process is different for purchase order based invoices.
 
@@ -609,7 +609,7 @@ As part of the NewGL solution, there are various changes to the tables. Let's vi
 - Enhanced tables in green
 - New tables in blue
 
-![posting flow via tables](../assets/images/blog/sap-data/newGLtables.jpg)
+![posting flow via tables](/assets/images/blog/sap-data/newGLtables.jpg)
 
 Retired / no longer used tables:
 
@@ -755,7 +755,7 @@ Let's visualise the S/4HANA changes
 - Blue: new
 - Grey: tables replaced with 'compatibility views'
 
-![posting flow via tables](../assets/images/blog/sap-data/S4GLtablesChanges.jpg)
+![posting flow via tables](/assets/images/blog/sap-data/S4GLtablesChanges.jpg)
 
 - ACDOCA is introduced
   - Central table for all finance information
@@ -776,7 +776,7 @@ Note that I have excluded planning tables for simplicity. In my experience, plan
 
 This brings us to a simplified view for S/4HANA
 
-![posting flow via tables](../assets/images/blog/sap-data/S4GLtables.jpg)
+![posting flow via tables](/assets/images/blog/sap-data/S4GLtables.jpg)
 
 As you might imagine, there are thousands of standard and customer programs that reference the old tables BSEG, GLT0, FAGFLEXA, etc. These remain in SAP, but not exactly as 'tables'. They exist as 'compatibility views' which allow old programs to access the data in the historical structure of those tables.
 

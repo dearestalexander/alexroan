@@ -42,7 +42,7 @@
 <p>In this article, I'll look at the evolution of the finance data model from SAP R/3 to SAP S/4HANA. The focus will be on several important tables.</p>
 <h2>SAP R/3 Architecture</h2>
 <p>SAP R/3 is an application built on a '3-tier architecture'.</p>
-<p><img src="../assets/images/blog/sap-data/architecture.jpg" alt="SAP finance 3-tier architecture"></p>
+<p><img src="/assets/images/blog/sap-data/architecture.jpg" alt="SAP finance 3-tier architecture"></p>
 <p>This architecture is commonly used for systems with multiple users and large data sets.</p>
 <p>The user interface</p>
 <ul>
@@ -84,7 +84,7 @@
 <li>IS - industry solutions</li>
 </ul>
 <p>SAP’s classic illustration of the modules:</p>
-<p><img src="../assets/images/blog/sap-data/modules.jpg" alt="SAP finance 3-tier architecture"></p>
+<p><img src="/assets/images/blog/sap-data/modules.jpg" alt="SAP finance 3-tier architecture"></p>
 <p>Each of these modules has its own set of tables and programs.</p>
 <p>The modules that we are most interested in for finance and will cover in this article are:</p>
 <ul>
@@ -130,7 +130,7 @@
 <h2>A business activity</h2>
 <p>Systems make more sense when we view them from a business process perspective. We can look at the SAP finance tables through the lens of a finance activity, such as posting an invoice.</p>
 <p>Below is a 'mock' invoice I put together for this discussion:</p>
-<p><img src="../assets/images/blog/sap-data/invoice.jpg" alt="sample invoice"></p>
+<p><img src="/assets/images/blog/sap-data/invoice.jpg" alt="sample invoice"></p>
 <p>Invoice standards vary by geography but generally include items like those shown.</p>
 <p>Typical invoice fields:</p>
 <ul>
@@ -181,7 +181,7 @@
 <h2>Finance document posting in SAP</h2>
 <p>The example invoice translates to one document with three line items.</p>
 <p>One of the classic transactions in SAP R/3 to enter an invoice is FB60. We use this transaction to 'post' the invoice:</p>
-<p><img src="../assets/images/blog/sap-data/FB60.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/FB60.jpg" alt="FB60"></p>
 <p>A common structure for documents in business systems is to break the document down into a header section and a line items section.</p>
 <p>In our invoicing scenario:</p>
 <p>Invoice header:</p>
@@ -311,12 +311,12 @@
 <p>As we enter values in fields in FB60, SAP will validate them. Validations range from 'format' to 'value' checks. For example, a format check would apply to a date field, while a value check may apply to something like the vendor field.</p>
 <p>Only once all fields are entered and validated can the document be 'posted'. At this point, SAP will assign a document number.</p>
 <p>Let's look at a selection of key fields from the accounting header table (BKPF).</p>
-<p><img src="../assets/images/blog/sap-data/BKPF.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/BKPF.jpg" alt="FB60"></p>
 <p>All of this information is relevant to the entire invoice (all line items). Note that this is not a complete list of fields, just a sample of fields of interest.</p>
 <p>BKPF will also include the accounting document number, but only when posted.</p>
 <h2>Accounting document - vendor line item (BSEG)</h2>
 <p>The first line item to enter is the vendor line item. As transaction FB60 is being used, SAP can default various values for this line item, such as account type, debit/credit, posting key, etc. It also knows that certain vendor-line related items, such as payment terms and payment method, are required.</p>
-<p><img src="../assets/images/blog/sap-data/BSEG.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/BSEG.jpg" alt="FB60"></p>
 <p>When creating invoices, it's helpful to include clear information to ensure the AP clerk can easily post them. This may include adding things like:</p>
 <ul>
 <li>The customer's reference number for your account (i.e., their vendor number)</li>
@@ -328,7 +328,7 @@
 <p>The example invoice is for consultancy services. In this case, it's an overhead cost that is charged to a single expense account.</p>
 <p>In some cases, an invoice may total up various sub-services and may need to be split across multiple accounts.</p>
 <p>The AP clerk will search for the right expense account based on the description of the goods or services on the invoice.</p>
-<p><img src="../assets/images/blog/sap-data/BSEG2.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/BSEG2.jpg" alt="FB60"></p>
 <p>(This is just a subset of fields.)</p>
 <p>In this line item, an entry of £10,000 is recorded on the consulting expense account.</p>
 <p>But what if we want to analyse and report on the department that was the source of the cost? Was it £10,000 spent by marketing, or IT, or £5,000 each?</p>
@@ -339,10 +339,10 @@
 <p>When an account is activated as a cost element and a line item is entered to it with a cost center, this leads to the creation of a controlling document.</p>
 <h2>Controlling document - header (COBK)</h2>
 <p>As with accounting documents, controlling documents are split into header data and line item data.</p>
-<p><img src="../assets/images/blog/sap-data/COBK.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/COBK.jpg" alt="FB60"></p>
 <p>Note that the controlling document header includes some references to the originating FI document.</p>
 <h2>Controlling document - line item (COEP)</h2>
-<p><img src="../assets/images/blog/sap-data/COEP.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/COEP.jpg" alt="FB60"></p>
 <p>Note that rather than company code, the controlling tables contain a controlling area. Controlling is structured by controlling areas. If we want to compare management costs across different parts of our business, we should make sure they are in the same controlling areas.</p>
 <h3>How FI and CO work</h3>
 <p>In this example, our accounting document posts to an expense account with a cost centre, so two documents are created:</p>
@@ -390,7 +390,7 @@
 <p>Profit centers are used to collect revenue and costs. They are oriented towards calculating and reporting profit. Profit centers are generally created by area of profit responsibility. This will vary depending on the organisation, but typically it will often represent a set of products or a brand.</p>
 <p>As profit centers collect costs, we add them to overhead cost centres to capture those costs. This means that with PCA active, if we post to a cost centre, we also post to a profit centre, which creates an additional document.</p>
 <p>This time, there is no header and line items split, just one main table GLPCA</p>
-<p><img src="../assets/images/blog/sap-data/GLPCA.jpg" alt="FB60"></p>
+<p><img src="/assets/images/blog/sap-data/GLPCA.jpg" alt="FB60"></p>
 <h2>Document numbers</h2>
 <p>After all required information is entered in FB60 and the document is posted, the tables will all be updated with document numbers. For the accounting document, the number goes into the field BKPF-BELNR. This number links header and line item information on a one-to-many basis.</p>
 <p>SAP identifies individual documents by the combination of:</p>
@@ -401,7 +401,7 @@
 </ul>
 <p>Profit center and controlling documents are linked back to FI documents, and it's easy to navigate between them.</p>
 <h2>Summary of postings</h2>
-<p><img src="../assets/images/blog/sap-data/flow.jpg" alt="posting flow via tables"></p>
+<p><img src="/assets/images/blog/sap-data/flow.jpg" alt="posting flow via tables"></p>
 <p>To summarise the process for posting an invoice and updating transactional tables:</p>
 <ol>
 <li>Accounting information is entered that updates BKPF and BSEG, there will be at least two line items</li>
@@ -410,7 +410,7 @@
 <li>During this process, configuration and master data tables will be referenced both to control how the transaction processes, to add default values, and to check and derive values.</li>
 </ol>
 <p>We can adjust this diagram to  represent the table hierarchy better and add some of the additional finance tables for reference.</p>
-<p><img src="../assets/images/blog/sap-data/R3tables.jpg" alt="posting flow via tables"></p>
+<p><img src="/assets/images/blog/sap-data/R3tables.jpg" alt="posting flow via tables"></p>
 <p>Note that the process is different for purchase order based invoices.</p>
 <p>If, instead of an invoice, we looked at a payment posting, this would likely post a line item to a bank account and a line item to a vendor account. There is no expense account, and hence no cost centre, and no controlling document or profit center accounting document.</p>
 <h2>List of noteworthy finance tables</h2>
@@ -616,7 +616,7 @@
 <li>Enhanced tables in green</li>
 <li>New tables in blue</li>
 </ul>
-<p><img src="../assets/images/blog/sap-data/newGLtables.jpg" alt="posting flow via tables"></p>
+<p><img src="/assets/images/blog/sap-data/newGLtables.jpg" alt="posting flow via tables"></p>
 <p>Retired / no longer used tables:</p>
 <ul>
 <li>Profit center accounting tables (GLPCT, GLPCA, GLPCO): now that profit center is integrated within NewGL, separate tables are no longer required</li>
@@ -740,7 +740,7 @@
 <li>Blue: new</li>
 <li>Grey: tables replaced with 'compatibility views'</li>
 </ul>
-<p><img src="../assets/images/blog/sap-data/S4GLtablesChanges.jpg" alt="posting flow via tables"></p>
+<p><img src="/assets/images/blog/sap-data/S4GLtablesChanges.jpg" alt="posting flow via tables"></p>
 <ul>
 <li>
 <p>ACDOCA is introduced</p>
@@ -771,7 +771,7 @@
 </ul>
 <p>Note that I have excluded planning tables for simplicity. In my experience, planning is not often done in S/4HANA directly.</p>
 <p>This brings us to a simplified view for S/4HANA</p>
-<p><img src="../assets/images/blog/sap-data/S4GLtables.jpg" alt="posting flow via tables"></p>
+<p><img src="/assets/images/blog/sap-data/S4GLtables.jpg" alt="posting flow via tables"></p>
 <p>As you might imagine, there are thousands of standard and customer programs that reference the old tables BSEG, GLT0, FAGFLEXA, etc. These remain in SAP, but not exactly as 'tables'. They exist as 'compatibility views' which allow old programs to access the data in the historical structure of those tables.</p>
 <h3>What about secondary cost element postings</h3>
 <p>If you were paying attention, you might ask about what happened to this separation between FI and CO. What if we want to make allocations in CO only for management purposes?</p>
