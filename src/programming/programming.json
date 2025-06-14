@@ -1,4 +1,4 @@
 {
   "tags": "programming",
-  "layout": "post-layout-programming.njk"
+  "layout": "template-post.njk"
 }

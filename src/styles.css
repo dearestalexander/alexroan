@@ -236,6 +236,7 @@ table, th, td {
 /*===================
 ------ NAV BAR ------
 ===================*/
+
 nav > ul {
   gap: var(--space-2xs);
   margin: var(--space-s) 0 var(--space-s) 2vw;
@@ -272,21 +273,22 @@ nav > ul {
 }
 
 .region__sidebar {
-  flex-basis: 20rem;
+  flex-basis: 25rem;
   flex-grow: 1;
   background-color: white;
-  padding: var(--space-m) 2vw;
+  padding: var(--space-m);
 }
 
 .region__intro {
-  color: var(black);
+  max-width: 65ch;
+  color: black;
   padding-left: 2vw;
   padding-top: var(--space-m);
   padding-bottom: var(--space-m);
 }
 
 .region__intro img {
-  max-width: 80%;
+  max-width: 90%;
   margin: auto;
   padding: 2em 0;
 }
@@ -332,19 +334,6 @@ nav > ul {
   color: black;
 }
 
-.region__featured__spotlight {
-  margin: 2rem auto;
-  max-width: 80%;
-  padding: 2rem;
-  color: black;;
-  border: 1px solid var(--color-grey);
-}
-
-.region__featured__spotlight a {
-  margin: 2rem auto;
-  display: block;
-}
-
 .blog-grid {
   display: grid;
   gap: 2vw;
@@ -367,23 +356,12 @@ nav > ul {
   color: var(--color-red);
 }
 
-.region__cta {
-  color: var(black);
-  padding-left: 2vw;
-  padding-top: var(--space-m);
-  padding-bottom: var(--space-m);
-}
-
-.region__cta form {
-  margin: 2em 0;
-}
-
-.region__cta label {
-  display: block;
-}
-
 .region__sidebar {
   max-width: 24rem;
+}
+
+.region__sidebar img {
+  max-width: 16rem;
 }
 
 .region__sidebar h1 {
@@ -407,9 +385,11 @@ nav > ul {
   padding-left: 0.5em;
 }
 
-/*=============================
------- CONTENT PAGE -------
-=============================*/
+
+/*==================
+------ BLOGROLL -------
+=================== */
+
 .region__posts {
   background-color: var(--color-white);
   padding-left: 2vw;
@@ -429,6 +409,7 @@ nav > ul {
 /*=============================
 ------ SINGLE POST PAGE -------
 =============================*/
+
 .single-post {
   max-width: min(65ch, 90vw);
   margin: auto;
@@ -477,52 +458,38 @@ nav > ul {
   width: 100% !important; /* Ensure full width */
 }
 
-/*==========================
------- SERVICES PAGE -------
-===========================*/
-.services__grid {
-  display: grid;
-  grid-template-columns: 0.4fr 0.6fr;
-  gap: var(--space-m);
-  grid-auto-rows: auto;
-  border: 1px solid var(--color-grey);
-  padding: var(--space-m);
+/*==============
+------  PAGE -------
+==============*/
+
+.template-page--section {
+  max-width: min(65ch, 90vw);
+  margin: auto;
+  overflow-wrap: break-word; 
+  padding-top: 2rem;
 }
 
-.services__img {
-  align-self: start;
-  margin: 0; /* Remove any default margin */
-  display: block; /* Treat the image as a block-level element */
-}
-
-
-/*============================
------- EXPERIENCE PAGE -------
-=============================*/
-
-/*==================
-------  MORE -------
-==================*/
-
-.single-post > .more-ul {
-  padding-left: 0;
-}
-
-.more-heading {
+.template-page--section-h2 {
   color: white;
   width: max-content;
   background: black;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem 0.5rem 1rem;
   transform:skew(-5deg);
 }
 
-.more-grid {
+.template-page--section img {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.template-page--grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-s);
 }
 
-.more-card {
+.template-page--card {
   display:grid;
   grid-template-columns: 30ch 25ch;
   gap: 5ch;
@@ -531,42 +498,54 @@ nav > ul {
   margin: 0.5rem auto;
 }
 
-.more-card .card__author {
-  background-color: black;
-  color: white;
+.template-page--services-card {
+  display:grid;
+  grid-template-columns: 20ch 35ch;
+  gap: 5ch;
+  border: 1px solid var(--color-grey);
+  padding: 1rem;
+  margin: 0.5rem auto;
 }
 
-.more-card .card__attribution {
+.template-page--card-subtitle {
+  font-size: var(--step-0);
+}
+
+.template-page--card-title {
+  font-size: var(--step-1);
+}
+
+.template-page--card p {
+  font-size: var(--step-0);
+}
+
+.template-page--services-card li {
+  font-size: var(--step-1);
+}
+
+.template-page--card-attribution {
   display: inline-block;
   border: 1px solid black;
 }
 
-.more-card span {
+.template-page--card-author {
+  background-color: black;
+  color: white;
   display: inline-block;
   padding: 0.5rem;
 }
 
-/*==============
-------  PAGE -------
-==============*/
-.main--programming {
-  display: flex;
-  justify-content: center;
+.template-page--card-date {
+  padding: 0.5rem;
 }
 
-.main-article--programming h1 {
-  padding: 1rem;
+.template-page--card-img {
+  max-width: 100%;
 }
 
-.card--programming p {
-  font-size: 1rem;
-  line-height: 1.4;
+.template-page--section ul ul {
+  padding-left: 1.5rem;
 }
-
-
-
-
-
 
 /*===================
 ------ FOOTER -------
@@ -613,4 +592,41 @@ button {
 
 
 
+
+/* Old stuff
+
+/*==============
+------  PAGE -------
+==============
+.main--programming {
+  display: flex;
+  justify-content: center;
+}
+
+.main-article--programming h1 {
+  padding: 1rem;
+}
+
+.card--programming p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/*==========================
+------ SERVICES PAGE -------
+===========================
+.services__grid {
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  gap: var(--space-m);
+  grid-auto-rows: auto;
+  border: 1px solid var(--color-grey);
+  padding: var(--space-m);
+}
+
+.services__img {
+  align-self: start;
+  margin: 0; /* Remove any default margin */
+  display: block; /* Treat the image as a block-level element */
+}
 
