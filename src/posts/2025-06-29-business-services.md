@@ -1001,7 +1001,7 @@ Topics such as Brexit, Trump tariffs, etc. raise a concern around building an op
 
 Has your organisation implemented business services? Where are you in the journey? What issues have you encountered? What direction do you see business services taking?
 
-View my other articles at [alexroan.com](https:\\www.alexroan.com)
+View my other articles at [alexroan.com](https://alexroan.com)
 
 You can also download this article as a [PowerPoint](/assets/documents/GBS%20by%20Alex%20Roan.pptx)
 
