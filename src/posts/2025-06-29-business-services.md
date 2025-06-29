@@ -8,9 +8,9 @@ imageAlt:
 description:  Business Services Organisations (BSOs) and Global Business Services (GBS) emerged in the late 1990s and have since played a central role in driving standardisation, harmonisation, and automation. By consolidating operations, they’ve helped multinationals achieve consistency across regions and deliver faster, more comparable reporting. This article takes a detailed look at how business services models work, evolve, and add value.
 ---
 
-## Centralised services
-
 "A practical guide to BSOs and GBS for standardisation, automation, and value delivery."
+
+## Decentralised services
 
 A brief look into the past provides a clear rationale for the introduction of Business Services Organisation (BSOs).
 
