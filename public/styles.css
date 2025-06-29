@@ -32,10 +32,9 @@
   --color-grey: #58595B;
   --color-lightgrey: #f6f6f6;
   --color-lightyellow: #f1be32;
-/*  --font-family: "Manrope", sans-serif;
-  --font-family-alt: "EB Garamond", sans-serif; */
-  --font-family: "EB Garamond", serif;
-  --font-family-alt: "Pacifico", cursive; 
+  --font-family: "Noto Sans", sans-serif;
+  --font-family-logo: "Pacifico", cursive; 
+  --font-family-headings:  "Quattrocento Sans", sans-serif;
   --gutter: var(--space-s);
   --border-radius: var(--step-1);
   --transition-base: 250ms ease;
@@ -117,7 +116,7 @@ textarea:not([rows]) {
 body {
   color: var(--color-grey);
   background: var(--color-white);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   font-family: var(--font-family);
   letter-spacing: var(--tracking);
   margin: auto;
@@ -125,12 +124,11 @@ body {
 
 h1, h2, h3, h4 {
   letter-spacing: var(--tracking-s);
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: var(--font-family-headings);
 }
 
 h1 {
   font-size: var(--step-3);
-  /* font-family: var(--font-family-alt); */
 }
 
 h2 {
@@ -217,7 +215,7 @@ table, th, td {
   align-items: baseline;
   padding-bottom: var(--space-m);
   background-color: var(--color-lightgrey);
-  font-family: var(--font-family-alt);
+  font-family: var(--font-family-logo);
 }
 
 .header__span-one {
@@ -241,7 +239,7 @@ nav > ul {
   gap: var(--space-2xs);
   margin: var(--space-s) 0 var(--space-s) 2vw;
   flex-wrap: wrap;
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: var(--font-family-headings);
 }
 
 .btn-link {
@@ -377,7 +375,7 @@ nav > ul {
 
 .socials {
   flex-direction: column;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
 }
 
 .socials p {
