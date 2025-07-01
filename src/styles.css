@@ -341,8 +341,12 @@ nav > ul {
 .blog-card {
   max-width: min(65ch, 95%);
   padding: 1rem;
-  background-color: var(--color-lightgrey);
+  background-color: var(--color-white);
   color: black;;
+  border: 1px solid var(--color-grey);
+}
+
+.blog-card img {
   border: 1px solid var(--color-grey);
 }
 

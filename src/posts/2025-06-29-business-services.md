@@ -1,7 +1,7 @@
 ---
 title: Centralised Business Services
 author: Alexander Roan
-date: 2025-06-12
+date: 2025-06-29
 tags: ["post", "article", "finance", "featured"]
 image: /assets/images/blog/gbs/gbs-cover.jpg
 imageAlt:

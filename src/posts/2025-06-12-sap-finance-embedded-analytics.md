@@ -1,11 +1,11 @@
 ---
-title: S/4HANA finance - embedded analytics
+title: SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips
 author: Alexander Roan
 date: 2025-06-12
 tags: ["post", "article", "finance", "featured"]
 image: /assets/images/blog/embedded-analytics/embedded-analytics-cover.jpg
 imageAlt:
-description: Embedded analytics is one of the top features that is delivered with S/4HANA. The combination of the HANA DB and Fiori UX provide flexible analytical reporting on accounting transactions in real-time. 
+description: Embedded analytics in SAP S/4HANA sounds like a BW in SAP, but it's not. It's a core capability that utilises HANA, the virtual data model and Fiori to blend analytics and transactions in real time. It's part of the core S/4HANA platform. In this post, I explain the architecture, key app types, and how to approach implementation with real examples from finance.
 ---
 
 ## Introduction
@@ -509,6 +509,8 @@ Embedded analytics is made possible by:
 One piece of the puzzle which I’ve hinted at but not explained is the virtual data model, which sits between the tables and Fiori.
 
 ![Solution architecture](/assets/images/blog/embedded-analytics/solution-architecture.jpg)
+
+You can [download](/assets/images/blog/embedded-analytics/S4HANA-Embedded-Analytics-Arch.pptx) the PowerPoint version of this diagram.
 
 ### Virtual data model (VDM)
 
