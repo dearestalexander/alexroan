@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./script-sap.js"></script>
+  <title>Alex Roan | Business Partner API Demo</title>
+  <link rel="icon" type="image/png" href="./favicon_io/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-title">
+      <img class="logo" src="assets/team.png">
+      <p class="title">Employee portal: business partner search</p>
+    </div>
+    <nav class="nav">
+      <a href="/index.html">Home</a>
+    </nav>
+  </header>
+  <article class="bp-article flow">
+    <h2>Search</h2>
+    <div class="divider"></div>
+    <form id="bp-form" class="bp-search">
+      <label for="bp-inp-number">Business partner number:</label>
+      <p class="text-small">(Enter 7 digit number or leave blank to return all)</p>
+      <input id="bp-inp-number" class="bp-inp-number" name="bp" type="text" />
+      <p id="bp-error" class="bp-error"></p>
+      <p class="options">Options:</p>
+      <div>
+        <input id="bp-inp-address" value="add" type="checkbox" />
+        <label class="text-small" for="bp-inp-address" name="bp-input-address">Include address details</label>
+      </div>
+      <div>
+        <input id="bp-inp-tab" value="tab" type="checkbox" />
+        <label class="text-small" for="bp-inp-tabulate" name="bp-inp-tabulate">Show results in table</label>
+      </div>
+      <button id="js-inp-sub" type="submit">Submit</button>
+    </form>
+    <h2>Results</h2>
+    <div class="divider"></div>
+    <div id="js-bp-results" class="bp-results">      
+    </div>
+  </article>
+  <footer>
+    <p>built by <a href="https://www.alexroan.com">alexander roan</p>
+  </footer>
+</body>
+</html>
