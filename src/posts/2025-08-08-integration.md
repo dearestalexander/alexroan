@@ -1429,7 +1429,7 @@ I will summarise a few elements I used in my design.
 
 **Router**
 
-![Router](/assets/images/blog/Integration-23-A.png)
+![Router](/assets/images/blog/integration/Integration-23-A.png)
 
 - The router allows you to split the flow based on a condition.
 - This example splits the flow into 4 based on the incoming URL
@@ -1471,7 +1471,7 @@ Case 1:
 
 **Content modifier - case 2**
 
-![Content modifier](/assets/images/blog/Integration-23-B.png)
+![Content modifier](/assets/images/blog/integration/Integration-23-B.png)
 
 - In this case the content modifier gets "employee_id" from the message body
 - And assigns it to a new variable
