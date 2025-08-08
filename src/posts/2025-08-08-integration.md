@@ -45,6 +45,8 @@ This adds SAP Cloud Connector which allows an "on-premise" application to connec
 
 Let's start at the end. The completed app offers a summary view and a detailed view.
 
+Here's a short [screen recording](https://youtu.be/wNgAwEfLyX0).
+
 **Summary view**
 
 This is a screenshot from the web browser (firefox).
