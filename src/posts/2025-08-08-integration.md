@@ -1,5 +1,5 @@
 ---
-title: From Web App to S/4HANA, Build A Web App and Connect to S/4HANA with SAP Integration Suite
+title: From Web App to S/4HANA
 author: Alexander Roan
 date: 2025-08-08
 tags: ["post", "article", "technology", "featured"]
@@ -7,6 +7,8 @@ image: /assets/images/blog/integration/integration-cover.jpg
 imageAlt:
 description:  Ever wondered how to connect a custom web app to SAP S/4HANA? I recently built a working prototype using SAP Integration Suite, a frontend built with HTML/CSS/JS, and a mock server that simulates the S/4HANA Business Partner API. I’ve written up the whole flow in a detailed article. It's starts with a business-level overview and then steps through every part of the stack (Custom Web App > SAP BTP > SAP Integration Suite > SAP Cloud Connector > SAP S/4HANA).
 ---
+
+"Build A Web App and Connect to S/4HANA with SAP Integration Suite"
 
 A big part of the magic behind AI, advanced analytics, and {insert tech buzzword here} is the humble API!
 
@@ -18,22 +20,36 @@ I thought it might be fun to build a web app and see if I could successfully con
 
 A basic understanding of frontend to enterprise backend via cloud architecture  is useful for everyone; business experts, technology experts, and people experts
 
-The article is broken into three parts: an introduction to the web app, S/4HANA, and business partners; section 1: a step-by-step explanation for generalists; and section 2: detailed technical notes.
+The article is broken into three parts: an introduction, a step-by-step explanation for generalists, and my build/test notes for anyone working on something similar. The third section includes details on all the test tools, and configuration settings.
 
-## Intro: From web app to S/4HANA
+A couple of quick disclaimers:
+
+- I'm not an integration expert:
+  - I don't look at integration suite vs. other solutions
+  - I don't cover best practices, typical challenges, good use cases
+- My solution here is likely not optimal
+  - It's just a vanilla HTML, CSS, JS frontend
+
+---
+
+## Part 1: introduction
+
+### From web app to S/4HANA
 
 ![high level integration flow](/assets/images/blog/integration/integration-1.png)
 
-The rough idea is:
+The plan:
 
 - The frontend is a web page to search for data from within S/4HANA
 - The web server handles communication between the frontend and SAP Cloud
 - SAP Integration Suite will route and format the message for S/4HANA
 - S/4HANA is the source of data.
 
-We can utilise the free trial account for SAP BTP and Integration Suite. We can build the frontend and web app ourselves.
+Tools/technology:
 
-Unfortunately, we can't access S/4HANA. However, the CodeJam provides a S/4HANA mock server that mimics the behaviour of an API within S/4HANA.
+- Utilise the free trial account for SAP BTP and Integration Suite
+- Build the frontend and web app ourselves
+- We can't access S/4HANA. However, the CodeJam provides a S/4HANA mock server that mimics the behaviour of an API within S/4HANA.
 
 If we use a mock system, we will need to run it locally. So, adjusting the architecture.
 
@@ -41,11 +57,9 @@ If we use a mock system, we will need to run it locally. So, adjusting the archi
 
 This adds SAP Cloud Connector which allows an "on-premise" application to connect with SAP Cloud.
 
-## Intro: the front end
+### The front end
 
-Let's start at the end. The completed app offers a summary view and a detailed view.
-
-Here's a short [screen recording](https://youtu.be/wNgAwEfLyX0).
+The completed app offers a summary view and a detailed view. Here's a short [screen recording](https://youtu.be/wNgAwEfLyX0).
 
 **Summary view**
 
@@ -66,7 +80,7 @@ The mock system we are using allows for four different search possibilities:
 
 ![the front end - detail view](/assets/images/blog/integration/integration-4.png)
 
-The detail view shows the results in a table. This table has a horizontal scroll bar, which can be adjusted to view all the fields. The table includes 'raw' results, so there are some 'technical' entries like `[object Object]` and some blanks. This could be refined further.
+The detail view shows the results in a table. This table has a horizontal scroll bar, which can be adjusted to view all the fields. The table includes 'raw' results, so there are some 'technical' entries like `[object Object]` and some blanks, which I think is fine for this mock up stage.
 
 **Responsive view**
 
@@ -74,7 +88,9 @@ For tablets and mobile, the card view resizes with the browser window.
 
 ![the front end - summary view on mobile](/assets/images/blog/integration/integration-5.png)
 
-## Intro: S/4HANA
+I'll come back to how this front end was built after running through the integration flow.
+
+### S/4HANA
 
 The value of this flow is being able to design and build a frontend to access real-time, trusted business data from S/4HANA in a standardised way. In a real-world example, our frontend could be an employee portal or supplier portal.
 
@@ -90,7 +106,7 @@ Further reading on S/4HANA:
 
 [SAP help - S/4HANA](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE?locale=en-US)
 
-## Intro: business partner
+### Business partner
 
 The mock server simulates one of the business partner APIs for S/4HANA.
 
@@ -121,7 +137,7 @@ Further reading on business partners:
 
 [Help - Business Partner](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/74b0b157c81944ffaac6ebc07245b9dc/45653b5856de0846e10000000a441470.html?locale=en-US&version=LATEST)
 
-## Intro: S/4HANA Architecture
+### S/4HANA Architecture
 
 The mock server simulates an S/4HANA API. Let's look inside S/4HANA.
 
@@ -135,15 +151,21 @@ Consider the data model in S/4HANA in two separate parts. The first is the tradi
 
 In this example, we are using a business partner data API. Behind the scenes,  the API sources data from CDS views, which in turn connect to the HANA DB tables.
 
-## Section 1: overview of the integration flow
+---
 
-In this section, I'll summarise the process and technology involved at each step. In section 2 I'll provide more technical details.
+## Part 2: step by step walkthrough (for everyone)
+
+### overview of the integration flow
+
+In this section, I'll summarise the process and technology involved at each step.
 
 ![Integration flow detail](/assets/images/blog/integration/Integration-9.png)
 
-### 1 Web communication
+### Point 1: Web communication
 
-Building an integration flow between web connected applications relies on protocols and standards for web communication.
+![Integration flow detail](/assets/images/blog/integration/Integration-map-1.png)
+
+Building an integration flow between web connected applications relies on protocols and standards for web communication. Let's run through the main concepts.
 
 **Client/server**
 
@@ -159,13 +181,13 @@ The term Uniform Resource Locator (URL) is used to describe an address.
 
 **The structure of a URLs**
 
-URLs have five key parts.
+URLs have five key parts:
 
-Protocol: `http://`
-Domain: `www.example.com`
-Path: `/pages/`
-Query string: `?id=1&cat=test`
-Fragment: `#article` (an internal page reference, often not present)
+- Protocol: `http://`
+- Domain: `www.example.com`
+- Path: `/pages/`
+- Query string: `?id=1&cat=test`
+- Fragment: `#article` (an internal page reference, often not present)
 
 When it comes to APIs, the query string provides the ability to specify parameters for search and filter. In this case, the query string could include a business partner number.
 
@@ -260,7 +282,9 @@ There are multiple standards for data transfer with HTTP. One of the earlier and
 
 Many SAP APIs utilise OData (Open data transfer protocol).
 
-### 2 S/4HANA business partner API mock server
+### Point 2: S/4HANA business partner API mock server
+
+![Point 2](/assets/images/blog/integration/Integration-map-2.png)
 
 **Purpose:** Mimic the business partner API of an S/4HANA system.
 
@@ -277,7 +301,7 @@ The mock server provided by the SAP community provides a simple way to simulate 
   - Retrieve a single business partner
   - Include additional address data in the response.
 
-Installing and running the mock server is simple. The instructions are in section 2. When we run it our computer a local address is returned.
+Installing and running the mock server is simple. The instructions are in part 3. When we run it our computer a local address is returned.
 
 On my computer, it runs on "http://localhost:3005/"
 
@@ -307,7 +331,9 @@ Further reading on the mock server:
 - [GitHub](https://github.com/SAP-archive/cloud-s4-sdk-book/tree/mock-server)
 - [SAP Learning](https://learning.sap.com/learning-journeys/develop-advanced-extensions-with-sap-cloud-sdk/exercise-setting-up-the-mock-server_c734679d-9ce9-4905-82c3-ed13603a671d)
 
-### 3 Application programming interface (API)
+### Point 3: Application programming interface (API)
+
+![Point 3](/assets/images/blog/integration/Integration-map-3.png)
 
 **Purpose:** Provide a standard way to define and operate services for an application that can be consumed by other applications.
 
@@ -328,7 +354,9 @@ Further reading on APIs and Odata:
 - Open API spec [openAPIspec](https://spec.openapis.org/oas/latest.html)
 - [OData](https://www.odata.org/)
 
-### 4 Business technology platform (BTP)
+### Point 4: Business technology platform (BTP)
+
+![Point 3](/assets/images/blog/integration/Integration-map-4.png)
 
 Skipping Cloud Connector for now, brings us to BTP. Details from BTP are needed to set up Cloud Connector.
 
@@ -336,7 +364,7 @@ Skipping Cloud Connector for now, brings us to BTP. Details from BTP are needed 
 
 **What is it:** A set of tools encompassing various capabilities and environments.
 
-SAP offer a free trial for BTP, which can be used to build and test integration flows. Instructions on how to register and set up BTP are included in section 2.
+SAP offer a free trial for BTP, which can be used to build and test integration flows. Instructions on how to register and set up BTP are included in part 3.
 
 The BTP cockpit is where we can search for and set up different services.
 
@@ -369,7 +397,9 @@ In my case, this is "https://api.cf.ap21.hana.ondemand.com"
 
 ![SAP BTP](/assets/images/blog/integration/integration-11.png)
 
-### 5. Business Accelerator Hub
+### Point 5: Business Accelerator Hub
+
+![Point 5](/assets/images/blog/integration/Integration-map-5.png)
 
 **Purpose:** Provides a central source of information on SAP's APIs
 
@@ -443,7 +473,9 @@ Updating the flow diagram with these details:
 
 ![Integration flow - with mock server details](/assets/images/blog/integration/Integration-12-2.png)
 
-### 6. SAP Integration Suite
+### Point 6: SAP Integration Suite
+
+![Point 6](/assets/images/blog/integration/Integration-map-6.png)
 
 **Purpose:** Design and manage communications between applications.
 
@@ -459,7 +491,7 @@ Technically, it's a Java based app, and utilises the Apache Camel framework.
 
 ![SAP BTP - Integration Suite App](/assets/images/blog/integration/Integration-13.png)
 
-The steps to install and set up are covered in section 2. After the initial set up you can navigate to the application.
+The steps to install and set up are covered in part 3. After the initial set up you can navigate to the application.
 
 ![SAP Intelligent Suite](/assets/images/blog/integration/Integration-14.png)
 
@@ -537,7 +569,7 @@ The receiver is set up to match the S/4HANA business partner mock server.
 
 ![Integration Suite Design](/assets/images/blog/integration/Integration-15-3.png)
 
-More detail on the settings of each step are in section 2.
+More detail on the settings of each step are in part 3.
 
 At this point, the integration flow is:
 
@@ -550,13 +582,15 @@ Further reading on SAP Integration Suite:
 - [Help - What is integration suite](https://help.sap.com/docs/integration-suite/sap-integration-suite/what-is-sap-integration-suite?locale=en-US)
 - [Apache Camel](https://camel.apache.org/)
 
-### 7. Cloud Connector
+### Point 7: Cloud Connector
+
+![Point 7](/assets/images/blog/integration/Integration-map-7.png)
 
 **Purpose:** Allow SAP BTP to communicate to On-Premise SAP.
 
 **What is it:** An application that can provide a secure connection between SAP Cloud and On-Premise applications.
 
-In the previous section, we defined the address details of the S/4HANA business partner mock server as:
+In the previous part, we defined the address details of the S/4HANA business partner mock server as:
 
 - Base URL/host: http://localhost:3005
 - Base path: /sap/opu/odata/sap/API_BUSINESS_PARTNER
@@ -578,7 +612,7 @@ It's a JavaScript application that can be installed and run locally. Part of the
 
 After it's set-up, Cloud Connector will accept messages from Integration Suite and forward them to the S/4HANA business partner mock server.
 
-The detailed set-up is covered in section 2.
+The detailed set-up is covered in part 3.
 
 ![SAP Cloud Connector](/assets/images/blog/integration/Integration-16.png)
 
@@ -588,7 +622,9 @@ Updating the integration flow.
 
 ![Integration flow - updated](/assets/images/blog/integration/Integration-16-2.png)
 
-### 8. Web app: intro
+### Point 8: Web app: intro
+
+![Point 8](/assets/images/blog/integration/Integration-map-8.png)
 
 The web app is an application that uses JavaScript as a programming language. Web browsers have JavaScript engines and can run JavaScript code.
 
@@ -619,7 +655,7 @@ Therefore, the frontend will send a request to the backend, which will then prep
 
 Let's look at the frontend first, then the backend.
 
-### 8.1 Web app: frontend
+### Point 8.1: Web app: frontend
 
 **Purpose:** Search for and display business partner details on a web page.
 
@@ -636,7 +672,7 @@ The frontend can be built with plain HTML, CSS and JavaScript.
 
 HTML, CSS, and JavaScript are written in their own files. They are typically in the same folder.
 
-```
+```shell
 frontend/
 ├── index.html
 ├── styles.css
@@ -647,7 +683,7 @@ The HTML file includes references to the 'styles.css' and 'script.js' documents.
 
 For demo/test these files can simply be kept on a computers hard drive. Or they could be hosted on a static web server like Netlify or GitHub pages.
 
-### 8.2 Web app - HTML
+### Point 8.2: Web app - HTML
 
 Web pages are written with HTML, they are hierarchically structured documents where 'tags' are used to denote different types of element which contain content.
 
@@ -747,7 +783,7 @@ The version with styling was shown at the start of the article.
 
 Here is the [HTML file](/assets/documents/integration/frontend-html.html)
 
-### 8.3 Web app - CSS
+### Point 8.3: Web app - CSS
 
 Cascading style sheets (CSS) are used to apply styles to HTML documents. Consider an HTML document with three lines of text:
 
@@ -789,7 +825,7 @@ This is how our page looks with styling.
 
 Here is the full [CSS file](/asssets/documents/integration/frontend-css.css)
 
-### 8.4 Web app - JavaScript
+### Point 8.4: Web app - JavaScript
 
 Frontend JavaScript is able to retrieve, edit and add elements to the HTML document. Writing the JavaScript is possibly the most challenging part of this demo/test, so I'll just summarise what the code does:
 
@@ -829,7 +865,9 @@ The JavaScript now has what it needs to send a request to SAP Integration Suite.
 
 Here is the [JavaScript](/assets/documents/integration/frontend-javascript.js).
 
-### 9. Web app: backend server
+### Point 9: Web app: backend server
+
+![Point 9](/assets/images/blog/integration/Integration-map-9.png)
 
 **Purpose:** Allow a web frontend to communicate with SAP BTP.
 
@@ -907,7 +945,7 @@ If everything works, and S/4HANA returns a successful response (status code 200)
 
 Don't worry if it's not 100% clear, it took me a while to figure this out.
 
-## Section 1 conclusions
+### Conclusions to the walkthrough
 
 It's really fun to build your own frontend and connect it to a real enterprise grade system.
 
@@ -924,7 +962,11 @@ However, it's easily achievable with a little study and practice and it opens th
 - Real-time fast access to a wide range of business data thanks to S/4HANA.
 - Extreme flexibility on the frontend side thanks to modern HTML, CSS and JS.
 
-## Section 2: building the integration flow
+This integration could have been much simpler by just having the frontend deliver a URL in the format required for the API. We don't really need the complexity of Integration Suite for this.
+
+---
+
+## Part 3: building the integration flow (for IT people)
 
 If interested to experiment with SAP Integration Suite, I'd suggest working through the CodeJam. A lot of effort has been put into the instructions and reference information. It also includes additional mock servers and covers integration with other technologies.
 
@@ -932,7 +974,7 @@ If interested to experiment with SAP Integration Suite, I'd suggest working thro
 
 The instructions are on a [GitHub repository](https://github.com/SAP-samples/connecting-systems-services-integration-suite-codejam).
 
-In the following section I'll share some tips and recommendations from my own notes. This may be a bit rough.
+In the following section I'll share some tips and recommendations from my own notes including the basics of the various tools involved.
 
 Building this will involve encountering issues and require some debugging, just reference the documents and use google on errors.
 

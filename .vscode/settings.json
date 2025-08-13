@@ -7,6 +7,7 @@
     "ANKT",
     "ANLU",
     "ANLZ",
+    "Ansoff's",
     "BELNR",
     "BKPF",
     "BNKA",
@@ -38,6 +39,7 @@
     "GLPCO",
     "GLPCP",
     "GLPCT",
+    "HANA",
     "IFRS",
     "KNBK",
     "KOSTL",
@@ -48,5 +50,6 @@
     "TCURC",
     "TCURR",
     "TCURT"
-  ]
+  ],
+  "cSpell.language": "en-GB"
 }

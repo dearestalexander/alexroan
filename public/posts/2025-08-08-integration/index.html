@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -30,33 +31,54 @@
   </nav>
 </header>
     <main id="main">
-      <article class="single-post flow">
+      <article class="single-post">
 
-      <h1>From Web App to S/4HANA, Build A Web App and Connect to S/4HANA with SAP Integration Suite</h1>
+      <h1>From Web App to S/4HANA</h1>
       <p class="single-post__attribution">by Alexander Roan on 8 Aug 2025
 
-      <p>A big part of the magic behind AI, advanced analytics, and {insert tech buzzword here} is the humble API!</p>
+      <p>&quot;Build A Web App and Connect to S/4HANA with SAP Integration Suite&quot;</p>
+<p>A big part of the magic behind AI, advanced analytics, and {insert tech buzzword here} is the humble API!</p>
 <p>I remember the excitement about service-oriented architecture in the late 1990s and early 2000s. Back when most organisations had 'fat' ERPs with extensive customisation, the idea that we could split things up into different apps and connect in a standardised way was refreshing.</p>
 <p>I recently noticed a <a href="https://community.sap.com/t5/sap-codejam/sap-codejam-connecting-systems-and-services-using-sap-integration-suite/ec-p/14110686#M848">SAP CodeJam</a> on the SAP community events calendar that involved connecting systems to S/4HANA using SAP Integration Suite.</p>
 <p>I thought it might be fun to build a web app and see if I could successfully connect it to S/4HANA.</p>
 <p>A basic understanding of frontend to enterprise backend via cloud architecture  is useful for everyone; business experts, technology experts, and people experts</p>
-<p>The article is broken into three parts: an introduction to the web app, S/4HANA, and business partners; section 1: a step-by-step explanation for generalists; and section 2: detailed technical notes.</p>
-<h2>Intro: From web app to S/4HANA</h2>
+<p>The article is broken into three parts: an introduction, a step-by-step explanation for generalists, and my build/test notes for anyone working on something similar. The third section includes details on all the test tools, and configuration settings.</p>
+<p>A couple of quick disclaimers:</p>
+<ul>
+<li>I'm not an integration expert:
+<ul>
+<li>I don't look at integration suite vs. other solutions</li>
+<li>I don't cover best practices, typical challenges, good use cases</li>
+</ul>
+</li>
+<li>My solution here is likely not optimal
+<ul>
+<li>It's just a vanilla HTML, CSS, JS frontend</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Part 1: introduction</h2>
+<h3>From web app to S/4HANA</h3>
 <p><img src="/assets/images/blog/integration/integration-1.png" alt="high level integration flow"></p>
-<p>The rough idea is:</p>
+<p>The plan:</p>
 <ul>
 <li>The frontend is a web page to search for data from within S/4HANA</li>
 <li>The web server handles communication between the frontend and SAP Cloud</li>
 <li>SAP Integration Suite will route and format the message for S/4HANA</li>
 <li>S/4HANA is the source of data.</li>
 </ul>
-<p>We can utilise the free trial account for SAP BTP and Integration Suite. We can build the frontend and web app ourselves.</p>
-<p>Unfortunately, we can't access S/4HANA. However, the CodeJam provides a S/4HANA mock server that mimics the behaviour of an API within S/4HANA.</p>
+<p>Tools/technology:</p>
+<ul>
+<li>Utilise the free trial account for SAP BTP and Integration Suite</li>
+<li>Build the frontend and web app ourselves</li>
+<li>We can't access S/4HANA. However, the CodeJam provides a S/4HANA mock server that mimics the behaviour of an API within S/4HANA.</li>
+</ul>
 <p>If we use a mock system, we will need to run it locally. So, adjusting the architecture.</p>
 <p><img src="/assets/images/blog/integration/integration-2.png" alt="high level integration flow 2"></p>
 <p>This adds SAP Cloud Connector which allows an &quot;on-premise&quot; application to connect with SAP Cloud.</p>
-<h2>Intro: the front end</h2>
-<p>Let's start at the end. The completed app offers a summary view and a detailed view.</p>
+<h3>The front end</h3>
+<p>The completed app offers a summary view and a detailed view. Here's a short <a href="https://youtu.be/wNgAwEfLyX0">screen recording</a>.</p>
 <p><strong>Summary view</strong></p>
 <p>This is a screenshot from the web browser (firefox).</p>
 <p><img src="/assets/images/blog/integration/integration-3.png" alt="the front end - summary view"></p>
@@ -70,11 +92,12 @@
 </ul>
 <p><strong>Detail view</strong></p>
 <p><img src="/assets/images/blog/integration/integration-4.png" alt="the front end - detail view"></p>
-<p>The detail view shows the results in a table. This table has a horizontal scroll bar, which can be adjusted to view all the fields. The table includes 'raw' results, so there are some 'technical' entries like <code>[object Object]</code> and some blanks. This could be refined further.</p>
+<p>The detail view shows the results in a table. This table has a horizontal scroll bar, which can be adjusted to view all the fields. The table includes 'raw' results, so there are some 'technical' entries like <code>[object Object]</code> and some blanks, which I think is fine for this mock up stage.</p>
 <p><strong>Responsive view</strong></p>
 <p>For tablets and mobile, the card view resizes with the browser window.</p>
 <p><img src="/assets/images/blog/integration/integration-5.png" alt="the front end - summary view on mobile"></p>
-<h2>Intro: S/4HANA</h2>
+<p>I'll come back to how this front end was built after running through the integration flow.</p>
+<h3>S/4HANA</h3>
 <p>The value of this flow is being able to design and build a frontend to access real-time, trusted business data from S/4HANA in a standardised way. In a real-world example, our frontend could be an employee portal or supplier portal.</p>
 <p>S/4HANA is:</p>
 <ul>
@@ -85,7 +108,7 @@
 <p>S/4HANA already comes with a web frontend called Fiori, which includes thousands of apps. However, in this example imagine we are building something for a casual user that does not require the full capability of Fiori. Or, just consider it's for fun.</p>
 <p>Further reading on S/4HANA:</p>
 <p><a href="https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE?locale=en-US">SAP help - S/4HANA</a></p>
-<h2>Intro: business partner</h2>
+<h3>Business partner</h3>
 <p>The mock server simulates one of the business partner APIs for S/4HANA.</p>
 <p>A business partner is a reference or master data record that represents a third party that an organisation works with. This includes customers, suppliers, and employees.</p>
 <p>Business partner master data is organised by key fields such as &quot;category&quot; and &quot;role&quot;.</p>
@@ -104,18 +127,21 @@
 <p>This ensures there is consistency across transactions over time in terms of how they reference business partners. This is critical for reporting. Consider comparability, aggregation, etc.</p>
 <p>Further reading on business partners:</p>
 <p><a href="https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/74b0b157c81944ffaac6ebc07245b9dc/45653b5856de0846e10000000a441470.html?locale=en-US&amp;version=LATEST">Help - Business Partner</a></p>
-<h2>Intro: S/4HANA Architecture</h2>
+<h3>S/4HANA Architecture</h3>
 <p>The mock server simulates an S/4HANA API. Let's look inside S/4HANA.</p>
 <p><img src="/assets/images/blog/integration/Integration-8.png" alt="Inside S/4HANA"></p>
 <p>Starting from the top right, S/4HANA has two primary ways for users to interact. The traditional SAP graphical user interface (GUI) and the modern Fiori web-based user interface.</p>
 <p>I've drawn APIs to the left of these. The APIs allow applications to interact with S/4HANA.</p>
 <p>Consider the data model in S/4HANA in two separate parts. The first is the traditional HANA database. This is where master data and transactional data are stored. On top of this is the virtual data model. This consists of core data services views. This is a way to define different sets of data to meet the needs of APIs and Fiori Apps.</p>
 <p>In this example, we are using a business partner data API. Behind the scenes,  the API sources data from CDS views, which in turn connect to the HANA DB tables.</p>
-<h2>Section 1: overview of the integration flow</h2>
-<p>In this section, I'll summarise the process and technology involved at each step. In section 2 I'll provide more technical details.</p>
+<hr>
+<h2>Part 2: step by step walkthrough (for everyone)</h2>
+<h3>overview of the integration flow</h3>
+<p>In this section, I'll summarise the process and technology involved at each step.</p>
 <p><img src="/assets/images/blog/integration/Integration-9.png" alt="Integration flow detail"></p>
-<h3>1 Web communication</h3>
-<p>Building an integration flow between web connected applications relies on protocols and standards for web communication.</p>
+<h3>Point 1: Web communication</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-1.png" alt="Integration flow detail"></p>
+<p>Building an integration flow between web connected applications relies on protocols and standards for web communication. Let's run through the main concepts.</p>
 <p><strong>Client/server</strong></p>
 <p>The terms client and server are used to describe the requester and receiver. For example, the web browser on a computer is a client, and google search is a server.</p>
 <p>Internet communications use the HTTP protocol.</p>
@@ -123,12 +149,14 @@
 <p>Hypertext Transfer Protocol (HTTP) is a standard protocol for communication between clients and web servers. Web pages are written in Hypertext Markup Language (HTML).</p>
 <p>The term Uniform Resource Locator (URL) is used to describe an address.</p>
 <p><strong>The structure of a URLs</strong></p>
-<p>URLs have five key parts.</p>
-<p>Protocol: <code>http://</code>
-Domain: <code>www.example.com</code>
-Path: <code>/pages/</code>
-Query string: <code>?id=1&amp;cat=test</code>
-Fragment: <code>#article</code> (an internal page reference, often not present)</p>
+<p>URLs have five key parts:</p>
+<ul>
+<li>Protocol: <code>http://</code></li>
+<li>Domain: <code>www.example.com</code></li>
+<li>Path: <code>/pages/</code></li>
+<li>Query string: <code>?id=1&amp;cat=test</code></li>
+<li>Fragment: <code>#article</code> (an internal page reference, often not present)</li>
+</ul>
 <p>When it comes to APIs, the query string provides the ability to specify parameters for search and filter. In this case, the query string could include a business partner number.</p>
 <p><strong>HTTPS</strong></p>
 <p>HTTPS uses the HTTP protocol, but it adds a secure transport layer. HTTPS means the HTTP message is encrypted before transmission.</p>
@@ -188,7 +216,8 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>There are further standards as to how data is transferred using HTTP.</p>
 <p>There are multiple standards for data transfer with HTTP. One of the earlier and more common standards is REST (Representational State Transfer).</p>
 <p>Many SAP APIs utilise OData (Open data transfer protocol).</p>
-<h3>2 S/4HANA business partner API mock server</h3>
+<h3>Point 2: S/4HANA business partner API mock server</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-2.png" alt="Point 2"></p>
 <p><strong>Purpose:</strong> Mimic the business partner API of an S/4HANA system.</p>
 <p><strong>What is it:</strong> A simple JavaScript server that can be run locally.</p>
 <p>The mock server provided by the SAP community provides a simple way to simulate the design and test of an S/4HANA API.</p>
@@ -205,7 +234,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 </ul>
 </li>
 </ul>
-<p>Installing and running the mock server is simple. The instructions are in section 2. When we run it our computer a local address is returned.</p>
+<p>Installing and running the mock server is simple. The instructions are in part 3. When we run it our computer a local address is returned.</p>
 <p>On my computer, it runs on &quot;http://localhost:3005/&quot;</p>
 <p>This is the address for the Business Partner API. Entering this address in the web browser gives the following response:</p>
 <p><img src="/assets/images/blog/integration/Integration-10-3.png" alt="Mock server response"></p>
@@ -223,7 +252,8 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <li><a href="https://github.com/SAP-archive/cloud-s4-sdk-book/tree/mock-server">GitHub</a></li>
 <li><a href="https://learning.sap.com/learning-journeys/develop-advanced-extensions-with-sap-cloud-sdk/exercise-setting-up-the-mock-server_c734679d-9ce9-4905-82c3-ed13603a671d">SAP Learning</a></li>
 </ul>
-<h3>3 Application programming interface (API)</h3>
+<h3>Point 3: Application programming interface (API)</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-3.png" alt="Point 3"></p>
 <p><strong>Purpose:</strong> Provide a standard way to define and operate services for an application that can be consumed by other applications.</p>
 <p><strong>What is it:</strong> SAP have a large catalogue of standard APIs that come with S/4HANA.</p>
 <p><strong>The Business partner API</strong></p>
@@ -236,11 +266,12 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <li>Open API spec <a href="https://spec.openapis.org/oas/latest.html">openAPIspec</a></li>
 <li><a href="https://www.odata.org/">OData</a></li>
 </ul>
-<h3>4 Business technology platform (BTP)</h3>
+<h3>Point 4: Business technology platform (BTP)</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-4.png" alt="Point 3"></p>
 <p>Skipping Cloud Connector for now, brings us to BTP. Details from BTP are needed to set up Cloud Connector.</p>
 <p><strong>Purpose:</strong> Enable customers to manage and build on SAP applications.</p>
 <p><strong>What is it:</strong> A set of tools encompassing various capabilities and environments.</p>
-<p>SAP offer a free trial for BTP, which can be used to build and test integration flows. Instructions on how to register and set up BTP are included in section 2.</p>
+<p>SAP offer a free trial for BTP, which can be used to build and test integration flows. Instructions on how to register and set up BTP are included in part 3.</p>
 <p>The BTP cockpit is where we can search for and set up different services.</p>
 <p>It supports multiple infrastructures and runtimes so you can manage/build various types of applications from traditional SAP ABAP to web apps.</p>
 <ul>
@@ -277,7 +308,8 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>SAP Integration Suite utilises the Cloud Foundry environment. After we set up Business Technology Suite and SAP Intelligent Suite, a Cloud Foundry API endpoint will be provided in BTP.</p>
 <p>In my case, this is &quot;https://api.cf.ap21.hana.ondemand.com&quot;</p>
 <p><img src="/assets/images/blog/integration/integration-11.png" alt="SAP BTP"></p>
-<h3>5. Business Accelerator Hub</h3>
+<h3>Point 5: Business Accelerator Hub</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-5.png" alt="Point 5"></p>
 <p><strong>Purpose:</strong> Provides a central source of information on SAP's APIs</p>
 <p><strong>What is it:</strong> A web page with API details. Highly integrated with BTP.</p>
 <p>Business Accelerator hub is a web resource from SAP. I've drawn it inside BTP as it closely relates to BTP content. It's a central repository for APIs from SAP &amp; selected partners.</p>
@@ -356,7 +388,8 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>&quot;('{business partner}')&quot; in the example is a placeholder for a business partner number.</p>
 <p>Updating the flow diagram with these details:</p>
 <p><img src="/assets/images/blog/integration/Integration-12-2.png" alt="Integration flow - with mock server details"></p>
-<h3>6. SAP Integration Suite</h3>
+<h3>Point 6: SAP Integration Suite</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-6.png" alt="Point 6"></p>
 <p><strong>Purpose:</strong> Design and manage communications between applications.</p>
 <p><strong>What is it:</strong> A service of SAP BTP.</p>
 <p>SAP Integration Suite is one of the services available in Business Technology Platform. Therefore, a prerequisite is to register for the BTP free trial.</p>
@@ -364,7 +397,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>SAP Intelligent suite can be used for Cloud, on-premise, and hybrid scenarios. It includes pre-built, best-practice integration packs</p>
 <p>Technically, it's a Java based app, and utilises the Apache Camel framework.</p>
 <p><img src="/assets/images/blog/integration/Integration-13.png" alt="SAP BTP - Integration Suite App"></p>
-<p>The steps to install and set up are covered in section 2. After the initial set up you can navigate to the application.</p>
+<p>The steps to install and set up are covered in part 3. After the initial set up you can navigate to the application.</p>
 <p><img src="/assets/images/blog/integration/Integration-14.png" alt="SAP Intelligent Suite"></p>
 <p>For this demo/test, the two key menus within Integration Suite are:</p>
 <ul>
@@ -426,7 +459,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p><strong>The receiver</strong></p>
 <p>The receiver is set up to match the S/4HANA business partner mock server.</p>
 <p><img src="/assets/images/blog/integration/Integration-15-3.png" alt="Integration Suite Design"></p>
-<p>More detail on the settings of each step are in section 2.</p>
+<p>More detail on the settings of each step are in part 3.</p>
 <p>At this point, the integration flow is:</p>
 <p><img src="/assets/images/blog/integration/Integration-15-4.png" alt="Integration Suite Flow Updated"></p>
 <p>As an alternative, the web app could have been programmed to send messages that already fit the API requirements. However, in some scenarios sender systems may be inflexible or difficult to develop on, making these transformation capabilities in Integration Suite important.</p>
@@ -435,10 +468,11 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <li><a href="https://help.sap.com/docs/integration-suite/sap-integration-suite/what-is-sap-integration-suite?locale=en-US">Help - What is integration suite</a></li>
 <li><a href="https://camel.apache.org/">Apache Camel</a></li>
 </ul>
-<h3>7. Cloud Connector</h3>
+<h3>Point 7: Cloud Connector</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-7.png" alt="Point 7"></p>
 <p><strong>Purpose:</strong> Allow SAP BTP to communicate to On-Premise SAP.</p>
 <p><strong>What is it:</strong> An application that can provide a secure connection between SAP Cloud and On-Premise applications.</p>
-<p>In the previous section, we defined the address details of the S/4HANA business partner mock server as:</p>
+<p>In the previous part, we defined the address details of the S/4HANA business partner mock server as:</p>
 <ul>
 <li>Base URL/host: http://localhost:3005</li>
 <li>Base path: /sap/opu/odata/sap/API_BUSINESS_PARTNER</li>
@@ -453,12 +487,13 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>SAP provides &quot;SAP Cloud Connector&quot; to connect on-premise applications to the SAP Cloud.</p>
 <p>It's a JavaScript application that can be installed and run locally. Part of the set-up involves entering authentication details from BTP.</p>
 <p>After it's set-up, Cloud Connector will accept messages from Integration Suite and forward them to the S/4HANA business partner mock server.</p>
-<p>The detailed set-up is covered in section 2.</p>
+<p>The detailed set-up is covered in part 3.</p>
 <p><img src="/assets/images/blog/integration/Integration-16.png" alt="SAP Cloud Connector"></p>
 <p>The screenshot above shows the &quot;Cloud to On-Premise&quot; mapping. A virtual host &quot;s4-mock:3006&quot; is mapped to the S4/HANA business partner mock server running locally on &quot;localhost:3005&quot;.</p>
 <p>Updating the integration flow.</p>
 <p><img src="/assets/images/blog/integration/Integration-16-2.png" alt="Integration flow - updated"></p>
-<h3>8. Web app: intro</h3>
+<h3>Point 8: Web app: intro</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-8.png" alt="Point 8"></p>
 <p>The web app is an application that uses JavaScript as a programming language. Web browsers have JavaScript engines and can run JavaScript code.</p>
 <p>There are two parts to the web app. The frontend and the backend.</p>
 <p>Think of JavaScript in two categories. frontend JavaScript and server (backend) JavaScript.</p>
@@ -484,7 +519,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>I did try sending a message to Integration Suite from the browser, but received various CORS errors. CORS, or Cross-Origin Resource Sharing, is a browser security feature that controls whether a web page on one domain can access resources from a different domain.</p>
 <p>Therefore, the frontend will send a request to the backend, which will then prepare the message and send it as a request to SAP Integration Suite.</p>
 <p>Let's look at the frontend first, then the backend.</p>
-<h3>8.1 Web app: frontend</h3>
+<h3>Point 8.1: Web app: frontend</h3>
 <p><strong>Purpose:</strong> Search for and display business partner details on a web page.</p>
 <p><strong>What is it:</strong> A simple web app based on HTML, CSS and JavaScript.</p>
 <p>The frontend can be built with plain HTML, CSS and JavaScript.</p>
@@ -500,14 +535,14 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 </li>
 </ul>
 <p>HTML, CSS, and JavaScript are written in their own files. They are typically in the same folder.</p>
-<pre><code>frontend/
+<pre><code class="language-shell">frontend/
 ├── index.html
 ├── styles.css
 └── script.js
 </code></pre>
 <p>The HTML file includes references to the 'styles.css' and 'script.js' documents. These can all be written in simple text editors, but applications like 'visual studio code' help with syntax highlighting and formatting.</p>
 <p>For demo/test these files can simply be kept on a computers hard drive. Or they could be hosted on a static web server like Netlify or GitHub pages.</p>
-<h3>8.2 Web app - HTML</h3>
+<h3>Point 8.2: Web app - HTML</h3>
 <p>Web pages are written with HTML, they are hierarchically structured documents where 'tags' are used to denote different types of element which contain content.</p>
 <p>As a simple illustration, the following would create a web page with a title, a text input field, a submit button and a space for results.</p>
 <pre><code class="language-HTML">&lt;header&gt;
@@ -593,7 +628,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p><img src="/assets/images/blog/integration/integration-18.png" alt="Frontend without styling"></p>
 <p>The version with styling was shown at the start of the article.</p>
 <p>Here is the <a href="/assets/documents/integration/frontend-html.html">HTML file</a></p>
-<h3>8.3 Web app - CSS</h3>
+<h3>Point 8.3: Web app - CSS</h3>
 <p>Cascading style sheets (CSS) are used to apply styles to HTML documents. Consider an HTML document with three lines of text:</p>
 <pre><code class="language-HTML">&lt;p id=&quot;line-one&quot;&gt;This is text line one&lt;/p&gt;
 &lt;p class=&quot;other-lines&quot;&gt;This is text line two&lt;/p&gt;
@@ -619,7 +654,7 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 <p>This is how our page looks with styling.</p>
 <p><img src="/assets/images/blog/integration/Integration-21.png" alt="HTML page with CSS styling"></p>
 <p>Here is the full <a href="/asssets/documents/integration/frontend-css.css">CSS file</a></p>
-<h3>8.4 Web app - JavaScript</h3>
+<h3>Point 8.4: Web app - JavaScript</h3>
 <p>Frontend JavaScript is able to retrieve, edit and add elements to the HTML document. Writing the JavaScript is possibly the most challenging part of this demo/test, so I'll just summarise what the code does:</p>
 <ul>
 <li>Listen for a click of the 'submit' button</li>
@@ -677,7 +712,8 @@ Fragment: <code>#article</code> (an internal page reference, often not present)<
 </li>
 </ul>
 <p>Here is the <a href="/assets/documents/integration/frontend-javascript.js">JavaScript</a>.</p>
-<h3>9. Web app: backend server</h3>
+<h3>Point 9: Web app: backend server</h3>
+<p><img src="/assets/images/blog/integration/Integration-map-9.png" alt="Point 9"></p>
 <p><strong>Purpose:</strong> Allow a web frontend to communicate with SAP BTP.</p>
 <p><strong>What is it:</strong> A JavaScript web backend server for message formatting and routing.</p>
 <p>The backend server is locally hosted on our computer for this test/demo, but in reality would be on a web server somewhere.</p>
@@ -737,7 +773,7 @@ node_modules/ and package-lock.json are automatically generated when dependencie
 <p>The message can fail at any step, and it sometimes takes a bit of detective work to figure out where it failed and why.</p>
 <p>If everything works, and S/4HANA returns a successful response (status code 200), that response flows automatically back through the same chain — each layer staying in a “waiting” state until the result is passed back to the frontend and displayed to the user.</p>
 <p>Don't worry if it's not 100% clear, it took me a while to figure this out.</p>
-<h2>Section 1 conclusions</h2>
+<h3>Conclusions to the walkthrough</h3>
 <p>It's really fun to build your own frontend and connect it to a real enterprise grade system.</p>
 <p>A few important considerations:</p>
 <ul>
@@ -758,11 +794,13 @@ node_modules/ and package-lock.json are automatically generated when dependencie
 <li>Real-time fast access to a wide range of business data thanks to S/4HANA.</li>
 <li>Extreme flexibility on the frontend side thanks to modern HTML, CSS and JS.</li>
 </ul>
-<h2>Section 2: building the integration flow</h2>
+<p>This integration could have been much simpler by just having the frontend deliver a URL in the format required for the API. We don't really need the complexity of Integration Suite for this.</p>
+<hr>
+<h2>Part 3: building the integration flow (for IT people)</h2>
 <p>If interested to experiment with SAP Integration Suite, I'd suggest working through the CodeJam. A lot of effort has been put into the instructions and reference information. It also includes additional mock servers and covers integration with other technologies.</p>
 <p><a href="https://community.sap.com/t5/sap-codejam/sap-codejam-connecting-systems-and-services-using-sap-integration-suite/ec-p/14110686#M848">SAP CodeJam</a></p>
 <p>The instructions are on a <a href="https://github.com/SAP-samples/connecting-systems-services-integration-suite-codejam">GitHub repository</a>.</p>
-<p>In the following section I'll share some tips and recommendations from my own notes. This may be a bit rough.</p>
+<p>In the following section I'll share some tips and recommendations from my own notes including the basics of the various tools involved.</p>
 <p>Building this will involve encountering issues and require some debugging, just reference the documents and use google on errors.</p>
 <h3>Information sources &amp; tools</h3>
 <h4>SAP Accounts: BTP and Integration Suite</h4>
@@ -1260,7 +1298,7 @@ CMD [&quot;npm&quot;, &quot;start&quot;]
 <p>The CodeJam has excellent instructions for walking through different flow steps as per their exercises.</p>
 <p>I will summarise a few elements I used in my design.</p>
 <p><strong>Router</strong></p>
-<p><img src="/assets/images/blog/Integration-23-A.png" alt="Router"></p>
+<p><img src="/assets/images/blog/integration/Integration-23-A.png" alt="Router"></p>
 <ul>
 <li>The router allows you to split the flow based on a condition.</li>
 <li>This example splits the flow into 4 based on the incoming URL</li>
@@ -1299,7 +1337,7 @@ CMD [&quot;npm&quot;, &quot;start&quot;]
 &lt;/root&gt;
 </code></pre>
 <p><strong>Content modifier - case 2</strong></p>
-<p><img src="/assets/images/blog/Integration-23-B.png" alt="Content modifier"></p>
+<p><img src="/assets/images/blog/integration/Integration-23-B.png" alt="Content modifier"></p>
 <ul>
 <li>In this case the content modifier gets &quot;employee_id&quot; from the message body</li>
 <li>And assigns it to a new variable</li>
@@ -1452,7 +1490,7 @@ Goto the environment and click 'configure'. You should see the access_token vari
         
         <p>Share on 
           <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/posts/2025-08-08-integration/" target="_blank">LinkedIn</a>, 
-          <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/posts/2025-08-08-integration/&text=From Web App to S/4HANA, Build A Web App and Connect to S/4HANA with SAP Integration Suite" target="_blank">X</a>, 
+          <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/posts/2025-08-08-integration/&text=From Web App to S/4HANA" target="_blank">X</a>, 
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://alexroan.com/posts/2025-08-08-integration/" target="_blank">or Facebook</a>.
         </p>
 
@@ -1461,7 +1499,7 @@ Goto the environment and click 'configure'. You should see the access_token vari
           data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
           data-page-id="/posts/2025-08-08-integration/"
           data-page-url="/posts/2025-08-08-integration/"
-          data-page-title="From Web App to S/4HANA, Build A Web App and Connect to S/4HANA with SAP Integration Suite">
+          data-page-title="From Web App to S/4HANA">
         </div>
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
       </div>

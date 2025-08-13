@@ -4,9 +4,8 @@ layout: 'template-home.njk'
 ---
 
 <article class="region__intro flow">
-  <p>I’m a consultant and project manager specializing in strategy, operations, and SAP transformation, with 20 years of experience leading complex projects across industries.</p>
-  <p>Below you’ll find information on my consulting clients, recent updates, and blog posts.</p>
-  <p>I also run a few passion projects in writing, coding, and language learning. Feel free to explore those via the “Side Projects” section.</p>
+  <p>A business and technology expert with experience in consulting, project management and analyst roles.</p>
+  <p>Past clients and employers:</p>
   <img src="{{ '/assets/images/clients__one.jpg' | url }}" alt="diagram showing client names" loading="lazy">
 </article>
 
@@ -18,41 +17,41 @@ layout: 'template-home.njk'
       <li>
         <h2>2025</h2>
         <ul>
-          <li>I'm living in Bangkok at the moment and am currently available for remote contract work.</li>
+          <li>Currently based in Bangkok</li>
+          <li>Recent blog post topics include:</li>
+          <ul>
+            <li>Front end to S/4HANA using SAP Integration Suite</li>
+            <li>Global business services</li>
+            <li>S/4HANA embedded analytics</li>
+            <li>The SAP finance data model</li>
+            <li>The leadership-project team gap</li>
+          </ul>
         </ul> 
-      </li>
-      <li class="flow--small"> 
         <h2>2024</h2>
-        <h3>Travels:</h3>
         <ul>
-          <li>I spent time in Tokyo, Bangkok, DaNang, Kuala Lumpur, Singapore and Hong Kong.</li>
+          <li>Traveling around Tokyo, Bangkok, DaNang, Kuala Lumpur, Singapore and Hong Kong.</li>
+         <li>Blog posts included:</li>
+         <ul>
+            <li>A guide to assessing operations</li>
+            <li>Gathering information as part of transformation programs</li>
+            <li>Business/process frameworks</li>
+            <li>Scope creep: A brief post on managing scope creep</li>
+            <li>Ansoff's grid: A look at this useful tool for strategic planning.</li>
+          </ul>   
+        <li>Studies in:</h3>
+        <ul>
+          <li>The latest on VBA, HTML, CSS and JavaScript</li>
+          <li>Building this website in HTML and CSS with 11ty</li>
         </ul>
-        <h3>I wrote several blog posts and articles:</h3>
+        <li>Work</li>
         <ul>
-          <li>Assessing operations: an in-depth guide to evaluating operations as part of transformation programs such as acquisitions integration or ERP implementation</li>
-          <li>Information gathering: a look at the important process of gathering information which forms the basis for design work as part of many transformation programs</li>
-          <li>Business/process frameworks: how to create a framework to help structure different aspects of transformation programs</li>
-          <li>Scope creep: A brief post on managing scope creep</li>
-          <li>Ansoff's grid: A look at this useful tool for strategic planning.</li>
-        </ul>   
-        <h3>I expanded my knowledge in:</h3>
-        <ul>
-          <li>The lastest on VBA, HTML, CSS and JavaScript. I worked through the freeCodeCamp curriculum and FrontendMentor challenges.</li>
-          <li>I created this website, with design structured in pure HTML and CSS. It utilises the 'static site generator' 11ty to automatically convert markdown-based articles/blog into web pages</li>
+          <li>Assisting a recruitment business with operations assessment for acquisitions</li>
         </ul>
-        <h3>Work</h3>
-        <ul>
-          <li>In 2024 I worked with a global recruitment company on the assessment of the operations of potential acquisition targets (I started this in mid 2023)</li>
-        </ul>
-      </li>
-      <li>
         <h2>2022 and 2023</h2>
         <ul>
           <li>In 2021-23 I was living back in the Scottish highlands.</li>
           <li>I spent a year buying, restoring and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
         </ul>
-      </li>
-      <li>
         <h2>2020 to 2022</h2>
         <ul>
           <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA (margin analysis) for a multinational consumer goods company.</li>
@@ -70,9 +69,9 @@ layout: 'template-home.njk'
       <article class="flow" aria-labelledby="{{featured.data.title}}">
         <h1 id="{{featured.data.title}}">{{ featured.data.title }}</h1>
         <img src="{{ featured.data.image }}" alt=""/>
-        <p>by <span>{{ featured.data.author }}</span> on <span>{{ featured.data.date | postDate }}</span></p>
-        <p>{{ featured.data.description }}</p>
-        <a href="{{ featured.url }}">Continue reading</a>
+        <p class="card-attrib"><span class="card-attrib-date">{{ featured.data.date | postDate }}</span><span class="card-attrib-auth">{{ featured.data.author }}</span></p>
+        <p class="card-text">{{ featured.data.description }}</p>
+        <a class="card-link" href="{{ featured.url }}">Continue reading</a>
       </article>
     </li>
   {%- endfor -%}
