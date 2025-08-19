@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
   hashTagSelect.classList.add('hashtag-select');
   hashTagSelect.required = true;
   hashTagLabel.setAttribute('for', 'hashtag-select');
-  hashTagLabel.textContent = 'Filter by hashtag:';
+  hashTagLabel.textContent = 'Topic:';
 
   hashTagList.forEach(hashtag => {
     const option = document.createElement('option');
@@ -42,9 +42,9 @@ window.addEventListener('load', () => {
   const newestFirstOption = document.createElement('option');
   const oldestFirstOption = document.createElement('option');
   newestFirstOption.value = 'newest';
-  newestFirstOption.textContent = 'Newest First';
+  newestFirstOption.textContent = 'newest first';
   oldestFirstOption.value = 'oldest';
-  oldestFirstOption.textContent = 'Oldest First';
+  oldestFirstOption.textContent = 'oldest first';
   dateSelect.appendChild(newestFirstOption);
   dateSelect.appendChild(oldestFirstOption);
 
