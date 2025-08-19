@@ -2,7 +2,10 @@
 title: Making sense of SAP finance - evolution of the data model
 author: Alexander Roan
 date: 2025-06-03
-tags: ["post", "article", "finance", "featured"]
+tags: 
+hashtags: ["post", "article", "finance", "featured"]
+project: 
+subproject:
 image: /assets/images/blog/sap-data/sap-data-cover.jpg
 imageAlt:
 description: The data model for finance has changed considerably from SAP R/3 to S/4HANA. These changes have provided some simplification while also making it easier to access data. Understanding the basics of the model can be useful. This article walks through the data model with a real life example.

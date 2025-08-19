@@ -2,10 +2,13 @@
 title: Blockchain - how it works
 author: Alex Roan
 date: 2020-05-26
-tags: ["post", "article", "technology"]
+tags: 
+hashtags: ["post", "article", "technology"]
+project: 
+subproject:
 image: /assets/images/blog/blockchain__cover.jpg
 imageAlt: 
-description: Blockchain has been one of the most hyped technologies of the last decade thanks to the massive profits that were made from bitcoin and other cryptocurrencies. Despite a lot of of the smoke and mirrors that surrounds blockchain it is a fascinating technology.
+description: A detailed look at how Blockchain works.
 ---
 
 Blockchain has been one of the most hyped technologies of the last decade thanks to the massive profits that were made from bitcoin and other cryptocurrencies. Despite a lot of of the smoke and mirrors that surrounds blockchain it is a fascinating technology.

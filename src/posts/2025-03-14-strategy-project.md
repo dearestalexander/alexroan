@@ -2,10 +2,13 @@
 title: The leadership-project team gap
 author: Alex Roan
 date: 2025-03-14
-tags: ["post", "article", "strategy", "featured", "project management"]
+tags: 
+hashtags: ["post", "article", "strategy", "featured", "project management"]
+project: 
+subproject:
 image: /assets/images/blog/strategy-project/strategy-project_0.jpg
 imageAlt:
-description: Succesful large scale transformation requires a handoff and ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. This is a crucial part of the successful delivery of complex intiiatives such as SAP S/4HANA implementation or an acquisition integration.
+description: Succesful large scale transformation requires a handoff and the ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. I take a look at how to improve this relationship.
 ---
 
 ## Introduction

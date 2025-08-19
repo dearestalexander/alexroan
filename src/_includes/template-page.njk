@@ -3,30 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
     <link href="{{ '/styles.css' | url }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&family=Pacifico&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
-
-
   <body>
-
     {% include 'header.njk' %}
-
+    <div class="divider"></div>
     <main id="main">
-      <section class="template-page--section flow">
-
+      <article class="page-article flow">
       {{ content | safe }}
-
-      </section>
+      </article>
     </main>
-
     {% include 'footer.njk' %}
-  
   </body>
 </html>

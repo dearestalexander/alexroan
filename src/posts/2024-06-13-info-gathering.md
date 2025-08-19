@@ -2,7 +2,10 @@
 title: Information gathering
 author: Alex Roan
 date: 2024-06-13
-tags: ["post", "blog", "project", "consulting"]
+tags: 
+hashtags: ["post", "blog", "project", "consulting"]
+project: 
+subproject:
 image:
 imageAlt:
 description: My 4-step process to gather information for transformation projects. Uncovering operational details is often a challenge for programs such as restructuring, process design, IT implementations and acquisitions and divestitures.

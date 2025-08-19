@@ -2,7 +2,10 @@
 title: Centralised Business Services
 author: Alexander Roan
 date: 2025-06-29
-tags: ["post", "article", "finance", "featured"]
+tags: 
+hashtags: ["post", "article", "finance", "featured"]
+project: 
+subproject:
 image: /assets/images/blog/gbs/gbs-cover.jpg
 imageAlt:
 description:  Business Services Organisations (BSOs) and Global Business Services (GBS) emerged in the late 1990s and have since played a central role in driving standardisation, harmonisation, and automation. By consolidating operations, they’ve helped multinationals achieve consistency across regions and deliver faster, more comparable reporting. This article takes a detailed look at how business services models work, evolve, and add value.

@@ -3,76 +3,40 @@ title: Alex Roan - Home
 layout: 'template-home.njk'
 ---
 
-<article class="region__intro flow">
-  <p>A business and technology expert with experience in consulting, project management and analyst roles.</p>
-  <p>Past clients and employers:</p>
-  <img src="{{ '/assets/images/clients__one.jpg' | url }}" alt="diagram showing client names" loading="lazy">
-</article>
+<div class="posts-ftr">
+    <div id="select-ctr" class="select-ctr"></div>
+</div>
 
-
-<article class="region__news">
-  <div class="region__news__text">
-    <h1>Recent news</h1>
-    <ul role="list">
-      <li>
-        <h2>2025</h2>
-        <ul>
-          <li>Currently based in Bangkok</li>
-          <li>Recent blog post topics include:</li>
-          <ul>
-            <li>Front end to S/4HANA using SAP Integration Suite</li>
-            <li>Global business services</li>
-            <li>S/4HANA embedded analytics</li>
-            <li>The SAP finance data model</li>
-            <li>The leadership-project team gap</li>
-          </ul>
-        </ul> 
-        <h2>2024</h2>
-        <ul>
-          <li>Traveling around Tokyo, Bangkok, DaNang, Kuala Lumpur, Singapore and Hong Kong.</li>
-         <li>Blog posts included:</li>
-         <ul>
-            <li>A guide to assessing operations</li>
-            <li>Gathering information as part of transformation programs</li>
-            <li>Business/process frameworks</li>
-            <li>Scope creep: A brief post on managing scope creep</li>
-            <li>Ansoff's grid: A look at this useful tool for strategic planning.</li>
-          </ul>   
-        <li>Studies in:</h3>
-        <ul>
-          <li>The latest on VBA, HTML, CSS and JavaScript</li>
-          <li>Building this website in HTML and CSS with 11ty</li>
-        </ul>
-        <li>Work</li>
-        <ul>
-          <li>Assisting a recruitment business with operations assessment for acquisitions</li>
-        </ul>
-        <h2>2022 and 2023</h2>
-        <ul>
-          <li>In 2021-23 I was living back in the Scottish highlands.</li>
-          <li>I spent a year buying, restoring and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
-        </ul>
-        <h2>2020 to 2022</h2>
-        <ul>
-          <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA (margin analysis) for a multinational consumer goods company.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</article>
-
-<section class="region__featured">
-  <h1>Featured posts</h1>
-  <ul role="list" class="blog-grid">
-    {%- for featured in collections.featured | reverse -%}
-    <li class="flow blog-card">
-      <article class="flow" aria-labelledby="{{featured.data.title}}">
-        <h1 id="{{featured.data.title}}">{{ featured.data.title }}</h1>
-        <img src="{{ featured.data.image }}" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">{{ featured.data.date | postDate }}</span><span class="card-attrib-auth">{{ featured.data.author }}</span></p>
-        <p class="card-text">{{ featured.data.description }}</p>
-        <a class="card-link" href="{{ featured.url }}">Continue reading</a>
-      </article>
+<section class="region-cards">
+  <ul class="card-grid">
+    {%- for post in collections.post | reverse -%}
+    <li class="card flow" data-hashtags="{{ post.data.hashtags }}">
+      <a class="card-inner flow--small" href="{{ post.url }}">
+        <h2 class="card-title" id="{{ post.data.title}}">{{ post.data.title }}</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            {% if post.data.image and post.data.image | trim != "" %}
+            <img class="card-img" src="{{ post.data.image }}" alt=""/>
+            {% endif %}
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">{{ post.data.description }}</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="{{ post.data.date | postDateIso }}">
+                <time class="card-date" datetime="{{ post.data.date | postDateIso }}">
+                  {{ post.data.date | postDate }}
+                </time>
+              </span>
+              <span class="card-auth">{{ post.data.author }}</span>
+            </div>
+            <div class="card-tags" data-tag="{{ post.data.hashtags }}">
+              {% for x in post.data.hashtags %}
+              <span class="card-tag">#{{ x }}</span>
+              {% endfor %}
+            </div>
+         </div>
+        </div>
+      </a>
     </li>
   {%- endfor -%}
   </ul>

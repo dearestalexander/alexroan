@@ -1,42 +1,16 @@
-<section class="region__sidebar flow">
-  <aside>
-    <h1>About</h1>
-    <img src="{{ '/assets/images/alex2.jpg' | url }}" alt="profile picture of alex" loading="lazy">
-    <p>Somewhere between strategy, process, tech and enjoying my next coffee by the river in Chiang Mai.</p>
-  </aside>
-  <aside>
-    <h1>Posts by type</h1>
-    <ul role="list">
-      <li><a href="{{ '/filter/posts/' | url }}">All</a></li>
-      <li><a href="{{ '/filter/blog/' | url }}">Blog posts</a></li>
-      <li><a href="{{ '/filter/articles/' | url }}">Articles</a></li>
-    </ul>
-  </aside>
-  <aside>
-    <h1>Posts by category</h1>
-    <ul role="list">
-      <li><a href="{{ '/filter/posts/' | url }}">All</a>  </li>
-      <li><a href="{{ '/filter/consulting/' | url }}">Consulting</a></li>
-      <li><a href="{{ '/filter/finance/' | url }}">Finance</a></li>
-      <li><a href="{{ '/filter/operations/' | url }}">Operations</a></li>
-      <li><a href="{{ '/filter/project/' | url }}">Project management</a></li>
-      <li><a href="{{ '/filter/strategy/' | url }}">Strategy</a></li>
-      <li><a href="{{ '/filter/technology/' | url }}">Technology</a></li>
-    </ul>
-  </aside>
-  <aside>
-    <h1 id="socials">Socials</h1>
-    <ul role="list" class="flex socials">
-      <li><a name="LinkedIn" href="https://www.linkedin.com/in/alexanderroan/"><i class="fa-brands fa-linkedin"></i><p>LinkedIn</p></a></li>
-      <li><a name="Facebook" href="https://www.facebook.com/dearestalexander"><i class="fa-brands fa-facebook"></i><p>Facebook</p></a></li>
-      <li><a name="X" href="https://x.com/alexroan_com"><i class="fa-brands fa-x-twitter"></i><p>X</p></a></li>
-      <li><a name="Github" href="https://github.com/dearestalexander"><i class="fa-brands fa-github"></i><p>Github</p></a></li>
-      <li><a name="SAPCommunity" href="https://community.sap.com/t5/user/viewprofilepage/user-id/561103"><i class="fa-solid fa-link"></i><p>SAP Community</p></a></li>
-      <li><a name="FronendMentor" href="https://www.frontendmentor.io/profile/dearestalexander"><i class="fa-solid fa-link"></i><p>FrontendMentor</p></a></li>
-    </ul>
-    
-    </ul>
+{% set clientItems = [] %}
+{% for p in collections.project %}
+  {% set obj = {
+    title: p.data.title,
+    url: p.url,
+    project: (p.data.project | string),
+    subproject: (p.data.subproject | string),
+    tags: (p.data.tags),
+    date: (p.date)
+  } %}
+  {% set clientItems = clientItems.concat([obj]) %}
+{% endfor %}
 
-
-  </aside>
-</section>
+<script type="application/json" id="project-data">
+  {{ clientItems | dump | safe }}
+</script>

@@ -2,10 +2,13 @@
 title: Improving stakeholder interactions
 author: Alex Roan
 date: 2015-06-22
-tags: ["post", "blog", "consulting", "project"]
+tags: 
+hashtags: ["post", "blog", "consulting", "project"]
+project: 
+subproject:
 image: 
 imageAlt: 
-description: One easy way to improve the likelihood of a project or initiative being successful is to interact with stakeholders in a skilled way. Some of the benefits of good stakeholder interaction
+description: The benefits of good stakeholder management
 ---
 
 One easy way to improve the likelihood of a project or initiative being successful is to interact with stakeholders in a skilled way. Some of the benefits of good stakeholder interaction

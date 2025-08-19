@@ -2,10 +2,13 @@
 title: The chart of accounts, concept & design
 author: Alex Roan
 date: 2020-06-25
-tags: ["post", "article", "finance", "featured"]
+tags: 
+hashtags: ["post", "article", "finance", "featured"]
+project: 
+subproject:
 image: /assets/images/blog/coa__cover.jpg
 imageAlt: An abstract cover image with the article title
-description: The chart of account (CoA) is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting. Correct use of the chart of accounts can both simplify operations and improve decision making capability.
+description: A detailed guide to the  chart of account (CoA). This  is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting.
 ---
 
 The chart of account (CoA) is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting. Correct use of the chart of accounts can both simplify operations and improve decision making capability.

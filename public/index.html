@@ -3,211 +3,829 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Roan - Home</title>
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
     <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&family=Pacifico&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
+    <header class="header-ctr">
   <a href="#main" class="skip">Skip to main content</a>
-  <p class="header__container flex">
-    <span class="header__span-one">Hi,</span><span class="header__span-two">I'm Alex</span>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
   </p>
-  <div class="divider"></div>
   <nav>
-    <ul role="list" class="flex">
-      <li><a class="btn-link" href="/">Home</a></li>
-      <li><a class="btn-link" href="/filter/posts/">Blog</a></li>
-      <li><a class="btn-link" href="/services/">Services</a></li>
-      <li><a class="btn-link" href="/experience/">Experience</a></li>
-      <li><a class="btn-link" href="/more/">Side projects</a></li>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
     </ul>
   </nav>
 </header>
-    <main id="main">
+    <div class="divider"></div>
+    <main id="main" class="main">
       <div class="layout">
         <section class="section__main-content">
           
-<article class="region__intro flow">
-  <p>A business and technology expert with experience in consulting, project management and analyst roles.</p>
-  <p>Past clients and employers:</p>
-  <img src="/assets/images/clients__one.jpg" alt="diagram showing client names" loading="lazy">
-</article>
+<div class="posts-ftr">
+    <div id="select-ctr" class="select-ctr"></div>
+</div>
 
-
-<article class="region__news">
-  <div class="region__news__text">
-    <h1>Recent news</h1>
-    <ul role="list">
-      <li>
-        <h2>2025</h2>
-        <ul>
-          <li>Currently based in Bangkok</li>
-          <li>Recent blog post topics include:</li>
-          <ul>
-            <li>Front end to S/4HANA using SAP Integration Suite</li>
-            <li>Global business services</li>
-            <li>S/4HANA embedded analytics</li>
-            <li>The SAP finance data model</li>
-            <li>The leadership-project team gap</li>
-          </ul>
-        </ul> 
-        <h2>2024</h2>
-        <ul>
-          <li>Traveling around Tokyo, Bangkok, DaNang, Kuala Lumpur, Singapore and Hong Kong.</li>
-         <li>Blog posts included:</li>
-         <ul>
-            <li>A guide to assessing operations</li>
-            <li>Gathering information as part of transformation programs</li>
-            <li>Business/process frameworks</li>
-            <li>Scope creep: A brief post on managing scope creep</li>
-            <li>Ansoff's grid: A look at this useful tool for strategic planning.</li>
-          </ul>   
-        <li>Studies in:</h3>
-        <ul>
-          <li>The latest on VBA, HTML, CSS and JavaScript</li>
-          <li>Building this website in HTML and CSS with 11ty</li>
-        </ul>
-        <li>Work</li>
-        <ul>
-          <li>Assisting a recruitment business with operations assessment for acquisitions</li>
-        </ul>
-        <h2>2022 and 2023</h2>
-        <ul>
-          <li>In 2021-23 I was living back in the Scottish highlands.</li>
-          <li>I spent a year buying, restoring and selling classic cars, including a 1989 Renault Alpine GTA, 1985 Toyota Landcruiser HJ60, 1985 Toyota Celica Supra and 1978 Pontiac Firebird Trans Am.</li>
-        </ul>
-        <h2>2020 to 2022</h2>
-        <ul>
-          <li>I led the global design and pilot implementation of SAP S/4HANA Central Finance and CO-PA (margin analysis) for a multinational consumer goods company.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</article>
-
-<section class="region__featured">
-  <h1>Featured posts</h1>
-  <ul role="list" class="blog-grid"><li class="flow blog-card">
-      <article class="flow" aria-labelledby="From Web App to S/4HANA">
-        <h1 id="From Web App to S/4HANA">From Web App to S/4HANA</h1>
-        <img src="/assets/images/blog/integration/integration-cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">8 Aug 2025</span><span class="card-attrib-auth">Alexander Roan</span></p>
-        <p class="card-text">Ever wondered how to connect a custom web app to SAP S/4HANA? I recently built a working prototype using SAP Integration Suite, a frontend built with HTML/CSS/JS, and a mock server that simulates the S/4HANA Business Partner API. I’ve written up the whole flow in a detailed article. It&#39;s starts with a business-level overview and then steps through every part of the stack (Custom Web App &gt; SAP BTP &gt; SAP Integration Suite &gt; SAP Cloud Connector &gt; SAP S/4HANA).</p>
-        <a class="card-link" href="/posts/2025-08-08-integration/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="Centralised Business Services">
-        <h1 id="Centralised Business Services">Centralised Business Services</h1>
-        <img src="/assets/images/blog/gbs/gbs-cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">29 Jun 2025</span><span class="card-attrib-auth">Alexander Roan</span></p>
-        <p class="card-text">Business Services Organisations (BSOs) and Global Business Services (GBS) emerged in the late 1990s and have since played a central role in driving standardisation, harmonisation, and automation. By consolidating operations, they’ve helped multinationals achieve consistency across regions and deliver faster, more comparable reporting. This article takes a detailed look at how business services models work, evolve, and add value.</p>
-        <a class="card-link" href="/posts/2025-06-29-business-services/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips">
-        <h1 id="SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips">SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips</h1>
-        <img src="/assets/images/blog/embedded-analytics/embedded-analytics-cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">12 Jun 2025</span><span class="card-attrib-auth">Alexander Roan</span></p>
-        <p class="card-text">Embedded analytics in SAP S/4HANA sounds like a BW in SAP, but it&#39;s not. It&#39;s a core capability that utilises HANA, the virtual data model and Fiori to blend analytics and transactions in real time. It&#39;s part of the core S/4HANA platform. In this post, I explain the architecture, key app types, and how to approach implementation with real examples from finance.</p>
-        <a class="card-link" href="/posts/2025-06-12-sap-finance-embedded-analytics/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="Making sense of SAP finance - evolution of the data model">
-        <h1 id="Making sense of SAP finance - evolution of the data model">Making sense of SAP finance - evolution of the data model</h1>
-        <img src="/assets/images/blog/sap-data/sap-data-cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">3 Jun 2025</span><span class="card-attrib-auth">Alexander Roan</span></p>
-        <p class="card-text">The data model for finance has changed considerably from SAP R/3 to S/4HANA. These changes have provided some simplification while also making it easier to access data. Understanding the basics of the model can be useful. This article walks through the data model with a real life example.</p>
-        <a class="card-link" href="/posts/2025-06-03-sap-finance-data-model/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="The leadership-project team gap">
-        <h1 id="The leadership-project team gap">The leadership-project team gap</h1>
-        <img src="/assets/images/blog/strategy-project/strategy-project_0.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">14 Mar 2025</span><span class="card-attrib-auth">Alex Roan</span></p>
-        <p class="card-text">Succesful large scale transformation requires a handoff and ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. This is a crucial part of the successful delivery of complex intiiatives such as SAP S/4HANA implementation or an acquisition integration.</p>
-        <a class="card-link" href="/posts/2025-03-14-strategy-project/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="The chart of accounts, concept &amp; design">
-        <h1 id="The chart of accounts, concept &amp; design">The chart of accounts, concept &amp; design</h1>
-        <img src="/assets/images/blog/coa__cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">25 Jun 2020</span><span class="card-attrib-auth">Alex Roan</span></p>
-        <p class="card-text">The chart of account (CoA) is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting. Correct use of the chart of accounts can both simplify operations and improve decision making capability.</p>
-        <a class="card-link" href="/posts/2020-06-25-chart-of-accounts/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="SAP HANA and S/4HANA - A simple guide">
-        <h1 id="SAP HANA and S/4HANA - A simple guide">SAP HANA and S/4HANA - A simple guide</h1>
-        <img src="/assets/images/blog/saphana__cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">3 Jun 2020</span><span class="card-attrib-auth">Alex Roan</span></p>
-        <p class="card-text">Recent years have seen a resurgence in large organisations taking on major SAP upgrades with the relatively new SAP business suite 4 HANA (S/4HANA) collection of applications. But what exactly is HANA? and what is S/4HANA? How is implementing or upgrading to it different from the R/3 upgrades that were significant programs for many organizations over the last few decades?</p>
-        <a class="card-link" href="/posts/2020-06-03-sap-s4-hana/">Continue reading</a>
-      </article>
-    </li><li class="flow blog-card">
-      <article class="flow" aria-labelledby="Improving the record to report process">
-        <h1 id="Improving the record to report process">Improving the record to report process</h1>
-        <img src="/assets/images/blog/rtr-cover.jpg" alt=""/>
-        <p class="card-attrib"><span class="card-attrib-date">18 May 2020</span><span class="card-attrib-auth">Alex Roan</span></p>
-        <p class="card-text">Starting from business transactions such as the purchase of materials, payments to employees and sale of goods and services. Ending with reporting and decision making including the submission of detailed annual reports. The &#39;record to report&#39; process (RtR) is a long, complex process that involves people from across the enterprise. Despite the critical nature of this process, it’s rare to find RtR clearly documented from start to finish. I&#39;ve found that few finance employees can describe the complete process. In part, this is because the process touches core operational transactions (purchases, manufacturing, sales etc.). From another perspective, it&#39;s because certain parts of the process require a high level of expertise.</p>
-        <a class="card-link" href="/posts/2020-05-18-record-to-report/">Continue reading</a>
-      </article>
+<section class="region-cards">
+  <ul class="card-grid"><li class="card flow" data-hashtags="post,article,technology,featured">
+      <a class="card-inner flow--small" href="/posts/2025-08-08-integration/">
+        <h2 class="card-title" id="From Web App to S/4HANA">From Web App to S/4HANA</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/integration/integration-cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A look at how web frontends connect to enterprise grade ERP systems. In this post I walk through how I built a custom web app using HTML/CSS/JS and connected it to SAP S/4HANA using SAP Integration Suite.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2025-08-08">
+                <time class="card-date" datetime="2025-08-08">
+                  8 Aug 2025
+                </time>
+              </span>
+              <span class="card-auth">Alexander Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,technology,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#technology</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,finance,featured">
+      <a class="card-inner flow--small" href="/posts/2025-06-29-business-services/">
+        <h2 class="card-title" id="Centralised Business Services">Centralised Business Services</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/gbs/gbs-cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Business Services Organisations (BSOs) and Global Business Services (GBS) emerged in the late 1990s and have since played a central role in driving standardisation, harmonisation, and automation. By consolidating operations, they’ve helped multinationals achieve consistency across regions and deliver faster, more comparable reporting. This article takes a detailed look at how business services models work, evolve, and add value.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2025-06-29">
+                <time class="card-date" datetime="2025-06-29">
+                  29 Jun 2025
+                </time>
+              </span>
+              <span class="card-auth">Alexander Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,finance,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#finance</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,finance,featured">
+      <a class="card-inner flow--small" href="/posts/2025-06-12-sap-finance-embedded-analytics/">
+        <h2 class="card-title" id="SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips">SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/embedded-analytics/embedded-analytics-cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Embedded analytics in SAP S/4HANA sounds like a BW in SAP, but it&#39;s not. It&#39;s a core capability that utilises HANA, the virtual data model and Fiori to blend analytics and transactions in real time. It&#39;s part of the core S/4HANA platform. In this post, I explain the architecture, key app types, and how to approach implementation with real examples from finance.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2025-06-12">
+                <time class="card-date" datetime="2025-06-12">
+                  12 Jun 2025
+                </time>
+              </span>
+              <span class="card-auth">Alexander Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,finance,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#finance</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,finance,featured">
+      <a class="card-inner flow--small" href="/posts/2025-06-03-sap-finance-data-model/">
+        <h2 class="card-title" id="Making sense of SAP finance - evolution of the data model">Making sense of SAP finance - evolution of the data model</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/sap-data/sap-data-cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">The data model for finance has changed considerably from SAP R/3 to S/4HANA. These changes have provided some simplification while also making it easier to access data. Understanding the basics of the model can be useful. This article walks through the data model with a real life example.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2025-06-03">
+                <time class="card-date" datetime="2025-06-03">
+                  3 Jun 2025
+                </time>
+              </span>
+              <span class="card-auth">Alexander Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,finance,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#finance</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,strategy,featured,project management">
+      <a class="card-inner flow--small" href="/posts/2025-03-14-strategy-project/">
+        <h2 class="card-title" id="The leadership-project team gap">The leadership-project team gap</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/strategy-project/strategy-project_0.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Succesful large scale transformation requires a handoff and the ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. I take a look at how to improve this relationship.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2025-03-14">
+                <time class="card-date" datetime="2025-03-14">
+                  14 Mar 2025
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,strategy,featured,project management">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#strategy</span>
+              
+              <span class="card-tag">#featured</span>
+              
+              <span class="card-tag">#project management</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,strategy">
+      <a class="card-inner flow--small" href="/posts/2024-10-04-ansoff-grid/">
+        <h2 class="card-title" id="Strategy models - Ansoff&#39;s grid">Strategy models - Ansoff&#39;s grid</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Ansoff&#39;s grid is a simple, but excellent way to visualise the different options an organisation has when considering their strategy.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-10-04">
+                <time class="card-date" datetime="2024-10-04">
+                  4 Oct 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,strategy">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#strategy</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,project">
+      <a class="card-inner flow--small" href="/posts/2024-10-03-scope-creep/">
+        <h2 class="card-title" id="Understand the root cause of scope creep &amp; disagreements">Understand the root cause of scope creep &amp; disagreements</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Scope creep occurs frequently on projects, I take a look at the  common causes and what can we do..</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-10-03">
+                <time class="card-date" datetime="2024-10-03">
+                  3 Oct 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,project">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#project</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2024-06-21-huawai/">
+        <h2 class="card-title" id="What if an organisation loses it&#39;s Enterprise Resource Planning system (ERP)?">What if an organisation loses it&#39;s Enterprise Resource Planning system (ERP)?</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">As a result of political or security concerns Huawei was blocked from their SAP (Oracle). They replaced it by developing their own. Is in-house ERP development a viable strategy to consider in 2024?</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-07-02">
+                <time class="card-date" datetime="2024-07-02">
+                  2 Jul 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,operations">
+      <a class="card-inner flow--small" href="/posts/2024-06-07-operations-assessment/">
+        <h2 class="card-title" id="Operations assessment">Operations assessment</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/ops-asses__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A detailed guide to assessing business operations. This is a critical activity as part of both periodic strategy and transformation projects.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-07-01">
+                <time class="card-date" datetime="2024-07-01">
+                  1 Jul 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,operations">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#operations</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2024-06-18-bus-framework/">
+        <h2 class="card-title" id="Business framework">Business framework</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">One of the challenges of improving operations is identifying and prioritising where to focus. A good way to provide some structure to the approach and to improve communications is by working with a framework or map which helps to visualise the areas of the business and the nature of possible improvements.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-06-18">
+                <time class="card-date" datetime="2024-06-18">
+                  18 Jun 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,project,consulting">
+      <a class="card-inner flow--small" href="/posts/2024-06-13-info-gathering/">
+        <h2 class="card-title" id="Information gathering">Information gathering</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">My 4-step process to gather information for transformation projects. Uncovering operational details is often a challenge for programs such as restructuring, process design, IT implementations and acquisitions and divestitures.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2024-06-13">
+                <time class="card-date" datetime="2024-06-13">
+                  13 Jun 2024
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,project,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#project</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,finance,featured">
+      <a class="card-inner flow--small" href="/posts/2020-06-25-chart-of-accounts/">
+        <h2 class="card-title" id="The chart of accounts, concept &amp; design">The chart of accounts, concept &amp; design</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/coa__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A detailed guide to the  chart of account (CoA). This  is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-06-25">
+                <time class="card-date" datetime="2020-06-25">
+                  25 Jun 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,finance,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#finance</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,finance">
+      <a class="card-inner flow--small" href="/posts/2020-06-19-cost-reduction/">
+        <h2 class="card-title" id="A simple guide to cost reduction">A simple guide to cost reduction</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/cost-reduction__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A guide to various approaches to cost reduction</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-06-19">
+                <time class="card-date" datetime="2020-06-19">
+                  19 Jun 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,finance">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#finance</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,project">
+      <a class="card-inner flow--small" href="/posts/2020-06-09-imp-proj-man/">
+        <h2 class="card-title" id="Improving project management by focussing on strategy and people">Improving project management by focussing on strategy and people</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/proj-man__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Some tips on improving project management.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-06-09">
+                <time class="card-date" datetime="2020-06-09">
+                  9 Jun 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,project">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#project</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,technology,featured">
+      <a class="card-inner flow--small" href="/posts/2020-06-03-sap-s4-hana/">
+        <h2 class="card-title" id="SAP HANA and S/4HANA - A simple guide">SAP HANA and S/4HANA - A simple guide</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/saphana__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">SAP HANA and S/4HANA - a simple guide</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-06-03">
+                <time class="card-date" datetime="2020-06-03">
+                  3 Jun 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,technology,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#technology</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,article,technology">
+      <a class="card-inner flow--small" href="/posts/2020-05-26-blockchain/">
+        <h2 class="card-title" id="Blockchain - how it works">Blockchain - how it works</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/blockchain__cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A detailed look at how Blockchain works.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-05-26">
+                <time class="card-date" datetime="2020-05-26">
+                  26 May 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,article,technology">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#article</span>
+              
+              <span class="card-tag">#technology</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,finance,featured">
+      <a class="card-inner flow--small" href="/posts/2020-05-18-record-to-report/">
+        <h2 class="card-title" id="Improving the record to report process">Improving the record to report process</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/rtr-cover.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A detailed look at the record to report process.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2020-05-18">
+                <time class="card-date" datetime="2020-05-18">
+                  18 May 2020
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,finance,featured">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#finance</span>
+              
+              <span class="card-tag">#featured</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,finance">
+      <a class="card-inner flow--small" href="/posts/2017-07-23-finance-insight/">
+        <h2 class="card-title" id="Insight in finance - the light bulb moment!">Insight in finance - the light bulb moment!</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Insight is often talked about in Finance, but not always clearly defined. What does it really mean to provide insight and how does this differ from the core role of preparing financial and management reports and accounts?</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-07-23">
+                <time class="card-date" datetime="2015-07-23">
+                  23 Jul 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,finance">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#finance</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,technology">
+      <a class="card-inner flow--small" href="/posts/2015-06-22-virtual-worlds/">
+        <h2 class="card-title" id="Can Big Business Cash In On Virtual Worlds?">Can Big Business Cash In On Virtual Worlds?</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/akihabara.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Will business services in virtual worlds.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-22">
+                <time class="card-date" datetime="2015-06-22">
+                  22 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,technology">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#technology</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting,project">
+      <a class="card-inner flow--small" href="/posts/2015-06-22-stakeholders/">
+        <h2 class="card-title" id="Improving stakeholder interactions">Improving stakeholder interactions</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">The benefits of good stakeholder management</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-22">
+                <time class="card-date" datetime="2015-06-22">
+                  22 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting,project">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+              <span class="card-tag">#project</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,technology">
+      <a class="card-inner flow--small" href="/posts/2015-06-22-snapchat/">
+        <h2 class="card-title" id="Snapchat for Product Launch or Project Status Reporting?">Snapchat for Product Launch or Project Status Reporting?</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/postitnotes.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Could a tool like snapchat help with  project status updates?</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-22">
+                <time class="card-date" datetime="2015-06-22">
+                  22 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,technology">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#technology</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2015-06-22-freelance/">
+        <h2 class="card-title" id="Can sites like &#39;freelance.com&#39; shake up traditional professional services?">Can sites like &#39;freelance.com&#39; shake up traditional professional services?</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/smithfields.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Can tools like freelance.com replace traditional professional services?</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-22">
+                <time class="card-date" datetime="2015-06-22">
+                  22 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2015-06-06-youtube/">
+        <h2 class="card-title" id="YouTube Let&#39;s Play and How Businesses Can Benefit">YouTube Let&#39;s Play and How Businesses Can Benefit</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+            <img class="card-img" src="/assets/images/blog/superpotato.jpg" alt=""/>
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Applying let&#39;s play style to corporate training videos.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-06">
+                <time class="card-date" datetime="2015-06-06">
+                  6 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2015-06-06-select-providers/">
+        <h2 class="card-title" id="Advice On Selecting Project &amp; Outsourcing Service Providers">Advice On Selecting Project &amp; Outsourcing Service Providers</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">Cultural considerations when selecting 3rd party service providers.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-06">
+                <time class="card-date" datetime="2015-06-06">
+                  6 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
+    </li><li class="card flow" data-hashtags="post,blog,consulting">
+      <a class="card-inner flow--small" href="/posts/2015-06-04-process/">
+        <h2 class="card-title" id="Tools &amp; techniques to manage business processes">Tools &amp; techniques to manage business processes</h1>
+        <div class="card-contents flow--small">  
+          <div class="card-img-ctr">
+            
+          </div>
+          <div class="card-text flow--small">
+            <p class="card-text">A look at different approaches to business process improvement.</p>
+            <div class="card-att flow--small">
+              <span class="card-date-ctr" data-date="2015-06-04">
+                <time class="card-date" datetime="2015-06-04">
+                  4 Jun 2015
+                </time>
+              </span>
+              <span class="card-auth">Alex Roan</span>
+            </div>
+            <div class="card-tags" data-tag="post,blog,consulting">
+              
+              <span class="card-tag">#post</span>
+              
+              <span class="card-tag">#blog</span>
+              
+              <span class="card-tag">#consulting</span>
+              
+            </div>
+         </div>
+        </div>
+      </a>
     </li></ul>
 </section>
         </section>
-      <section class="region__sidebar flow">
-  <aside>
-    <h1>About</h1>
-    <img src="/assets/images/alex2.jpg" alt="profile picture of alex" loading="lazy">
-    <p>Somewhere between strategy, process, tech and enjoying my next coffee by the river in Chiang Mai.</p>
-  </aside>
-  <aside>
-    <h1>Posts by type</h1>
-    <ul role="list">
-      <li><a href="/filter/posts/">All</a></li>
-      <li><a href="/filter/blog/">Blog posts</a></li>
-      <li><a href="/filter/articles/">Articles</a></li>
-    </ul>
-  </aside>
-  <aside>
-    <h1>Posts by category</h1>
-    <ul role="list">
-      <li><a href="/filter/posts/">All</a>  </li>
-      <li><a href="/filter/consulting/">Consulting</a></li>
-      <li><a href="/filter/finance/">Finance</a></li>
-      <li><a href="/filter/operations/">Operations</a></li>
-      <li><a href="/filter/project/">Project management</a></li>
-      <li><a href="/filter/strategy/">Strategy</a></li>
-      <li><a href="/filter/technology/">Technology</a></li>
-    </ul>
-  </aside>
-  <aside>
-    <h1 id="socials">Socials</h1>
-    <ul role="list" class="flex socials">
-      <li><a name="LinkedIn" href="https://www.linkedin.com/in/alexanderroan/"><i class="fa-brands fa-linkedin"></i><p>LinkedIn</p></a></li>
-      <li><a name="Facebook" href="https://www.facebook.com/dearestalexander"><i class="fa-brands fa-facebook"></i><p>Facebook</p></a></li>
-      <li><a name="X" href="https://x.com/alexroan_com"><i class="fa-brands fa-x-twitter"></i><p>X</p></a></li>
-      <li><a name="Github" href="https://github.com/dearestalexander"><i class="fa-brands fa-github"></i><p>Github</p></a></li>
-      <li><a name="SAPCommunity" href="https://community.sap.com/t5/user/viewprofilepage/user-id/561103"><i class="fa-solid fa-link"></i><p>SAP Community</p></a></li>
-      <li><a name="FronendMentor" href="https://www.frontendmentor.io/profile/dearestalexander"><i class="fa-solid fa-link"></i><p>FrontendMentor</p></a></li>
-    </ul>
-    
-    </ul>
-
-
-  </aside>
-</section>
       <div>
     </main>
-        <footer class="flow">
-      <aside class="flex attribution">
-        <p>Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
-      </aside>
-    </footer>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
   </body>
 </html>

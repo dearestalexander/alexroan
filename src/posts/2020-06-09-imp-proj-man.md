@@ -2,10 +2,13 @@
 title: Improving project management by focussing on strategy and people
 author: Alex Roan
 date: 2020-06-09
-tags: ["post", "article", "project"]
+tags: 
+hashtags: ["post", "article", "project"]
+project: 
+subproject:
 image: /assets/images/blog/proj-man__cover.jpg
 imageAlt: An abstract cover image with the article title
-description: Many of the projects I’ve come into contact with over the years run into problems that stem from a lack of focus in two areas. A lack of ability to effectively deal with people. And a lack of understanding of strategy.
+description: Some tips on improving project management.
 ---
 
 Many of the projects I’ve come into contact with over the years run into problems that stem from a lack of focus in two areas. A lack of ability to effectively deal with people. And a lack of understanding of strategy.

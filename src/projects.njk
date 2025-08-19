@@ -1,0 +1,28 @@
+---
+title: Business and technology transformation
+titletwo: ~ by Alex Roan
+layout: 'template-projects.njk'
+---
+
+  {%- for project in collections.project | reverse -%}
+  <li class="project-card flow--small" data-project="{{ project.data.project }}" data-subproject="{{ project.data.subproject }}">
+    <a class="card-inner flow--small" aria-labelledby="{{ project.data.title }}" href="{{ project.url }}">
+      <h2 class="card-title" id="{{ project.data.title}}">{{ project.data.title }}</h1>
+      <div class="card-att flow--small">
+        <span class="card-proj">project: {{ project.data.project }}</span>
+        <span class="card-subproj">Subproject: {{ project.data.subproject }}</span>
+      </div>
+      <div class="card-contents flow--small">  
+        <div class="card-img-ctr">
+          {% if project.data.image and project.data.image | trim != "" %}
+          <img class="card-img" src="{{ project.data.image }}" alt=""/>
+          {% endif %}
+        </div>
+        <div class="card-text flow--small">
+          <p class="card-text">{{ project.data.description }}</p>
+        </div>
+      </div>
+    </a>
+  </li>
+  {%- endfor -%}
+

@@ -2,10 +2,13 @@
 title: Understand the root cause of scope creep & disagreements
 author: Alex Roan
 date: 2024-10-03
-tags: ["post", "blog", "project"]
+tags: 
+hashtags: ["post", "blog", "project"]
+project: 
+subproject:
 image:
 imageAlt:
-description: This happened to Huawei in May 2019. President Trump used an executive order to block Huawei from transacting for information or communications technology with US organisations. An obvious impact for Huawei's mobile handset business was the loss of access to Google's android platform and services. Less obvious was the loss of access to Oracle's ERP software. The impact of this may have been bigger.
+description: Scope creep occurs frequently on projects, I take a look at the  common causes and what can we do..
 ---
 
 ## Understand the root cause of scope creep & disagreements

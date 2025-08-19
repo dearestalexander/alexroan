@@ -1,0 +1,10 @@
+---
+title: Business and technology transformation
+titletwo: ~ by Alex Roan
+layout: 'template-page.njk'
+---
+
+  {%- for about in collections.about | reverse -%}
+    {{ about.data.title}}
+    {{ content | safe }}
+  {%- endfor -%}

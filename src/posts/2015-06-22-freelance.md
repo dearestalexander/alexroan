@@ -2,10 +2,13 @@
 title: Can sites like 'freelance.com' shake up traditional professional services?
 author: Alex Roan
 date: 2015-06-22
-tags: ["post", "blog", "consulting"]
+tags: 
+hashtags: ["post", "blog", "consulting"]
+project: 
+subproject:
 image: /assets/images/blog/smithfields.jpg
 imageAlt: A photograph showing business men walking at smithfields in London
-description: Can tools like freelance.com replace traditional professional services? I have been thinking about this in reference to management consultants, lawyers, tax advisors etc. Yesterday I listened to an [episode](http://www.jamesaltucher.com/2015/06/how-to-get-paid-for-what-youre-good-at-with-matt-barrie/) of the James Altucher podcast which discussed this.
+description: Can tools like freelance.com replace traditional professional services?
 ---
 
 Can tools like freelance.com replace traditional professional services? I have been thinking about this in reference to management consultants, lawyers, tax advisors etc. Yesterday I listened to an [episode](http://www.jamesaltucher.com/2015/06/how-to-get-paid-for-what-youre-good-at-with-matt-barrie/) of the James Altucher podcast which discussed this.

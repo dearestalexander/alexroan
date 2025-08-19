@@ -2,10 +2,13 @@
 title: A simple guide to cost reduction
 author: Alex Roan
 date: 2020-06-19
-tags: ["post", "article", "finance"]
+tags: 
+hashtags: ["post", "article", "finance"]
+project: 
+subproject:
 image: /assets/images/blog/cost-reduction__cover.jpg
 imageAlt: An abstract cover graphic with the title 'A simple guide to cost reduction'
-description: Whenever discussing cost reduction it's important to consider corporate social responsibility as a starting point. Ideally, companies can find the right balance between reducing costs and thinking about employee and business partner (e.g. supplier) impacts. Employee layoffs can have a devastating effect on individuals. Business partner changes can put companies out of business. When planning and executing cost reduction these impacts should be considered. In real life, this might mean trying to offer employees other options (reduced hours / different contract terms / new profit-generating roles) or business partners a revised agreement.
+description: A guide to various approaches to cost reduction
 ---
 
 ## Cost reduction and CSR

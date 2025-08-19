@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+
+    <link href="{{ '/styles.css' | url }}" rel="stylesheet">
+    <script defer src="/script-projects.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  
+  <body class="body-projects">
+    {% include 'header.njk' %}
+
+    <div class="divider"></div>
+    <main id="main" class="main-projects">
+      <div class="layout-projects">
+        <ul id="proj-menu-ctr" class="proj-menu-ctr">
+          <li class="project-menu-title">Category:</li>
+          <li id="project-menu-all" class="project-menu-item">All</li>
+        </ul>
+        <ul id="subproj-menu-ctr" class="subproj-menu-ctr">
+
+        </ul>
+        <ul role="list" class="project-grid flow--small">
+          {{ content | safe }}
+        </ul>
+      <div>
+    </main>
+    {% include 'footer.njk' %}
+  </body>
+</html>

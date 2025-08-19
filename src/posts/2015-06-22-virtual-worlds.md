@@ -2,10 +2,13 @@
 title: Can Big Business Cash In On Virtual Worlds?
 author: Alex Roan
 date: 2015-06-22
-tags: ["post", "blog", "technology"]
+tags: 
+hashtags: ["post", "blog", "technology"]
+project: 
+subproject:
 image: /assets/images/blog/akihabara.jpg
 imageAlt: A photograph of akihabara showing a futuristic scene with large buildings with lights and an overhead train.
-description: $83,869,981 That is a big number. And surprisingly it is [the](https://robertsspaceindustries.com/funding-goals) amount of money that Chris Robert's computer game 'Star Citizen' has raised through crowd funding. You can pledge and buy the game for as little as $54, however if you are really into it and you have the money you can also buy ['The Completionist'](https://robertsspaceindustries.com/pledge/Combos/The-Completionist-Digital) digital package for $18,000. What do you get for $18,000 - access to the game and pretty much all the spaceships created for the game to date. So that is $18,000 for digital spaceships in a game not yet completed. Note - you can also get all the spaceships just through playing the game.
+description: Will business services in virtual worlds.
 ---
 
 $83,869,981 That is a big number. And surprisingly it is [the](https://robertsspaceindustries.com/funding-goals) amount of money that Chris Robert's computer game 'Star Citizen' has raised through crowd funding. You can pledge and buy the game for as little as $54, however if you are really into it and you have the money you can also buy ['The Completionist'](https://robertsspaceindustries.com/pledge/Combos/The-Completionist-Digital) digital package for $18,000. What do you get for $18,000 - access to the game and pretty much all the spaceships created for the game to date. So that is $18,000 for digital spaceships in a game not yet completed. Note - you can also get all the spaceships just through playing the game.

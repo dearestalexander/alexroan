@@ -8,6 +8,7 @@
     "ANLU",
     "ANLZ",
     "Ansoff's",
+    "attrib",
     "BELNR",
     "BKPF",
     "BNKA",
@@ -28,6 +29,7 @@
     "CSKB",
     "CSKS",
     "CSSK",
+    "endfor",
     "FAGFLEXA",
     "FAGLFLEXA",
     "FAGLFLEXH",
@@ -47,6 +49,7 @@
     "Landcruiser",
     "LFBK",
     "RDBMS",
+    "stylesheet",
     "TCURC",
     "TCURR",
     "TCURT"

@@ -2,10 +2,13 @@
 title: Strategy models - Ansoff's grid
 author: Alex Roan
 date: 2024-10-04
-tags: ["post", "blog", "strategy"]
+tags: 
+hashtags: ["post", "blog", "strategy"]
+project: 
+subproject:
 image:
 imageAlt:
-description: Whilst working as a consultant I’ve found this framework simple, but useful. When an organization is planning ahead it provides a way to think about the focus on current products, services and markets in alongside opportunities to developing new products/services and/or enter new markets.
+description: Ansoff's grid is a simple, but excellent way to visualise the different options an organisation has when considering their strategy.
 ---
 
 Whilst working as a consultant I’ve found this framework simple, but useful. When an organization is planning ahead it provides a way to think about the focus on current products, services and markets in alongside opportunities to developing new products/services and/or enter new markets.

@@ -2,10 +2,13 @@
 title: Advice On Selecting Project & Outsourcing Service Providers
 author: Alex Roan
 date: 2015-06-06
-tags: ["post", "blog", "consulting"]
+tags: 
+hashtags: ["post", "blog", "consulting"]
+project: 
+subproject:
 image: 
 imageAlt:
-description: I remember on one project a Russian business expert was offended by an Indian consultant shaking his head in disagreement. The Russian person didn't know that in India a certain shaking of the head indicates 'I am listening'. In another project in Morocco a user requirement was almost missed because a local expert was ashamed to tell a foreigner that a donkey was a transportation type that needed to be programmed into the process and system.
+description: Cultural considerations when selecting 3rd party service providers.
 ---
 
 I remember on one project a Russian business expert was offended by an Indian consultant shaking his head in disagreement. The Russian person didn't know that in India a certain shaking of the head indicates 'I am listening'. In another project in Morocco a user requirement was almost missed because a local expert was ashamed to tell a foreigner that a donkey was a transportation type that needed to be programmed into the process and system.

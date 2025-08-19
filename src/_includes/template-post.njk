@@ -3,48 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Roan</title>
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
     <link href="{{ '/styles.css' | url }}" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
   <body>
     {% include 'header.njk' %}
-    <main id="main">
-      <article class="single-post">
-
-      <h1>{{title}}</h1>
-      <p class="single-post__attribution">by {{author}} on {{ date | postDate}}
-
-      {{ content | safe }}
-
-      <div class="comments flow">
-        <strong>Share, comment/discuss</strong>
-        
-        <p>Share on 
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com{{ page.url }}" target="_blank">LinkedIn</a>, 
-          <a href="https://twitter.com/intent/tweet?url=https://alexroan.com{{ page.url }}&text={{ title }}" target="_blank">X</a>, 
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://alexroan.com{{ page.url }}" target="_blank">or Facebook</a>.
-        </p>
-
-        <div id="cusdis_thread"
-          data-host="https://cusdis.com"
-          data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
-          data-page-id="{{ page.url | url }}"
-          data-page-url="{{ page.url | url }}"
-          data-page-title="{{ title }}">
+    <div class="divider"></div>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        <h1 class="post-title">{{title}}</h1>
+        <p id="post-tag" class="post-tag"> {{ tags }}</p>
+        <p class="post-att">by {{author}} on {{ date | postDate}}
+        {{ content | safe }}
+        <div class="post-comments flow">
+          <strong>Share, comment/discuss</strong>
+          <p>Share on 
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com{{ page.url }}" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com{{ page.url }}&text={{ title }}" target="_blank">X</a>, 
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://alexroan.com{{ page.url }}" target="_blank">or Facebook</a>.
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="{{ page.url | url }}"
+            data-page-url="{{ page.url | url }}"
+            data-page-title="{{ title }}">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
         </div>
-        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-      </div>
-
-
       </article>
     </main>
     {% include 'footer.njk' %}
+    <script></script>
   </body>
 </html>

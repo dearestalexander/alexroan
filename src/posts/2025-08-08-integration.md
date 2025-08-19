@@ -2,10 +2,13 @@
 title: From Web App to S/4HANA
 author: Alexander Roan
 date: 2025-08-08
-tags: ["post", "article", "technology", "featured"]
+tags: 
+hashtags: ["post", "article", "technology", "featured"]
+project: 
+subproject:
 image: /assets/images/blog/integration/integration-cover.jpg
 imageAlt:
-description:  Ever wondered how to connect a custom web app to SAP S/4HANA? I recently built a working prototype using SAP Integration Suite, a frontend built with HTML/CSS/JS, and a mock server that simulates the S/4HANA Business Partner API. I’ve written up the whole flow in a detailed article. It's starts with a business-level overview and then steps through every part of the stack (Custom Web App > SAP BTP > SAP Integration Suite > SAP Cloud Connector > SAP S/4HANA).
+description:  A look at how web frontends connect to enterprise grade ERP systems. In this post I walk through how I built a custom web app using HTML/CSS/JS and connected it to SAP S/4HANA using SAP Integration Suite.
 ---
 
 "Build A Web App and Connect to S/4HANA with SAP Integration Suite"
