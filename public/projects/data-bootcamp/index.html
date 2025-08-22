@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+    <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header-ctr">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
+  </p>
+  <nav>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
+    </ul>
+  </nav>
+</header>
+    <div class="divider"></div>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        <h1 class="post-title">dataexpert.io beginners bootcamp notes</h1>
+        <p id="post-tag" class="post-tag"> project</p>
+        <p class="post-att">by Alexander Roan on 22 Aug 2025
+        <h2>Intro</h2>
+<p>This is a quick reference to my notes from the <a href="https://www.dataexpert.io/">dataexpert.io</a> bootcamp run by Zach Wilson.</p>
+<h2>SQL</h2>
+<h3>List of keywords</h3>
+<ul>
+<li><code>SELECT</code>: select data from a database</li>
+<li><code>WHERE</code>:  filter records</li>
+<li>Conditionals
+<ul>
+<li><code>AND</code>:</li>
+<li><code>OR</code>:</li>
+</ul>
+</li>
+<li><code>GROUP BY</code>
+<ul>
+<li>Group rows that have the same values into summary rows</li>
+<li>Often used with aggregates</li>
+</ul>
+</li>
+<li><code>ORDER BY</code>
+<ul>
+<li>Add <code>DESC</code> to reverse order <code>ORDER BY details.pts DESC</code></li>
+</ul>
+</li>
+<li><code>JOIN</code>: Join
+<ul>
+<li><code>ON</code>: specify field for join</li>
+</ul>
+</li>
+<li><code>INSERT INTO</code>: insert new records in a table</li>
+<li><code>DELETE</code>: delete existing records in a table</li>
+<li><code>UPDATE</code>: modify the existing records in a table.</li>
+<li>Keywords:
+<ul>
+<li><code>DISTINCT</code> to deduplicate (using 'GROUP BY' vs. 'DISTINCT'?)</li>
+<li><code>AS</code> create new name for column or table</li>
+</ul>
+</li>
+<li>Aggregates:
+<ul>
+<li><code>COUNT()</code>: return the number of rows that match a specified criteria</li>
+<li><code>MAX()</code>: return the largest valu eof a selected column</li>
+<li><code>MIN()</code>: return the smallest value of a selected column</li>
+<li><code>SUM()</code>: return total sum of numeric column</li>
+<li><code>AVG()</code>: return average of numeric column</li>
+<li><code>ARRAY_AGG()</code>:
+<ul>
+<li>Consolidates values from multiple rows into a single array</li>
+<li>Groups by specified <code>GROUP BY</code></li>
+<li>Ordering in the array can be controlled by <code>ORDER BY</code></li>
+<li>Combined with <code>DISTINCT</code> to collect only unique values</li>
+<li>Supports <code>FILTER</code> to include only specific rows</li>
+<li>Preserves original data types</li>
+<li>Useful for generating JSON output.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Basic statements examples</h3>
+<h4>Select &amp; Where</h4>
+<pre><code class="language-SQL">SELECT * FROM Customers
+WHERE Country='Mexico'; 
+</code></pre>
+<h4>Group By</h4>
+<pre><code class="language-SQL">SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s); 
+</code></pre>
+<h4>Join</h4>
+<p>Combine rows of two or more tables</p>
+<ul>
+<li>(INNER) JOIN: Matching values in both tables</li>
+<li>LEFT (OUTER) JOIN: All from left table, and matches from the right table</li>
+<li>RIGHT (OUTER) JOIN: All from the right table, and matches from the left table</li>
+<li>FULL (OUTER) JOIN: All when there is a match in either left or right table</li>
+</ul>
+<pre><code class="language-SQL">SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+</code></pre>
+<h2>NBA database</h2>
+<h3>Local set up</h3>
+<p>There are instructions on the github <a href="https://github.com/DataExpert-io/data-engineer-handbook/tree/main/">handbook</a> to set up the database locally.</p>
+<p>Navigate to intermediate-bootcamp &gt; materials &gt; 1-dimensional-data-modelling &gt; README.md.</p>
+<h3>Tables</h3>
+<ul>
+<li>Games <code>games</code>
+<ul>
+<li>List of games by date with summary information</li>
+<li>Key fields
+<ul>
+<li>Game id: <code>game_id</code></li>
+<li>Date: <code>game_date_est</code></li>
+<li>Season: <code>season</code></li>
+<li>Various points totals (home, away, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Game details <code>game_details</code>:
+<ul>
+<li>Player details by game</li>
+<li>Key fields:
+<ul>
+<li>Game id: <code>game_id</code>,</li>
+<li>Team id: <code>team_id</code></li>
+<li>Team city: <code>team_city</code></li>
+<li>Player id: <code>player_id</code></li>
+<li>Player_name: <code>player_name</code></li>
+<li>Player points: <code>pts</code>
+Player_seasons</li>
+</ul>
+</li>
+<li>Player details per season
+<ul>
+<li>Key fields:</li>
+<li>Player name: <code>player_name</code></li>
+<li>Player age: <code>age</code></li>
+<li>Player height: <code>height</code></li>
+<li>Player weight: <code>weight</code></li>
+<li>Player college: <code>college</code></li>
+<li>Player games played: <code>gp</code></li>
+<li>Player points: <code>pts</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lessons</h2>
+<h3>GROUP BY, JOIN, and Common Table Expression Lab</h3>
+<h4>Example 1: lookup player details</h4>
+<p>Lookup player season data by age, college, pts, etc.</p>
+<pre><code class="language-SQL">/* Ex 1 */
+SELECT *
+  FROM bootcamp.nba_player_seasons 
+  WHERE (age &gt; 40  AND college = 'Florida') OR pts &gt; 30
+  LIMIT 50
+</code></pre>
+<h4>Example 2: aggregate player details</h4>
+<p>Experiment with aggregations on player_seasons</p>
+<pre><code class="language-SQL">/* Ex 2 */
+SELECT country, 
+              COUNT(*), 
+              AVG(pts), 
+              SUM(reb), 
+              ARRAY_AGG(DISTINCT player_name)
+  FROM bootcamp.nba_player_seasons 
+  GROUP BY country
+</code></pre>
+<h4>Example 3: join games and game_details</h4>
+<p>Use join to connect games and games_details</p>
+<pre><code class="language-SQL">SELECT games.game_date_est, games.season, details.player_name, details.pts
+  FROM bootcamp.nba_game_details as details 
+  JOIN bootcamp.nba_games as games
+  ON details.game_id = games.game_id
+</code></pre>
+<h4>Example 4: combine aggregations and joins</h4>
+<p>Combine aggregations with joins.</p>
+<pre><code class="language-SQL">SELECT games.season, 
+  details.player_name,
+  SUM(details.pts) as total_pts,
+  COUNT(*) as num_games
+FROM game_details as details
+JOIN games
+ON details.game_id = games.game_id
+GROUP BY games.season, details.player_name
+</code></pre>
+<h4>Example 5: troubleshoot high scores</h4>
+<p>Start by investigating a single player, add:</p>
+<pre><code class="language-SQL">SELECT ARRAY_AGG(DISTINCT games.game_date_set_est)
+WHERE details.player_name = 'LeBron James'
+</code></pre>
+<p>Next remove duplicates and filter games to exclude playoffs</p>
+<ul>
+<li>Get pts per player per game by de-duplicating game_details
+<ul>
+<li>Get max pts grouped by <code>player_name</code> and <code>game_id</code></li>
+</ul>
+</li>
+<li>Get a list of unique games excl. games that happen after April 15 of next year
+<ul>
+<li>(cutting off before the playoffs)</li>
+</ul>
+</li>
+<li>Join two CTEs on game_id, filter by 'Lebron James' and get some aggregates</li>
+</ul>
+<pre><code class="language-SQL">WITH deduped_details AS (
+  SELECT player_name,
+                game_id,
+                MAX(pts) as pts 
+  FROM bootcamp.nba_game_details
+  GROUP BY player_name, game_id
+),deduped_games AS (
+  SELECT DISTINCT game_id, season, game_date_est
+  FROM bootcamp.nba_games
+  WHERE game_date_est &lt; DATE(CAST((season + 1) AS VARCHAR) || '-04-15')
+)
+
+SELECT games.season, 
+              details.player_name,
+              SUM(details.pts) as total_pts, 
+              COUNT(*) as num_games
+              ARRAY_AGG(DISTINCT games.game_date_est)
+  FROM deduped_details as details 
+  JOIN deduped_games as games
+  ON details.game_id = games.game_id
+  WHERE details.player_name = 'LeBron James'
+  GROUP BY games.season, details.player_name
+</code></pre>
+<p>Additional analysis &amp; notes:</p>
+<p>If you want to double check games per month to validate playoffs are included</p>
+<pre><code class="language-SQL">SELECT
+  EXTRACT(MONTH FROM game_date_est) AS month,
+  COUNT(*) AS games_count
+  FROM games
+  GROUP BY month
+  ORDER BY month;
+</code></pre>
+<p>If you want to validate there are duplicates in game_details</p>
+<pre><code class="language-SQL">SELECT
+  player_name, 
+  game_id,
+  COUNT(*) AS player_game_count
+  FROM game_details
+  GROUP BY player_name, game_id
+  HAVING COUNT(*) &gt; 1
+  ORDER BY payer_game_count DESC;
+</code></pre>
+<p>Join this back to table to see duplicate rows</p>
+<pre><code class="language-SQL">SELECT *
+FROM game_details
+WHERE (player_name, game_id) IN (
+    SELECT player_name, game_id
+    FROM game_details
+    GROUP BY player_name, game_id
+    HAVING COUNT(*) &gt; 1
+);
+</code></pre>
+
+        <div class="post-comments flow">
+          <strong>Share, comment/discuss</strong>
+          <p>Share on 
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/projects/data-bootcamp/" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/projects/data-bootcamp/&text=dataexpert.io beginners bootcamp notes" target="_blank">X</a>, 
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://alexroan.com/projects/data-bootcamp/" target="_blank">or Facebook</a>.
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="/projects/data-bootcamp/"
+            data-page-url="/projects/data-bootcamp/"
+            data-page-title="dataexpert.io beginners bootcamp notes">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+      </article>
+    </main>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
+    <script></script>
+  </body>
+</html>
