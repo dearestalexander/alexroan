@@ -64,6 +64,7 @@ body, h1, h2, h3, h4, p,
 figure, blockquote, ul, ol {
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
 
 ul[role='list'], ol[role='list'] {
@@ -72,7 +73,6 @@ ul[role='list'], ol[role='list'] {
 
 body {
   min-height: 100vh;
-  line-height: 1.6;
 }
 
 button, input, label {
@@ -82,7 +82,6 @@ button, input, label {
 h1, h2,
 h3, h4 {
   text-wrap: balance;
-  line-height: 1.2;
 }
 
 img,
@@ -136,16 +135,10 @@ h3 {
 
 p {
   color: var(--color-grey);
-  margin-bottom: 1.5rem;
 }
 
 ol, ul {
   color: var(--color-grey);
-  margin-bottom: 1.5rem;
-}
-
-li {
-  margin-bottom: 0.5rem
 }
 
 a {
@@ -155,7 +148,7 @@ a {
 
 .divider {
   width: 100%;
-  margin: 0;
+  margin: auto;
   border: 1px solid var(--color-grey);
 }
 
@@ -167,10 +160,12 @@ table, th, td {
 
 pre {
   font-family: "JetBrains Mono", monospace;
-  border: 1px solid var(--color-lightgrey);
+  font-size: var(--step--1);
+  border: 1px solid #d8dce3;
+  border-radius: 10px;
+  margin: var(--space-s) auto;
   padding: 1rem;
-  margin: 1.5rem 0;
-  background-color: var(--color-lightgrey);
+  background-color: #f0f2f5;
   overflow-x: auto; /* Allow horizontal scrolling for long lines */
 }
 
@@ -565,41 +560,57 @@ html {
   font-style: italic;
 }
 
+.post-article h1,
+.page-article h1 {
+  line-height: 1.2;
+}
+
 .post-article h2,
-.page-article {
-  margin-top: var(--space-2xl);
+.page-article h2 {
+  margin-top: var(--space-l);
   margin-bottom: var(--space-2xs);
+  line-height: 1.2;
 }
 
 .post-article h3,
-.page-article {
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-2xs);
+.page-article h3 {
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-3xs);
+  line-height: 1.2;
+}
+
+.post-article h4,
+.page-article h4 {
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-3xs);
+  line-height: 1.2;
+}
+
+.post-article p,
+.page-article p {
+  margin-bottom: var(--space-s);
 }
 
 .post-article ul, 
 .post-article ol,
 .page-article ul,
 .page-article ol {
+  margin-bottom: var(--space-s);
+  padding-left: var(--space-s);
   list-style-position: outside;
-  list-style-type:disc;
-  padding-left: 1em;
-}
-
-.post-article ul ul,
-.page-article ul ul {
-  padding-left: 1.5em;
+  list-style-type: disc;
 }
 
 .post-article img,
 .page-article img {
+  display: block; 
   max-width: 100%;
   border: 1px solid var(--color-black);
-  margin: 2rem 0;
-  display: block; 
+  margin: var(--space-m) auto;
 }
 
-.post-article a {
+.post-article a,
+.page-article a {
   text-decoration: underline;
   color: var(--color-red);
 }
@@ -607,8 +618,8 @@ html {
 .post-comments,
 .page-comments {
   border-top: 1px solid grey;
-  margin-top: 4em;
-  padding-top: 2em;
+  margin-top: 4rem;
+  padding-top: 4rem;
 }
 
 #cusdis_thread iframe {

@@ -31,32 +31,37 @@ Some steps from lesson/lab 2 only work in the datalake.
 
 ### NBA summary of main tables
 
-- Games `games`:
-  - List of games by date with summary information
-  - Key fields:
-    - Game id: `game_id`
-    - Date: `game_date_est`
-    - Season: `season`
-    - Various points totals (home, away, etc.)
-- Game details `game_details`:
-  - Player details by game
-  - Key fields:
-    - Game id: `game_id`,
-    - Team id: `team_id`
-    - Team city: `team_city`
-    - Player id: `player_id`
-    - Player_name: `player_name`
-    - Player points: `pts`
+Games `games`:
+
+- List of games by date with summary information
+- Key fields:
+  - Game id: `game_id`
+  - Date: `game_date_est`
+  - Season: `season`
+  - Various points totals (home, away, etc.)
+
+Game details `game_details`:
+
+- Player details by game
+- Key fields:
+  - Game id: `game_id`,
+  - Team id: `team_id`
+  - Team city: `team_city`
+  - Player id: `player_id`
+  - Player_name: `player_name`
+  - Player points: `pts`
+
 Player_seasons `player_seasons`:
-  - Player details per season
-    - Key fields:
-    - Player name: `player_name`
-    - Player age: `age`
-    - Player height: `height`
-    - Player weight: `weight`
-    - Player college: `college`
-    - Player games played: `gp`
-    - Player points: `pts`
+
+- Player details per season
+  - Key fields:
+  - Player name: `player_name`
+  - Player age: `age`
+  - Player height: `height`
+  - Player weight: `weight`
+  - Player college: `college`
+  - Player games played: `gp`
+  - Player points: `pts`
 
 ## L1: GROUP BY, JOIN, and Common Table Expression
 

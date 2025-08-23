@@ -11,6 +11,8 @@ imageAlt:
 description:  A look at how web frontends connect to enterprise grade ERP systems. In this post I walk through how I built a custom web app using HTML/CSS/JS and connected it to SAP S/4HANA using SAP Integration Suite.
 ---
 
+## Introduction
+
 "Build A Web App and Connect to S/4HANA with SAP Integration Suite"
 
 A big part of the magic behind AI, advanced analytics, and {insert tech buzzword here} is the humble API!
@@ -32,8 +34,6 @@ A couple of quick disclaimers:
   - I don't cover best practices, typical challenges, good use cases
 - My solution here is likely not optimal
   - It's just a vanilla HTML, CSS, JS frontend
-
----
 
 ## Part 1: introduction
 

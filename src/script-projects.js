@@ -59,6 +59,9 @@ document.body.addEventListener('click', (event) => {
 
 document.body.addEventListener('click', (event) => {
   if (event.target.classList.contains('subproject-menu-item')) {
+    Array.from(document.getElementById('subproj-menu-ctr').children).forEach(item => item.classList.remove('project-menu-selected'));
+    event.target.classList.add('project-menu-selected');
+
     const projectCards = document.querySelectorAll('.project-card');
     for (const projectCard of projectCards) {
       if (`subproject-${slugify(projectCard.dataset.subproject)}` === event.target.id) {
