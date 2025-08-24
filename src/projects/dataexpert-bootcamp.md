@@ -606,3 +606,355 @@ WHERE season = 2007 AND rank = 1
 
 - This time you get the 2007 data with the no. 1 score.
 - The rankings are being calculated on filtered 2007 data
+
+## Appendix: dataexpert.io/questions
+
+SPOILERS AHEAD!
+
+There are practice questions at dataexpert.io/questions
+
+As I write this, I've completed around 7 of these. I found them to be helpful in switching into the SQL problem solving mindset and experimenting with differnet things. I recommend giving them a good go without looking up answers or using AI. I found the SQL syntax list on W3 schools helpful, when I wasn't sure on how to do something. A summary of the questions and my attempts below.
+
+### Question: Find Viewers with Multiple Article
+
+[Find Viewers with Multiple Article Views in a Day](https://learn.dataexpert.io/question/find-multiple-article-viewers)
+
+Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.
+These are the tables to query for this question:
+playground.views
+
+- article_id int
+- author_id int
+- viewer_id int
+- view_date date
+
+Your answer should include these columns:
+
+- viewer_id integer
+
+My solution
+
+First SQL problem I've looked at. Took my a while to get my brain into the right 'operating mode'. I started by experimenting with counting viewer_id and then adding in GROUP BY.
+
+I realised we need to do a query in a query to get from the intermediate calculation to the presentation results. I went for the CTE approach.
+
+```SQL
+SELECT * FROM playground.views
+
+WITH counted_viewers AS (
+SELECT viewer_id, view_date,
+  COUNT(DISTINCT article_id) AS artct
+FROM playground.views
+  GROUP BY viewer_id, view_date
+  HAVING COUNT(DISTINCT article_id) >= 2
+)
+
+SELECT viewer_id 
+FROM counted_viewers
+ORDER BY viewer_id ASC
+```
+
+### Question: Check Test Answers
+
+[Check answers](https://learn.dataexpert.io/question/check-test-answers)
+
+Create a SQL query to evaluate test answers stored in a table named playground.answers with columns id (unique question ID), correct_answer (string), and given_answer (which can be NULL). Return a table with columns id and checks, where checks is "no answer" if given_answer is NULL, "correct" if given_answer matches correct_answer, and "incorrect" otherwise. Order the results by id.
+These are the tables to query for this question:
+playground.answers
+
+- id int
+- correct_answer string
+- given_answer string
+
+Your answer should include these columns:
+
+- id integer
+- checks varchar
+
+My solution
+
+We haven't covered conditionals using IF in the dataexpert videos, but I took a guess that SQL had an IF keyword. I checked W3 schools and it is:
+
+`IF(condition, value_if_true, value_if_false)`
+
+I did a bit of testing and found a few things:
+
+- You can nest an IF inside an IF
+  - So we can check for correct answer first, then check incorrects for null
+- You can't use = NULL as it represents and unknown value
+  - Use IS NULL
+
+```SQL
+SELECT id,
+IF (given_answer = correct_answer, 'correct', 
+  IF (given_answer IS NULL, 'no answer', 'incorrect')) AS checks
+FROM playground.answers
+ORDER By id
+```
+
+I asked ChatGPT it's opinion on this solution, and it recommended CASE rather than IF in SQL, which would be
+
+```SQL
+SELECT 
+    id,
+    CASE
+        WHEN given_answer IS NULL THEN 'no answer'
+        WHEN given_answer = correct_answer THEN 'correct'
+        ELSE 'incorrect'
+    END AS checks
+FROM playground.answers
+ORDER BY id;
+```
+
+It does look a bit cleaner in. I tend not to use CASE in JavaScript as I never get the breaks right (fallthrough!), but it seems simpler to use in SQL.
+
+### Question: Total Number of Births Per Year
+
+[Total Number of Births Per Year](https://learn.dataexpert.io/question/total-births-per-year)
+
+Write a SQL query to calculate the total number of births recorded for each year in the playground.us_birth_stats table. Order the results by year.
+These are the tables to query for this question:
+playground.us_birth_stats
+
+- year int
+- month int
+- date_of_month int
+- day_of_week int
+- births int
+
+Your answer should include these columns:
+
+- year integer
+- total_births integer
+
+My solution
+
+This one seemed a lot easier following question one.
+
+Just a matter of using sum on births, then group and order by year.
+
+```SQL
+SELECT year,
+SUM(births) AS total_births
+FROM playground.us_birth_stats
+GROUP BY YEAR
+ORDER BY YEAR
+```
+
+### Question: Cars with Above Average Engine Size
+
+[Cars with Above Average Engine Size](https://learn.dataexpert.io/question/cars-above-average-engine-size)
+
+Using the table playground.automobile, Create a SQL query to identify cars that have an engine size above the average across all cars in the dataset. The result should include the brand, fuel_type, and engine size, ordered by engine size in descending order and then brand_name in asc order.
+These are the tables to query for this question:
+playground.automobile
+
+- brand_name string
+- fuel_type string
+- aspiration string
+- door_panel string
+- design string
+- wheel_drive string
+- engine_location string
+- engine_type string
+- cylinder_count string
+- engine_size int
+- fuel_system string
+- bore double
+- stroke double
+- compression_ratio double
+- horse_power int
+- top_RPM int
+- city_mileage int
+- highway_mileage int
+- price_in_dollars int
+
+Your answer should include these columns:
+
+- brand_name varchar
+- fuel_type varchar
+- engine_size integer
+
+My solution
+
+My guess is we use a query to calculate the average engine size. Then use the results of that in a query to compare each row with that average, then output and sort the engines with higher values.
+
+I wondered if we could access the variable in the CTE in the second query, but we can't without doing  a JOIN. I used 'CROSS JOIN' to add average engine size to every row. This feels a bit inneficient?
+
+After joining, it's just a matter of selecting the required output feels, adding the condition and the ordering.
+
+```SQL
+WITH ave_eng_cte AS (
+  SELECT AVG(engine_size) AS ave_eng
+  FROM playground.automobile
+) 
+SELECT brand_name,
+  fuel_type,
+  engine_size
+FROM playground.automobile
+CROSS JOIN ave_eng_cte
+WHERE engine_size > ave_eng_cte.ave_eng
+ORDER BY engine_size DESC, brand_name
+```
+
+### Question: Average Number of Births by Day of the Week
+
+[Average Number of Births by Day of the Week](https://learn.dataexpert.io/question/average-births-per-day-of-week)
+
+Create a SQL query that finds the average number of births for each day of the week across all years in the playground.us_birth_stats table. Cast the average as an integer. Order the results by the day of the week.
+These are the tables to query for this question:
+playground.us_birth_stats
+
+- year int
+- month int
+- date_of_month int
+- day_of_week int
+- births int
+
+Your answer should include these columns:
+
+- day_of_week integer
+- average_births integer
+
+My solution
+
+Another one that didn't seem to difficult. This time just a matter of getting the average of births by day of the week.
+
+Luckily the 1st lab included the syntax to cast a value to a specific format.
+
+`CAST(<value> AS <type>)`
+
+```SQL
+SELECT
+  day_of_week,
+  CAST(AVG(births) AS INT) AS average_births
+FROM playground.us_birth_stats
+GROUP BY
+  day_of_week
+ORDER BY
+  day_of_week
+```
+
+### Question: Month with the Highest Total Births
+
+[Month with the Highest Total Births](https://learn.dataexpert.io/question/highest-birth-month)
+
+Determine the month with the highest total number of births in the playground.us_birth_stats table. The output should show the month and the total number of births.
+
+These are the tables to query for this question:
+playground.us_birth_stats
+
+- year int
+- month int
+- date_of_month int
+- day_of_week int
+- births int
+
+Your answer should include these columns:
+
+- month integer
+- total_births integer
+
+My solution
+
+The main operation is to get teh sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.
+
+```SQL
+SELECT month,
+  SUM(births) AS total_births
+FROM playground.us_birth_stats
+  GROUP BY month
+  ORDER BY total_births DESC
+  LIMIT 1
+```
+
+Alternatively, I feel like there should be a way to do this using max(). We could use a CTE to get the total births per month, then use MAX() on that to get the month with the most births.
+
+It works when we just output the number of births, but if we try to add in month, it gives us MAX() per month, which is not what we want.
+
+```SQL
+With summed_births AS (
+  SELECT month,
+  SUM(births) AS total_births
+  FROM playground.us_birth_stats
+  GROUP BY month
+)
+SELECT month,
+  MAX(total_births)
+FROM summed_births
+GROUP BY month
+```
+
+After a bit of playing around, I found one way to do this is to create two CTEs. The first gets the total per month. The second gets the max() from that. Then we can join them by that max value and use a select on that join to get the month and the max value. It's a bit convoluted, but feels more robust than relying on Limit.
+
+```SQL
+WITH sum_b AS (
+  SELECT month,
+    SUM(births) AS sum_births
+  FROM playground.us_birth_stats
+  GROUP BY month
+), 
+max_b AS (
+SELECT MAX(sum_births) AS max_births
+FROM sum_b
+)
+
+SELECT month, max_births AS total_births
+FROM max_b
+JOIN sum_b ON 
+max_b.max_births = sum_b.sum_births
+```
+
+### Question: Customers with More Than 20 Orders
+
+Write a SQL query to display all loyal customers from the playground.superstore table. A customer is considered loyal if they have placed more than 20 orders. The query should return the customer ID, customer name, and the total number of orders for each of these customers. Display the result in descending order of their orders and then ascending order of their names
+These are the tables to query for this question:
+playground.superstore
+
+- row_id int
+- order_id string
+- order_date date
+- ship_date date
+- ship_mode string
+- customer_id string
+- customer_name string
+- segment string
+- country string
+- city string
+- state string
+- postal_code int
+- region string
+- product_id string
+- category string
+- sub_category string
+- product_name string
+- sales string
+- quantity string
+- discount string
+- profit double
+
+Your answer should include these columns:
+
+- customer_id varchar
+- customer_name varchar
+- order_count integer
+
+My solution
+
+This would appear to be a count on order ID and a condition on the same using 'HAVING' (given that the condition is on an aggregate).
+
+```SQL
+SELECT customer_id,
+  customer_name,
+  count(order_id) AS order_count
+FROM playground.superstore
+GROUP BY customer_id, customer_name
+HAVING count(order_id) > 20
+ORDER BY order_count DESC, customer_name
+```
+
+This gives 86 results sorted by order count and then name.
+
+I couldn't submit this one, the page gave the status "Data Length is different! Right answer has 1 rows. Your query has 86 rows!"
+
+However, I'm pretty sure multiple rows are correct here.

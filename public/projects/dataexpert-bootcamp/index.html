@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+    <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header-ctr">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
+  </p>
+  <nav>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
+    </ul>
+  </nav>
+</header>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        <h1 class="post-title">dataexpert.io beginners bootcamp notes</h1>
+        <p id="post-tag" class="post-tag"> project</p>
+        <p class="post-att">by Alexander Roan on 22 Aug 2025
+        <h2>Intro</h2>
+<p>This is a quick reference for the <a href="https://www.dataexpert.io/">dataexpert.io</a> bootcamp run by Zach Wilson.</p>
+<p>It's my draft notes, so there may be innacuracies or typos!</p>
+<p>Last update: 23rd August 2025.</p>
+<h2>NBA data</h2>
+<p>The data is accessible in a datalake at <a href="https://www.dataexpert.io/query">dataexpert.io/query</a>.</p>
+<p>You can also install locally with PostgreSQL and docker. It's not difficult to do. I found instructions in the <a href="https://github.com/DataExpert-io/data-engineer-handbook/tree/main/">handbook</a>.</p>
+<p>Navigate to intermediate-bootcamp &gt; materials &gt; 1-dimensional-data-modelling &gt; README.md.</p>
+<p>Some steps from lesson/lab 2 only work in the datalake.</p>
+<h3>NBA summary of main tables</h3>
+<p>Games <code>games</code>:</p>
+<ul>
+<li>List of games by date with summary information</li>
+<li>Key fields:
+<ul>
+<li>Game id: <code>game_id</code></li>
+<li>Date: <code>game_date_est</code></li>
+<li>Season: <code>season</code></li>
+<li>Various points totals (home, away, etc.)</li>
+</ul>
+</li>
+</ul>
+<p>Game details <code>game_details</code>:</p>
+<ul>
+<li>Player details by game</li>
+<li>Key fields:
+<ul>
+<li>Game id: <code>game_id</code>,</li>
+<li>Team id: <code>team_id</code></li>
+<li>Team city: <code>team_city</code></li>
+<li>Player id: <code>player_id</code></li>
+<li>Player_name: <code>player_name</code></li>
+<li>Player points: <code>pts</code></li>
+</ul>
+</li>
+</ul>
+<p>Player_seasons <code>player_seasons</code>:</p>
+<ul>
+<li>Player details per season
+<ul>
+<li>Key fields:</li>
+<li>Player name: <code>player_name</code></li>
+<li>Player age: <code>age</code></li>
+<li>Player height: <code>height</code></li>
+<li>Player weight: <code>weight</code></li>
+<li>Player college: <code>college</code></li>
+<li>Player games played: <code>gp</code></li>
+<li>Player points: <code>pts</code></li>
+</ul>
+</li>
+</ul>
+<h2>L1: GROUP BY, JOIN, and Common Table Expression</h2>
+<h3>SQL keywords</h3>
+<ul>
+<li><code>SELECT</code>: select data from a database</li>
+<li><code>WHERE</code>:  filter records</li>
+<li>Conditionals
+<ul>
+<li><code>AND</code>:</li>
+<li><code>OR</code>:</li>
+</ul>
+</li>
+<li><code>GROUP BY</code>
+<ul>
+<li>Group rows that have the same values into summary rows</li>
+<li>Often used with aggregates</li>
+</ul>
+</li>
+<li><code>ORDER BY</code>
+<ul>
+<li>Add <code>DESC</code> to reverse order <code>ORDER BY details.pts DESC</code></li>
+</ul>
+</li>
+<li><code>JOIN</code>: Join
+<ul>
+<li><code>ON</code>: specify field for join</li>
+</ul>
+</li>
+<li><code>INSERT INTO</code>: insert new records in a table</li>
+<li><code>DELETE</code>: delete existing records in a table</li>
+<li><code>UPDATE</code>: modify the existing records in a table.</li>
+<li>Keywords:
+<ul>
+<li><code>DISTINCT</code> to deduplicate (using 'GROUP BY' vs. 'DISTINCT'?)</li>
+<li><code>AS</code> create new name for column or table</li>
+</ul>
+</li>
+<li>Aggregates:
+<ul>
+<li><code>COUNT()</code>: return the number of rows that match a specified criteria</li>
+<li><code>MAX()</code>: return the largest valu eof a selected column</li>
+<li><code>MIN()</code>: return the smallest value of a selected column</li>
+<li><code>SUM()</code>: return total sum of numeric column</li>
+<li><code>AVG()</code>: return average of numeric column</li>
+<li><code>ARRAY_AGG()</code>:
+<ul>
+<li>Consolidates values from multiple rows into a single array</li>
+<li>Groups by specified <code>GROUP BY</code></li>
+<li>Ordering in the array can be controlled by <code>ORDER BY</code></li>
+<li>Combined with <code>DISTINCT</code> to collect only unique values</li>
+<li>Supports <code>FILTER</code> to include only specific rows</li>
+<li>Preserves original data types</li>
+<li>Useful for generating JSON output.</li>
+</ul>
+</li>
+<li><code>JOIN()</code>: combine rows of two or more tables</li>
+<li>(INNER) JOIN: matching values in both tables</li>
+<li>LEFT (OUTER) JOIN: all from left table, matches from the right table</li>
+<li>RIGHT (OUTER) JOIN: all from the right, matches from the left table</li>
+<li>FULL (OUTER) JOIN: all when there is a match in either left or right table</li>
+</ul>
+</li>
+</ul>
+<h3>SQL statements examples</h3>
+<p>Select &amp; Where</p>
+<pre><code class="language-SQL">SELECT * FROM Customers
+WHERE Country='Mexico'; 
+</code></pre>
+<p>Group By</p>
+<pre><code class="language-SQL">SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s); 
+</code></pre>
+<p>Join</p>
+<pre><code class="language-SQL">SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+</code></pre>
+<h3>L1 walkthrough</h3>
+<h4>1.1: Lookup player details</h4>
+<p>Lookup player season data by age, college, pts, etc.</p>
+<pre><code class="language-SQL">SELECT *
+FROM bootcamp.nba_player_seasons 
+WHERE (age &gt; 40  AND college = 'Florida') OR pts &gt; 30
+LIMIT 50
+</code></pre>
+<h4>1.2: Aggregate player details</h4>
+<p>Experiment with aggregations on player_seasons</p>
+<pre><code class="language-SQL">/* Ex 2 */
+SELECT country, 
+  COUNT(*), 
+  AVG(pts), 
+  SUM(reb), 
+  ARRAY_AGG(DISTINCT player_name)
+FROM bootcamp.nba_player_seasons 
+GROUP BY country
+</code></pre>
+<h4>1.3: Join games and game_details</h4>
+<p>Use join to connect games and games_details</p>
+<pre><code class="language-SQL">SELECT games.game_date_est, 
+  games.season, 
+  details.player_name, 
+  details.pts
+FROM bootcamp.nba_game_details AS details 
+JOIN bootcamp.nba_games AS games
+ON details.game_id = games.game_id
+</code></pre>
+<h4>1.4: Combine aggregations and joins</h4>
+<p>Combine aggregations with joins.</p>
+<pre><code class="language-SQL">SELECT games.season,
+  details.player_name,
+  SUM(details.pts) AS total_pts,
+  COUNT(*) AS num_games
+FROM game_details AS details
+JOIN games
+ON details.game_id = games.game_id
+GROUP BY games.season, details.player_name
+</code></pre>
+<h4>1.5: Troubleshoot high scores</h4>
+<p>Start by investigating a single player, add:</p>
+<pre><code class="language-SQL">SELECT ARRAY_AGG(DISTINCT games.game_date_set_est)
+WHERE details.player_name = 'LeBron James'
+</code></pre>
+<p>Next remove duplicates and filter games to exclude playoffs</p>
+<ul>
+<li>Get pts per player per game by de-duplicating game_details
+<ul>
+<li>Get max pts grouped by <code>player_name</code> and <code>game_id</code></li>
+</ul>
+</li>
+<li>Get a list of unique games excl. games that happen after April 15 of next year
+<ul>
+<li>(cutting off before the playoffs)</li>
+</ul>
+</li>
+<li>Join two CTEs on game_id, filter by 'Lebron James' and get some aggregates</li>
+</ul>
+<pre><code class="language-SQL">WITH deduped_details AS (
+  SELECT 
+    player_name,
+    game_id,
+    MAX(pts) as pts 
+  FROM bootcamp.nba_game_details
+  GROUP BY player_name, game_id
+), deduped_games AS (
+  SELECT DISTINCT 
+    game_id,
+    season,
+    game_date_est
+  FROM bootcamp.nba_games
+  WHERE game_date_est &lt; DATE(CAST((season + 1) AS VARCHAR) || '-04-15')
+)
+
+SELECT games.season, 
+  details.player_name,
+  SUM(details.pts) as total_pts, 
+  COUNT(*) as num_games
+  ARRAY_AGG(DISTINCT games.game_date_est)
+FROM deduped_details as details 
+JOIN deduped_games as games
+ON details.game_id = games.game_id
+WHERE details.player_name = 'LeBron James'
+GROUP BY games.season, details.player_name
+</code></pre>
+<h4>Alex comments</h4>
+<p>If you want to double check games per month to validate playoffs are included</p>
+<pre><code class="language-SQL">SELECT
+  EXTRACT(MONTH FROM game_date_est) AS month,
+  COUNT(*) AS games_count
+FROM games
+GROUP BY month
+ORDER BY month;
+</code></pre>
+<p>If you want to validate there are duplicates in game_details</p>
+<pre><code class="language-SQL">SELECT
+  player_name, 
+  game_id,
+  COUNT(*) AS player_game_count
+FROM game_details
+GROUP BY player_name, game_id
+HAVING COUNT(*) &gt; 1
+ORDER BY payer_game_count DESC;
+</code></pre>
+<p>Join this back to table to see duplicate rows</p>
+<pre><code class="language-SQL">SELECT *
+FROM game_details
+WHERE (player_name, game_id) IN (
+  SELECT 
+    player_name, 
+    game_id
+  FROM game_details
+  GROUP BY player_name, game_id
+  HAVING COUNT(*) &gt; 1
+);
+</code></pre>
+<h2>L2: Common Table Expressions</h2>
+<h3>Key points</h3>
+<ul>
+<li>Data engineering principles:
+<ul>
+<li>Filter as soon as you can to process the least amount of data</li>
+</ul>
+</li>
+<li>SQL does not execute in order written. The order is:
+<ul>
+<li>FROM/JOIN &gt; WHERE &gt; GROUP BY / HAVING &gt; SELECT &gt; ORDER BY &gt; LIMIT</li>
+</ul>
+</li>
+<li>This lesson illustrats how important ordering is important when using CTEs
+<ul>
+<li>Filter, then rank</li>
+<li>Rank, then filter (different results)</li>
+</ul>
+</li>
+</ul>
+<h3>Set up steps</h3>
+<ul>
+<li>Before creating tables in dataexpert.io/query create your schema:
+<ul>
+<li>In the query tool click 'important' and note your schema</li>
+<li>Run command <code>CREATE SCHEMA  &lt;schemaname&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h3>SQL Storage structures</h3>
+<p>Table</p>
+<ul>
+<li>Permanent storage (until Deleted)</li>
+<li>If you need to 'materialise data'</li>
+<li>(Zach loves tables)</li>
+</ul>
+<p>Temporary table</p>
+<ul>
+<li>Temporary storage, removed when a query finishes</li>
+</ul>
+<p>Sub query</p>
+<ul>
+<li>Not recommended for nested queries</li>
+<li>Best used when returning a single number or result</li>
+<li>Less easy to read due to name/alias at the end
+<ul>
+<li>Name/alias is optional? (details to be confirmed)</li>
+</ul>
+</li>
+</ul>
+<p>View</p>
+<ul>
+<li>Consider like a 'CTE with a name'</li>
+<li>Useful for queries with logic</li>
+<li>No storage, so they executes every time their query results are needed
+<ul>
+<li>One benefit over a table is the will pick up any changes</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-SQL">CREATE VIEW alex.players_better_than_lebron
+SELECT * FROM player_seasons
+WHERE pts &gt;  (SELECT MAX(pts) FROM player_seasons WHERE player_name = 'LeBron James')
+</code></pre>
+<p>Common table expression (CTE)</p>
+<ul>
+<li>Useful for complex queries</li>
+<li>A CTE doesn't store data, it's not a temporary table
+<ul>
+<li>If referenced multiple times, it'll run multiple times</li>
+</ul>
+</li>
+<li>Zach generally recommends CTEs over sub queries
+<ul>
+<li>Improved readibility (name comes first)</li>
+</ul>
+</li>
+</ul>
+<p>Materialised views</p>
+<ul>
+<li>Not frequently used in analytics</li>
+</ul>
+<h3>SQL Datatypes</h3>
+<ul>
+<li>VARCHAR (string - 'variable character')</li>
+<li>DECIMAL (floating point)</li>
+<li>TINYINT</li>
+<li>SMALLINT</li>
+<li>INTEGER</li>
+<li>BIGINT</li>
+</ul>
+<h3>SQL Keywords</h3>
+<ul>
+<li><code>UNION ALL</code>: Join data from multiple selects in query results (appends)</li>
+<li><code>CREATE TABLE</code>: Create table</li>
+<li><code>EXPLAIN</code>:
+<ul>
+<li>Shows the query tree</li>
+<li>Search for 'scan' to see table scans</li>
+<li>Useful  to illustrate the difference querying with views vs. tables</li>
+</ul>
+</li>
+<li><code>Rank()</code>: Add a column ranking results based on a specified field:
+<ul>
+<li><code>RANK() OVER (ORDER BY &lt;field&gt; DESC) as var_name</code></li>
+</ul>
+</li>
+</ul>
+<p>Datalake related</p>
+<ul>
+<li><code>DESCRIBE &lt;tablename&gt;</code></li>
+<li><code>SHOW CREATE TABLE &lt;tablename&gt;</code></li>
+<li><code>PARTITION BY</code></li>
+</ul>
+<h3>L2 walkthrough</h3>
+<h4>2.1: Add a ranking to a table</h4>
+<ul>
+<li>Who has scored the most points in a season ever?</li>
+<li>Use <code>RANK()</code> to add a new column assigning a rank</li>
+</ul>
+<pre><code class="language-SQL">SELECT
+  player_name,
+  pts,
+  RANK() OVER (ORDER BY pts DESC) as rank
+FROM bootcamp.nba_player_seasons
+ORDER BY rank
+</code></pre>
+<h4>2.2: Attempt to filter the calculated rank with <code>WHERE</code></h4>
+<ul>
+<li>What if we wanted to get the top ten ranked players only?
+<ul>
+<li>Adding <code>WHERE rank &lt;=10</code> fails:</li>
+<li>'ERROR:  column &quot;rank&quot; does not exist`</li>
+<li>This is due to order in which SQL executes</li>
+<li><code>WHERE</code> before <code>SELECT</code>, at which point rank isn't calculated</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-SQL">SELECT
+  player_name,
+  pts,
+  RANK() OVER (ORDER BY pts DESC) as rank
+FROM bootcamp.nba_player_seasons
+WHERE rank &lt;=10
+ORDER BY rank
+</code></pre>
+<h4>2.3: Use a CTE to add rank, then filter</h4>
+<ul>
+<li>This will effectively move the <code>SELECT</code> above the <code>WHERE</code></li>
+<li>Consider it like a query within a query:
+<ul>
+<li>Query all players first to get rank column</li>
+<li>Then query condition on rank column</li>
+</ul>
+</li>
+<li>A CTE doesn't store data, it's not a temporary table</li>
+<li>If referenced multiple times, it'll run multiple times</li>
+</ul>
+<pre><code class="language-SQL">WITH ranked_players AS (
+  SELECT
+    player_name,
+    pts,
+    RANK() OVER (ORDER BY pts DESC) as rank
+  FROM bootcamp.nba_player_seasons
+)
+
+SELECT * FROM ranked_players
+WHERE rank &lt;= 10
+</code></pre>
+<p>Alternatively subquery syntax can be used, but this is less readable due to name/sub at the end:</p>
+<pre><code class="language-SQL">SELECT * FROM (
+  SELECT
+    player_name,
+    pts,
+    RANK() OVER (ORDER BY pts DESC) AS rank
+    FROM bootcamp.nba_player__seasons
+) sub
+WHERE rank &lt;= 10
+</code></pre>
+<h4>2.4: Illustration of multiple executions of a CTE</h4>
+<ul>
+<li>Create a CTE</li>
+<li>Query it twice, using <code>UNION ALL</code> to join results</li>
+<li>Add <code>EXPLAIN</code> at the top to get the query plan, this shows:
+<ul>
+<li>Definition of CTE 'ranked_players'</li>
+<li>1st execution 'CTE scan' for 'rank &lt;= 10</li>
+<li>2nd execution 'CTE scan' for rank &lt;= 20</li>
+</ul>
+</li>
+<li>This illustrates there is no long term storage and re-use of the 1st run</li>
+</ul>
+<pre><code class="language-SQL">EXPLAIN WITH ranked_players AS (
+  SELECT
+    player_name,
+    pts,
+    RANK() OVER (ORDER BY pts DESC) as rank
+  FROM bootcamp.nba_player_seasons
+)
+
+SELECT * FROM ranked_players
+WHERE rank &lt;= 10
+UNION ALL
+
+SELECT * FROM ranked players
+WHERE rank &gt;= 100
+</code></pre>
+<h4>2.5: Create a table, and store intermediate results (vs. using CTE)</h4>
+<ul>
+<li>If not already done, create your schema
+<ul>
+<li>In dataquery.io, get your schema name from 'Important'</li>
+<li>Then use: <code>CREATE SCHEMA &lt;yourschemaname&gt;</code></li>
+<li>(replace with your username, for me it's 'dearestalexander')</li>
+</ul>
+</li>
+<li>Create a table with the rankings
+<ul>
+<li>Same as the CTE but with <code>CREATE TABLE</code> rather than <code>WITH</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-SQL">CREATE TABLE dearestalexander.nba_players_ranked AS
+SELECT
+  player_name,
+  pts,
+  RANK() OVER (ORDER BY pts DESC) AS rank
+FROM bootcamp.nba_player_seasons
+</code></pre>
+<p>Query the table:</p>
+<pre><code class="language-SQL">SELECT * FROM dearestalexander.nba_players_ranked
+  WHERE rank &lt;= 10
+</code></pre>
+<h4>2.6: Investigating data lake partitions (in dataexpert.io/query)</h4>
+<p>Use <code>SHOW CREATE TABLE bootcamp.nba_player_seasons</code>, it should return the following, which shows it is partitioned on season:</p>
+<pre><code class="language-CLI">CREATE TABLE academy.bootcamp.nba_player_seasons ( player_name varchar, age integer, height varchar, weight integer, college varchar, country varchar, draft_year varchar, draft_round varchar, draft_number varchar, gp double, pts double, reb double, ast double, netrtg double, oreb_pct double, dreb_pct double, usg_pct double, ts_pct double, ast_pct double, season integer ) WITH ( format = 'PARQUET', format_version = 1, location = 's3://zachwilsonsorganization-522/ce557692-2f28-41e8-8250-8608042d2acb/04ae3f4b-8516-4220-adad-6deaaa2582dc', object_store_layout_enabled = true, partitioning = ARRAY['season'] )
+</code></pre>
+<p>Compare with <code>SHOW CREATE TABLE dearestalexander.nba_players_ranked</code>, it should return the following, which shows no partitions:</p>
+<pre><code class="language-CLI">CREATE TABLE academy.dearestalexander.nba_players_ranked ( player_name varchar, pts double, rank bigint ) WITH ( format = 'PARQUET', format_version = 2, location = 's3://zachwilsonsorganization-522/ce557692-2f28-41e8-8250-8608042d2acb/41b87fc5-fcf3-428f-a0fa-7c8c04d2f569', max_commit_retry = 4, object_store_layout_enabled = true )
+</code></pre>
+<p>This illustrates the bootcamp tables are partitioned.</p>
+<ul>
+<li>Note =ARRAY['seasons'] at the end of the bootcamp.nba_player_seasons</li>
+<li>The data is split up by season</li>
+<li>Tip 'think of partitions as folders'</li>
+<li>This partition improves efficiency for season specific searches
+<ul>
+<li>A query doesn't have to work through the entire table of all seasons.</li>
+</ul>
+</li>
+</ul>
+<h4>2.7: Create an empty partitioned table &amp; use insert to update</h4>
+<ul>
+<li>Create players_ranked, but this time partitioned on season</li>
+<li>This will only work in datalake?</li>
+</ul>
+<pre><code class="language-SQL">CREATE TABLE dearestalexander.players_ranked_partitioned (
+  player_name VARCHAR, 
+  pts DECIMAL,
+  rank BIGINT,
+  season SMALLINT
+)
+WITH (
+  partitioning = ARRAY['season']
+)
+</code></pre>
+<p>Use a CTE to insert data into the empty table</p>
+<ul>
+<li>Define a CTE as the way to update the table</li>
+<li>Select from the CTE with a condition, this will update the table
+<ul>
+<li>We update only 2007 season data below</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-SQL">INSERT INTO dearestalexander.nba_players_ranked_partitioned
+-- Use a CTE 
+WITH players_ranked AS (
+  SELECT 
+    player_name, 
+    pts, 
+    RANK() OVER (ORDER BY pts DESC) AS rank,
+    season
+  FROM
+    bootcamp.nba_player_seasons
+)
+
+SELECT * FROM players_ranked
+WHERE  season = 2007 -- NOTE WHERE IS OUTSIDE CTE
+</code></pre>
+<p>Check the table:</p>
+<pre><code class="language-SQL">SELECT * FROM dearestalexander.nba_players_ranked_partitioned 
+WHERE season = 2007
+</code></pre>
+<p>This shows 2007 season data.</p>
+<p>Try checking for rank number 1 in 2007:</p>
+<pre><code class="language-SQL">SELECT * FROM dearestalexander.nba_players_ranked_partitioned 
+WHERE season = 2007 AND rank = 1
+</code></pre>
+<p>This doesn't return any results:</p>
+<ul>
+<li>It's because rank is being applied to all data before the season condition
+<ul>
+<li><code>RANK()</code> is applied on bootcamp.nba_player_seasons</li>
+<li>This updates our partitioned table with all seasons (partitioned by season)</li>
+<li>Our select then pulls out only one season</li>
+<li>That season doesn't have a no.1 rank (calculated across all seasons)</li>
+</ul>
+</li>
+</ul>
+<p>Delete the partition table data to try a different approach</p>
+<p><code>DELETE FROM dearestalexander.nba_playeres_ranked_partitioned</code></p>
+<p>Now, try moving the 'WHERE' inside the CTE:</p>
+<ul>
+<li>Update only 1 season data in the partitioned table</li>
+<li>Calculate rank on that seasons data</li>
+</ul>
+<pre><code class="language-SQL">INSERT INTO dearestalexander.nba_players_ranked_partitioned
+-- Use a CTE 
+WITH players_ranked AS (
+  SELECT 
+    player_name, 
+    pts, 
+    RANK() OVER (ORDER BY pts DESC) AS rank,
+    season
+  FROM
+    bootcamp.nba_player_seasons
+  WHERE  season = 2007 -- MOVED WHERE inside the CTE
+)
+
+SELECT * FROM players_ranked
+</code></pre>
+<p>Try checking again for rank number 1 in 2007:</p>
+<pre><code class="language-SQL">SELECT * FROM dearestalexander.nba_players_ranked_partitioned 
+WHERE season = 2007 AND rank = 1
+</code></pre>
+<ul>
+<li>This time you get the 2007 data with the no. 1 score.</li>
+<li>The rankings are being calculated on filtered 2007 data</li>
+</ul>
+<h2>Appendix: dataexpert.io/questions</h2>
+<p>SPOILERS AHEAD!</p>
+<p>There are practice questions at dataexpert.io/questions</p>
+<p>As I write this, I've completed around 7 of these. I found them to be helpful in switching into the SQL problem solving mindset and experimenting with differnet things. I recommend giving them a good go without looking up answers or using AI. I found the SQL syntax list on W3 schools helpful, when I wasn't sure on how to do something. A summary of the questions and my attempts below.</p>
+<h3>Question: Find Viewers with Multiple Article</h3>
+<p><a href="https://learn.dataexpert.io/question/find-multiple-article-viewers">Find Viewers with Multiple Article Views in a Day</a></p>
+<p>Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.
+These are the tables to query for this question:
+playground.views</p>
+<ul>
+<li>article_id int</li>
+<li>author_id int</li>
+<li>viewer_id int</li>
+<li>view_date date</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>viewer_id integer</li>
+</ul>
+<p>My solution</p>
+<p>First SQL problem I've looked at. Took my a while to get my brain into the right 'operating mode'. I started by experimenting with counting viewer_id and then adding in GROUP BY.</p>
+<p>I realised we need to do a query in a query to get from the intermediate calculation to the presentation results. I went for the CTE approach.</p>
+<pre><code class="language-SQL">SELECT * FROM playground.views
+
+WITH counted_viewers AS (
+SELECT viewer_id, view_date,
+  COUNT(DISTINCT article_id) AS artct
+FROM playground.views
+  GROUP BY viewer_id, view_date
+  HAVING COUNT(DISTINCT article_id) &gt;= 2
+)
+
+SELECT viewer_id 
+FROM counted_viewers
+ORDER BY viewer_id ASC
+</code></pre>
+<h3>Question: Check Test Answers</h3>
+<p><a href="https://learn.dataexpert.io/question/check-test-answers">Check answers</a></p>
+<p>Create a SQL query to evaluate test answers stored in a table named playground.answers with columns id (unique question ID), correct_answer (string), and given_answer (which can be NULL). Return a table with columns id and checks, where checks is &quot;no answer&quot; if given_answer is NULL, &quot;correct&quot; if given_answer matches correct_answer, and &quot;incorrect&quot; otherwise. Order the results by id.
+These are the tables to query for this question:
+playground.answers</p>
+<ul>
+<li>id int</li>
+<li>correct_answer string</li>
+<li>given_answer string</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>id integer</li>
+<li>checks varchar</li>
+</ul>
+<p>My solution</p>
+<p>We haven't covered conditionals using IF in the dataexpert videos, but I took a guess that SQL had an IF keyword. I checked W3 schools and it is:</p>
+<p><code>IF(condition, value_if_true, value_if_false)</code></p>
+<p>I did a bit of testing and found a few things:</p>
+<ul>
+<li>You can nest an IF inside an IF
+<ul>
+<li>So we can check for correct answer first, then check incorrects for null</li>
+</ul>
+</li>
+<li>You can't use = NULL as it represents and unknown value
+<ul>
+<li>Use IS NULL</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-SQL">SELECT id,
+IF (given_answer = correct_answer, 'correct', 
+  IF (given_answer IS NULL, 'no answer', 'incorrect')) AS checks
+FROM playground.answers
+ORDER By id
+</code></pre>
+<p>I asked ChatGPT it's opinion on this solution, and it recommended CASE rather than IF in SQL, which would be</p>
+<pre><code class="language-SQL">SELECT 
+    id,
+    CASE
+        WHEN given_answer IS NULL THEN 'no answer'
+        WHEN given_answer = correct_answer THEN 'correct'
+        ELSE 'incorrect'
+    END AS checks
+FROM playground.answers
+ORDER BY id;
+</code></pre>
+<p>It does look a bit cleaner in. I tend not to use CASE in JavaScript as I never get the breaks right (fallthrough!), but it seems simpler to use in SQL.</p>
+<h3>Question: Total Number of Births Per Year</h3>
+<p><a href="https://learn.dataexpert.io/question/total-births-per-year">Total Number of Births Per Year</a></p>
+<p>Write a SQL query to calculate the total number of births recorded for each year in the playground.us_birth_stats table. Order the results by year.
+These are the tables to query for this question:
+playground.us_birth_stats</p>
+<ul>
+<li>year int</li>
+<li>month int</li>
+<li>date_of_month int</li>
+<li>day_of_week int</li>
+<li>births int</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>year integer</li>
+<li>total_births integer</li>
+</ul>
+<p>My solution</p>
+<p>This one seemed a lot easier following question one.</p>
+<p>Just a matter of using sum on births, then group and order by year.</p>
+<pre><code class="language-SQL">SELECT year,
+SUM(births) AS total_births
+FROM playground.us_birth_stats
+GROUP BY YEAR
+ORDER BY YEAR
+</code></pre>
+<h3>Question: Cars with Above Average Engine Size</h3>
+<p><a href="https://learn.dataexpert.io/question/cars-above-average-engine-size">Cars with Above Average Engine Size</a></p>
+<p>Using the table playground.automobile, Create a SQL query to identify cars that have an engine size above the average across all cars in the dataset. The result should include the brand, fuel_type, and engine size, ordered by engine size in descending order and then brand_name in asc order.
+These are the tables to query for this question:
+playground.automobile</p>
+<ul>
+<li>brand_name string</li>
+<li>fuel_type string</li>
+<li>aspiration string</li>
+<li>door_panel string</li>
+<li>design string</li>
+<li>wheel_drive string</li>
+<li>engine_location string</li>
+<li>engine_type string</li>
+<li>cylinder_count string</li>
+<li>engine_size int</li>
+<li>fuel_system string</li>
+<li>bore double</li>
+<li>stroke double</li>
+<li>compression_ratio double</li>
+<li>horse_power int</li>
+<li>top_RPM int</li>
+<li>city_mileage int</li>
+<li>highway_mileage int</li>
+<li>price_in_dollars int</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>brand_name varchar</li>
+<li>fuel_type varchar</li>
+<li>engine_size integer</li>
+</ul>
+<p>My solution</p>
+<p>My guess is we use a query to calculate the average engine size. Then use the results of that in a query to compare each row with that average, then output and sort the engines with higher values.</p>
+<p>I wondered if we could access the variable in the CTE in the second query, but we can't without doing  a JOIN. I used 'CROSS JOIN' to add average engine size to every row. This feels a bit inneficient?</p>
+<p>After joining, it's just a matter of selecting the required output feels, adding the condition and the ordering.</p>
+<pre><code class="language-SQL">WITH ave_eng_cte AS (
+  SELECT AVG(engine_size) AS ave_eng
+  FROM playground.automobile
+) 
+SELECT brand_name,
+  fuel_type,
+  engine_size
+FROM playground.automobile
+CROSS JOIN ave_eng_cte
+WHERE engine_size &gt; ave_eng_cte.ave_eng
+ORDER BY engine_size DESC, brand_name
+</code></pre>
+<h3>Question: Average Number of Births by Day of the Week</h3>
+<p><a href="https://learn.dataexpert.io/question/average-births-per-day-of-week">Average Number of Births by Day of the Week</a></p>
+<p>Create a SQL query that finds the average number of births for each day of the week across all years in the playground.us_birth_stats table. Cast the average as an integer. Order the results by the day of the week.
+These are the tables to query for this question:
+playground.us_birth_stats</p>
+<ul>
+<li>year int</li>
+<li>month int</li>
+<li>date_of_month int</li>
+<li>day_of_week int</li>
+<li>births int</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>day_of_week integer</li>
+<li>average_births integer</li>
+</ul>
+<p>My solution</p>
+<p>Another one that didn't seem to difficult. This time just a matter of getting the average of births by day of the week.</p>
+<p>Luckily the 1st lab included the syntax to cast a value to a specific format.</p>
+<p><code>CAST(&lt;value&gt; AS &lt;type&gt;)</code></p>
+<pre><code class="language-SQL">SELECT
+  day_of_week,
+  CAST(AVG(births) AS INT) AS average_births
+FROM playground.us_birth_stats
+GROUP BY
+  day_of_week
+ORDER BY
+  day_of_week
+</code></pre>
+<h3>Question: Month with the Highest Total Births</h3>
+<p><a href="https://learn.dataexpert.io/question/highest-birth-month">Month with the Highest Total Births</a></p>
+<p>Determine the month with the highest total number of births in the playground.us_birth_stats table. The output should show the month and the total number of births.</p>
+<p>These are the tables to query for this question:
+playground.us_birth_stats</p>
+<ul>
+<li>year int</li>
+<li>month int</li>
+<li>date_of_month int</li>
+<li>day_of_week int</li>
+<li>births int</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>month integer</li>
+<li>total_births integer</li>
+</ul>
+<p>My solution</p>
+<p>The main operation is to get teh sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.</p>
+<pre><code class="language-SQL">SELECT month,
+  SUM(births) AS total_births
+FROM playground.us_birth_stats
+  GROUP BY month
+  ORDER BY total_births DESC
+  LIMIT 1
+</code></pre>
+<p>Alternatively, I feel like there should be a way to do this using max(). We could use a CTE to get the total births per month, then use MAX() on that to get the month with the most births.</p>
+<p>It works when we just output the number of births, but if we try to add in month, it gives us MAX() per month, which is not what we want.</p>
+<pre><code class="language-SQL">With summed_births AS (
+  SELECT month,
+  SUM(births) AS total_births
+  FROM playground.us_birth_stats
+  GROUP BY month
+)
+SELECT month,
+  MAX(total_births)
+FROM summed_births
+GROUP BY month
+</code></pre>
+<p>After a bit of playing around, I found one way to do this is to create two CTEs. The first gets the total per month. The second gets the max() from that. Then we can join them by that max value and use a select on that join to get the month and the max value. It's a bit convoluted, but feels more robust than relying on Limit.</p>
+<pre><code class="language-SQL">WITH sum_b AS (
+  SELECT month,
+    SUM(births) AS sum_births
+  FROM playground.us_birth_stats
+  GROUP BY month
+), 
+max_b AS (
+SELECT MAX(sum_births) AS max_births
+FROM sum_b
+)
+
+SELECT month, max_births AS total_births
+FROM max_b
+JOIN sum_b ON 
+max_b.max_births = sum_b.sum_births
+</code></pre>
+<h3>Question: Customers with More Than 20 Orders</h3>
+<p>Write a SQL query to display all loyal customers from the playground.superstore table. A customer is considered loyal if they have placed more than 20 orders. The query should return the customer ID, customer name, and the total number of orders for each of these customers. Display the result in descending order of their orders and then ascending order of their names
+These are the tables to query for this question:
+playground.superstore</p>
+<ul>
+<li>row_id int</li>
+<li>order_id string</li>
+<li>order_date date</li>
+<li>ship_date date</li>
+<li>ship_mode string</li>
+<li>customer_id string</li>
+<li>customer_name string</li>
+<li>segment string</li>
+<li>country string</li>
+<li>city string</li>
+<li>state string</li>
+<li>postal_code int</li>
+<li>region string</li>
+<li>product_id string</li>
+<li>category string</li>
+<li>sub_category string</li>
+<li>product_name string</li>
+<li>sales string</li>
+<li>quantity string</li>
+<li>discount string</li>
+<li>profit double</li>
+</ul>
+<p>Your answer should include these columns:</p>
+<ul>
+<li>customer_id varchar</li>
+<li>customer_name varchar</li>
+<li>order_count integer</li>
+</ul>
+<p>My solution</p>
+<p>This would appear to be a count on order ID and a condition on the same using 'HAVING' (given that the condition is on an aggregate).</p>
+<pre><code class="language-SQL">SELECT customer_id,
+  customer_name,
+  count(order_id) AS order_count
+FROM playground.superstore
+GROUP BY customer_id, customer_name
+HAVING count(order_id) &gt; 20
+ORDER BY order_count DESC, customer_name
+</code></pre>
+<p>This gives 86 results sorted by order count and then name.</p>
+<p>I couldn't submit this one, the page gave the status &quot;Data Length is different! Right answer has 1 rows. Your query has 86 rows!&quot;</p>
+<p>However, I'm pretty sure multiple rows are correct here.</p>
+
+        <div class="post-comments flow">
+          <h2>Share, comment/discuss</h2>
+          <p>Share to:
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/projects/dataexpert-bootcamp/" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/projects/dataexpert-bootcamp/&text=dataexpert.io beginners bootcamp notes" target="_blank">X</a>
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="/projects/dataexpert-bootcamp/"
+            data-page-url="/projects/dataexpert-bootcamp/"
+            data-page-title="dataexpert.io beginners bootcamp notes">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+      </article>
+    </main>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
+    <script></script>
+  </body>
+</html>
