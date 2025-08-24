@@ -621,6 +621,7 @@ As I write this, I've completed around 7 of these. I found them to be helpful in
 
 Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.
 These are the tables to query for this question:
+
 playground.views
 
 - article_id int
@@ -632,11 +633,13 @@ Your answer should include these columns:
 
 - viewer_id integer
 
-My solution
+**My solution**
 
-First SQL problem I've looked at. Took my a while to get my brain into the right 'operating mode'. I started by experimenting with counting viewer_id and then adding in GROUP BY.
+First SQL problem I've looked at. Took me a while to get my brain to work on this!
 
-I realised we need to do a query in a query to get from the intermediate calculation to the presentation results. I went for the CTE approach.
+I started by experimenting by counting viewer_id, then adding in GROUP BY.
+
+I realised it may need a query in a query to get from the intermediate calculation to the presentation results. I used a CTE.
 
 ```SQL
 SELECT * FROM playground.views
@@ -671,7 +674,7 @@ Your answer should include these columns:
 - id integer
 - checks varchar
 
-My solution
+**My solution**
 
 We haven't covered conditionals using IF in the dataexpert videos, but I took a guess that SQL had an IF keyword. I checked W3 schools and it is:
 
@@ -680,9 +683,10 @@ We haven't covered conditionals using IF in the dataexpert videos, but I took a 
 I did a bit of testing and found a few things:
 
 - You can nest an IF inside an IF
-  - So we can check for correct answer first, then check incorrects for null
-- You can't use = NULL as it represents and unknown value
-  - Use IS NULL
+  - So we can check for correct answer first
+  - Then check incorrect answers for null
+- You can't use 'check = NULL' as null represents an unknown value
+  - You can use 'IS NULL'
 
 ```SQL
 SELECT id,
@@ -692,7 +696,7 @@ FROM playground.answers
 ORDER By id
 ```
 
-I asked ChatGPT it's opinion on this solution, and it recommended CASE rather than IF in SQL, which would be
+I asked ChatGPT it's opinion on this solution, and it recommended CASE over IF:
 
 ```SQL
 SELECT 
@@ -706,7 +710,7 @@ FROM playground.answers
 ORDER BY id;
 ```
 
-It does look a bit cleaner in. I tend not to use CASE in JavaScript as I never get the breaks right (fallthrough!), but it seems simpler to use in SQL.
+I'm not a huge fan of CASE in JS, I usually have problems getting it to work. Probably breaks/fallthrough related. It seems CASE is much easier in SQL.
 
 ### Question: Total Number of Births Per Year
 
@@ -727,7 +731,7 @@ Your answer should include these columns:
 - year integer
 - total_births integer
 
-My solution
+**My solution**
 
 This one seemed a lot easier following question one.
 
@@ -775,7 +779,7 @@ Your answer should include these columns:
 - fuel_type varchar
 - engine_size integer
 
-My solution
+**My solution**
 
 My guess is we use a query to calculate the average engine size. Then use the results of that in a query to compare each row with that average, then output and sort the engines with higher values.
 
@@ -816,7 +820,7 @@ Your answer should include these columns:
 - day_of_week integer
 - average_births integer
 
-My solution
+**My solution**
 
 Another one that didn't seem to difficult. This time just a matter of getting the average of births by day of the week.
 
@@ -855,9 +859,9 @@ Your answer should include these columns:
 - month integer
 - total_births integer
 
-My solution
+**My solution**
 
-The main operation is to get teh sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.
+The main operation is to get the sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.
 
 ```SQL
 SELECT month,
@@ -939,7 +943,7 @@ Your answer should include these columns:
 - customer_name varchar
 - order_count integer
 
-My solution
+**My solution**
 
 This would appear to be a count on order ID and a condition on the same using 'HAVING' (given that the condition is on an aggregate).
 
