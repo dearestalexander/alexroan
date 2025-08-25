@@ -630,8 +630,8 @@ WHERE season = 2007 AND rank = 1
 <h3>Question: Find Viewers with Multiple Article</h3>
 <p><a href="https://learn.dataexpert.io/question/find-multiple-article-viewers">Find Viewers with Multiple Article Views in a Day</a></p>
 <p>Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.
-These are the tables to query for this question:
-playground.views</p>
+These are the tables to query for this question:</p>
+<p>playground.views</p>
 <ul>
 <li>article_id int</li>
 <li>author_id int</li>
@@ -642,9 +642,10 @@ playground.views</p>
 <ul>
 <li>viewer_id integer</li>
 </ul>
-<p>My solution</p>
-<p>First SQL problem I've looked at. Took my a while to get my brain into the right 'operating mode'. I started by experimenting with counting viewer_id and then adding in GROUP BY.</p>
-<p>I realised we need to do a query in a query to get from the intermediate calculation to the presentation results. I went for the CTE approach.</p>
+<p><strong>My solution</strong></p>
+<p>First SQL problem I've looked at. Took me a while to get my brain to work on this!</p>
+<p>I started by experimenting by counting viewer_id, then adding in GROUP BY.</p>
+<p>I realised it may need a query in a query to get from the intermediate calculation to the presentation results. I used a CTE.</p>
 <pre><code class="language-SQL">SELECT * FROM playground.views
 
 WITH counted_viewers AS (
@@ -674,19 +675,20 @@ playground.answers</p>
 <li>id integer</li>
 <li>checks varchar</li>
 </ul>
-<p>My solution</p>
+<p><strong>My solution</strong></p>
 <p>We haven't covered conditionals using IF in the dataexpert videos, but I took a guess that SQL had an IF keyword. I checked W3 schools and it is:</p>
 <p><code>IF(condition, value_if_true, value_if_false)</code></p>
 <p>I did a bit of testing and found a few things:</p>
 <ul>
 <li>You can nest an IF inside an IF
 <ul>
-<li>So we can check for correct answer first, then check incorrects for null</li>
+<li>So we can check for correct answer first</li>
+<li>Then check incorrect answers for null</li>
 </ul>
 </li>
-<li>You can't use = NULL as it represents and unknown value
+<li>You can't use 'check = NULL' as null represents an unknown value
 <ul>
-<li>Use IS NULL</li>
+<li>You can use 'IS NULL'</li>
 </ul>
 </li>
 </ul>
@@ -696,7 +698,7 @@ IF (given_answer = correct_answer, 'correct',
 FROM playground.answers
 ORDER By id
 </code></pre>
-<p>I asked ChatGPT it's opinion on this solution, and it recommended CASE rather than IF in SQL, which would be</p>
+<p>I asked ChatGPT it's opinion on this solution, and it recommended CASE over IF:</p>
 <pre><code class="language-SQL">SELECT 
     id,
     CASE
@@ -707,7 +709,7 @@ ORDER By id
 FROM playground.answers
 ORDER BY id;
 </code></pre>
-<p>It does look a bit cleaner in. I tend not to use CASE in JavaScript as I never get the breaks right (fallthrough!), but it seems simpler to use in SQL.</p>
+<p>I'm not a huge fan of CASE in JS, I usually have problems getting it to work. Probably breaks/fallthrough related. It seems CASE is much easier in SQL.</p>
 <h3>Question: Total Number of Births Per Year</h3>
 <p><a href="https://learn.dataexpert.io/question/total-births-per-year">Total Number of Births Per Year</a></p>
 <p>Write a SQL query to calculate the total number of births recorded for each year in the playground.us_birth_stats table. Order the results by year.
@@ -725,7 +727,7 @@ playground.us_birth_stats</p>
 <li>year integer</li>
 <li>total_births integer</li>
 </ul>
-<p>My solution</p>
+<p><strong>My solution</strong></p>
 <p>This one seemed a lot easier following question one.</p>
 <p>Just a matter of using sum on births, then group and order by year.</p>
 <pre><code class="language-SQL">SELECT year,
@@ -766,7 +768,7 @@ playground.automobile</p>
 <li>fuel_type varchar</li>
 <li>engine_size integer</li>
 </ul>
-<p>My solution</p>
+<p><strong>My solution</strong></p>
 <p>My guess is we use a query to calculate the average engine size. Then use the results of that in a query to compare each row with that average, then output and sort the engines with higher values.</p>
 <p>I wondered if we could access the variable in the CTE in the second query, but we can't without doing  a JOIN. I used 'CROSS JOIN' to add average engine size to every row. This feels a bit inneficient?</p>
 <p>After joining, it's just a matter of selecting the required output feels, adding the condition and the ordering.</p>
@@ -799,7 +801,7 @@ playground.us_birth_stats</p>
 <li>day_of_week integer</li>
 <li>average_births integer</li>
 </ul>
-<p>My solution</p>
+<p><strong>My solution</strong></p>
 <p>Another one that didn't seem to difficult. This time just a matter of getting the average of births by day of the week.</p>
 <p>Luckily the 1st lab included the syntax to cast a value to a specific format.</p>
 <p><code>CAST(&lt;value&gt; AS &lt;type&gt;)</code></p>
@@ -829,8 +831,8 @@ playground.us_birth_stats</p>
 <li>month integer</li>
 <li>total_births integer</li>
 </ul>
-<p>My solution</p>
-<p>The main operation is to get teh sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.</p>
+<p><strong>My solution</strong></p>
+<p>The main operation is to get the sum of births by month. To filter out the highest value we could sort by births and then limit the output to 1.</p>
 <pre><code class="language-SQL">SELECT month,
   SUM(births) AS total_births
 FROM playground.us_birth_stats
@@ -901,7 +903,7 @@ playground.superstore</p>
 <li>customer_name varchar</li>
 <li>order_count integer</li>
 </ul>
-<p>My solution</p>
+<p><strong>My solution</strong></p>
 <p>This would appear to be a count on order ID and a condition on the same using 'HAVING' (given that the condition is on an aggregate).</p>
 <pre><code class="language-SQL">SELECT customer_id,
   customer_name,
