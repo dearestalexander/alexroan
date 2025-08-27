@@ -629,19 +629,7 @@ WHERE season = 2007 AND rank = 1
 <p>As I write this, I've completed around 7 of these. I found them to be helpful in switching into the SQL problem solving mindset and experimenting with differnet things. I recommend giving them a good go without looking up answers or using AI. I found the SQL syntax list on W3 schools helpful, when I wasn't sure on how to do something. A summary of the questions and my attempts below.</p>
 <h3>Question: Find Viewers with Multiple Article</h3>
 <p><a href="https://learn.dataexpert.io/question/find-multiple-article-viewers">Find Viewers with Multiple Article Views in a Day</a></p>
-<p>Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.
-These are the tables to query for this question:</p>
-<p>playground.views</p>
-<ul>
-<li>article_id int</li>
-<li>author_id int</li>
-<li>viewer_id int</li>
-<li>view_date date</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>viewer_id integer</li>
-</ul>
+<p>Using the table playground.views, write a SQL query to identify all viewers who viewed more than one article on the same day. The table includes columns viewer_id (the ID of the viewer), article_id (the ID of the article viewed), and view_date (the date of the view). The result should contain a single column named viewer_id, listing each viewer who meets the criteria without duplicates, and should be sorted in ascending order of viewer_id.</p>
 <p><strong>My solution</strong></p>
 <p>First SQL problem I've looked at. Took me a while to get my brain to work on this!</p>
 <p>I started by experimenting by counting viewer_id, then adding in GROUP BY.</p>
@@ -662,19 +650,7 @@ ORDER BY viewer_id ASC
 </code></pre>
 <h3>Question: Check Test Answers</h3>
 <p><a href="https://learn.dataexpert.io/question/check-test-answers">Check answers</a></p>
-<p>Create a SQL query to evaluate test answers stored in a table named playground.answers with columns id (unique question ID), correct_answer (string), and given_answer (which can be NULL). Return a table with columns id and checks, where checks is &quot;no answer&quot; if given_answer is NULL, &quot;correct&quot; if given_answer matches correct_answer, and &quot;incorrect&quot; otherwise. Order the results by id.
-These are the tables to query for this question:
-playground.answers</p>
-<ul>
-<li>id int</li>
-<li>correct_answer string</li>
-<li>given_answer string</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>id integer</li>
-<li>checks varchar</li>
-</ul>
+<p>Create a SQL query to evaluate test answers stored in a table named playground.answers with columns id (unique question ID), correct_answer (string), and given_answer (which can be NULL). Return a table with columns id and checks, where checks is &quot;no answer&quot; if given_answer is NULL, &quot;correct&quot; if given_answer matches correct_answer, and &quot;incorrect&quot; otherwise. Order the results by id.</p>
 <p><strong>My solution</strong></p>
 <p>We haven't covered conditionals using IF in the dataexpert videos, but I took a guess that SQL had an IF keyword. I checked W3 schools and it is:</p>
 <p><code>IF(condition, value_if_true, value_if_false)</code></p>
@@ -712,21 +688,7 @@ ORDER BY id;
 <p>I'm not a huge fan of CASE in JS, I usually have problems getting it to work. Probably breaks/fallthrough related. It seems CASE is much easier in SQL.</p>
 <h3>Question: Total Number of Births Per Year</h3>
 <p><a href="https://learn.dataexpert.io/question/total-births-per-year">Total Number of Births Per Year</a></p>
-<p>Write a SQL query to calculate the total number of births recorded for each year in the playground.us_birth_stats table. Order the results by year.
-These are the tables to query for this question:
-playground.us_birth_stats</p>
-<ul>
-<li>year int</li>
-<li>month int</li>
-<li>date_of_month int</li>
-<li>day_of_week int</li>
-<li>births int</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>year integer</li>
-<li>total_births integer</li>
-</ul>
+<p>Write a SQL query to calculate the total number of births recorded for each year in the playground.us_birth_stats table. Order the results by year.</p>
 <p><strong>My solution</strong></p>
 <p>This one seemed a lot easier following question one.</p>
 <p>Just a matter of using sum on births, then group and order by year.</p>
@@ -738,36 +700,7 @@ ORDER BY YEAR
 </code></pre>
 <h3>Question: Cars with Above Average Engine Size</h3>
 <p><a href="https://learn.dataexpert.io/question/cars-above-average-engine-size">Cars with Above Average Engine Size</a></p>
-<p>Using the table playground.automobile, Create a SQL query to identify cars that have an engine size above the average across all cars in the dataset. The result should include the brand, fuel_type, and engine size, ordered by engine size in descending order and then brand_name in asc order.
-These are the tables to query for this question:
-playground.automobile</p>
-<ul>
-<li>brand_name string</li>
-<li>fuel_type string</li>
-<li>aspiration string</li>
-<li>door_panel string</li>
-<li>design string</li>
-<li>wheel_drive string</li>
-<li>engine_location string</li>
-<li>engine_type string</li>
-<li>cylinder_count string</li>
-<li>engine_size int</li>
-<li>fuel_system string</li>
-<li>bore double</li>
-<li>stroke double</li>
-<li>compression_ratio double</li>
-<li>horse_power int</li>
-<li>top_RPM int</li>
-<li>city_mileage int</li>
-<li>highway_mileage int</li>
-<li>price_in_dollars int</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>brand_name varchar</li>
-<li>fuel_type varchar</li>
-<li>engine_size integer</li>
-</ul>
+<p>Using the table playground.automobile, Create a SQL query to identify cars that have an engine size above the average across all cars in the dataset. The result should include the brand, fuel_type, and engine size, ordered by engine size in descending order and then brand_name in asc order.</p>
 <p><strong>My solution</strong></p>
 <p>My guess is we use a query to calculate the average engine size. Then use the results of that in a query to compare each row with that average, then output and sort the engines with higher values.</p>
 <p>I wondered if we could access the variable in the CTE in the second query, but we can't without doing  a JOIN. I used 'CROSS JOIN' to add average engine size to every row. This feels a bit inneficient?</p>
@@ -786,21 +719,7 @@ ORDER BY engine_size DESC, brand_name
 </code></pre>
 <h3>Question: Average Number of Births by Day of the Week</h3>
 <p><a href="https://learn.dataexpert.io/question/average-births-per-day-of-week">Average Number of Births by Day of the Week</a></p>
-<p>Create a SQL query that finds the average number of births for each day of the week across all years in the playground.us_birth_stats table. Cast the average as an integer. Order the results by the day of the week.
-These are the tables to query for this question:
-playground.us_birth_stats</p>
-<ul>
-<li>year int</li>
-<li>month int</li>
-<li>date_of_month int</li>
-<li>day_of_week int</li>
-<li>births int</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>day_of_week integer</li>
-<li>average_births integer</li>
-</ul>
+<p>Create a SQL query that finds the average number of births for each day of the week across all years in the playground.us_birth_stats table. Cast the average as an integer. Order the results by the day of the week.</p>
 <p><strong>My solution</strong></p>
 <p>Another one that didn't seem to difficult. This time just a matter of getting the average of births by day of the week.</p>
 <p>Luckily the 1st lab included the syntax to cast a value to a specific format.</p>
@@ -874,35 +793,6 @@ max_b.max_births = sum_b.sum_births
 <p>Write a SQL query to display all loyal customers from the playground.superstore table. A customer is considered loyal if they have placed more than 20 orders. The query should return the customer ID, customer name, and the total number of orders for each of these customers. Display the result in descending order of their orders and then ascending order of their names
 These are the tables to query for this question:
 playground.superstore</p>
-<ul>
-<li>row_id int</li>
-<li>order_id string</li>
-<li>order_date date</li>
-<li>ship_date date</li>
-<li>ship_mode string</li>
-<li>customer_id string</li>
-<li>customer_name string</li>
-<li>segment string</li>
-<li>country string</li>
-<li>city string</li>
-<li>state string</li>
-<li>postal_code int</li>
-<li>region string</li>
-<li>product_id string</li>
-<li>category string</li>
-<li>sub_category string</li>
-<li>product_name string</li>
-<li>sales string</li>
-<li>quantity string</li>
-<li>discount string</li>
-<li>profit double</li>
-</ul>
-<p>Your answer should include these columns:</p>
-<ul>
-<li>customer_id varchar</li>
-<li>customer_name varchar</li>
-<li>order_count integer</li>
-</ul>
 <p><strong>My solution</strong></p>
 <p>This would appear to be a count on order ID and a condition on the same using 'HAVING' (given that the condition is on an aggregate).</p>
 <pre><code class="language-SQL">SELECT customer_id,
@@ -916,6 +806,194 @@ ORDER BY order_count DESC, customer_name
 <p>This gives 86 results sorted by order count and then name.</p>
 <p>I couldn't submit this one, the page gave the status &quot;Data Length is different! Right answer has 1 rows. Your query has 86 rows!&quot;</p>
 <p>However, I'm pretty sure multiple rows are correct here.</p>
+<h3>Question: Identifying Empty Departments</h3>
+<p><a href="https://www.dataexpert.io/question/empty-departments-list">Identifying Empty Departments</a></p>
+<p>Given two tables, playground.employees and playground.departments, with employees containing id, full_name, and department, and departments containing id (unique department ID) and dep_name (department name), write a SQL query to build a table with one column, dep_name. This table should list all the departments that currently have no employees, sorted by the department id.</p>
+<p><strong>My Solution</strong></p>
+<p>I'm unsure if there is a JOIN that can return rows from one table without a match in another. Before searching for that, I decided on the following approach:</p>
+<ul>
+<li>Join tables using an <code>RIGHT JOIN</code> to get all rows in playground.departments</li>
+<li>Rows with NULL in full_name will represent departments without an employee</li>
+<li>I used a CTE to prepare the query, then the select to show only dep_name.</li>
+</ul>
+<pre><code class="language-SQL">WITH departments AS
+(
+SELECT dep_name,
+  full_name
+FROM playground.employees as pe
+RIGHT JOIN playground.departments as pd
+ON pe.department = pd.id
+WHERE full_name IS NULL
+)
+SELECT dep_name
+FROM departments
+</code></pre>
+<h3>Question: Filtering Students in Active Clubs</h3>
+<p><a href="https://www.dataexpert.io/question/active-club-members">Filtering Students in Active Clubs</a></p>
+<p>Given tables clubs (id: unique club id, name: club name) and students (id: unique student id, name: student name, club_id: club's id), return a list from the students table for those who are in clubs that still exist in the clubs table. The result should have three columns (id, name, club_id) and be sorted by students' ids (id) and include only those students whose club_id matches an id in the clubs table.</p>
+<p><strong>My Solution</strong></p>
+<p>By default JOIN gets matching values in both tables. That should work in this case, only returning the students with a club in the club table.</p>
+<p>We don't need a CTE here, as we can just specify the required output fields.</p>
+<pre><code class="language-SQL">SELECT ps.id as id,
+  ps.name as name,
+  ps.club_id as club_id
+FROM playground.students as ps
+JOIN playground.clubs as pc
+ON ps.club_id = pc.id
+</code></pre>
+<h3>Question: Identifying the Bank Robber</h3>
+<p><a href="https://www.dataexpert.io/question/bank-robber-identification">Identifying the Bank Robber</a></p>
+<p>Using table playground.suspect, filter out suspects who cannot be the bank robber based on the following clues: the robber is not taller than 170cm, and their name matches the pattern &quot;B. Gre?n&quot; where the first letter of the name is &quot;B&quot; or &quot;b&quot; and the surname is similar to &quot;Green&quot; but with the fourth letter being unreadable and potentially any character. The match should be case-insensitive. For each suspect that fits these criteria, select their id, name, and surname. Order the results by suspect id in ascending order.</p>
+<p><strong>My Solution</strong></p>
+<p>The key with this one is using WHERE and LIKE.</p>
+<p>We can then use <code>_</code> or <code>%</code> to help matching the strings.</p>
+<ul>
+<li><code>%</code> matches any number of unknown chars</li>
+<li><code>_</code> matches a specific number of unknowns e.g. <code>__</code> for two</li>
+</ul>
+<p>As it's case insensitive we can also use UPPER on the first name to simplify.</p>
+<p>So, to summarise:</p>
+<ul>
+<li>Convert first name to upper using <code>Upper(name)</code></li>
+<li>Use <code>WHERE</code> and <code>LIKE</code> on surname with <code>Gre_n</code></li>
+<li>Use <code>WHERE</code> with height &lt;= 170</li>
+<li>Use <code>WHERE</code> and <code>LIKE</code> on name with <code>B%</code></li>
+</ul>
+<p>Due to oder of operations uppername isn't available for WHERE so we need to use CTEs. I ended up chaining two, to get to the final output without the uppername column.</p>
+<p>Could this be simplified?</p>
+<pre><code class="language-SQL">WITH robbers AS
+(
+SELECT id,
+  name,
+  UPPER(name) as uppername,
+  surname,
+  height
+FROM playground.suspect
+WHERE surname LIKE 'Gre_n'
+  AND height &lt;= 170
+), 
+robbers2 AS
+(
+SELECT id,
+  name,
+  surname,
+  UPPER(name) as uppername
+FROM robbers
+WHERE uppername LIKE 'B%'  
+)
+SELECT id,
+  name,
+  surname
+FROM robbers2
+</code></pre>
+<h3>Question: Determining the Order of Succession</h3>
+<p><a href="https://www.dataexpert.io/question/order-of-succession">Determining the Order of Succession</a></p>
+<p>Given a table Successors with columns: name, birthday, and gender, write a SQL query to list the names of the King's children in order of their succession to the throne and their birthday(&quot;name&quot;, &quot;birthday&quot;). Succession is based on age seniority. Prefix the name with &quot;King&quot; for males and &quot;Queen&quot; for females. The result should be sorted by birthday in ascending order to determine the succession order.</p>
+<p><strong>My Solution</strong></p>
+<pre><code class="language-SQL">SELECT name,
+  birthday
+FROM playground.successors
+ORDER BY birthday
+</code></pre>
+<h3>Question: Top Reviewed Customers per Product</h3>
+<p><a href="https://www.dataexpert.io/question/top-reviewed-customers-per-product">Top Reviewed Customers per Product</a></p>
+<p>Using the table playground.product_reviews, write a SQL query to identify, for each product, the customer who provided the highest review score. If there are ties in review score, the customer with the most helpful votes should be considered top. The output should include columns for product_id, customer_id, review_score, and helpful_votes, capturing the details of the top review for each product ordered in ascending order of product_id</p>
+<p><strong>My Solution</strong></p>
+<p>To start I tried ordering by review_score, then helpful_votes. This puts the row you want at the top of each set of product specific rows. But I couldn't think of a way to then filter by just the first row. I tried playing around with DISTINCT, but couldn't get that to work.</p>
+<p>I then thought perhaps just using MAX will work. I was unsure if using MAX on two columns would return the right values. But it does seem to work.</p>
+<pre><code class="language-SQL">SELECT product_id,
+  customer_id,
+  MAX(review_score) AS review_score,
+  MAX(helpful_votes) AS helpful_votes
+FROM playground.product_reviews
+GROUP BY product_id, customer_id
+ORDER BY product_id
+</code></pre>
+<h3>Question: Find US Customers Who Rented and Streamed Videos in Early February</h3>
+<p><a href="https://www.dataexpert.io/question/us-customers-rented-streamed-early-feb">Find US Customers Who Rented and Streamed Videos in Early February</a></p>
+<p>Write a SQL query to return the US customers who rented a video on February 1st, 2023, and then streamed the same video between February 2nd and February 8th, 2023. Use the tables playground.rental for rental data and playground.streams for streaming data. The output should include unique user IDs of these customers ordered in ascending order.</p>
+<p><strong>My solution</strong></p>
+<p>For this one we can join the rental and stream tables on two fields: rental_id and user_id. We can then use <code>WHERE</code> on:</p>
+<ul>
+<li>rental_date = DATE '2023-02-01'</li>
+<li>stream_date &gt; DATE '2023-02-01` AND stream_date &lt; DATE '2023-02-08'</li>
+</ul>
+<p>We can place this logic inside a CTE and then just return user_id from the main select to get to the output format requirements.</p>
+<pre><code class="language-SQL">WITH rental AS
+(
+  SELECT pr.rental_date,
+    pr.user_id,
+    ps.stream_date,
+    pr.rental_id as ren_rental,
+    ps.rental_id as str_rental
+  FROM playground.rental as pr
+  JOIN playground.streams as ps
+    ON pr.user_id = ps.user_id AND
+      pr.rental_id = ps.rental_id
+  WHERE pr.rental_date = DATE '2023-02-01'
+  AND (ps.stream_date &gt; DATE '2023-02-02'
+  AND ps.stream_date &lt; DATE '2023-02-08')
+)
+SELECT user_id
+FROM rental
+</code></pre>
+<p>This returns two results. The question seems to expect only one results. I double checked the tables manually, and two results seems correct.</p>
+<h3>Question: Analyze Yearly Profit Performance</h3>
+<p><a href="https://www.dataexpert.io/question/yearly-profit-performance">Analyze Yearly Profit Performance</a></p>
+<p>Write a SQL query to analyze the profit performance of the company throughout the years using the playground.superstore table. Ensure to convert profit from varchar to a suitable numeric type for aggregation. The output should include the year extracted from the order_date (order_year), the total annual profit (total_profit) rounded to two decimal places, and should be ordered by year in descending order.</p>
+<p><strong>My solution</strong></p>
+<p>I had to look up a couple of things for this one:</p>
+<ul>
+<li>
+<p>How to extract year? Seems there are options depending on the DB</p>
+<ul>
+<li>Option 1: <code>EXTRACT(YEAR FROM date_value)</code>
+<ul>
+<li>PostgreSQL, Oracle, and Firebird, support the EXTRACT function.</li>
+</ul>
+</li>
+<li>Option 2: <code>YEAR(date_value)</code>
+<ul>
+<li>MySQL, MariaDB, SQL Server, Db2, SAP HANA, Informix, and Teradata do not support the EXTRACT function. Instead, they offer the YEAR function.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>How to round to two decimal places</p>
+<ul>
+<li><code>ROUND(field, 2)</code></li>
+</ul>
+</li>
+</ul>
+<p>I wanted to print out date types in a column for the SUM() results, but couldn't figure out a function or method to do that.</p>
+<pre><code class="language-SQL">SELECT YEAR(order_date) as order_year,
+  ROUND(SUM(profit), 2) AS total_profit
+FROM playground.superstore
+GROUP BY YEAR(order_date)
+</code></pre>
+<h3>Question: Select Rows With Maximum Revenue</h3>
+<p><a href="https://www.dataexpert.io/question/select-max-revenue-rows">Select Rows With Maximum Revenue</a></p>
+<p>Using the table playground.revenue, write a SQL query to select rows from a given table that have the maximum revenue value for each id. The resultant table should have three columns - &quot;id&quot;, &quot;rev&quot;, &quot;content&quot;. Additionally, the results should be ordered in descending order by revenue.</p>
+<p><strong>My Solution</strong></p>
+<p>I decided to use MAX() within a CTE to get the max revenue lines, then use the id plus the max value to join back to the table and pick out the content field.</p>
+<pre><code class="language-SQL">
+WITH max_rev AS
+(
+SELECT id,
+  MAX(rev) as max
+FROM playground.revenue
+GROUP BY id
+)
+SELECT mr.id,
+  pr.rev,
+  pr.content
+FROM max_rev as mr
+LEFT JOIN playground.revenue as pr
+  ON mr.id = pr.id AND
+    mr.max = pr.rev
+ORDER BY mr.max DESC
+</code></pre>
 
         <div class="post-comments flow">
           <h2>Share, comment/discuss</h2>
