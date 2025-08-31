@@ -607,7 +607,7 @@ WHERE season = 2007 AND rank = 1
 - This time you get the 2007 data with the no. 1 score.
 - The rankings are being calculated on filtered 2007 data
 
-## Appendix: dataexpert.io/questions
+## Easy questions (dataexpert.io/questions)
 
 SPOILERS AHEAD!
 
@@ -1091,4 +1091,162 @@ LEFT JOIN playground.revenue as pr
   ON mr.id = pr.id AND
     mr.max = pr.rev
 ORDER BY mr.max DESC
+```
+
+## Medium questions (dataexpert.io/questions)
+
+### Question: Salary Range Difference
+
+[Salary Range Difference](https://www.dataexpert.io/question/salary-range-difference)
+
+Calculate the difference between the sum of the highest salaries and the sum of the lowest salaries in the company. The table "playground.employees_salary" contains columns "id" (unique employee ID), "name" (employee's name), and "salary" (employee's salary as a positive integer). The result should be a single column "difference" with one row representing the calculated difference. If the "playground.employees_salary" table is empty, "difference" should be 0.
+
+**My solution**
+
+I misunderstood this question at first, but it might still be useful to show my first attempt.
+
+I interpreted it as summing all the high value and all the low values and calculating the difference. So, split the table at the middle and sum values higher than the middle value, and sum values lower than the middle value. To do this:
+
+- Start with a CTE to prepare:
+  - I used row_number with order on salary to give rows an incrementing ID from lowest to highest salary
+  - I used count to get total number of rows
+- Then in a following CTE:
+  - I used sum twice to add two columns, one for highest salaries, one lowest
+  - Inside the sum I used CASE to pick only the relevant values
+- Then in main it's just a matter of subtracting lowest from highest.
+
+However, this returns 700, which is incorrect. Luckily the web page informed me 1700 is expected. So, will aim to solve for that in attempt 2 (see below)
+
+Attempt 1: returns 700:
+
+```SQL
+With salary_ordered AS
+(
+SELECT *,
+  ROW_NUMBER() OVER(ORDER BY salary) as rn,
+  COUNT(*) OVER() AS tr
+FROM playground.employees_salary
+), highest_lowest AS
+(
+SELECT
+  SUM(CASE WHEN rn <= tr / 2 THEN salary END) AS lowest_half,
+  SUM(CASE WHEN rn > tr / 2 THEN salary END) AS highest_half
+FROM salary_ordered
+)
+SELECT highest_half - lowest_half AS difference
+FROM highest_lowest
+```
+
+So 1700 is expected. Looking at the data more closely the highest entries are actually 2 entries, both with 1300, the lowest entry is one entry with 900. So, 1300 + 1300 - 900 = 700.
+
+We can't simply use MAX() and MIN() as we don't know if there are duplicate high or low values.
+
+What we could try, is to use RANK() which will assign the same ID to duplicate values. We can then utilise that same ID to sum entries. This will work with any number of duplicates are present as highest and lowest values.
+
+- 1st CTE
+  - Rank over salary and add a columns for both ascending & descending salary
+- 2nd CTE
+  - Use sum and case again, but this time based on rank = 1 in asc/desc directions.
+- Main
+  - Calculate the difference.
+
+Attemp 2: returns expected 1700
+
+```SQL
+With salary_ranked AS
+(
+SELECT *,
+  RANK() OVER(ORDER BY salary DESC) AS rk_de,
+  RANK() OVER(ORDER BY salary) AS rk_ac
+FROM playground.employees_salary;
+), highest_lowest AS
+(
+SELECT
+  SUM(CASE WHEN rk_de = 1 THEN salary END) AS highest,
+  SUM(CASE WHEN rk_ac = 1 THEN salary END) AS lowest
+FROM salary_ranked
+)
+SELECT highest - lowest AS difference
+FROM highest_lowest
+```
+
+### Question: Find Product Prices
+
+[Find Product Prices](https://www.dataexpert.io/question/find-product-prices)
+
+Using the table playground.product_prices, create a SQL query to find all products and their prices on 2023-08-17, assuming the initial price of all products was 10 before any price changes. Order the results in ascending order of product_id.
+
+**My Solution**
+
+Took me a while to figure out a way to do this!
+
+I started experimenting with using CASE to put either the new price in a new column if change_date was before or equal to the 17th, otherwise the old price, but this still left the challenge of multiple rows per product where a product had gone through several price changes.
+
+I thought back to the previous exercise with CASE inside of SUM() and thought maybe this can work with CASE inside MAX. We can't tell it which values to use in a MAX() calculation to get one row per product with the latest price up to the 17th.
+
+It feels quite elegant this time.
+
+```SQL
+SELECT product_id,
+  MAX(CASE 
+    WHEN change_date <= DATE '2023-08-17'
+      THEN new_price
+    ELSE d_price
+  END) AS price
+FROM playground.product_prices
+GROUP BY product_id
+ORDER BY product_id
+```
+
+### Question: Comparing State Fatal Collisions to the National Average
+
+[Comparing State Fatal Collisions to the National Average](https://www.dataexpert.io/question/state-fatal-collisions)
+
+Using playground.bad_drivers, write a SQL query to compare each state’s fatal collisions per billion miles to the national average. Include a column that indicates whether the state is "Above Average" or "Below Average". The resultant table should have three columns, "state", "fatal_collisions_per_billion_miles" and "comparison_to_national_avg". Show the result ordered by state name asc.
+
+**My Solution**
+
+I thought this one would be quite simple, but I had a few issues getting it to work. I decided to use an initial CTE to calculate the national average. I then forgot how to add that into the original table. The easiest turns out to be a cross join. The very long field names made this tricky to write on the web app. Once the average is added to the table case can be used to update a new column with either 'above average' or 'below average'
+
+```SQL
+WITH nat_ave AS
+(
+SELECT
+ AVG(FATAL_COLLISIONS_PER_BILLION_MILES) 
+  AS ave
+FROM playground.bad_drivers
+), comparison AS
+(
+SELECT pbd.*,
+  nat_ave.ave AS national_average,
+  CASE
+  WHEN pbd.fatal_collisions_per_billion_miles 
+  > nat_ave.ave THEN 'Above Average'
+  WHEN pbd.fatal_collisions_per_billion_miles
+  < nat_ave.ave THEN 'Below Average'
+  END AS comparison
+FROM playground.bad_drivers pbd
+CROSS JOIN nat_ave
+)
+SELECT state,
+fatal_collisions_per_billion_miles,
+comparison AS comparison_to_national_avg
+FROM comparison;
+```
+
+### Question: Who are the top 10 authors by number of reviews?
+
+[Who are the top 10 authors by number of reviews?](https://www.dataexpert.io/question/top-10-authors-by-reviews)
+
+Using bootcamp.books, find the top 10 authors by reviews, no_of_reviews is a string column with bad data, try your best to get the values to parse correctly
+
+**My Solution**
+
+Number of reviews shows up as NULL for all books, so not sure what can be done here.
+
+```SQL
+SELECT *
+FROM bootcamp.books
+WHERE NO_OF_REVIEWS IS NOT NULL
+-- return 0
 ```
