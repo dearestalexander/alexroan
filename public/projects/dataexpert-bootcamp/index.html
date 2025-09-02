@@ -623,7 +623,7 @@ WHERE season = 2007 AND rank = 1
 <li>This time you get the 2007 data with the no. 1 score.</li>
 <li>The rankings are being calculated on filtered 2007 data</li>
 </ul>
-<h2>Appendix: dataexpert.io/questions</h2>
+<h2>Easy questions (dataexpert.io/questions)</h2>
 <p>SPOILERS AHEAD!</p>
 <p>There are practice questions at dataexpert.io/questions</p>
 <p>As I write this, I've completed around 7 of these. I found them to be helpful in switching into the SQL problem solving mindset and experimenting with differnet things. I recommend giving them a good go without looking up answers or using AI. I found the SQL syntax list on W3 schools helpful, when I wasn't sure on how to do something. A summary of the questions and my attempts below.</p>
@@ -993,6 +993,140 @@ LEFT JOIN playground.revenue as pr
   ON mr.id = pr.id AND
     mr.max = pr.rev
 ORDER BY mr.max DESC
+</code></pre>
+<h2>Medium questions (dataexpert.io/questions)</h2>
+<h3>Question: Salary Range Difference</h3>
+<p><a href="https://www.dataexpert.io/question/salary-range-difference">Salary Range Difference</a></p>
+<p>Calculate the difference between the sum of the highest salaries and the sum of the lowest salaries in the company. The table &quot;playground.employees_salary&quot; contains columns &quot;id&quot; (unique employee ID), &quot;name&quot; (employee's name), and &quot;salary&quot; (employee's salary as a positive integer). The result should be a single column &quot;difference&quot; with one row representing the calculated difference. If the &quot;playground.employees_salary&quot; table is empty, &quot;difference&quot; should be 0.</p>
+<p><strong>My solution</strong></p>
+<p>I misunderstood this question at first, but it might still be useful to show my first attempt.</p>
+<p>I interpreted it as summing all the high value and all the low values and calculating the difference. So, split the table at the middle and sum values higher than the middle value, and sum values lower than the middle value. To do this:</p>
+<ul>
+<li>Start with a CTE to prepare:
+<ul>
+<li>I used row_number with order on salary to give rows an incrementing ID from lowest to highest salary</li>
+<li>I used count to get total number of rows</li>
+</ul>
+</li>
+<li>Then in a following CTE:
+<ul>
+<li>I used sum twice to add two columns, one for highest salaries, one lowest</li>
+<li>Inside the sum I used CASE to pick only the relevant values</li>
+</ul>
+</li>
+<li>Then in main it's just a matter of subtracting lowest from highest.</li>
+</ul>
+<p>However, this returns 700, which is incorrect. Luckily the web page informed me 1700 is expected. So, will aim to solve for that in attempt 2 (see below)</p>
+<p>Attempt 1: returns 700:</p>
+<pre><code class="language-SQL">With salary_ordered AS
+(
+SELECT *,
+  ROW_NUMBER() OVER(ORDER BY salary) as rn,
+  COUNT(*) OVER() AS tr
+FROM playground.employees_salary
+), highest_lowest AS
+(
+SELECT
+  SUM(CASE WHEN rn &lt;= tr / 2 THEN salary END) AS lowest_half,
+  SUM(CASE WHEN rn &gt; tr / 2 THEN salary END) AS highest_half
+FROM salary_ordered
+)
+SELECT highest_half - lowest_half AS difference
+FROM highest_lowest
+</code></pre>
+<p>So 1700 is expected. Looking at the data more closely the highest entries are actually 2 entries, both with 1300, the lowest entry is one entry with 900. So, 1300 + 1300 - 900 = 700.</p>
+<p>We can't simply use MAX() and MIN() as we don't know if there are duplicate high or low values.</p>
+<p>What we could try, is to use RANK() which will assign the same ID to duplicate values. We can then utilise that same ID to sum entries. This will work with any number of duplicates are present as highest and lowest values.</p>
+<ul>
+<li>1st CTE
+<ul>
+<li>Rank over salary and add a columns for both ascending &amp; descending salary</li>
+</ul>
+</li>
+<li>2nd CTE
+<ul>
+<li>Use sum and case again, but this time based on rank = 1 in asc/desc directions.</li>
+</ul>
+</li>
+<li>Main
+<ul>
+<li>Calculate the difference.</li>
+</ul>
+</li>
+</ul>
+<p>Attemp 2: returns expected 1700</p>
+<pre><code class="language-SQL">With salary_ranked AS
+(
+SELECT *,
+  RANK() OVER(ORDER BY salary DESC) AS rk_de,
+  RANK() OVER(ORDER BY salary) AS rk_ac
+FROM playground.employees_salary;
+), highest_lowest AS
+(
+SELECT
+  SUM(CASE WHEN rk_de = 1 THEN salary END) AS highest,
+  SUM(CASE WHEN rk_ac = 1 THEN salary END) AS lowest
+FROM salary_ranked
+)
+SELECT highest - lowest AS difference
+FROM highest_lowest
+</code></pre>
+<h3>Question: Find Product Prices</h3>
+<p><a href="https://www.dataexpert.io/question/find-product-prices">Find Product Prices</a></p>
+<p>Using the table playground.product_prices, create a SQL query to find all products and their prices on 2023-08-17, assuming the initial price of all products was 10 before any price changes. Order the results in ascending order of product_id.</p>
+<p><strong>My Solution</strong></p>
+<p>Took me a while to figure out a way to do this!</p>
+<p>I started experimenting with using CASE to put either the new price in a new column if change_date was before or equal to the 17th, otherwise the old price, but this still left the challenge of multiple rows per product where a product had gone through several price changes.</p>
+<p>I thought back to the previous exercise with CASE inside of SUM() and thought maybe this can work with CASE inside MAX. We can't tell it which values to use in a MAX() calculation to get one row per product with the latest price up to the 17th.</p>
+<p>It feels quite elegant this time.</p>
+<pre><code class="language-SQL">SELECT product_id,
+  MAX(CASE 
+    WHEN change_date &lt;= DATE '2023-08-17'
+      THEN new_price
+    ELSE d_price
+  END) AS price
+FROM playground.product_prices
+GROUP BY product_id
+ORDER BY product_id
+</code></pre>
+<h3>Question: Comparing State Fatal Collisions to the National Average</h3>
+<p><a href="https://www.dataexpert.io/question/state-fatal-collisions">Comparing State Fatal Collisions to the National Average</a></p>
+<p>Using playground.bad_drivers, write a SQL query to compare each state’s fatal collisions per billion miles to the national average. Include a column that indicates whether the state is &quot;Above Average&quot; or &quot;Below Average&quot;. The resultant table should have three columns, &quot;state&quot;, &quot;fatal_collisions_per_billion_miles&quot; and &quot;comparison_to_national_avg&quot;. Show the result ordered by state name asc.</p>
+<p><strong>My Solution</strong></p>
+<p>I thought this one would be quite simple, but I had a few issues getting it to work. I decided to use an initial CTE to calculate the national average. I then forgot how to add that into the original table. The easiest turns out to be a cross join. The very long field names made this tricky to write on the web app. Once the average is added to the table case can be used to update a new column with either 'above average' or 'below average'</p>
+<pre><code class="language-SQL">WITH nat_ave AS
+(
+SELECT
+ AVG(FATAL_COLLISIONS_PER_BILLION_MILES) 
+  AS ave
+FROM playground.bad_drivers
+), comparison AS
+(
+SELECT pbd.*,
+  nat_ave.ave AS national_average,
+  CASE
+  WHEN pbd.fatal_collisions_per_billion_miles 
+  &gt; nat_ave.ave THEN 'Above Average'
+  WHEN pbd.fatal_collisions_per_billion_miles
+  &lt; nat_ave.ave THEN 'Below Average'
+  END AS comparison
+FROM playground.bad_drivers pbd
+CROSS JOIN nat_ave
+)
+SELECT state,
+fatal_collisions_per_billion_miles,
+comparison AS comparison_to_national_avg
+FROM comparison;
+</code></pre>
+<h3>Question: Who are the top 10 authors by number of reviews?</h3>
+<p><a href="https://www.dataexpert.io/question/top-10-authors-by-reviews">Who are the top 10 authors by number of reviews?</a></p>
+<p>Using bootcamp.books, find the top 10 authors by reviews, no_of_reviews is a string column with bad data, try your best to get the values to parse correctly</p>
+<p><strong>My Solution</strong></p>
+<p>Number of reviews shows up as NULL for all books, so not sure what can be done here.</p>
+<pre><code class="language-SQL">SELECT *
+FROM bootcamp.books
+WHERE NO_OF_REVIEWS IS NOT NULL
+-- return 0
 </code></pre>
 
         <div class="post-comments flow">
