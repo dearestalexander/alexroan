@@ -3,41 +3,394 @@ title: Alex Roan - Home
 layout: 'template-home.njk'
 ---
 
-<div class="posts-ftr">
-    <div id="select-ctr" class="select-ctr"></div>
-</div>
+<section class="home-intro">
+  <p class="home-intro-text">I help organisations deliver business and technology change. This site is where I share ideas and projects I’m working on. Check out the blog posts below, or visit the About and Projects pages for more information.</p> 
+</section>
 
-<section class="region-cards">
-  <ul class="card-grid">
-    {%- for post in collections.post | reverse -%}
-    <li class="card flow" data-hashtags="{{ post.data.hashtags }}">
-      <a class="card-inner flow--small" href="{{ post.url }}">
-        <h2 class="card-title" id="{{ post.data.title}}">{{ post.data.title }}</h1>
-        <div class="card-contents flow--small">  
-          <div class="card-img-ctr">
-            {% if post.data.image and post.data.image | trim != "" %}
-            <img class="card-img" src="{{ post.data.image }}" alt=""/>
-            {% endif %}
+<section class="metrics">
+  <h2 class="home-h2">Experience</h2>
+  <div class="metric-charts">
+
+    <div class="industry-ctr">
+      <p class="skills-title">Industry experience (yrs)</p>
+      <ul class="industry-list">
+        <li>
+          <span class="skills-label">Consumer goods</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/10">8
+            <div class="tooltiptext">
+              <p>Procter & Gamble (7y6m)</p>
+              <p>Unilever (4m)</p>
+              <p>Danone (1y6m)</p>
+            </div>
           </div>
-          <div class="card-text flow--small">
-            <p class="card-text">{{ post.data.description }}</p>
-            <div class="card-att flow--small">
-              <span class="card-date-ctr" data-date="{{ post.data.date | postDateIso }}">
-                <time class="card-date" datetime="{{ post.data.date | postDateIso }}">
-                  {{ post.data.date | postDate }}
-                </time>
-              </span>
-              <span class="card-auth">{{ post.data.author }}</span>
+        </li>
+        <li>
+          <span class="skills-label">Management consulting</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/8">7
+            <div class="tooltiptext">
+              <p>Accenture (8m)</p>
+              <p>PwC (3y9m)</p>
+              <p>Deloitte (2y)</p>
             </div>
-            <div class="card-tags" data-tag="{{ post.data.hashtags }}">
-              {% for x in post.data.hashtags %}
-              <span class="card-tag">#{{ x }}</span>
-              {% endfor %}
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Financial services</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>AXA (8m)</p>
+              <p>Lehman Brothers (8m)</p>
+              <p>Deutsche Bank (1y6m)</p>
+              <p>Standard Chartered Bank (11m)</p>
             </div>
-         </div>
-        </div>
-      </a>
-    </li>
-  {%- endfor -%}
-  </ul>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Beverages</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/4">2
+            <div class="tooltiptext">
+              <p>Diageo (8m)</p>
+              <p>Heineken (8m)</p>
+              <p>Coca-Cola (8m)</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Chemicals</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/2">1
+            <div class="tooltiptext">
+              <p>Johnson Matthey (3m)</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Recruitment/staffing</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/2">1
+            <div class="tooltiptext">
+              <p>PersolKelly (5m)</p>
+              <p>Angus Knight Group (6m)</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="function-ctr">
+      <p class="skills-title">Function/process experience (yrs)</p>
+      <ul class="function-list">
+        <li>
+          <span class="skills-label">Finance</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/18">16
+            <div class="tooltiptext">
+              <p>Financial & management accounting</p>
+              <p>GL, cost accounting, PtP</p>
+              <p>Group consolidation & reporting</p>
+              <p>Financial planning and analysis</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">IT</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/16">14
+            <div class="tooltiptext">
+              <p>SAP (ECC, S/4HANA, BW, BPC)</p>
+              <p>Finance solutions architecture</p>
+              <p>Systems development</p>
+              <p>IT service management</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Corporate</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>Transition services as part of administration of Lehman Brothers</p>
+              <p>Annual closing and reporting for Standard Chartered Bank</p>
+              <p>Supply chain strategy for Unilever</p>
+              <p>5 year corporate plan for PersolKelly</p> 
+              <p>M&A for Angus Knight Group</p> 
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Supply chain</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>Programme leadership of supply chain projects at Procter & Gamble</p>
+              <p>Supply chain strategy at Unilever</p>
+              <p>Operating model design at Coca-Cola</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">CRM</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/5">3
+            <div class="tooltiptext">
+              <p>Programme leadership of CRM projects at Procter & Gamble</p>
+              <p>Operating model design at Coca-Cola</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="skills-ctr">
+      <p class="skills-title">Skills experience (yrs)</p>
+      <ul class="skills-list">
+        <li>
+          <span class="skills-label">Business transformation</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/18">16
+            <div class="tooltiptext">
+              <p>Most of my roles have focussed on business transformation, highlights:</p>
+              <p>7 years at P&G in global projects</p>
+              <p>Combined 6 years in management consulting</p>
+              <p>Several freelance engagements on transformation programs</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">SAP</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/13">11
+            <div class="tooltiptext">
+              <p>At P&G I was a finance SAP expert and project/program manager</p>
+              <p>At Accenture, PwC, Deloitte, I advised clients on SAP solutions and configuration</p>
+              <p>At Danone I led the S/4HANA CFIN design and build</p>
+              <p>Technical experience in FICO, CO-PA, ML, BW, BDC</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Programme/project management</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/13">11
+            <div class="tooltiptext">
+              <p>I've managed several projects and programs, including:</p>
+              <p>4 end to end to end SAP implementations</p>
+              <p>2 migrations to global business serices</p>
+              <p>2 corporate tax restructurings</p>
+              <p>1 post acquisition integration</p>
+              <p>Engagement lead for two large client engagements</p>
+              <p>Workstream lead for multiple projects</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Process improvement</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/12">10
+            <div class="tooltiptext">
+              <p>At P&G one of my roles was a purchase to pay product owner, driving process improvement</p>
+              <p>I was also a process owner at Deutsche Bank, where we used process modelling and lean on purchase to pay, cost accounting, and record to report processes</p>
+              <p>Process analysis, mapping, and re-design has also been a big part of my consulting and SAP roles</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Global business services/shared services</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/11">9
+            <div class="tooltiptext">
+              <p>During my 7 years at P&G we were rolling out GBS globally</p>
+              <p>I've helped AXA, Heineken, and Coca-Cola design their business services organisaitons</p>
+              <p>Several consulting engagements have involved helping improve GBS/shared services processes</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Systems development</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/9">7
+            <div class="tooltiptext">
+              <p>I started my career as an IT analyst at Procter and Gamble, where we developed and configured SAP</p>
+              <p>I've developed in-depth functional specifications over the year</p>
+              <p>Technical skills include: C, JavaScript, SQL, HTML, CSS, and Visual Basic</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Target operating models</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>I led the finance systems workstream at AXA, Heineken, and Deloitte UK for their finance led business services organisations</p>
+              <p>I led the consulting engagement and was the finance expert for Coca Cola Japans business services organisation strategy</p>
+              <p>I helped PersolKelly draw out business services operation options as part of their 5 year corporate strategy</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Solutions architecture</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>Whilst at PwC I was the SAP solution strategy practice lead for finance. I advised several large clients on their global finance systems architecture</p>
+              <p>I also provided solutions architecture advice to clients while with Deloitte in Japan and whilst working on a freelance basis.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Outsourcing (process/IT)</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/6">4
+            <div class="tooltiptext">
+              <p>I was a governance lead for IT outsourcing to HP at P&G</p>
+              <p>I led a business process outsourcing study for Coca-Cola Japan</p>
+              <p>I led the systems integrator selection/planning for Johnson Matthey</p>
+              <p>I managed external systems integrators as part of several SAP projects</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Mergers and acquisitions</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/5">3
+            <div class="tooltiptext">
+              <p>I led the post merger integration for P&G and Gillete in Russia</p>
+              <p>I was a finance expert for the sunny delight divestiture for P&G</p>
+              <p>I led the transition services design negotiation and negotiation for the sale of assets and investment banking from Lehman Brothers to Nomura </p>
+              <p>I assisted Angus Knight Group with operations due dilligence for target acquisitions</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Planning and reporting</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/5">3
+            <div class="tooltiptext">
+              <p>I managed the group annual and half year close and reporting for Standard Chartered Bank</p>
+              <p>I led the finance systems design for Diageo's global finance planning and reporting</p>
+              <p>I led Danone's global finance reporting mode program (enabled by S/4HANA CFIN)</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Tax restructuring</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/5">3
+            <div class="tooltiptext">
+              <p>I led two projects at P&G that transitioned to a regional entrepreneur tax model</p>
+              <p>I consulted on entreprenuers and 'plants abroad' while at PwC</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">BPMN process modelling</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/5">3
+            <div class="tooltiptext">
+              <p>As a process governance lead at Deutsche Bank, I led the creation of BPMN maps for purchase to pay and record to report</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Commercials/business development</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/4">2
+            <div class="tooltiptext">
+              <p>At Deloitte Japan I led $3.7m sales in 9 months</p>
+              <p>At PwC UK I was the finance systems lead for big projects such as Diageo</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Lean/six sigma</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/4">2
+            <div class="tooltiptext">
+              <p>At Procter & Gamble we used Lean and Six sigma as part of the GBS rollout</p>
+              <p>At Deutsche Bank we used lean to identify waste and improvements as part of process mapping</p>
+              <p>As part of finance target operating models I've helped design factory inspired lean models for services</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Transition services</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/3">1
+            <div class="tooltiptext">
+              <p>I designed and negotiated transition services for the sale of Equities and Investment Banking from Lehman Brothers to Nomura. These services included trade execution and IT support</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">IT service management</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/3">1
+            <div class="tooltiptext">
+              <p>I started my career in Procter & Gamble in level 2 finance systems support</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Strategic planning</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/3">1
+            <div class="tooltiptext">
+              <p>I led / chaired PersolKelly's 5 year strategic planning. This included co-ordinating research, preparing materials, and chairing executive days.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <span class="skills-label">Insolvency/administration</span>
+          <div class="skills-bar tooltip" style="grid-column: 2/3">1
+            <div class="tooltiptext">
+              <p>I spent just over one year as part of the PWC administration team for Lehman Brothers in Administration</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="logos-ctr">
+  <h2 class="home-h2">Clients and Employers</h2>
+  <div class="logos">
+    <img src="/assets/images/experience/accenture.png"/>
+    <img src="/assets/images/experience/akg.png"/>
+    <img src="/assets/images/experience/bbc.png"/>
+    <img src="/assets/images/experience/coca-cola.png"/>
+    <img src="/assets/images/experience/danone.png"/>
+    <img src="/assets/images/experience/deloitte.png"/>
+    <img src="/assets/images/experience/deutsche-bank.png"/>
+    <img src="/assets/images/experience/diageo.png"/>
+    <img src="/assets/images/experience/heineken.svg"/>
+    <img src="/assets/images/experience/jm.png"/>
+    <img src="/assets/images/experience/lehman.png"/>
+    <img src="/assets/images/experience/persol.svg"/>
+    <img src="/assets/images/experience/pg.png"/>
+    <img src="/assets/images/experience/programmed.png"/>
+    <img src="/assets/images/experience/scb.png"/>
+    <img src="/assets/images/experience/unilever.png"/>
+  </div>
+</section>
+
+<section class="blog">
+  <h2 class="home-h2">Blog</h2>
+
+  <div class="posts-ftr">
+      <div id="select-ctr" class="select-ctr"></div>
+  </div>
+
+  <div class="region-cards">
+    <ul class="card-grid">
+      {%- for post in collections.post | reverse -%}
+      <li class="card flow" data-hashtags="{{ post.data.hashtags }}">
+        <a class="card-inner flow--small" href="{{ post.url }}">
+          <h2 class="card-title" id="{{ post.data.title}}">{{ post.data.title }}</h1>
+          <div class="card-contents flow--small">  
+            <div class="card-img-ctr">
+              {% if post.data.image and post.data.image | trim != "" %}
+              <img class="card-img" src="{{ post.data.image }}" alt=""/>
+              {% endif %}
+            </div>
+            <div class="card-text flow--small">
+              <p class="card-text">{{ post.data.description }}</p>
+              <div class="card-att flow--small">
+                <span class="card-date-ctr" data-date="{{ post.data.date | postDateIso }}">
+                  <time class="card-date" datetime="{{ post.data.date | postDateIso }}">
+                    {{ post.data.date | postDate }}
+                  </time>
+                </span>
+                <span class="card-auth">{{ post.data.author }}</span>
+              </div>
+              <div class="card-tags" data-tag="{{ post.data.hashtags }}">
+                {% for x in post.data.hashtags %}
+                <span class="card-tag">#{{ x }}</span>
+                {% endfor %}
+              </div>
+          </div>
+          </div>
+        </a>
+      </li>
+    {%- endfor -%}
+    </ul>
+  </div>
 </section>

@@ -19,7 +19,10 @@
     <main id="main" class="post-main">
       <div id="post-sidebar-toc-ctr"></div>
       <article class="post-article">
-        <h1 class="post-title">{{title}}</h1>
+        {% if post.data.image %}
+          <img src="{{ post.data.image | url }}" alt="">
+        {% endif %}
+        <h1 class="post-title">{{ title }}</h1>
         <p id="post-tag" class="post-tag"> {{ tags }}</p>
         <p class="post-att">by {{author}} on {{ date | postDate}}
         {{ content | safe }}

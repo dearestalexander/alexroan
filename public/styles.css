@@ -263,8 +263,6 @@ pre {
   max-width: 95vw;
 }
 
-/*-- posts - filter --*/
-
 .home-intro {
   display: flex;
   flex-direction: column;
@@ -279,6 +277,112 @@ pre {
   padding-left: 1rem;
   margin: 3rem auto; 
 }
+
+/*-- posts - metrics --*/
+
+.metric-charts {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+
+.skills-ctr, .industry-ctr, .function-ctr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin: 3rem auto;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey);
+  padding: 0.5rem;
+}
+
+.skills-title {
+  margin-bottom: 1rem;
+}
+
+.skills-list, .industry-list, .function-list {
+  display: grid;
+  gap: 0.1rem 0;
+  grid-template-columns: 1fr;
+  font-size: var(--step--2);
+  list-style: none;
+}
+
+.skills-list li {
+  display: grid;
+  grid-template-columns: auto repeat(16, 2ch);
+}
+
+.function-list li {
+  display: grid;
+  grid-template-columns: auto repeat(16, 2ch);
+}
+
+.industry-list li {
+  display: grid;
+  grid-template-columns: auto repeat(8, 2ch);
+}
+
+.skills-label {
+  text-align: right;
+  padding: 0.1rem 0.5rem
+}
+
+.skills-bar {
+  background-color: var(--color-lightyellow);
+  border: 1px solid var(--color-lightyellow);
+  padding: 0.1rem 0.5rem;
+}
+
+.skills-bar:hover {
+  background-color: var(--color-lightgrey);
+  border: 1px solid var(--color-lightyellow);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 40ch;
+  background-color: var(--color-grey);
+  font-size: var(--step-0);
+  color: #ffff;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 6px;
+  position: absolute;
+  bottom: 200%;
+  left: 50%;
+  margin-left: -20ch;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltiptext > p {
+  color: var(--color-white);
+}
+
+/*-- logos --*/
+
+.logos {
+  display: grid;
+  max-width: 80ch;
+  grid-template-columns: repeat(5, 1fr);
+  margin: auto;
+  gap: 1rem;
+}
+
+/*-- posts - filter --*/
 
 .posts-ftr {
   display:flex;
