@@ -1,4 +1,4 @@
 {
   "tags": "about",
-  "layout": "template-page.njk"
+  "layout": "template-about.njk"
 }

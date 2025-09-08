@@ -263,6 +263,12 @@ pre {
   max-width: 95vw;
 }
 
+.home-h2 {
+  padding-top: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
 .home-intro {
   display: flex;
   flex-direction: column;
@@ -278,7 +284,7 @@ pre {
   margin: 3rem auto; 
 }
 
-/*-- posts - metrics --*/
+/*-- home - metrics --*/
 
 .metric-charts {
   display: flex;
@@ -352,7 +358,7 @@ pre {
   visibility: hidden;
   width: 40ch;
   background-color: var(--color-grey);
-  font-size: var(--step-0);
+  font-size: var(--step--1);
   color: #ffff;
   text-align: left;
   padding: 1rem;
@@ -379,7 +385,22 @@ pre {
   max-width: 80ch;
   grid-template-columns: repeat(5, 1fr);
   margin: auto;
+  padding-top: 3rem;
   gap: 1rem;
+}
+
+.download-cv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80ch;
+  margin: auto;
+  padding-top: 3rem;
+}
+
+
+.home-cv {
+  width: 250px;
 }
 
 /*-- posts - filter --*/
@@ -389,6 +410,7 @@ pre {
   flex-direction: column;
   align-items: center;
   font-size: var(--step--1);
+  padding-top: 3rem;
 }
 
 .select-ctr {
@@ -733,8 +755,20 @@ html {
 
 
 /*=============
------ABOUT-------
+-----ABOUT-----
 =============*/
+
+.about img {
+  border: none;
+  width: 250px;
+  height: 150px;
+  margin: 0;
+}
+
+.about h3,
+.about h4 {
+  padding-top: 3rem;
+}
 
 .region__news {
   background-color: var(--color-black);
@@ -844,5 +878,9 @@ footer {
     position: static;
     max-height: 100%;
     margin-bottom: 2rem;
+  }
+
+  .logos {
+  grid-template-columns: repeat(2, 1fr);
   }
 }

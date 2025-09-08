@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Roan | Strategy and Operations Consulting</title>
     <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
-    <link href="/styles.css" rel="stylesheet">
+    <link href="{{ '/styles.css' | url }}" rel="stylesheet">
     <script defer src="/script-posts.js"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,31 +15,14 @@
     <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header class="header-ctr">
-  <a href="#main" class="skip">Skip to main content</a>
-  <p class="logo-ctr">
-    <span class="logo-span-one">Hi,</span>
-    <span class="logo-span-two">I'm Alex</span>
-  </p>
-  <nav>
-    <ul role="list" class="nav-ul">
-      <li><a class="nav-li" href="/">Home</a></li>
-      <li><a class="nav-li" href="/about/alex/">About</a></li>
-      <li><a class="nav-li" href="/projects/">Projects</a></li>
-      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
-    </ul>
-  </nav>
-</header>
+    {% include 'header.njk' %}
     <main id="main" class="post-main">
       <div id="post-sidebar-toc-ctr"></div>
       <article class="post-article about">
-      <p id="post-tag" class="post-tag"> </p>
-        About Alexander Roan
-    
+      <p id="post-tag" class="post-tag"> {{ tags }}</p>
+        {{ content | safe }}
       </article>
     </main>
-    <footer class="flow">
-  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
-</footer>
+    {% include 'footer.njk' %}
   </body>
 </html>
