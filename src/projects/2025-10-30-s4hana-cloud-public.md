@@ -24,7 +24,7 @@ I then added additional steps and notes based on my experience of R/3, ECC, and 
 Even trying to be concise, this high level list of activities reached 639 lines, which showcases the complexities of these programs. In a real world scenario each phase would be broken down into a more detailed plan with detailed deliverables, workshops, sign-offs, etc.
 
 - [Download the PDF](/assets/documents/s4hana/imp-s4hana-cld-pub-v1.pdf)
-- [Download the Excel](/assets/documents/s4hana/imp-s4hana-cld-pub-v1.xlsx")
+- [Download the Excel](/assets/documents/s4hana/imp-s4hana-cld-pub-v1.xlsx)
 
 Key points for the interpretation of the list:
 
