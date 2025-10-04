@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+    <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header-ctr">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
+  </p>
+  <nav>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
+    </ul>
+  </nav>
+</header>
+    <div class="divider"></div>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        
+        <div class="post-title-ctr">
+          <h1 class="post-title">S/4HANA Cloud Public - Implementation Guide</h1>
+          <p id="post-tag" class="post-tag">post</p>
+          <p class="post-att">by Alexander Roan on 5 Sep 2025</p>
+        </div>
+        <h2>How different is a Public Cloud Implemetation from On-Premise?</h2>
+<p>I was curious about the implementation process for S/4HANA Public Cloud and how it differs from a more traditional on-premise implementation.</p>
+<p>My baseline understanding of Public Cloud was:</p>
+<ul>
+<li>Designed for customers who can operate 'mostly' standard processes</li>
+<li>Provided on a software/platform as a service basis</li>
+<li>Fastest way to access SAP innovations with frequent mandatory updates.</li>
+</ul>
+<p>But, how does the different nature of this product change the implementation process?</p>
+<p>I found a 12-hour SAP course 'Implementing SAP S/4HANA Cloud Public Edition' and decided to work through it.</p>
+<p>The course provides a good overview of the key phases and activities. I was impressed by how much effort SAP put into collating and linking additional reference materials. You can deep dive into most topics.</p>
+<p>Here are the course topics:</p>
+<p><img src="/assets/images/sap/cloud/s4-hana-cloud-public-imp-learning.png" alt="Implementing SAP S/4HANA Cloud Public Edition Course">.</p>
+<p>As I worked through this course I took detailed notes and prepared an excel reference guide for implementation. I've added this to a <a href="/projects/s4hana-cloud-public/">project on my website</a>.</p>
+<p>With this post, I'd like to share my top ten observations on implementing S/4HANA Cloud Public.</p>
+<h3>1: It's still S/4HANA</h3>
+<p>Paraphrasing a line from the training, &quot;The customising screens are more or less the same as S/4HANA&quot;.</p>
+<p>Of course, the ability to customise and develop Public Cloud is reduced, but where you can customise you are accessing the same configuration as S/4HANA.</p>
+<p>For those not experienced with customising SAP, one thing to be aware of is the customising is an evolution from R/3 to ECC to S/4HANA, it isn't a completely new system.</p>
+<p>Take for example finance. A lot of the S/4HANA customising for finance is done using the same customising transactions you used in R/3. However, there are changes and additions based on the simplifications items and new features that came with ECC (especially NewGL) and S/4HANA.</p>
+<p>The tip I would share here is that it is not difficult for an R/3 or ECC consultant to get up to speed with the functional configuration for Public Cloud.</p>
+<h3>2: It's ALL Fiori</h3>
+<p>No more GUI, no more customising via the IMG (SPRO). Everything is done via Fiori. This is a huge shift.</p>
+<p>For people that worked with R/3 and ECC for years this is a huge change. Projects need to put a strong focus on change management here.</p>
+<p>A big part of implementing and using Public Cloud is knowing which apps to use and how to use them.</p>
+<p>A key part of Fiori is a shift to a much tighter 'role-based' design.</p>
+<p>SAP explain this quite well with the example of the old GUI transaction 'MIGO'. This transaction is quite complex with many many fields. MIGO can be used to execute all kinds of goods movements. With Fiori SAP have moved towards individual apps for specific types of goods movements.</p>
+<p>With Public Cloud you have can't rely on giving broad access to a range of transactions, you need to think about the specific set of apps each user needs.</p>
+<p>There are a bunch of benefits here, I'd call out:</p>
+<ul>
+<li>Work is more guided, end users have specific sets of apps for specific tasks</li>
+<li>There should be more clarity on exactly what each role does.</li>
+</ul>
+<h3>3: Implementation is more guided</h3>
+<p>In R/3 and ECC the customising approach was more or less working through SPRO (the implementation guide transaction), with spreadsheets and checklists to help. Each customising transaction in SPRO had it's own help file in the system, but sometimes these were difficult to understand.</p>
+<p>This is now significantly different. The Cloud implementation process is built around several systems:</p>
+<ul>
+<li>S/4HANA Cloud Public itself</li>
+<li>SAP Cloud Application Lifecycle Management (ALM)</li>
+<li>SAP Cloud Central Business Configuration (CBC)</li>
+</ul>
+<p>SAP recommend to use ALM to track scope, requirements, design etc.</p>
+<p>Central business configuration is used to configure scope and some key 'global' settings which are then deployed into S/4HANA. For specific line of business configurations CBC acts as a kind of central hub with links to the Fiori Apps in S/4HANA to do specific settings.</p>
+<h3>4: The big challenges are still the big challenges</h3>
+<p>Those big topics that we always see on 'lessons learned' will likely continue to appear there:</p>
+<ul>
+<li>Requirements were missed from scope and/or 'fit-to-standard'</li>
+<li>Data cleansing wasn't started early enough</li>
+<li>Human resource quality/quantity issues:
+<ul>
+<li>Lack of expertise in SAP</li>
+<li>Lack of expertise in 'as is' process, data, systems, etc.</li>
+</ul>
+</li>
+<li>Poor alignment of expected work with implementation partners</li>
+<li>Poor design decisions through lack of governance</li>
+<li>Benefits not realised due to poor estimation and tracking.</li>
+</ul>
+<p>These will still be big challenges for Cloud Public. However, the focus on staying very close to standard should provide some mitigations.</p>
+<h3>5: There's stil a lot to cover</h3>
+<p>One of the biggest challenges with SAP programs is the sheer amount of work.</p>
+<p>Just reading through the implementation course, I'm reminded of how many things need to be co-ordinated:</p>
+<ul>
+<li>Process design</li>
+<li>Data cleansing, structure design, mapping, migration</li>
+<li>Integration design</li>
+<li>Roles</li>
+<li>Fiori UX related items (spaces, pages, training, etc.)</li>
+<li>Embedded analytics</li>
+<li>Additional analytics e.g. SAC, BDC</li>
+<li>Various test phases</li>
+<li>Custom design - various approaches (in-app, side-by-side)</li>
+</ul>
+<p>When you consider many of these have to be addressed across multiple functional areas, the mind boggles at the workload.</p>
+<h3>6. Cloud mindset and the new 'run' model</h3>
+<p>There's a lot to consider here. Cloud-based software isn't new, but Cloud-based on the scale of ERP is quite huge.</p>
+<p>There are obvious factors such as the loss of the GUI and the move to Fiori apps. However, there is a lot more to think about. Some examples:</p>
+<ul>
+<li>Limitations to how you can load mgiration data.
+<ul>
+<li>You aren't loading into your own hosted system, you are loading into SAPs Cloud ecosystem</li>
+</ul>
+</li>
+<li>Limitations to integration solutions.
+<ul>
+<li>Again you are integrating into SAPs Cloud ecosystem.</li>
+</ul>
+</li>
+</ul>
+<p>When it comes to your 'run' model, any change to SAP likely means a service request to SAP. This may be 'slower' than the way you manage your on-premise ERP today where you have infrastructure, functional consultants, and developers on-site who can make changes immediately.</p>
+<h3>6. Business roles and authorisation</h3>
+<p>In R/3 and ECC implementations work on security profiles was often not well addressed:</p>
+<ul>
+<li>Security profile design and locatlisation left until the last minute</li>
+<li>A lack of thought on segregation of duties and delegation of authority</li>
+<li>A lack of testing on security profiles.</li>
+</ul>
+<p>With Public Cloud, this part has become even more critical and I'd suggest a little more complex.</p>
+<p>The benefit of having more advanced role-based UI and security means that roles have to be carefuly designed. Make sure to plan for:</p>
+<ul>
+<li>Analysing and understanding current roles</li>
+<li>Understanding how roles and catalogs drive access to apps and data</li>
+<li>Building custom 'localised' roles - minimum access principle</li>
+<li>The link between roles and Fiori space(s) and page(s).</li>
+</ul>
+<h3>7. Licensing and costs may need to be carefuly managed</h3>
+<p>I understand that one of the ways license costs are calculated are based on user roles.</p>
+<p>This is another reason why the design of business roles and hence the data and apps users have access to should be carefully defined.</p>
+<p>in addition to this there are a variety of additional solutions that are not included in the Public Cloud license. Several are mentioned during the implementation training.</p>
+<p>Care would need to be taken to correctly estimate costs and to potentially avoid adding a lot of 'nice to haves' during the implemetation project.</p>
+<h3>8. The importance of implementation governance may still be underemphasised</h3>
+<p>In my experience a lot of issues during implementation trace back to a lack of governance. I'd call out two examples:</p>
+<ol>
+<li>Design governance</li>
+</ol>
+<p>During a 'fit-to-standard' a business expert has to agree to the suitability of standard processes, and they have to commit to the list of gaps. It's unusual how little governance is normally in place around this considering we are lookin at multi-million $ investments.</p>
+<p>I'd suggest two interventions:</p>
+<ul>
+<li>There should be independent quality reviews on requirements and design.</li>
+<li>There should be a board level sign of confirming that the business experts provided the right inputs and sign off.</li>
+</ul>
+<ol start="2">
+<li>A lack of professionalism on build and test</li>
+</ol>
+<p>I think every SAP project I've been involved in the users have faced basic issues during user acceptance tests. These have been a result of a lack of formality around configuration, build and environment properation.</p>
+<p>Technical teams need to carefully track their work and this should have formal sign offs and reviews.</p>
+<h3>9. Managing custom items in production</h3>
+<p>There are various options to develop in S/4HANA Public Cloud. In fact, there are four main approaches</p>
+<ul>
+<li>In-App key user</li>
+<li>In-App developer (cloud ABAP)</li>
+<li>Side-by-side low/no code
+<ul>
+<li>SAP Build</li>
+</ul>
+</li>
+<li>Side-by-side programming
+<ul>
+<li>Business Applicaiton Studio - Python, JS, Java, etc.</li>
+</ul>
+</li>
+</ul>
+<p>So, there is still a lot of flexibility.</p>
+<p>However, something important to plan for is the need to test custom developments with every release upgrade.</p>
+<p>SAP provide some test automation tools with scripts that can be adjusted, but there may still be an ongoing management effort associated with custom developments.</p>
+<h3>10. Benefiting from innovations</h3>
+<p>One of the big benefits of Public Cloud is be the speed of release of udpates.</p>
+<p>The old model of implementing an ERP, using it for 10+ years, then upgrading it are gone.</p>
+<p>SAP are making significant investments and automations across the board. Consider:</p>
+<ul>
+<li>The huge number of simplification items with S/4HANA</li>
+<li>Ongoing delivery of new processes, reports, tools
+<ul>
+<li>e.g working capital insights dashboard that I recently wrote about</li>
+</ul>
+</li>
+<li>New capabilities e.g. Joule, Business Data Cloud</li>
+<li>Ongoing acquisitions and integration.</li>
+</ul>
+<p>Public Cloud puts a company in a good position to leverage these innovations, but I think as part of the run model an organisaiton needs to think about a structure of product/process owners who can look at innovations on a regular basis and do some work to analyse requirements/benefit and manage activation of new items.</p>
+
+        <div class="post-comments flow">
+          <h2>Share, comment/discuss</h2>
+          <p>Share to:
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/posts/2025-10-02-s4hana-cloud-public/" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/posts/2025-10-02-s4hana-cloud-public/&text=S/4HANA Cloud Public - Implementation Guide" target="_blank">X</a>
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="/posts/2025-10-02-s4hana-cloud-public/"
+            data-page-url="/posts/2025-10-02-s4hana-cloud-public/"
+            data-page-title="S/4HANA Cloud Public - Implementation Guide">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+      </article>
+    </main>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
+  </body>
+</html>

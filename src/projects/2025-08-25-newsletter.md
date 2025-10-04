@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2025-08-25
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/newsletter/newsletter-desktop.png
 imageAlt: A screenshot of a newsletter sign up webpage design.

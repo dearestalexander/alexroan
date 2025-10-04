@@ -3,7 +3,7 @@ title: Alex Roan - Home
 layout: 'template-home.njk'
 ---
 
-<section class="home-intro">
+<section class="home-intro flow">
   <p class="home-intro-text">I help organisations deliver business and technology change. This site is where I share ideas and projects I’m working on. Check out the blog posts below, or visit the About and Projects pages for more information.</p> 
 </section>
 
@@ -336,7 +336,6 @@ layout: 'template-home.njk'
 
 <section class="download-cv">
   <h2 class="home-h2">Download CV</h2>
-  <p>Click the icon to download my current CV</p>
   <a href="/assets/documents/alexander-roan-cv-2.docx"><img class="home-cv" src="/assets/images/cv.png"/></a>
 </section>
 
@@ -352,7 +351,7 @@ layout: 'template-home.njk'
       {%- for post in collections.post | reverse -%}
       <li class="card flow" data-hashtags="{{ post.data.hashtags }}">
         <a class="card-inner flow--small" href="{{ post.url }}">
-          <h2 class="card-title" id="{{ post.data.title}}">{{ post.data.title }}</h1>
+          <h3 class="card-title" id="{{ post.data.title}}">{{ post.data.title }}</h3>
           <div class="card-contents flow--small">  
             <div class="card-img-ctr">
               {% if post.data.image and post.data.image | trim != "" %}

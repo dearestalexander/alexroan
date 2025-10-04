@@ -4,8 +4,8 @@ author: Alexander Roan
 date: 2025-10-30
 tags: 
 hashtags:
-project: ["Finance systems"]
-subproject: ["Finance and SAP"]
+project: ["SAP"]
+subproject: ["S/4HANA"]
 image: /assets/images/sap/cloud/s4hana-cloud-cover.jpg
 imageAlt: A cover image for an article on SAP S/4HANA Public Cloud
 description: 

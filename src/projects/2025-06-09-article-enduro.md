@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2025-06-09
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/article-enduro/enduro.png
 imageAlt: A screenshot of the design of an enduro based card.

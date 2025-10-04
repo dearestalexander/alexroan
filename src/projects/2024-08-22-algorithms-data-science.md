@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-08-22
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["freeCodeCamp"]
 image: /assets/images/programming/fcc-jads-cert.png
 imageAlt: A certificate from freeCodeCamp for the JavaScript Algorithms and Data Structures course

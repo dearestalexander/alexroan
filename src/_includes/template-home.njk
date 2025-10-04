@@ -16,12 +16,9 @@
   </head>
   <body>
     {% include 'header.njk' %}
+    <div class="divider"></div>
     <main id="main" class="main">
-      <div class="layout">
-        <section class="section__main-content">
           {{ content | safe }}
-        </section>
-      <div>
     </main>
     {% include 'footer.njk' %}
   </body>

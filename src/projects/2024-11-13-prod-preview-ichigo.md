@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-11-13
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/prod-preview-ichigo/ichigo-desktop.png
 imageAlt: A screenshot of the a 'ichigo' themed web page. Ichigo is the main character of the anime called Bleach.

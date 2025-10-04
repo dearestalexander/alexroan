@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+    <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header-ctr">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
+  </p>
+  <nav>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
+    </ul>
+  </nav>
+</header>
+    <div class="divider"></div>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        
+        <div class="post-title-ctr">
+          <h1 class="post-title">Building a custom web app with integration to SAP S/4HANA - part 2</h1>
+          <p id="post-tag" class="post-tag">project</p>
+          <p class="post-att">by Alexander Roan on 8 Aug 2025</p>
+        </div>
+        <h2>Building the integration flow details</h2>
+<p>If interested to experiment with SAP Integration Suite, I'd suggest working through the CodeJam. A lot of effort has been put into the instructions and reference information. It also includes additional mock servers and covers integration with other technologies.</p>
+<p><a href="https://community.sap.com/t5/sap-codejam/sap-codejam-connecting-systems-and-services-using-sap-integration-suite/ec-p/14110686#M848">SAP CodeJam</a></p>
+<p>The instructions are on a <a href="https://github.com/SAP-samples/connecting-systems-services-integration-suite-codejam">GitHub repository</a>.</p>
+<p>In the following section I'll share some tips and recommendations from my own notes including the basics of the various tools involved.</p>
+<p>Building this will involve encountering issues and require some debugging, just reference the documents and use google on errors.</p>
+<h3>Information sources &amp; tools</h3>
+<h4>SAP Accounts: BTP and Integration Suite</h4>
+<p>A trial account for business technology platform is required.</p>
+<p><a href="https://developers.sap.com/tutorials/hcp-create-trial-account.html">BTP trial</a></p>
+<p>And a a trial for Integration Suite</p>
+<p><a href="https://developers.sap.com/tutorials/cp-starter-isuite-onboard-subscribe.html#f55ec71c-2853-4b83-8092-4e3031f8d6e6">Integration Suite trial</a></p>
+<p>See the pre-requisites <a href="https://github.com/SAP-samples/connecting-systems-services-integration-suite-codejam/blob/main/prerequisites.md">pre-requisites</a> document in the CodeJam repository.</p>
+<h4>Containerisation &amp; Docker</h4>
+<p>When running the S/4HANA business partner mock server locally, one option is to install the necessary JavaScript runtime environment and run it manually. Another option is to run it inside a container.</p>
+<p>Containers are a key concept in Cloud architecture.</p>
+<p>A container packages an app and all it's dependencies together so that it can run independently of the underlying computer (server, laptop, etc.).</p>
+<p>This is a key concept for Cloud as it allows applications to run on different hardware and operating systems with minimal set up effort.</p>
+<p>Docker is a platform to build and manage containers.</p>
+<p>Docker and container features:</p>
+<ul>
+<li>Package an app and all it's dependencies</li>
+<li>A container is like a lightweight virtual machine</li>
+<li>Key terms
+<ul>
+<li>image: blueprint (.zip) containing app, dependencies, and OS</li>
+<li>container: running instance of an image</li>
+<li>dockerfile: instructions to build image</li>
+<li>volume: how to persist data outside the container</li>
+<li>port mapping: expose internal port to machine (e.g. 8080 to 3001).</li>
+</ul>
+</li>
+</ul>
+<p>I'll come back to this in the section on running the BP mock server.</p>
+<h4>Data basics</h4>
+<p>The following data standards/formats are used in this exercise:</p>
+<p><strong>JSON (JavaScript Object Notation)</strong></p>
+<ul>
+<li>A lightweight, human-readable format for storing and sharing structured data</li>
+<li>Looks like nested key-value pairs (like a shopping list with categories)</li>
+<li>Commonly used in web apps and APIs for sending data between systems.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-JSON">{
+  &quot;employee_id&quot;: &quot;1234567&quot;,
+  &quot;employee_name&quot;: &quot;Alexander&quot;
+}
+</code></pre>
+<p><strong>XPATH</strong></p>
+<ul>
+<li>A query language used to navigate and extract data from XML or HTML documents</li>
+<li>Lets you point to specific elements using a path-like syntax
+<ul>
+<li>Example: find the third paragraph inside a section</li>
+</ul>
+</li>
+<li>Used in tools like web scrapers and automation scripts.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-XPATH"> //title[contains(text(), 'Programming')]
+</code></pre>
+<p><strong>XML (eXtensible Markup Language)</strong></p>
+<ul>
+<li>A flexible, tag-based format for representing structured data</li>
+<li>Similar to HTML in appearance
+<ul>
+<li>But used for data storage and exchange, not page display.</li>
+</ul>
+</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-XML"> &lt;book id=&quot;bk01&quot;&gt;
+      &lt;author&gt;Roan, Alexander&lt;/author&gt;
+      &lt;title&gt;Front end to S/4HANA&lt;/title&gt;
+</code></pre>
+<p><strong>HTML (HyperText Markup Language)</strong></p>
+<ul>
+<li>The standard language for building web pages and displaying content in browsers</li>
+<li>Uses tags to define elements like headings, paragraphs, links, and images</li>
+<li>Focused on structure and layout, not data exchange.</li>
+</ul>
+<h4>Terminal</h4>
+<p>I worked through this demo/test on Mac so I used Terminal, which is the Mac default command line interface (CLI).</p>
+<p>The CLI is necessary for activities such as setting up and starting servers or working with docker containers.</p>
+<p><strong>Terminal basics</strong></p>
+<ul>
+<li>Open a folder <code>cd &lt;folder name&gt;</code> (change directory)
+<ul>
+<li><code>cd</code> on it's own will go to the home directory</li>
+<li>(Note that <code>~</code> represents home directory in terminal)</li>
+<li><code>cd ..</code> will go up a folder</li>
+</ul>
+</li>
+<li>List folders <code>ls</code> (list files in the current directory)</li>
+<li>Open a file <code>open &lt;file name&gt;</code> (open a file)</li>
+<li>Quit sub-screen and return to terminal <code>q</code></li>
+<li>Stop a running process hold control and c</li>
+<li>Clear terminal <code>clear</code></li>
+</ul>
+<p>To run JavaScript servers, JavaScript runtime is required. It's easier to install and manage things like this using a package manager in Terminal. Homebrew is a popular package manager for Mac.</p>
+<p><strong>Homebrew</strong></p>
+<ul>
+<li>A package manager for Mac</li>
+<li>To install homebrew homebrew:
+<ul>
+<li>Launch terminal (launchpad &gt; other &gt; terminal)</li>
+<li>Visit <a href="https://brew.sh/">Homebrew</a> in your web browser</li>
+<li>Copy the installation command</li>
+<li>Paste it into terminal press enter.</li>
+</ul>
+</li>
+</ul>
+<h4>Java/JavaScript</h4>
+<p>To complete the demo/test a few different JavaScript things are needed.</p>
+<p><strong>Node.js</strong></p>
+<ul>
+<li>This is a JavaScript that can be installed locally to create and run web-servers and web applications</li>
+<li>Install using Homebrew
+<ul>
+<li>In terminal, enter: <code>brew install node</code></li>
+<li>Test the installation of Node.js
+<ul>
+<li>In terminal, enter: <code>node -v</code>, it should return the node version number.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>NPM</strong></p>
+<ul>
+<li>NPM is the node package manager</li>
+<li>It's installed with Node.js</li>
+<li>It's used to run a server
+<ul>
+<li>Install it in any directory a Node.js server sits in</li>
+</ul>
+</li>
+<li>To check the installation of NPM
+<ul>
+<li>In terminal, enter: <code>npm -v</code>, it should return the npm version number</li>
+</ul>
+</li>
+</ul>
+<p><strong>Java development kit (JDK)</strong></p>
+<ul>
+<li>Cloud Connector is a more complex application and requires JDK</li>
+<li>More notes in the Cloud Connector section.</li>
+</ul>
+<h4>API client (Bruno/Postman)</h4>
+<p>The CodeJam utilised <a href="https://www.usebruno.com/">Bruno</a> for API testing.</p>
+<p>For the CodeJam a folder of pre-configured settings for Bruno is provided. However I'd suggest to start experimenting without the pre-configuration to build a solid understanding of the basics.</p>
+<p>I'll include more notes in later sections.</p>
+<h3>Building and testing an integration flow</h3>
+<h4>Set up the S/4HANA business partner mock server</h4>
+<p>Start by setting up the S/4HANA business partner mock server</p>
+<ul>
+<li>Download the mock server from <a href="https://github.com/SAP-archive/cloud-s4-sdk-book/tree/mock-server">GitHub</a></li>
+<li>Scroll down to the readme</li>
+<li>Either download the archive linked under 'How to run this server'</li>
+<li>Or if using GitHub clone the repository and checked the branch 'mock-server'</li>
+<li>Move it to a convenient folder of your choice</li>
+<li>I set it a <code>users/&lt;username&gt;/projects/integration/cloud-s4-sdk-book</code></li>
+</ul>
+<h4>Run the server: option 1: use NPM</h4>
+<p>Node.js and the node package manager (NPM) can be used to run the server directly on a computer.</p>
+<ul>
+<li>Open terminal</li>
+<li>Navigate to <code>users/&lt;username&gt;/projects/integration/cloud-s4-sdk-book</code>
+<ul>
+<li>(or wherever you saved the folder)</li>
+</ul>
+</li>
+<li>Enter: <code>npm install</code> (install node package manager in the folder)</li>
+<li>Enter: <code>npm start</code> (start the server)</li>
+<li>This should return something like:</li>
+</ul>
+<pre><code class="language-shell">&gt; bupa-mock-odata@1.0.0 start
+&gt; node server.js
+Mock server started on port 3000 after 1 ms, running - stop with CTRL+C (or CMD+C)...
+</code></pre>
+<p>Terminal tells us which port the server is running on. Port &quot;3000&quot; is accesible in the browser or an API client via &quot;http://localhost:3000&quot;.</p>
+<p>To stop the server in terminal use <code>ctrl+c</code>.</p>
+<p>For the curious, you can look at the files that make up the mock server in the above folder. Check out:</p>
+<ul>
+<li>server.js
+<ul>
+<li>This includes the JavaScript code for the server</li>
+<li>The code references other files such as app.js</li>
+</ul>
+</li>
+<li>package.json
+<ul>
+<li>This is like a configuration file for a node.js server</li>
+</ul>
+</li>
+<li>business partner &gt; business-partner-data.json
+<ul>
+<li>This contains the demo test business partner data.</li>
+</ul>
+</li>
+</ul>
+<p>Theoretically you could use this Node.js server as a template to simulate other SAP Odata APIs with some adjustments to these files.</p>
+<h4>Run the server: option 2: use Docker</h4>
+<p>The mock server can also be run as a Docker container. This is a little more convenient as after the first run we can stop and start it from the Docker desktop app.</p>
+<p>Note the server already has a Dockerfile, so it's already set up to run as a container.</p>
+<p>If we run something inside a docker container we need to interact with it via ports on the container. The application is really running contained inside a container. When we run a docker container we provide a mapping between a local port on the computer and the container port. We can then access the docker application via this mapping.</p>
+<p>To run as a Docker container:</p>
+<ul>
+<li>Launch the docker app</li>
+<li>Open terminal
+<ul>
+<li>Enter <code>docker run -p 3005:8080 bp-mock-server</code>
+<ul>
+<li>3005 is the local port</li>
+<li>8080 is the docker container port</li>
+</ul>
+</li>
+<li>Local port can be any free port on your computer. I choose 3005</li>
+<li>The container port is 8080</li>
+</ul>
+</li>
+<li>View the status of the container in the Docker app</li>
+<li>Use the browser to check <code>http//localhost:3005</code></li>
+</ul>
+<p>Note if there wasn't already a dockerfile we would need to create one and build the app before running it.</p>
+<p><strong>A simple docker demo</strong></p>
+<p>This was my first time using docker, so I experimented by creating a simple &quot;Hello, World!&quot; style server from scratch. Here it is if you want to try:</p>
+<ul>
+<li>Create a JS file &quot;index.js&quot;
+<ul>
+<li>Add <code>console.log(&quot;hello from docker&quot;);</code></li>
+<li>This just prints text to the console (Terminal)</li>
+</ul>
+</li>
+<li>Create a package file &quot;package.json&quot;
+<ul>
+<li>Add the following JSON to &quot;package.json&quot;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;hello-docker&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js&quot;
+  }
+}
+</code></pre>
+<ul>
+<li>Create a dockerfile &quot;dockerfile&quot;
+<ul>
+<li>Add the following to &quot;dockerfile&quot;</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-Dockerfile">FROM node:18
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p>You can see Docker uses NPM, in the same way we would with a manual run, but it's installing and running NPM inside the container, not on the computer.</p>
+<p>To build and run:</p>
+<ul>
+<li>Build docker container <code>docker build -t hello-docker .</code></li>
+<li>Run docker container <code>docker run hello-docker</code></li>
+</ul>
+<h4>Testing with the web browser</h4>
+<p>The simplest way to test the API is running locally is to put the local address in the web browser.</p>
+<ul>
+<li>For NPM it was &quot;http//localhost:3000&quot;</li>
+<li>For docker image it was &quot;http//localhost:3005&quot;</li>
+</ul>
+<p>The main domain should return the API details including the links such as:</p>
+<p>&quot;http://localhost:3000/sap/opu/odata/sap/API_BUSINESS_PARTNER&quot;
+&quot;http://localhost:3005/sap/opu/odata/sap/API_BUSINESS_PARTNER&quot;</p>
+<p>To access the service to return the general data of all business partners we add A_BusinessPartner</p>
+<p>&quot;http://localhost:3005/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner&quot;</p>
+<p>In the browser, this should return a JSON document containing the list of business partners.</p>
+<p>We can pick a business partner number from the list and use it with the path to select a specific business partner:</p>
+<p>&quot;http://localhost:3005/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1003764')&quot;</p>
+<h4>Testing with an API client (Bruno)</h4>
+<p>Rather than just using the web browser to check the API an API client can be used, this has a few benefits:</p>
+<ul>
+<li>We can build the URLs through a selection of 'input fields'</li>
+<li>We can save different requests for easy and quick re-testing</li>
+<li>We can pass data in the request body</li>
+</ul>
+<p>To test with Bruno:</p>
+<ul>
+<li>Launch Bruno</li>
+<li>Use the '...' menu to create a collection</li>
+<li>Name it 'bp-mock'</li>
+<li>Specify a location. I used &quot;users/{username}/projects/integration&quot;</li>
+</ul>
+<p>Create a request for all business partners</p>
+<ul>
+<li>Use the '...' menu next to bp-mock and select 'new request'</li>
+<li>Enter request name 'All business partners'</li>
+<li>Under URL select 'GET' and enter the URL that returns all business partners</li>
+<li><code>http://localhost:3005/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner</code></li>
+</ul>
+<p>Run a request</p>
+<ul>
+<li>Look to the right of the 'GET' line on the main page and click the '-&gt;' to run</li>
+<li>The right panel will show the JSON response
+<ul>
+<li>The same response as shown earlier in the web browser.</li>
+</ul>
+</li>
+</ul>
+<p>Create a request for a single business partner (1003765)</p>
+<ul>
+<li>Use the '...' menu next to bp-mock and select 'new request'</li>
+<li>Enter request name 'Specific business partners'</li>
+<li>Enter the same URL details as above.</li>
+<li>In the 'params' tab click '+ param' and enter
+<ul>
+<li>Name: <code>&amp;filter</code></li>
+<li>Path: 'BusinessPartner eq '1003766'</li>
+</ul>
+</li>
+<li>Run the request. A single business partner should be returned.</li>
+</ul>
+<p>Note as the params are entered the URL dynamically updates.</p>
+<p><strong>Basics on OData API URLs</strong></p>
+<ul>
+<li>The base for the API is &quot;/API_Business_Partner&quot;</li>
+<li>A service of the API is then appended  &quot;/A_BusinessPartner&quot;</li>
+<li>Queries can then by added, OData queries include:
+<ul>
+<li>Filtering: <code>/A_BusinessPartner?$filter=Name eq 'Max'</code></li>
+<li>Selecting fields: <code>/A_BusinessPartner?$select=Name,City</code></li>
+<li>Pagination: <code>/A_BusinessPartner?$top=5&amp;$skip=10</code></li>
+<li>Accessing nested data: <code>/A_BusinessPartner?$expand=Address</code></li>
+</ul>
+</li>
+<li>When working with OData:
+<ul>
+<li>Field names are case sensitive</li>
+<li>String values in single quotes</li>
+</ul>
+</li>
+</ul>
+<p>Keep in mind the S/4HANA mock business partner server only includes limited functionality. The above filters and selects won't work.</p>
+<h4>Java SDK for SAP Cloud Connector</h4>
+<p>The next step is to set up SAP Cloud Connector</p>
+<p>Recall Cloud Connector will provide a secure tunnel allowing SAP Cloud to talk to the S/4HANA business partner mock server.</p>
+<p>Cloud Connector requires a full Java Development Kit (JDK).</p>
+<ul>
+<li>You can use &quot;javac -version&quot; in terminal to check if you already have JDK</li>
+<li>There is a SAP Help page for <a href="https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/cloud-connector?locale=en-US">Cloud Connector</a>
+<ul>
+<li>Check the <a href="https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/prerequisites?locale=en-US#jdks">prerequisites</a> section, it lists the JDK options</li>
+</ul>
+</li>
+<li>I choose SAP machine 21 JDK</li>
+<li>You can download this from <a href="https://sap.github.io/SapMachine/">GitHub</a>
+<ul>
+<li>I have a dev folder for items like this in my home folder
+<ul>
+<li>&quot;Users/{username}/dev&quot;</li>
+</ul>
+</li>
+<li>Use Homebrew to install</li>
+<li>Open terminal and enter &quot;brew install openjdk@21&quot;</li>
+</ul>
+</li>
+</ul>
+<p>It's likely you may run into version, compatibility, authorisation issues. These are all very common and a web search should help.</p>
+<h4>Install Cloud Connect</h4>
+<p>Next install Cloud Connector.</p>
+<p>Cloud connector is listed under the SAP development tools page under <a href="https://tools.hana.ondemand.com/#cloud">Cloud</a>.</p>
+<ul>
+<li>Download the cloud connector file for your OS</li>
+<li>My Mac is Apple Silicon so I chose 'sapcc-2.18.1.2-macosx-aarch64.tar.gz'</li>
+<li>Unzip and move it to a folder of your choice</li>
+<li>Navigate inside the downloaded folder in terminal
+<ul>
+<li>Check contents with 'ls', you should see a 'go.sh' file</li>
+</ul>
+</li>
+<li>Enter: './go.sh' this will run Cloud Connector</li>
+<li>Cloud connector should now be running, note the address in the terminal log</li>
+<li>Login with default account: 'Administrator' and password: 'manage'</li>
+<li>Change password</li>
+<li>Keep a note of the account and password.</li>
+</ul>
+<p>I received authorisation issues on the first attempt to run it:</p>
+<ul>
+<li>Click through them, then goto apple &gt; settings &gt; privacy&amp;security</li>
+<li>Scroll down to security and click 'allow anyway'</li>
+<li>Try: './go.sh' again.</li>
+</ul>
+<h4>Install and set up SAP Integration Suite</h4>
+<p>To continue from here SAP Integration has to be installed and active as per the earlier instructions.</p>
+<h4>Connect SAP Cloud Connector to SAP Integration Suite</h4>
+<p>As Cloud Connector bridges between SAP Cloud and the S/4HANA business partner mock server we need to set it up to connect to SAP Cloud. We get the security/authentication data to do this from our SAP BTP trial account.</p>
+<ul>
+<li>After logging into Cloud Connector click '+Add Subaccount'</li>
+<li>Hit 'next' to skip the HTTPS settings</li>
+<li>Select 'Configure using authentication data'</li>
+<li>Select 'Add subaccount authentication data from file '</li>
+<li>In your browser got to your SAP BTP trial homepage
+<ul>
+<li>Click on your subaccount</li>
+<li>On the left menu expand Connectivity and select Cloud Connectors</li>
+<li>Click on 'download authentication data'</li>
+</ul>
+</li>
+<li>Return to Cloud Connector</li>
+<li>Click browse and select the downloaded file 'authentication.data'</li>
+<li>Click next</li>
+<li>Leave location ID blank
+<ul>
+<li>(This would be relevant if there were multiple Cloud Connectors)</li>
+</ul>
+</li>
+<li>Click finish.</li>
+</ul>
+<p>Double check the settings in the subaccount overview:</p>
+<ul>
+<li>BTP trial region = Cloud Connector region</li>
+<li>BTP Subaccount ID = Cloud Connector Subaccount</li>
+<li>The region host in Cloud Connector = Cloud Foundry API Endpoint in BTP.</li>
+</ul>
+<h4>Cloud Connector to Mock BP Server</h4>
+<p>There's no security on S/4HANA business partner mock server so it is simply a matter of adding the address.</p>
+<ul>
+<li>In Cloud Connector, on the left sidebar click 'Cloud to On-Premise'</li>
+<li>To the right of 'Mapping Virtual to Internal Systems' click <code>+</code></li>
+<li>Select back-end, enter: &quot;Non-SAP system&quot;, click 'next'</li>
+<li>Select protocol: &quot;HTTP&quot;, click 'next'</li>
+<li>For internal host enter &quot;localhost&quot;</li>
+<li>For internal port enter:  &quot;3005&quot;</li>
+<li>For virtual host: &quot;s4-mock&quot;</li>
+<li>For virtual Port: &quot;3006&quot;</li>
+<li>Uncheck allow principal propagation</li>
+<li>Click through to finish.</li>
+</ul>
+<p>Replace the internal port name with the one your mock server is running on locally. You are free to choose the virtual host and port.</p>
+<p>It's critical to select &quot;Non-SAP system&quot; and HTTP, not HTTPS.</p>
+<p>A new entry will appear under 'Mapping Virtual to Internal Systems'</p>
+<ul>
+<li>Make sure your mock bp server is still running on the host and IP you entered</li>
+<li>From the icons on the right, click on 'check availability..'</li>
+<li>You should see status 'reachable'</li>
+</ul>
+<p>At this stage <code>https://localhost:3005</code> is now mapped to <code>https://s4-mock:3005</code> in the SAP Cloud.</p>
+<p>You can also check in integration suite to see if Cloud Connector is connected.</p>
+<ul>
+<li>In the left hand menu select connectivity &gt; cloud connectors.</li>
+</ul>
+<p>Errors at this stage are likely related to</p>
+<ul>
+<li>Mistakes in the host name, port name, or system type</li>
+<li>The mock server or cloud connector is not running.</li>
+</ul>
+<h4>Design integration flow</h4>
+<h5>Create an integration flow</h5>
+<ul>
+<li>Login to BTP trial home</li>
+<li>From the left hand menu expand Services and select Instances and subscriptions</li>
+<li>Under 'Subscriptions' click on 'Integration Suite'</li>
+<li>On the left menu select expand 'Design' and select 'Integrations and APIs'</li>
+<li>Choose 'Create' on the top right to create a new package.</li>
+<li>Give it a name</li>
+<li>Shift to the 'Artifacts' tab</li>
+<li>Select 'Add' and choose 'Integration Flow' from the list</li>
+<li>Give it a name</li>
+<li>Click add</li>
+<li>Click on the newly created integration flow</li>
+</ul>
+<p>The integration flow screen is read-only by default, click edit.</p>
+<p><strong>Set up the sender</strong></p>
+<p>Define an 'address' for the SAP Integration Suite endpoint.</p>
+<ul>
+<li>Click on sender</li>
+<li>Click connector arrow</li>
+<li>Drag to start event</li>
+<li>In adapter type pop-up select HTTPS</li>
+<li>To configure the adapter click on the drawn line (if not selected)</li>
+<li>The settings are in the bottom panel, drag it up to expand it</li>
+<li>Navigate to 'connection' tab, enter the following:
+<ul>
+<li>Address: <code>/request-business-partners</code></li>
+<li>Authorisation:  <code>User Role</code></li>
+<li>User Role: <code>ESBMessaging.send</code></li>
+<li>CSRF Protected: <code>Unchecked</code> (Cross-site request forgery).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Add flow elements</strong></p>
+<p>The CodeJam has excellent instructions for walking through different flow steps as per their exercises.</p>
+<p>I will summarise a few elements I used in my design.</p>
+<p><strong>Router</strong></p>
+<p><img src="/assets/images/blog/integration/Integration-23-A.png" alt="Router"></p>
+<ul>
+<li>The router allows you to split the flow based on a condition.</li>
+<li>This example splits the flow into 4 based on the incoming URL</li>
+<li>For example where the incoming URL ends in &quot;single/add&quot;
+<ul>
+<li>Re-call our integration flow address was &quot;request-business-partners&quot;</li>
+<li>In this case a message arrives to &quot;request-business-partners/single/add&quot;</li>
+<li>Intelligent Suite assigns the last part to the variable CamelHttpPath</li>
+<li>Which is part of the message header hence: header.CamelHttpPath.</li>
+</ul>
+</li>
+</ul>
+<p>The route path we are looking at in this example is the one that returns a single business partner with address data.</p>
+<p><strong>Content modifier - case 1</strong></p>
+<p>Case 1:</p>
+<ul>
+<li>The content modifier allows us to modify the message header or body.</li>
+<li>In the above screenshot a content modifier is added directly after the routing.</li>
+<li>This deletes the CamelHttpPath, in this case &quot;single/add&quot;</li>
+<li>After routing we no longer need this part of the URL in the message header.</li>
+</ul>
+<p><strong>JSON to XML converter</strong></p>
+<ul>
+<li>This converts the JSON in the message body to XML.</li>
+<li>In the case of searching for a single BP the message body includes JSON:</li>
+</ul>
+<pre><code class="language-JSON">{
+  &quot;employee_id&quot;: &quot;1234567&quot;
+}
+</code></pre>
+<ul>
+<li>This will be converted to XML</li>
+</ul>
+<pre><code class="language-XML">&lt;root&gt;
+  &lt;employee_id&gt;1234567&lt;/employee_id&gt;
+&lt;/root&gt;
+</code></pre>
+<p><strong>Content modifier - case 2</strong></p>
+<p><img src="/assets/images/blog/integration/Integration-23-B.png" alt="Content modifier"></p>
+<ul>
+<li>In this case the content modifier gets &quot;employee_id&quot; from the message body</li>
+<li>And assigns it to a new variable</li>
+<li>XPath can be used to access the XML value
+<ul>
+<li>&quot;/root/employee_id&quot;</li>
+</ul>
+</li>
+<li>The variable name is set as employee_id</li>
+<li>The data type is set as a Java string.</li>
+</ul>
+<p><strong>Request Reply</strong></p>
+<p>Request reply let's us send a request to a server.</p>
+<ul>
+<li>Click on the Set employee_id</li>
+<li>Click add flow step on the canvas</li>
+<li>Select 'Request Reply' under call &gt; external call</li>
+<li>Click on 'Request Reply'</li>
+<li>Click on 'connector' and drag to the receiver</li>
+<li>Select adapter type 'HTTP'</li>
+<li>Under 'HTTP' in the connector properties, select 'Connection'</li>
+<li>Enter the address of the cloud connector:</li>
+<li>The path for a single business partner with address data involves updating:
+<ul>
+<li>Address: &quot;http://s4-mock:3006/sap/opu/odata/sap/API_Business_Partner/A_BusinessPartner('${property.employee_id}')&quot;</li>
+<li>Query: &quot;$expand=to_BusinessPartnerAddress&quot;</li>
+</ul>
+</li>
+<li>Proxy Type: <code>On-premise</code></li>
+<li>Method: <code>GET</code></li>
+<li>Authentication: <code>None</code></li>
+<li>Save</li>
+<li>Deploy</li>
+</ul>
+<p>To check deployment status go to Monitor &gt; Integration and APIs. On this page the endpoint to access the service is shown:</p>
+<p>&quot;https://{your trial}-cpitrial03-rt.cfapps.ap21.hana.ondemand.com/http/request-business-partners&quot;</p>
+<h5>Test Cloud Integration with API client</h5>
+<p>At this point we can test consuming the API through SAP Integration Suite.</p>
+<p>Unlike testing the local mock server, we need to deal with authentication and security. The way this works is:</p>
+<ul>
+<li>We pass a &quot;client id&quot; and &quot;secret&quot; to a &quot;token URL&quot;</li>
+<li>BTP passes back a &quot;token&quot; which is valid for a certain period of time</li>
+<li>This &quot;token&quot; has to be attached to any requests to the API in Intelligent Suite.</li>
+</ul>
+<p><strong>Accessing security details</strong></p>
+<ul>
+<li>Navigate to your BTP trial account</li>
+<li>Expand services and click on 'instances and subscriptions'</li>
+<li>Scroll down to instances and look for your integration flow instance
+<ul>
+<li>Integration Suite uses Cloud Foundry so the runtime will be cloud foundry</li>
+<li>It will likely be named 'default_it-rt_integration-flow'</li>
+</ul>
+</li>
+<li>Scroll down to service keys and click on the service key, note the values for:
+<ul>
+<li>&quot;clientid&quot;</li>
+<li>&quot;clientsecret&quot;</li>
+<li>&quot;url&quot;</li>
+<li>&quot;tokenurl&quot;</li>
+</ul>
+</li>
+</ul>
+<p>For local testing we can hardcode these values in our test tools, but be careful not to upload or share these anywhere.</p>
+<p>In production, never hardcode secrets or tokens. Use environment variables or a secure credential store.</p>
+<p><strong>Request a token with Bruno</strong></p>
+<p>In Bruno create a new request:</p>
+<ul>
+<li>Name: <code>TOKEN</code></li>
+<li>Method: <code>POST</code></li>
+<li>URL: enter the &quot;tokenurl&quot; from above</li>
+<li>Navigate to the Params tab:
+<ul>
+<li>Select 'Add Param'</li>
+<li>Enter name: <code>grant_type</code> path: <code>client_credentials</code></li>
+</ul>
+</li>
+<li>Navigate to Auth</li>
+<li>Switch 'Inherit' to 'Basic Auth' and enter:
+<ul>
+<li>Username: <code>client_id</code></li>
+<li>Password: <code>client_secret</code></li>
+</ul>
+</li>
+<li>Save</li>
+</ul>
+<p>Send the request. This should return a JSON document with a long value in &quot;access_token&quot;. There should also be a expiry time e.g. 4199 seconds.</p>
+<p>When sending a request, if the token is not valid Integration Suite will return a 401 error code. This means we need to request a new token.</p>
+<p>Within Bruno we can save this token value to a variable. This saves us from copying and pasting it into other requests.</p>
+<ul>
+<li>Goto Environments &gt; Configure &gt; Create Environment
+<ul>
+<li>Name: 'integration-flow'</li>
+<li>Click '+ Add Variable'</li>
+<li>Enter name: 'access_token'</li>
+<li>For value, leave it blank</li>
+<li>Save and close</li>
+</ul>
+</li>
+</ul>
+<p>Navigate to 'scripts' under the TOKEN request. Under Post Request enter:</p>
+<pre><code class="language-JS">if (res.status == 200) {
+  const token = res.body.access_token;
+  bru.setEnvVar(&quot;access_token&quot;,token); 
+}
+</code></pre>
+<ul>
+<li>If the request receives a response (status 200)</li>
+<li>Get the access_token value from the response</li>
+<li>Assign to environment variable &quot;access_token&quot;.</li>
+</ul>
+<p>Save and run the TOKEN request.
+Goto the environment and click 'configure'. You should see the access_token variable updated with the value from the response.</p>
+<p><strong>Test the API with a request with for a single BP</strong></p>
+<ul>
+<li>In Bruno create a new request</li>
+<li>Name: &quot;BP via integration suite&quot;</li>
+<li>URL: &quot;https://{your-trial}.it-cpitrial03-rt.cfapps.ap21.hana.ondemand.com/http/request-business-partners&quot;
+<ul>
+<li>Replace the above with your actual endpoint from Intelligent Suite.</li>
+</ul>
+</li>
+<li>Navigate to the 'Auth' tab
+<ul>
+<li>Click on 'Inherit' and change to 'Bearer Token'</li>
+<li>In Token enter: ``
+<ul>
+<li>This eferences an environment variable in Bruno</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Add the request body
+<ul>
+<li>The JSON with our employee ID</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-JSON">{
+  &quot;employee_id&quot;: &quot;1003764&quot;
+}
+</code></pre>
+<h3>Building and testing a frontend</h3>
+<p>At this point a request to SAP Integration Suite should be successfully routed and transformed to the S/4HANA business partner mock server.</p>
+<p>The next part would be building and testing the web app. However, there is too much to cover in building and testing the frontend to cover in this post. I may produce a video on this if anyone is interested.</p>
+
+        <div class="post-comments flow">
+          <h2>Share, comment/discuss</h2>
+          <p>Share to:
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/projects/integration-2/" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/projects/integration-2/&text=Building a custom web app with integration to SAP S/4HANA - part 2" target="_blank">X</a>
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="/projects/integration-2/"
+            data-page-url="/projects/integration-2/"
+            data-page-title="Building a custom web app with integration to SAP S/4HANA - part 2">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+      </article>
+    </main>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
+  </body>
+</html>

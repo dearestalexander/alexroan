@@ -4,8 +4,8 @@ author: Alexander Roan
 date: 2025-09-02
 tags: 
 hashtags:
-project: ["Finance systems"]
-subproject: ["Finance and SAP"]
+project: ["Finance Transformation"]
+subproject: ["Reporting and Data"]
 image: /assets/images/sap/working-capital/working-capital-cover.jpg
 imageAlt: A screenshot of a working capital dashboard
 description: SAP recently launched a new business data cloud based intelligent application for working capital. In this post I'll look at the working capital theory along wth some practical example, before taking a look at the new SAP application and its underlying architecture.

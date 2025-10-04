@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-12-02
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/meet-danang/DaNang-Fantasticity!-Desktop.png
 imageAlt: A screenshot of a web page design promoting DaNang as a travel destination.

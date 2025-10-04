@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-09-09
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/social-profile/alexander-desktop.png
 imageAlt: A screenshot of a social profile card in HTML and CSS

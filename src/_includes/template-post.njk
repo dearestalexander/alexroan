@@ -16,15 +16,18 @@
   </head>
   <body>
     {% include 'header.njk' %}
+    <div class="divider"></div>
     <main id="main" class="post-main">
       <div id="post-sidebar-toc-ctr"></div>
       <article class="post-article">
         {% if post.data.image %}
           <img src="{{ post.data.image | url }}" alt="">
         {% endif %}
-        <h1 class="post-title">{{ title }}</h1>
-        <p id="post-tag" class="post-tag"> {{ tags }}</p>
-        <p class="post-att">by {{author}} on {{ date | postDate}}
+        <div class="post-title-ctr">
+          <h1 class="post-title">{{ title }}</h1>
+          <p id="post-tag" class="post-tag">{{ tags }}</p>
+          <p class="post-att">by {{author}} on {{ date | postDate}}</p>
+        </div>
         {{ content | safe }}
         <div class="post-comments flow">
           <h2>Share, comment/discuss</h2>

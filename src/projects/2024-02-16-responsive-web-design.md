@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-02-16
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["freeCodeCamp"]
 image: /assets/images/programming/fcc-jads-cert.png
 imageAlt: A certificate from freeCodeCamp for the responsive web design course.

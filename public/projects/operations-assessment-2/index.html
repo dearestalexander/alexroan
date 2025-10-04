@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Roan | Strategy and Operations Consulting</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon_io/favicon.ico">
+    <link href="/styles.css" rel="stylesheet">
+    <script defer src="/script-posts.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/0c355a85b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="header-ctr">
+  <a href="#main" class="skip">Skip to main content</a>
+  <p class="logo-ctr">
+    <span class="logo-span-one">Hi,</span>
+    <span class="logo-span-two">I'm Alex</span>
+  </p>
+  <nav>
+    <ul role="list" class="nav-ul">
+      <li><a class="nav-li" href="/">Home</a></li>
+      <li><a class="nav-li" href="/about/alex/">About</a></li>
+      <li><a class="nav-li" href="/projects/">Projects</a></li>
+      <li><a class="nav-li" href="https://linktr.ee/alexanderroan">Socials</a></li>
+    </ul>
+  </nav>
+</header>
+    <div class="divider"></div>
+    <main id="main" class="post-main">
+      <div id="post-sidebar-toc-ctr"></div>
+      <article class="post-article">
+        
+        <div class="post-title-ctr">
+          <h1 class="post-title">How to assess opeations - part 2</h1>
+          <p id="post-tag" class="post-tag">project</p>
+          <p class="post-att">by Alex Roan on 1 Jul 2024</p>
+        </div>
+        <h2>A business framework for assessment</h2>
+<p><img src="/assets/images/blog/ops-assess-5.png" alt="Illustration of article contents"></p>
+<p>Based on the discussion so far we can see there are a lot of factors to consider when it comes to operational assessment, this makes it useful to work from a framework. This helps ensure all possible areas are considered. It also promotes the use of a common language which helps to avoid misunderstandings and incorrect assumptions.</p>
+<p>Terminology relating to organisations varies across professional bodies and organisations so it can be useful to clearly define terms. For the purpose of this discussion I will use 'business area' to describe the breakdown of the organisation into different areas. I'll use the term 'attribute' to define factors that enable business areas to operate. These attributes include process, people and systems.</p>
+<p>One standardised way of looking at organisations is through Michael Porter's value chain.</p>
+<p><img src="/assets/images/blog/ops-assess-6.png" alt="Value Chain"></p>
+<p>I like the value orientated viewpoint. I'll discuss this later as part of process management. However I believe Michael Porter's layout has a few downsides:</p>
+<ul>
+<li>It doesn't map that well to organisation structures</li>
+<li>The category of firm infrastructure isn't very clear. Infrastructure as a term tends to be more commonly used to describe parts of IT and facilities</li>
+<li>I don't like the connotation of support for some business areas. I prefer to use business services as those areas can deliver value directly on their own. For example Finance may do this by providing economic and market insights.</li>
+<li>The structure is dated towards traditional manufacturing industries.</li>
+</ul>
+<p>I approach my own work with a framework that shows business areas vs. attributes as a matrix.</p>
+<p>The business areas that make up an organisation should be adapted to fit specific organisations, I normally start from the following:</p>
+<p><img src="/assets/images/blog/ops-assess-7.png" alt="Business Areas"></p>
+<p>In this view:</p>
+<ul>
+<li>An organisations business areas are split into three key categories; corporate functions, line of business operations and business services. This mirrors the way most organisations are structured and is easy to work with</li>
+<li>The list of individual business areas may be customised by organisation. Note that line of business operations will vary the most
+<ul>
+<li>I generalise  supply chain vs. service delivery as a starting point to represent various industries. Service delivery could represent banking services or patient care in a hospital</li>
+</ul>
+</li>
+<li>The view is structured to to minimise hierarchy and promote equal focus on value across all business areas
+<ul>
+<li>All business areas are important</li>
+<li>Value may be margin, or it may be other factors such as compliance as we can see from examples such as Lehman Brothers. While shareholders are primarily interested in dividends and growth a sole focus on this is a mistake.</li>
+</ul>
+</li>
+</ul>
+<p>The next step in building the framework is to identify the attributes that enable the business areas to operate. Consider the following:</p>
+<p><img src="/assets/images/blog/ops-assess-8.png" alt="Business areas and attributes"></p>
+<p>This is an example of a slightly adjusted list of business areas against a list of attributes:</p>
+<ul>
+<li>Strategy</li>
+<li>Financials</li>
+<li>Policy</li>
+<li>Process</li>
+<li>People</li>
+<li>Organisation</li>
+<li>Technology</li>
+<li>Data</li>
+<li>Locations</li>
+<li>Governance, risk and compliance.</li>
+</ul>
+<p>The extent to which an assessment should look at each attribute will vary depending on transformation type. For example a major finance systems project may need to look at all attributes in detail while a data cleansing program may focus 80% of effort on data and 20% of effort on people, process and systems.</p>
+<p>To illustrate how attributes may relate to individual business areas consider some example points for the finance function:</p>
+<p><img src="/assets/images/blog/ops-assess-9.png" alt="A diagram showing attributes of the finance function"></p>
+<p>Let's discuss each business area in detail.</p>
+<h3>Business areas</h3>
+<p>The way an organisation is structured depends on the organisation type; public vs. private and the industry, product or service. Regardless of this we can still start from the three major areas; corporate, line of business and business services and adjust these as necessary.</p>
+<p>As opposed to business area some organisations use terms including business unit, division and function. In certain business systems terms such as 'business area' or 'functional area' may have a specific meaning. In this discussion I use business area in the general sense.</p>
+<h4>Corporate functions</h4>
+<p>The corporate area can be considered primarily as housing headquarter activities. The most important part of this is the executive committee. In addition it may house other specialities. These specialities often differ from those housed in business services in that their role is more orientated to advise or govern rather than provide a service. Or they may simply contain activities that are best positioned in close proximity to the executive committe. Common activities in corporate include:</p>
+<ol>
+<li>Office of the executive</li>
+<li>External communications including investor relations</li>
+<li>Legal</li>
+<li>Governance, risk and compliance including internal controls.</li>
+</ol>
+<p>There may be other areas such as global branding, and portfolio management.</p>
+<h4>Line of business</h4>
+<p>Line of business includes the product, service, customer or market focussed areas. Common line of business units include:</p>
+<ul>
+<li>Customer relations management:
+<ul>
+<li>Sales</li>
+<li>Billing and invoicing</li>
+<li>Customer contact centre</li>
+</ul>
+</li>
+<li>Marketing</li>
+<li>Product manufacturing and delivery, examples:
+<ul>
+<li>Product development</li>
+<li>Manufacturing and supply chain</li>
+</ul>
+</li>
+<li>Service delivery, examples:
+<ul>
+<li>Service development</li>
+<li>'Front office' within financial services</li>
+<li>Store front in retail</li>
+</ul>
+</li>
+</ul>
+<p>When it comes to individual organisation there are many permutations of how these areas may be structured. In multi-product or service category organisations there may be:</p>
+<ul>
+<li>Separate business areas per product or service category</li>
+<li>A global business area setting overall branding and direction and market units managing local sales</li>
+<li>Customer specific business areas e.g. global customers vs. small and medium size national customers</li>
+</ul>
+<p>By multi-product or multi-service I refer to organisations which may have products or services across different categories. For those familiar with financial reporting you can consider these as IFRS segments. For example:</p>
+<ul>
+<li>Within financial services consider equities, retail banking, insurance</li>
+<li>Within consumer goods consider household products, beverages, beauty.</li>
+</ul>
+<p>The structure of the line of business area will have an impact on the assessment approach. The structure itself is often the focus of an assessment. This is particularly true when the assessment is related to corporate targets such as revenue growth and profitability.</p>
+<p>Assessing and transforming an organisations line of business operations is a major focus of restructuring initiatives.</p>
+<h4>Business Services</h4>
+<p>Business services exist to ensure that both corporate and line of business operations can function. These usually include:</p>
+<ul>
+<li>Finance</li>
+<li>Human resources</li>
+<li>Information technology</li>
+<li>Procurement</li>
+<li>Facilities and workplace.</li>
+</ul>
+<p>Historically line of business operations may have included their own finance, HR, IT etc. however from around the late 90s there was a shift to centralise business services into one business area servicing multiple line of business operations.</p>
+<p>Business services are value drivers in themselves and can significantly influence an organisation. I'd recommend against them considering them as support functions.</p>
+<ul>
+<li>The finance function informs the CFO who can be a driving force behind growth and profitability</li>
+<li>Human resources strategy can define the ability to attract top talent and influence the future of the organisation</li>
+<li>Technology can create new products and services or new sales channels for existing ones.</li>
+</ul>
+<h3>Business attributes</h3>
+<p>Earlier I introduced ten business attributes:</p>
+<ol>
+<li>Strategy</li>
+<li>Financials</li>
+<li>Policy</li>
+<li>Process</li>
+<li>People</li>
+<li>Organisation</li>
+<li>Technology</li>
+<li>Data</li>
+<li>Locations</li>
+<li>Governance, risk and controls.</li>
+</ol>
+<p>This list is flexible. Identifying ten is probably towards the more detailed end of the scale.</p>
+<p>Sometimes these are simplified by grouping areas such as policy &amp; process, people &amp; organisation, data &amp; technology. This is useful from a communications perspective, but care should be taken to cover the nuances of each topic.</p>
+<p>A simplified grouping:</p>
+<ol>
+<li>Strategy</li>
+<li>Organisation &amp; people</li>
+<li>Policy, process and  controls</li>
+<li>Technology and data.</li>
+</ol>
+<p>I haven't included change management as an attribute for a couple of reasons:</p>
+<ul>
+<li>Change management needs to be considered for each attribute in each business area</li>
+<li>This discussion is focussed on one activity of transformation delivery which is in itself change management.</li>
+</ul>
+<p>I'd recommend to consider change management alongside project management. I would build this into my plans as a stream of project activities rather than a part of the business area x attribute framework.</p>
+<p>In certain organisations there may be other attributes that should be called out, an example of this could be locations.</p>
+<p>Let's discuss each attribute in detail:</p>
+<h4>Strategy</h4>
+<p>Part of the corporate process is deploying strategy down through an organisation. This includes objectives and quantifiable targets. Each business area develops it's own strategy describing how it will deliver the corporate objectives and targets.</p>
+<p>When carrying out an assessment of a potential business transformation we should consider strategy at the corporate level and the level of other affected business areas.</p>
+<p>Questions to consider include:</p>
+<ul>
+<li>Does the transformation idea align well to the overall corporate strategy</li>
+<li>Does the transformation align well to individual business area strategies.</li>
+</ul>
+<p>Assessments may uncover conflicts. For example a line of business may have an idea for a new reporting system which helps improve sales forecast accuracy. This may align well with corporate strategy, however the desired reporting system may have conflicts with data and systems strategies.</p>
+<p>Often these conflicts come to light after transformation projects are initiated and experts start to discuss the requirements and design across different business areas.</p>
+<h4>Financials</h4>
+<p>As opposed to the finance function business area this attribute refers to financial data which can be relevant to any business area. The finance function are important transformation partners as they can contribute to assessments with the analysis of financial data.</p>
+<p>The usefulness of the financials will depend on how well structured the organisations data is. Noteworthy focus areas are listed below.</p>
+<h5>Cost analysis</h5>
+<p>When assessing operations we look at individual business areas. The cost of these business areas be seen in the cost centre hierarchy. Generally costs incurred in an organisation are posted to a cost centre. At it's lowest level a cost centre should represent an individual team or department. The design logic of a cost centre is to create one for each cost responsible manager, which normally aligns to a team or department. Cost centres can be grouped which then shows the cost of the business at a variety of levels (team, department, business area, office, country).</p>
+<p>Because cost centres are defined by responsible managers they tend to mirror an organisations structure. They let us see costs by major buckets of organisational activities:</p>
+<ul>
+<li>Sales</li>
+<li>Marketing</li>
+<li>Administration</li>
+<li>Research and development</li>
+<li>Production</li>
+<li>Transportation</li>
+<li>etc.</li>
+</ul>
+<p>When costs are captured by cost centre they are also captured by general ledger account. Accounts are defined according to accounting standards, however for the cost relevant accounts we can consider them as being organised closely related to 'nature of activity'. This lets us see whether they are related to items such as research agencies, consultants, systems, utilities or outsourcing service providers.</p>
+<p>Using this combination of account and cost centre is a great starting point to build a picture of how much each area of the operations spends. This data answers questions such as:</p>
+<ul>
+<li>How much does finance spend on technology?</li>
+<li>How much does HR spend on technology?</li>
+<li>How much does warehousing spend on HR?</li>
+<li>How much does corporate spend on consultants?</li>
+<li>In a multinational case how much is country A spending on technology vs. country B?</li>
+</ul>
+<p>In a company with a good data model and well designed account and cost centre structures we can often dig one or more levels deeper where we see unusual patterns. If a business area has unusually high expenditure on consultants we can see which team within that department is using the consultants. This helps to identify items to investigate further during assessment. This leads to targeted questionnaires, interviews and workshops.</p>
+<h5>Profitability analysis</h5>
+<p>Product related industries in particular have advanced cost and profitability reporting capabilities. These can provide very detailed analysis of</p>
+<ul>
+<li>Profitability by various dimensions (product, sales team, sales location, customer etc.)</li>
+<li>Product cost breakdowns (materials, labour, utilities etc.)</li>
+</ul>
+<p>Analysing this data is a key part of assessments focussed on revenue growth, profitability and cost management.</p>
+<h5>Other financials</h5>
+<p>The above examples relate to the profit and loss statement which is often focussed on as part of business transformation. Finance may also help with balance sheet or cash flow reporting, for example:</p>
+<ul>
+<li>Asset vs. liabilities may be a focus during financial services transformations</li>
+<li>Cash flow may be a focus particularly in terms of operational sustainability.</li>
+</ul>
+<h5>Combining financials with other data</h5>
+<p>Magic starts to happen when combining financial data with other data. A good example is HR data. Care should be taken in this area as HR data can be very sensitive. Normally accessing data with named individuals is not advisable from an ethical, statutory and regulatory perspective. However, usually it is possible to access de-personalised data such as number of employees by level, by team, by function etc.</p>
+<p>With the number of employees in a business area and the costs by nature of that business area we can look at cost per employee. For example:</p>
+<ul>
+<li>What's the spend on finance technology per finance employee</li>
+<li>What's the spend on training per line of business employee.</li>
+</ul>
+<p>With data on locations, such as floor space per location we can look at cost with respect to location. For example:</p>
+<ul>
+<li>What do finance and HR spend per square foot on utilities for their shared service centre?</li>
+<li>What does corporate spend per square foot on utilities for their head office?</li>
+</ul>
+<p>These results can be compared with benchmark data as discussed earlier to give an indication of whether inefficiencies are present or the performance is in line with good practice.</p>
+<p>Easily accessible benchmark data includes high level metrics such as the cost of finance function as a percentage of revenue. It's more difficult to find the cost of a sales management team in the beauty industry. The more detailed we get, the closer we get to confidential information. However, some of this detailed benchmark data can be obtained from research agencies.</p>
+<p>Even if external benchmark data is not available it can be useful to compare costs internally:</p>
+<ul>
+<li>What's the difference in travel spend across finance, sales, and HR and why?</li>
+<li>What's the difference in sales office costs per location and why?</li>
+</ul>
+<p>In certain situations where access to operational teams or data is limited this may be the only source of information and should be explored in detail to draw as many conclusions as possible.</p>
+<h4>Policy</h4>
+<p>Each business area should have a clear and up to date policy. A good policy contains rules and guiding principles on the application of the other attributes, especially process, people (roles), data, systems and controls. Let's illustrate with a few examples:</p>
+<p>The finance policy includes:</p>
+<ul>
+<li>Define the interpretation of generally accepted accounting principles (GAAP) to the specific interpretation and implementation by the organisation</li>
+<li>Describe how accounting principles translate into the valuation of transactions as they are recorded in systems</li>
+<li>Including; codification, materiality limits, approvals and the handling of accounting issues.</li>
+</ul>
+<p>A poorly defined accounting policy can lead to operational inefficiencies and issues. At one end of the scale this means capturing more information than needed or doing more processing than needed. At the other end of the scale it leads to posting inconsistencies which make reports hard to interpret or at the worst incorrect.</p>
+<p>The human resources policy will document important factors concerning the management of people such as the performance management process:</p>
+<ul>
+<li>How is performance measured?</li>
+<li>How does promotion work?</li>
+<li>Is there a performance improvement plan?</li>
+<li>What is the severance policy?</li>
+</ul>
+<p>Without a clear HR policy there may be a number of issues caused by inconsistent management of people.</p>
+<p>A good policy can provide a good sense of how an organisation operates. When carrying out an assessment this is a good place to start. Initial questions include:</p>
+<ul>
+<li>Does the business area have a policy? - if not, why not?
+<ul>
+<li>With no policy there will likely be informal or inconsistent processes and decision making</li>
+</ul>
+</li>
+<li>If a policy exists, what is the quality level - is it complete, clear, up to date?</li>
+<li>If a policy exists is it used - are managers and employees aware of it, do processes, systems and data comply with it?</li>
+</ul>
+<p>For a high level assessment checking if policy exists, how accurate it is and whether it is used is a good starting point. This can be done through document review, questionnaires and interviews. For an assessment of limited scope only a number of policies may be relevant and within those only limited number of sections.</p>
+<p>For detailed assessment such as the implementation of new systems a line by line review of policy should be done as as early as possible, preferably prior to transformation project initiation. Policies often have useful and easily accessible information which can inform a projects scope, issues and risks.</p>
+<h4>Process</h4>
+<p>At it's simplest process is the conversion of an input to an output through one or more actions. These actions can be manual or automated. Manual processes may or may not be assisted by business systems. Where people are involved processes may be run by a single individual or may involve individuals across multiple business areas.</p>
+<p>Processes can be defined at different levels of detail. For example a sales person adding commentary to a sales report may be considered as a process. This may then form a part of the sales performance management process, which in turn forms part of the order to cash process. Processes done by a single person at a single point in time may also be referred to as activities, tasks or process steps.</p>
+<p>Transformation initiatives start by identifying scope at higher levels of process detail. During assessment, design and build projects move into lower levels of process detail. Project scope often changes as new information comes to light when assessing details.</p>
+<p>All processes have a cost and a benefit. When assessing processes we should always maintain focus on these factors.</p>
+<p>For example process costs may include:</p>
+<ul>
+<li>Labour cost equal to duration of human steps</li>
+<li>Labour costs related to management and governance oversight efforts</li>
+<li>Software costs; licenses, hosting, maintenance</li>
+<li>Data maintenance and hosting costs</li>
+<li>Asset maintenance costs where machinery or other devices are involved</li>
+<li>Location costs for any physical space required.</li>
+</ul>
+<p>Benefits can be defined in terms of the value of the process outputs.</p>
+<p>Ideally an organisation will have a clear understanding of all it's processes and each will be optimised in terms of cost and benefit. However assessing processes is challenging:</p>
+<ul>
+<li>Business areas can have thousands of processes</li>
+<li>Large scale transformations projects can easily become overloaded by the volume of processes they need to assess</li>
+<li>Processes are often not well documented</li>
+<li>Even if documented, processes may not be executed as documented:
+<ul>
+<li>Over time employees adjust and evolve processes based on issues, workarounds and individual preferences</li>
+<li>Systems and data changes may lead to undocumented process changes.</li>
+</ul>
+</li>
+<li>Systems, data and reporting transformation may overlook the human steps that processes facilitate. This includes meetings, discussions and decisions making. In these cases process documents only provide a limited view of the full process</li>
+<li>Organisation re-design programs may fail to assess the full scope of process work within teams or assigned to individuals
+<ul>
+<li>Activities such as work-shadowing can help mitigate this risk.</li>
+</ul>
+</li>
+<li>Acquisition integrations often focus on financial metrics, organisation design and systems architecture without considering processes in detail. Organisations with a history of making acquisitions without full integration often end up with multiple variations of the same process; different steps, different systems, different data. This can lead to inefficiencies as well as a lack of true comparability of the financial and management results.</li>
+</ul>
+<p>When assessing process focus should be placed on:</p>
+<ul>
+<li>The efficiency of the process activities</li>
+<li>The quality of outputs</li>
+</ul>
+<p>The lean mindset is useful when it comes to process assessment. A big part of lean is looking at the current process in detail and continually trying to identify defects and inefficiencies.</p>
+<p>I view process as the foundation of an organisation. If strategy defines the objective, process is the way to reach it. People, data, technology and other attributes are key enablers, but tend to be more transient.</p>
+<p>Process knowledge in an organisation is often spread out and inconsistent. In large organisations experts tend to work in silo's. This means it can be difficult and time consuming to understand the operation. Many leading multi-national organisations have invested in multi-year projects to understand and document processes. They do this for several reasons:</p>
+<ul>
+<li>To manage risk and gain improved control</li>
+<li>To identify the source of inefficiencies and better manage cost</li>
+<li>To make it easier to identify improvement opportunities.</li>
+</ul>
+<h5>Process frameworks</h5>
+<p>Given that processes are challenging to work with it's useful to work from a framework or taxonomy. This can help ensure an assessment is comprehensive. A framework can show the breakdown of processes across different levels of detail. Take for example the finance function, one way to break down its processes:</p>
+<ul>
+<li>Finance &amp; accounting
+<ul>
+<li>Financial accounting
+<ul>
+<li>Accounts payable</li>
+<li>Accounts receivable</li>
+<li>Inter-company accounting</li>
+<li>Fixed assets accounting</li>
+<li>Accruals</li>
+<li>Period end closing</li>
+<li>Statutory and regulatory reporting</li>
+</ul>
+</li>
+<li>Management accounting
+<ul>
+<li>Internal adjustments</li>
+<li>Period end closing</li>
+<li>Financial planning and analysis</li>
+<li>Management reporting</li>
+</ul>
+</li>
+<li>Specialist functions
+<ul>
+<li>Treasury</li>
+<li>Tax</li>
+<li>Technical accounting and accounting issues.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Each of these can be be further broken down into more detailed processes eventually leading to individual tasks.</p>
+<p>A similar framework can be put together for any business area. Once we have this framework we can use it to better structure assessments.</p>
+<p>This initial step of documenting processes in a framework can improve management and collaboration by building a consistent understanding of what is done in each business area. It also promotes the use of a common language. I've observed that terms such as 'financial accounting' and 'management accounting' are interpreted differently by different people. The framework removes any vagueness about this and at a glance shows exactly what is included in each. At this stage frameworks may highlight:</p>
+<ul>
+<li>Unexpected work being done in a business area</li>
+<li>Work being duplicated across business areas.</li>
+</ul>
+<p>Observations at this stage can help generate a list of focus areas to investigate in more detail during an assessment.</p>
+<p>Moving into further levels of details can be time consuming, this will often require:</p>
+<ul>
+<li>Gathering and reviewing process documents</li>
+<li>Issuing questionnaires</li>
+<li>Holding interviews and workshops.</li>
+</ul>
+<p>From the finance taxonomy above take the example of 'Fixed Assets Accounting'. To understand how that breaks down into sub processes an expert may be able to guess that it will be something like:</p>
+<ul>
+<li>Asset acquisition</li>
+<li>Depreciation calculation</li>
+<li>Asset disposals</li>
+<li>Asset counts</li>
+<li>Asset reporting</li>
+</ul>
+<p>But to understand what kind of assets are relevant and validate/update this list it will likely require discussions with fixed assets accountants. Detailed assessment and discussions can not only help define the detailed processes it can capture process attributes such as</p>
+<ul>
+<li>Time spent on each process</li>
+<li>Systems and data related to each process</li>
+<li>Extent of manual calculations or postings</li>
+<li>Extent of effort related to reconciliation across accounts or systems</li>
+<li>Existence of issues, problems or workarounds</li>
+<li>Time spent 'fixing' data</li>
+<li>Time spent preparing reports.</li>
+</ul>
+<p>The challenge is it takes a lot of time and effort to reach this level of detail. This is one of the biggest challenges transformation experts and consultants face. Especially as business experts are often assigned to assist transformation projects in addition to their full time daily work.</p>
+<p>In the case of limited time or access to experts I'd recommend starting with:</p>
+<ul>
+<li>Review of
+<ul>
+<li>Strategy documents</li>
+<li>Organisation model documents</li>
+<li>Policies</li>
+</ul>
+</li>
+<li>Holding interviews with business area leaders/managers only.</li>
+</ul>
+<p>This can be quick and can provide a way to partially validate an initial process taxonomy as well as identify key attributes of each process, for example:</p>
+<ul>
+<li>As a rough %, how much effort is spent on each sub process?</li>
+<li>Do any process areas suffer from repeated issues or problems?</li>
+<li>What is the nature of the business systems supporting each process
+<ul>
+<li>Single or multiple?</li>
+<li>New or old?</li>
+<li>Self managed or software as a service?</li>
+</ul>
+</li>
+<li>Are there any significant data issues or work required to fix or transform data?</li>
+</ul>
+<h5>Process modelling</h5>
+<p>If there is time and access to experts to go into more detail a structured way to do this is through process modelling. There are various approaches and standards to process modelling. One that I've used extensively before is <a href="https://www.bpmn.org/">BPMN</a>. An older, but excellent book on BPMN is <a href="https://www.goodreads.com/book/show/18973379-bpmn-method-style-with-bpmn-implementer-s-guide?from_search=true&amp;from_srp=true&amp;qid=uT68y617h6&amp;rank=1">BPMN Method &amp; Style</a>.</p>
+<p>Process modelling provides a standardised format to document and visualise  processes while clearly calling out inputs, activities and outputs.</p>
+<ul>
+<li>What are the inputs?</li>
+<li>Are there connected upstream processes?</li>
+<li>What are the attributes of the process steps / activities?
+<ul>
+<li>What is the nature of the activity e.g. create, approve, analyse, post?</li>
+<li>How long do the activities take - effort vs. elapsed time?</li>
+<li>Which systems are involved?</li>
+<li>Which roles are involved?</li>
+<li>What data is involved?</li>
+<li>Are there control steps?</li>
+</ul>
+</li>
+<li>What are the outputs?</li>
+<li>Are there connected downstream processes?</li>
+</ul>
+<p>Building process modelling capability with methods such as BPMN can be time consuming. If there is limited time to invest then simple block diagrams or bullet points lists can provide a starting point. However I'd recommend even in a simplified approach to create a style guide with modelling rules, it's important to make sure that processes are modelled in a consistent way, otherwise we lose the benefit of creating transparency.</p>
+<h5>Assessing operations through process</h5>
+<p>Let's summarise key factors to assess when looking at process.</p>
+<h5>Outputs</h5>
+<p>Outputs are key. Process models should always clearly define the output state:</p>
+<ul>
+<li>Think of it in terms of of output content and how that changes the business state</li>
+<li>Does the output add value to the business in it's current form?</li>
+<li>Can it be simplified or otherwise improved?</li>
+<li>From 'lean' consider 'overproduction'</li>
+</ul>
+<h5>Activities</h5>
+<p>The next step is to assess the state of the activities used to generate the output:</p>
+<ul>
+<li>Are there more steps than required?</li>
+<li>What is the end to end elapsed time? is time lost to waiting?</li>
+<li>What is total effort?</li>
+<li>How many different systems are used?</li>
+<li>From 'lean' consider over-processing.</li>
+</ul>
+<h5>Inputs</h5>
+<p>When mapping a process we also need to capture the trigger and inputs. Often the state of the inputs have a big effect on the steps involved in a process.</p>
+<p>For example:</p>
+<ul>
+<li>Warehousing may have extra work due to procurement issues</li>
+<li>Finance may have extra work due to procurement and warehousing issues</li>
+<li>Treasury may have extra work due to finance issues.</li>
+</ul>
+<p>This way of looking at process drives us towards horizontal process management and value chains. Rather than improving individual areas in isolation and risking a negative impact on upstream or downstream processes it's better to consider the end to end process.</p>
+<h5>Process considerations for different transformations</h5>
+<p>As a starting point here are sample process considerations for a range of common transformation types.</p>
+<p>Acquisition and divestitures</p>
+<ul>
+<li>The scope of processes carried out by the business</li>
+<li>The maturity of the processes</li>
+<li>The amount of effort behind them</li>
+<li>Any high risk processes (business critical, unstable, with issues, requiring critical human knowledge)</li>
+<li>In the case of acquisitions do all existing processes need to be continued post-acquisition, are there synergies with existing processes?</li>
+</ul>
+<p>Business systems implementation</p>
+<ul>
+<li>The scope of processes, in particular the quality of outputs</li>
+<li>How clearly understood and documented processes are</li>
+<li>The level of standardisation, number of variances and exception handling</li>
+<li>Reliance on manual work</li>
+<li>Known issues and problems.</li>
+</ul>
+<p>Cost reduction</p>
+<ul>
+<li>The scope of processes</li>
+<li>Whether all outputs are used/required. Cases of overproduction.</li>
+<li>Cases of over-processing and over-production such as  excessive checks, approval or overly detailed outputs</li>
+<li>High level of effort due to manual work, duplication, system interfaces etc.</li>
+</ul>
+<p>Work transfer to shared services or outsourcing</p>
+<ul>
+<li>Scope of processes</li>
+<li>Extent of and quality of documentation</li>
+<li>Issues, workarounds, manual steps.</li>
+</ul>
+<p>Organisation re-design</p>
+<ul>
+<li>Scope of processes</li>
+<li>Extent of and quality of documentation</li>
+<li>Accuracy of job descriptions and understanding of role to process mapping.</li>
+</ul>
+<h4>People and organisation model</h4>
+<p>Special care should be taken when it comes to assessing people. There may be statutory, regulatory, union, works council and ethical considerations when it comes to using employee data, discussing or making decisions concerning employees.</p>
+<p>I'd recommend working with human resources and legal when it comes to accessing and using human resources data or when a transformation has the potential to impact employees.</p>
+<h5>Organisation model</h5>
+<p>The structure of an organisation in terms of people and their roles is usually summarised in an organogram with accompanying detail in human resources systems, spreadsheets and other documents. Useful information from these documents to consider for assessment includes:</p>
+<ul>
+<li>The number of employees per business area, function, department etc.:
+<ul>
+<li>Consider the number of employees vs. size/value of outputs</li>
+</ul>
+</li>
+<li>The ratio of managers to employees:
+<ul>
+<li>Useful to benchmark internally and externally</li>
+<li>This can reveal a high level of middle management or conversely can reveal a lack of management</li>
+</ul>
+</li>
+<li>Number of people in core product / service delivery roles vs. service functions</li>
+<li>Consistency of reporting lines</li>
+<li>Retention rates across business areas.</li>
+</ul>
+<p>I've found that organisation structures are prone to inconsistent evolution based on the preferences of individual managers.</p>
+<p>Organisations often periodically assess and adjust their structure. This can include assessing the number of roles and the reporting lines. These initiatives often aim to reduce cost, improve controls, and improve overall effectiveness. However, after an organisation update it may not take long for the organisation to start deviating from the design based on the preferences and decisions of individual managers. This may lead to inconsistencies across business areas when it comes to factors such as responsibilities, skills and capabilities at different levels. A good policy and effective human resource function can help to maintain organisational consistency.</p>
+<p>When considering business transformation we should assume there may be such inconsistencies within the organisation. Reviewing the organisation chart, human resources policy and holding an initial discussion with human resources is a good way to start an assessment.</p>
+<h5>Detailed employee data</h5>
+<p>Detailed employee data that can be useful includes:</p>
+<ul>
+<li>Role descriptions</li>
+<li>Detailed employee data:
+<ul>
+<li>Hire date</li>
+<li>Salaries and benefits</li>
+<li>Location</li>
+<li>Performance ratings and feedback</li>
+<li>Potential severance timeline and costs per contract.</li>
+</ul>
+</li>
+</ul>
+<p>As some of this is sensitive data it may not be possible to access by named individual, but may be possible to access in a de-personalised form with names and employee id's removed.</p>
+<p>This information helps to analyse how consistent employee costs are by role, team, business area and location. The roles can be benchmarked with internal data including other locations or business areas and with external data including data by industry, competitor and professional bodies.</p>
+<h5>Culture and behaviours</h5>
+<p>It's important to consider an assessment of an organisations culture and any patterns related to employee behaviours. Transformation programs often focus on tangible factors such as financials, project plans, roles, process, data and systems. These can be assessed in a methodical way. On the other hand culture and behaviours are harder to assess. Consider:</p>
+<ul>
+<li>Organisation wide culture</li>
+<li>Business area, function, department, team specific dynamics</li>
+<li>Location based culture particularly for multi-nationals</li>
+<li>Level based behaviours for example; blue vs. white collar employees.</li>
+</ul>
+<p>I started my career at Procter &amp; Gamble. P&amp;G have a strong corporate culture, I re-call we even had the term 'Proctoid' to describe us. However even in P&amp;G there were significant cultural differences:</p>
+<ul>
+<li>Location based: Mid-west american headquarters vs. UK entities</li>
+<li>Manufacturing plants vs. marketing</li>
+<li>UK northern service centre vs. London HQ.</li>
+</ul>
+<p>Moving beyond broader cultural factors and into individual business areas we see differences across individuals:</p>
+<ul>
+<li>Individual working vs. team working (levels of collaboration)</li>
+<li>Aggressiveness vs. politeness</li>
+<li>Honesty vs. politics</li>
+<li>Focus on soft vs. hard skills</li>
+<li>Clarity of communications (openness vs. 'closed door')</li>
+<li>Excitement for and willingness to change vs. resistance to change.</li>
+</ul>
+<p>Some of these factors have a bigger impact on the ability for an organisation to transform in a positive way than more obvious things such as budget or skills.</p>
+<p>For example it's easy to observe that in some cases a new employee who is optimistic and hard working can achieve more than an experienced employee who is unhappy and resistant to change. This isn't intended to point blame at individual employees, but rather to uncover the reasons for such behaviour and it's importance as something to assess.</p>
+<p>Approaches which may help with assessing cultural and behavioural aspects include:</p>
+<ul>
+<li>Discuss this with human resources. They may have existing culture or behaviour assessments</li>
+<li>Use stakeholder analysis methods to profile people who have the ability to influence a transformation, then create strategies to manage them</li>
+<li>Make culture and behaviour an active part of the project plan. Hold workshops, review meetings, create an issue/risk log. Address the topic directly with more traditional project management mechanisms</li>
+<li>Make communications a focus. This can help to neutralise individuals with negative behaviours by reducing the power of disinformation and miscommunications</li>
+<li>Gather feedback. Use workshops and surveys. Anonymous surveys can be a useful way of gathering information that people are hesitant to raise in person</li>
+<li>Utilise change management methods and tools.</li>
+</ul>
+<p>A people orientated change management method I have had success with is prosci <a href="https://www.prosci.com/methodology/adkar">ADKAR</a> which stands for awareness, desire, knowledge, ability, reinforcement.</p>
+<p>This is an approach that helps work through change with people. I've used this to facilitate information gathering and discussion with stakeholders and employees before. It's very effective at uncovering fears and other concerns. This can be invaluable to identify potential issues early and make adjustments.</p>
+<p>ADKAR is one of many approaches available. The key is not the method, but the intention to address the topic in a direct way.</p>
+<p>As mentioned this kind of assessment often uncovers fears. Some of the common ones I've encountered include:</p>
+<ul>
+<li>Risk of job losses: 'the transformation makes my role less important'</li>
+<li>Loss of importance: 'the transformation may make my current skills and knowledge obsolete'</li>
+<li>Undesirable role changes: 'my role in the future organisation does not look appealing'</li>
+<li>History of failure: 'we already tried this and failed, this will create extra work for nothing'</li>
+</ul>
+<p>When assessing operations if you encounter resistance to change it may in itself be an operational performance issue. Effective organisations should be flexible, adaptable and be able to affect change without the creation of undue stresses.</p>
+<p>It may be useful to assess in more detail the history of transformation within the organisation. Have previous programs frequently failed? If so, why?</p>
+<h5>Change fatigue</h5>
+<p>A history of failure links to change fatigue. Many organisations run a constant stream of transformations. Often employees, managers and stakeholders have transformation project responsibilities in addition to their day-to-day full time roles.</p>
+<p>When assessing change effort and putting together a business case and project proposal it's important to consider the resource requirements. Watch out for managers assigning employees transformation roles on top of their daily work. It's not uncommon to see people already working full time assigned additional project roles. In some cases individuals have workloads exceeding 100% of a normal full-time level.</p>
+<p>This leads to change fatigue. This can be made worse if there is a history of transformations that fail. This includes transformations that did not achieve their targeted benefits or transformations that were more complex than initially estimated.</p>
+<h5>Bad actors</h5>
+<p>I'm hesitant to write about individuals as there are often complex reasons for the way people behave, but I think a good quality assessment has to consider this.</p>
+<p>Many of the transformation programs I've worked on have encountered issues due to the behaviour of one or more individuals. This includes:</p>
+<ul>
+<li>Basic behavioural issues; gossip, complaining, work avoidance, poor communication, lack of diligence with work basics (task quality, meeting management, use of e-mail etc.)</li>
+<li>People acting according to their own agenda rather than in the interests of the transformation and the organisations broader goals</li>
+<li>Managers assigning low performing individuals to critical transformation roles</li>
+<li>Organisations staffing transformation programs with people that lack the required skills or capabilities.</li>
+</ul>
+<p>These may be issues with the employee or managers. The impact of these behaviours often go beyond the individual.</p>
+<ul>
+<li>Complainers can influence those around them to create a culture of focussing on the negative as opposed to working towards more optimistic goals</li>
+<li>Those who avoid work, or have other behavioural issues or lack skills often create a additional work for those around them. Hard workers and highly capable people may end up doing the work of more than one person. This can lead to burn out or resignations from those who are in critical roles.</li>
+</ul>
+<p>As part of an assessment it's important to proactively look for bad actors either within the project team, the stakeholders or other employees the team interacts with. This assessment can help as a basis to plan to either help people or neutralise any negative influences.</p>
+<p>I am sure that I myself haven't always behaved perfectly at work, especially during stressful transformations and I would have benefited from mechanisms being put in place to help.</p>
+<h4>Technology</h4>
+<p>There are two main aspects to consider when it comes to technology, there is 1) 'functional' technology utilised by non-technology functions and 2) the technology functions own technology which will typically includes things like telecoms, internet, data centres, IT service providers etc.</p>
+<p>The biggest challenge in the technology space is perhaps the complexity to execute change.</p>
+<p>Areas to consider as part of assessment include:</p>
+<p>IT service providers:</p>
+<ul>
+<li>Contract rates</li>
+<li>Service provision quality</li>
+</ul>
+<p>Business systems:</p>
+<ul>
+<li>Feasibility of existing systems to support any process, data or role changes, or feasibility to find and implement replacement systems</li>
+<li>Existence of any end of life systems that represent risks</li>
+<li>Existing costly systems that could be easily migrated to cloud services</li>
+<li>License costs: are all licenses paid for required/being utilised</li>
+<li>Support and development costs. This is a good point to benchmark.</li>
+</ul>
+<p>Desktop:</p>
+<ul>
+<li>Operating platform, potential to move to lower cost</li>
+<li>Are all paid for desktop applications required/being utilised?</li>
+</ul>
+<p>If it's not already done, it's worthwhile considering benchmarking all technology costs. Within the technology industry there's rarely a fixed price for software and maintenance and an assessment of costs could lead to contract re-negotiation or a change of suppliers.</p>
+<h4>Data</h4>
+<p>As with technology, data is an area that can be expensive and time consuming when it comes to transformation.</p>
+<p>Factors to considering in an assessment include:</p>
+<ul>
+<li>Over-processing and over-production
+<ul>
+<li>If there is data on a report that doesn't need to be there. Then likely there are a number of upstream steps gathering, cleaning, analysing and preparing that data.</li>
+</ul>
+</li>
+<li>Duplication, is same data being stored in multiple locations</li>
+<li>Are there problems with the interfacing of data between systems</li>
+<li>Are multiple reporting tools being used to access and manipulate the same data.</li>
+</ul>
+<p>The problem of multiple reporting tools can be a large problem particularly in multinationals. These companies normally have complex systems architectures comprised of numerous business systems. In recent years tools for data manipulation and reporting have become cheaper and easier to use. This can lead to different functions and teams putting the same data into different tools. Manipulation of the same source data in different analytics and reporting tools can create comparability issues. This is a real challenge for technology functions as it has become easier for other business areas to buy software as a service without the involvement of the technology function.</p>
+<p>Within finance this is often an issue between statutory reporting and management reporting tools at the consolidated level. One set of reporting tools is configured orientated towards statutory consolidation, the other to the towards management consolidation. This can create a stream of dual work. And can result in inconsistent management reports which require further effort to reconcile.</p>
+<p>To make this worse, other teams such as sales may be using yet another set of reporting systems.</p>
+<p>In some companies there are teams of people in different departments doing the same thing, but with different tools in different ways.</p>
+<p>I've seen cases where executive committees have to deal with several different calculations of gross sales or gross margin.</p>
+<h4>Locations</h4>
+<p>Assessing locations includes considering office space utilised as well as the potential usage of work from home policies.</p>
+<p>In some industries locations may include facilities such as manufacturing sites, distribution centres, data centers, hospitals, hotels etc.</p>
+<p>Factors to consider are:</p>
+<ul>
+<li>Number of locations, facilities in each location</li>
+<li>Cost per square foot of locations</li>
+<li>Utility cost per location.</li>
+</ul>
+<p>An analysis of this can lead to location moves and/or consolidations. When taking these decisions it's important to consider all impacted factors:</p>
+<ul>
+<li>How does location affect recruitment and employee well-being</li>
+<li>How does location affect supply chain; access to customers, vendors etc.</li>
+<li>Are specific locations required for licensing reasons</li>
+<li>What office facilities are available at different locations</li>
+</ul>
+<h4>Governance, risk and compliance</h4>
+<p>Business transformation is often focused on revenue growth, cost and profitability. Whenever considering and designing a change to an organisation it's important to consider governance, risk and controls.</p>
+<p>Some transformations may be specifically focussed on this topic. This may be the case following fraud, financial reporting errors etc.</p>
+<p>Governance, risk and compliance applies to other process attributes. For example controls should be embedded as part of roles, process, data and systems design.</p>
+<p>During an assessment, key questions to consider include:</p>
+<ul>
+<li>Do policies cover governance, risk and controls</li>
+<li>Do processes have built-in or compensating controls</li>
+<li>Does the data management policy, process and systems cover data access, security and retention requirements</li>
+<li>Do systems have access and process controls in place.</li>
+</ul>
+<h2>Assessment approach</h2>
+<p><img src="/assets/images/blog/ops-assess-10.png" alt="Illustration of article contents"></p>
+<p>When executing business transformation organisations usually follow a project management methodology. These can be a useful starting point when considering how to approach an assessment. Commonly followed standards and methods include:</p>
+<ul>
+<li>Project management institute: project management body of knowledge</li>
+<li>PRINCE2: projects in controlled environments</li>
+<li>Agile/scrum (many variations)</li>
+<li>Software specific methods e.g. SAP Activate method</li>
+<li>Consulting firm methods</li>
+<li>Organisations internal methods</li>
+</ul>
+<p>We can consider project management methods to broadly focus on two areas:</p>
+<ul>
+<li>Main phases; initiation, planning, execution &amp; control, closure</li>
+<li>Management mechanisms: issues, risks, stakeholders, change, financials etc.</li>
+</ul>
+<p>Assessments are usually carried out as part of different phases. For example a scope assessment during initiation or a detailed 'as is' assessment during execution. The challenge with many project methodologies is they give only general guidance. This allows methods to be applied to many project types, but makes them less useful when it comes to telling you exactly what to do at what level of detail.</p>
+<p>IT vendor or consulting firm methods may provide more guidance on exactly what to assess as they are customised to specific transformations. However they tend to have their own weaknesses. Software implementation methodologies tend to be poor at covering business value and people-steps. Consulting methods may focus well on value, but lack technical detail on exactly how to achieve it.</p>
+<p>Part of project planning and initiation is to design the detailed approach to any assessment that needs to be undertaken. The starting point for this is to identify all relevant assessments. Usually transformations require more than one as successive levels of detail are explored:</p>
+<ol>
+<li>Assessments at the organisation wide level
+<ul>
+<li>Business overview &amp; strategy</li>
+<li>Financial and management reports</li>
+</ul>
+</li>
+<li>Business area overviews
+<ul>
+<li>Strategy</li>
+<li>Financial and management reports</li>
+<li>Organisation charts</li>
+</ul>
+</li>
+<li>Business area details
+<ul>
+<li>Policy</li>
+<li>Process</li>
+<li>Reports</li>
+<li>People / org model:
+<ul>
+<li>Headcount</li>
+<li>Roles</li>
+<li>Training, skills, capabilities</li>
+</ul>
+</li>
+<li>Technology:
+<ul>
+<li>Infrastructure</li>
+<li>Business applications architecture</li>
+<li>Design specifications</li>
+</ul>
+</li>
+<li>Data:
+<ul>
+<li>Data model</li>
+<li>Data library</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Tools and templates</h3>
+<p>After identifying the necessary assessments and the desired level of detail the next step is to define the assessment activities and the tools and templates that will help facilitate them.</p>
+<p>I recommend to approach assessment in three main steps:</p>
+<ol>
+<li>Gather and review available information</li>
+<li>Identify and request additional needs</li>
+<li>Hold discussions as required.</li>
+</ol>
+<p>There may be multiple iterations within these steps.</p>
+<h4>Available information</h4>
+<p>The following can provide useful sources of information:</p>
+<ul>
+<li>Presentations:
+<ul>
+<li>Strategy &amp; plan</li>
+<li>Recent performance reviews packs</li>
+</ul>
+</li>
+<li>Policy and process documents
+<ul>
+<li>Policy documents and handbooks</li>
+<li>Process design documents such as process maps</li>
+<li>Standard operating procedures</li>
+<li>Work instructions</li>
+</ul>
+</li>
+<li>IT documents:
+<ul>
+<li>Standards</li>
+<li>Architectural documents</li>
+<li>Design specifications</li>
+<li>User manuals</li>
+</ul>
+</li>
+<li>HR documents:
+<ul>
+<li>Organisation charts</li>
+<li>Roles and job descriptions</li>
+<li>Employee lists and details</li>
+</ul>
+</li>
+<li>Logs of issues, problems and changes</li>
+<li>Project documents:
+<ul>
+<li>Project initiation documents</li>
+<li>Design documents</li>
+<li>Status reports.</li>
+</ul>
+</li>
+</ul>
+<p>What's available will vary by organisation. Experienced employees will be able to suggest other sources of information. The quality will also vary by organisation and will be a factor in determining how much effort is required for discussion and whether new documents need to be created.</p>
+<h4>Gathering additional information</h4>
+<p>Often additional information is required, useful ways to approach capturing this include:</p>
+<ul>
+<li>Surveys
+<ul>
+<li>Can be useful when anonymous information is needed</li>
+</ul>
+</li>
+<li>Questionnaires</li>
+<li>Checklists</li>
+<li>Document requests
+<ul>
+<li>In some cases new documents may need to be created</li>
+</ul>
+</li>
+</ul>
+<h4>Discussions</h4>
+<p>Discussions can take the form of meetings, interviews and workshops. These can be structured in several ways:</p>
+<ul>
+<li>Document walkthroughs:
+<ul>
+<li>Works well items where documentation exists but isn't clear or is complex</li>
+<li>Examples include; strategy presentations, process maps, business or IT architectures and IT specifications</li>
+</ul>
+</li>
+<li>Questionnaire reviews:
+<ul>
+<li>Help to clarify question answers</li>
+<li>Unfilled questionnaires work well as interview and workshop agendas</li>
+</ul>
+</li>
+<li>Brainstorming sessions can be useful in various situations:
+<ul>
+<li>Initial discussions at any stage to help clarify scope</li>
+<li>Capturing undocumented factors such as issues, problems and inefficiencies.</li>
+</ul>
+</li>
+<li>Workshops are useful when complex topics need to be addressed that require the participation of several people.</li>
+</ul>
+<h4>Lean</h4>
+<p>In addition to project methodologies there are other 'tools' that can be useful in facilitating assessment. Lean is one of these. Lean which famously originated from the Toyota Production Method is both a cultural approach to business and a set of tools. It represents a shift towards proactively looking for deficiencies and inefficiencies in daily work. This creates an excellent environment for assessment as there is a high level of focus and awareness on the attributes of existing operations; policy, process, systems, data, issues etc.</p>
+<p>Lean also has a number of tools which can be useful in helping structure assessments. For example the 'the seven wastes'. Lean classifies waste into seven categories. These were originally identified for manufacturing, but can translate well into service industries too.</p>
+<p>The seven wastes within services:</p>
+<ul>
+<li>Transportation: routing of paper documents, interfacing data across systems</li>
+<li>Inventory: unused software licenses, excess data</li>
+<li>Motion: poorly structured workspace, excess of meetings or travel</li>
+<li>Waiting: waiting for approval, actions or interfaces</li>
+<li>Overproduction: producing reports with unnecessary information</li>
+<li>Over-processing: excessive data manipulation that doesn't add value</li>
+<li>Defects: anything leading to rework.</li>
+</ul>
+<p>This may look more like a design consideration than an assessment consideration, but these categories help to define what we need to look for during an assessment.</p>
+<p>Other useful tools from lean include value stream mapping and right first time.</p>
+<h4>Six Sigma</h4>
+<p>Six sigma is another noteworthy technique worth mentioning in relation to assessment. In contrast with Lean six sigma is a statistical approach to assessment. Six sigma works well in processes which can be measured. The focus is on identifying variances and defects and eliminating these. Originating in Motorola this was traditionally popular in manufacturing where production lines could generate high quality statistical data.</p>
+<p>This can also be used in service processes where IT systems can provide process data.</p>
+
+        <div class="post-comments flow">
+          <h2>Share, comment/discuss</h2>
+          <p>Share to:
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://alexroan.com/projects/operations-assessment-2/" target="_blank">LinkedIn</a>, 
+            <a href="https://twitter.com/intent/tweet?url=https://alexroan.com/projects/operations-assessment-2/&text=How to assess opeations - part 2" target="_blank">X</a>
+          </p>
+          <div id="cusdis_thread"
+            data-host="https://cusdis.com"
+            data-app-id="acb35451-258e-4673-9949-4ca8681c63ab"
+            data-page-id="/projects/operations-assessment-2/"
+            data-page-url="/projects/operations-assessment-2/"
+            data-page-title="How to assess opeations - part 2">
+          </div>
+          <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        </div>
+      </article>
+    </main>
+    <footer class="flow">
+  <p class="footer-attribution">Website built by Alex Roan using HTML, CSS and <a href="https://www.11ty.dev/">11ty</a>, hosted on <a href="https://www.netlify.com/">Netflify</a></p>
+</footer>
+  </body>
+</html>

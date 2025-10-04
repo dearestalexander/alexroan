@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-11-23
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image: /assets/images/frontment/testimonial-yamanote/Yamanote-Desktop.png
 imageAlt: A screenshot of a web page with information about the Yamanote rail line in Tokyo

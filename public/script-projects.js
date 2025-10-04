@@ -6,7 +6,7 @@ const slugify = s => (s || '')
   .replace(/(^-|-$)/g, '');  
   
 // Build project menu based on frontmatter field 'project'
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const projMenuCtr = document.getElementById('proj-menu-ctr');
   const cards = Array.from(document.querySelectorAll('.project-card'));
 

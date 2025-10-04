@@ -1,0 +1,382 @@
+---
+title: SAP HANA and S/4HANA - A simple guide
+author: Alex Roan
+date: 2020-06-03
+tags: 
+hashtags:
+project:  ["SAP"]
+subproject: ["S/4HANA"]
+image: /assets/images/blog/saphana__cover.jpg
+imageAlt: An abstract cover graphic with the title 'SAP HANA and S/4HANA - a simple guide
+description: SAP HANA and S/4HANA - a simple guide
+---
+
+As SAPs core products have advanced and their portfolio has broadened it’s become difficult to understand how it all fits together. In recent years I’ve met team members and stakeholders working on SAP programs who struggled to articulate the basics of HANA. SAP projects can be complex and challenging partly due to this lack of knowledge. SAP has been addressing this by improving their communications and training, but understanding HANA can still be quite a lot to navigate.
+
+In this article, I’ll briefly explain the history of SAP and hence the context that led to HANA as well as clarifying the technical concepts behind HANA, why they are important, and how the included business applications have changed.
+
+## A brief history of SAP and ERP
+
+SAP has a large portfolio of applications. If we stick to the main enterprise resource planning products we can abbreviate the history of the company to six key versions, roughly a major iteration each decade.
+
+![An illustration of the SAP timeline](/assets/images/blog/saphana__one.png)
+
+### R/1
+
+Let's start from the beginning.
+
+![An illustration of the SAP timeline highlighting R/1](/assets/images/blog/saphana__two.png)
+
+SAP was founded by a number of ex-IBM employees in the early 1970s. Their first system was called RF (real-time financials) and was later re-named R/1. SAPs product strategy was based on three main concepts:
+
+- Provide a standardised ‘of the shelf solution’: in the days when many companies were building their own applications from scratch SAPs plan was to build a software product that worked for many companies only with minor configuration;
+- Real-time: information entered into the application is available across the entire application in real-time;
+- Integrated: the same data is shared across multiple functional parts of the system reducing the need for redundant data entry.
+
+#### What exactly does 'real-time integrated' mean?
+
+Consider an example from manufacturing. Raw materials are converted to finished products and sold and shipped to a customer. This process involves many departments; procurement, warehousing, manufacturing, finance, sales etc. If we consider only a part of this; the receiving of raw materials from a supplier, two activities need to occur.
+
+![An illustration of goods receipt and invoicing](/assets/images/blog/saphana__three.png)
+
+Prior to ERP these activities may have been done separately. For example, warehouse management may have updated their inventory list at the end of the day and then sent a copy of the information for finance to update the accounts. Throughout the day inventory and financial information would not have been up to date or aligned. And the effort has been wasted entering the same data twice.
+
+With ERP  When warehousing update inventory, the accounting records are updated automatically in real-time. Under the hood ERP has a lot of connections across different tables that keeps information in sync for different functions and teams.
+
+Once we understand this we understand the value of ERP systems and why they became so popular. We can start to imagine how complex they are as they connect processes and data across the entire enterprise. Take the simple example above and imagine how the same logic could be applied across sales, marketing, production etc.
+
+### R/2
+
+Moving onto 1979 R/2 was released.
+
+![An illustraiton of the SAP timeline highlighting R/2](/assets/images/blog/saphana__four.png)
+
+The switch from R/1 to R/2 was a more subtle evolution from a technical perspective with increases in the core functionality as SAP started to increase their customer base.
+
+I can't write too much about R/1 and R/2. When I started my career in an IT team in 2000 R/2 was on the way out. I was trained in using AS/400 mainframe and R/2 but I had only a short time to use it. In fact, most of my experience of R/2 is extracting data from it to cleanse before loading to R/3!
+
+### R/3
+
+Moving onto the 90s and R/3
+
+![An illustration of the SAP timeline highlighting R/3](/assets/images/blog/saphana__five.png)
+
+The switch from R/2 to R/3 was significant with a number of major changes:
+
+- R/1 and R/2 are classed as mainframe systems and R/3 as a client/server system. Skipping the technicalities this allowed for:
+- A fuller ‘graphical user interface’ on desktops (i.e. windows desktops or laptops);
+- Cheaper, easier to scale, and more flexible set up the server-side (note: some complex debate exists on some of these).
+- The shift from R/2 to R/3 and the ongoing development of R/3 through the 90s also represented significant expansion in the business processes covered.
+
+R/2 and R/3 are very different systems. To switch from one system to another you need to extract and transform data before loading to R/3, you also have to map all processes. In my experience switching from R/2 to R/3 was similar to switching from a non-SAP system to R/3. In the 2000s I managed several upgrades from R/2 to R/3 as well as upgrades from mainframe systems like BAAN and the approach and work involved was similar.
+
+When talking about R/3 it's also important to consider scale and globalisation. Mainframe systems were typically implemented for a single country or business unit. The cheaper more scalable architecture of R/3 provided an opportunity to implement one R/3 system covering an organisations business across an entire region or the world. This is important as it's one of the factors which lead to bigger data volumes and more performance challenges.
+
+R/3 was evolving year by year as a complex, integrated system that was being used in large organisations on a global scale. This set's the scene for what is to come with HANA.
+
+#### A note on the R/2 vs. R/3 look and feel
+
+For a simple illustration of how different R/2 and R/3 are we can look at a couple of screens.
+
+![A screenshot of the R/2 system](/assets/images/blog/saphana__six.png)
+
+![A screenshot of the R/3 system](/assets/images/blog/saphana__seven.gif)
+
+- R/2 has a very simple interface where function keys and codes are used to navigate between fields;
+- R/3 includes menus, tabs, buttons, ‘help lookups’ etc.
+
+We will see that there is also a significant jump in how SAP looks and feels between R/3 and S/4HANA.
+
+#### A note on R/3 process scope
+
+This is a diagram that anyone that worked on R/3 will fondly remember, it outlines the different modules or 'functional areas' covered by R/3.
+
+![A well known SAP illustration shoring SAP R/3 modules](/assets/images/blog/saphana__eight.png)
+
+While ERP and R/3 may seem complex; and it is, all it does is record business activities by entering transactions in a system and having the information about what happened stored in a database. It then lets you view and adjust that information to manage your enterprise. Here are some simple examples for a few of the modules shown above:
+
+- FI - finance: Record periodic accruals.
+- CO - controlling: Record/view expenditure against a department
+- SD - sales and distribution: Record a sales order for a sale to a client
+- PP - production planning: Plan a production schedule
+- HR - human resources: Pay employees.
+
+### 2000 to 2015: mySAP.com / ERP
+
+When we come to 2000 the branding becomes a little confusing.
+
+![An illustration of the SAP timeline showing mySAP.com / ERP](/assets/images/blog/saphana__nine.png)
+
+There were a number of key focus areas and we saw R/3 being referred to as mySAP.com and also ERP (technically ECC). Noteworthy focusses were:
+
+- The emergence of web technologies and the need for ERP to be able to connect on a B2B or B2C basis via the internet, mySAP.com was used as a brand and various integration technologies were available.
+- An increasing number of 'add on' products for data analysis;
+- Acquisition of and integration of niche competitor software into the SAP landscape.
+
+#### A note on data analysis
+
+R/2 and R/3 are technically optimised as systems to record data. They are not optimised to analyse data. The late 90s saw the release of the first business warehouse system (BW). This system is technically architected to analyse data. Organisations would use ERP to record data and carry out simple real-time reporting and then send data in daily batches to BW for more complex analysis. I'll come back to this with an illustration later.
+
+#### A note on acquiring competitors
+
+During this period there was a boom in niche software providers, particularly in areas such as data analytics. SAP took the opportunity to acquire some leading competitors to cover areas where their applications were weaker, for example, this covered:
+
+- Analytics, planning & reporting - e.g. Outlooksoft, Business Objects
+- User experience & process execution in niche process areas - e.g. SuccessFactors, Concur, Ariba.
+
+What’s interesting to note is that with the addition of business warehouse the SAP solution was no longer a real-time integrated architecture.
+
+Furthermore, the architecture for many companies was becoming somewhat convoluted with many different applications from different providers. This in fact leads to a lot more solutions in areas like interfacing and master data management.
+
+### Business suite
+
+![An illustration of the SAP timeline highlighting business suite](/assets/images/blog/saphana__ten.png)
+
+During the 2000s the number of processes covered by the R/3 or ERP was continuously increased, in addition to that, a number of additional applications were launched to provide more advanced capabilities in certain areas. SAP started to package a number of these together in the late 90s under the name, “business suite”. The main components of Business Suite are:
+
+![A simple illustration showing ERP with connections to CRM, SCM, PLM and SRM](/assets/images/blog/saphana__eleven.png)
+
+- ERP (enterprise resource planning):
+  - Basically the evolution of R/3 - the core of business suite including financials, human capital management, operations, corporate services etc.
+- CRM (customer relationship management):
+  - Sales, marketing, and service.
+- SCM (supply chain management):
+  - Procurement networks, production networks, distribution networks, planning, organisation and execution of supply processes.
+- PLM (product lifecycle management):
+  - Product ideation to production.
+- SRM (supplier relationship management):
+  - Procurement for materials, goods and services. Requirements determination to ordering to payment.
+
+#### A note on OLAP vs. OLTP
+
+As mentioned a major issue that existed with R/3 was the inability to handle reporting for increasing data volumes, especially with the growing demand for quick analysis. R/3 as a system is not designed to read data quickly. This led to the development of stand-alone systems such as SAPs business warehouse that were optimised to read data. The following terms were used to describe these two different types of systems:
+
+- OLTP - online transaction processing (e.g. R/3)
+- OLAP - online analytical processing (e.g. BW)
+
+![An illustration of the two different systems OLTP and OLAP listing key factors of each](/assets/images/blog/saphana__twelve.png)
+
+As a result of this large organisations often ended up with systems landscapes that include multiple OLTP systems and multiple OLAP systems all connected together. And this is before we even consider topics such as web applications, big data etc.!
+
+#### Increasing complexity
+
+Prior to the launch of HANA, it’s useful to reflect on where the SAP portfolio was:
+
+- The core of ERP had been developed over decades with a continuing increase in the volume and complexity of processes covered;
+- Multiple industry-specific solutions were also available;
+- Requirements for many geographies were covered;
+- There was a split between applications for recording transactions (OLTP) and carrying out simple reporting and applications for information analysis (OLAP). Real-time integration was not present across the entire range of applications;
+- The product portfolio became huge, in part due to multiple new products being developed by SAP and in part by a large number of acquisitions;
+- Major advancements in the standards and approach to integration and web technologies over the years.
+
+Altogether the complexity of business systems landscapes has been massively increasing since the mainframe days. I think this is a topic which is not addressed as much as it should within architecture plans, while we should embrace new technologies we should also rationalise old technologies.
+
+This brings us to the 2010s where part of the focus from SAP is on reducing the complexity of the core product, while also continuing to advance in new technologies. HANA plays a significant role in reducing complexity and bringing real-time back to include analytics capabilities.
+
+## S/4HANA
+
+![An illustration of the SAP timeline highlighting S/4HANA](/assets/images/blog/saphana__thirteen.png)
+
+This brings us to the question of what is S/4HANA?, it stands for “SAP business suite 4 SAP HANA” and it’s a collection of different things. This is one of the reasons why HANA is not well understood. It can't be correctly called either a technical upgrade or a functional enhancement, it's a combination of the two. Furthermore, as part of a S/4HANA conversion, there are a lot of optional items. Each company needs to define its own scope for a S/4HANA conversion based on their own objectives.
+
+In this article I'll cover three main building blocks of S/4HANA. These are:
+
+- The HANA platform (or HANA database) - a new database that solves the problems faced by ERP;
+- S/4HANA (i.e. the HANA business suite) - an updated version of business suite 7 taking advantage of the benefits of the HANA platform;
+- Fiori - a new approach to UI with more focus on flexible app style development and mobile.
+
+![An illustration of S/4HANA key components; Fiori, Business suite and the HANA platform](/assets/images/blog/saphana__fourteen.png)
+
+In this post, I'll spend most of the remaining time explaining the HANA platform and how it impacts business suite, which I think is not commonly understood. For the business suite and Fiori I'll give a very brief overview as these topics are quite deep and SAP has plenty of information available. Plus when looking at these topics it needs to be done piece by piece e.g. by function or UX case.
+
+## The HANA platform
+
+### Understanding memory
+
+To understand HANA we need a little consideration to how memory works in a computer. Bear with me, it's not that technical!
+
+As with many applications, ERP was designed based on what could be done at the time with the technology available. The main constraints were the cost of processing power and storage. The hardware limitations led to limitations in the logic of the software which led to a number of the problems that we have already discussed above.
+
+However; considering Moore's law, the increases in processing power and storage and reduction in hardware costs gave SAP the opportunity to re-think the architecture of ERP. This brings us to HANA.
+
+HANA is the term used to refer to a new database whose development was led by one of the founders of SAP. HANA stands for:
+
+- Hasso’s New Architecture - (Hasso Plattner is one of the five founders of SAP);
+- or alternatively, "High-Performance Analytical Application".
+
+You can learn about HANA from Hasso himself on the open learning platform from the Hasso Plattner Institute for software systems engineering (note this is very technical, only for people who love databases I guess!):
+
+[open hpi website](https://open.hpi.de/courses?lang=en.)
+
+There are three key features that allow the HANA platform to solve the problems ERP and BI were facing, these are:
+
+- In-memory computing;
+- Columnar database managemnet & data compression;
+- Parallel processing.
+
+We will take a look at the first two topics to understand better what HANA is. The third; parallel processing, is a fairly common concept where modern computers can use multiple processors simultaneously on an operation.
+
+#### How memory works
+
+To start the explanation of how HANA uses memory, let's consider the example of a regular desktop computer. Memory can be categorised into 3 types:
+
+- Auxiliary memory: the largest and cheapest memory. Either magnetic disk or solid-state drive. Data is retained when the power is off. To write or read data is extremely slow;
+- Main memory: mostly made up of RAM, more expensive, but much faster than auxiliary memory. Data is lost when power is off.
+- Cache memory: A small amount of very fast memory close to the CPU that stores data the CPU is currently using.
+
+![An illustration of the memory types listed above](/assets/images/blog/saphana__fifteen.png)
+
+The biggest factor in determining the speed a computer can process is how quickly it can read and write to memory. If the processor needs to access auxiliary memory then the process will be very slow.
+
+R/3 doesn't run on a desktop, it runs on a server. But don't be concerned about IT terminology a server is the just a computer in the same way a desktop is a computer.
+
+So we can consider R/3 ERP as a big computer, with massive data volumes, one of the main reasons it can’t be used for advanced data analysis is the time it takes to retrieve data from auxiliary memory.
+
+### In-memory computing with HANA
+
+As technology becomes more advanced and component prices go down, main memory is now available at a cost where it can be used for the volume of storage that was previously was only possible to store in auxiliary memory.
+
+To directly quote SAP, “SAP HANA runs on multi-core CPUs with fast communication between processor cores and containing terabytes of main memory. With SAP HANA, all data is available in main memory, which avoids the performance penalty of disk I/O (i.e. read/write to auxiliary memory).
+
+In plain English, the complete dataset within ERP is stored in what we think of as 'RAM' on our desktops or laptops and is easily accessible by the processor.
+
+With HANA we don't need auxiliary memory for day to day operations as shown below. However note that it is used for back up / disaster recovery, for example in the case of power being lost.
+
+![An illustration of the memory types showing elimination of the hard drive memory](/assets/images/blog/saphana__sixteen.png)
+
+### Columnar data store with HANA
+
+In addition to in-memory, HANA applies database management methods that are much more efficient at compressing data. And the more compressed data can be the faster the system can run.
+
+Consider the table below. Traditionally an OLTP type database will hold data in a row store. If you compare the row store with an alternative method; the column store, you will quickly realise that for the column store a lot of values may be duplicated side by side. Intuitively we can see a columnar store may be much easier to compress.
+
+Compression is a fairly broad and technical topic, but simply imagine a column for 'city' in a table of addresses, we will have hundreds if not thousands of entries of e.g. 'London', if that's the case we don't need to store London every time, we can instead store the range of rows that have London as a city, this means if there is a query about London, the application does not need to work through every row to get the results.
+
+![An illustration of the row vs. column store](/assets/images/blog/saphana__seventeen.png)
+
+More information is available on [sap help](https://help.sap.com/viewer/52715f71adba4aaeb480d946c742d1f6/1.0.12/en-US/421691c7c0514928b3f15030600ef964.html)
+
+Taking into account 'in-memory' design with 'columnar' store, the HANA platform provides a database that can operate hugely faster than the database options used in R/3 or business suite 7 or any traditional OLTP system. This is quite a big deal:
+
+- We no longer need to separate OLTP and OLAP applications to different databases/applications. A single HANA database and application can do both types of operations effectively. This is an opportunity to massively simplify the hardware, technical architecture and data architecture.
+- We can simplify the business suite applications. One example of this: Because OLTP systems were generally slow at reading and analysing data there are often many subtotals and totals tables that are updated when transactions are processed. These tables along with a lot of complexity can be simplified or removed.
+
+## SAP Business Suite 4 HANA: simplification items
+
+Recall we said there are three main components of S/4HANA
+
+- Fiori UI
+- Business suite
+- HANA platform (database)
+
+Now that we covered the HANA platform we can look at Business Suite. The business suite present in S/4HANA is essentially an updated version of business suite 7.
+
+We could say that the conversion from say R/3 to S/4HANA is a technical upgrade from a database perspective. But from an application perspective, there are further changes and enhancements many of which are enabled by the database conversion.
+
+A big part of a S/4HANA implementation is understanding which simplifications and enhancements are available and which you would like to implement. Not all simplifications are mandatory. And each simplification or enhancement has its own unique impact on process, data etc.
+
+SAP provides a simplification list for each HANA release. The current S/4HANA version is 1909 and the list is here:
+
+![A picture of the cover of the SAP S/4HANA simplification items](/assets/images/blog/saphana__eighteen.png)
+
+[On help SAP](https://help.sap.com/doc/0080a18cdc1045638d31c87b839011e7/1909.000/en-US/SIMPL_OP1909.pdf)
+
+I won't go through these in detail, it's a huge list. One note worth mentioning is that the majority of simplifications are within the finance and logistics areas. Some examples from finance:
+
+- The universal journal (major simplification to the tables/ledgers and hence reporting in the finance area);
+- Changes to transaction codes (removal of old / introduction of new);
+- NewGL (an updated version of GL which was available prior to S/4HANA is implemented as part of S/4HANA);
+- New Asset Accounting etc.
+
+For finance the simplification journey started back with ERP (ECC 6.0), at this time NewGL was launched which provided a significant simplification to the way financials and controlling worked:
+
+- Simplifying the no. of internal ledgers (e.g. removal of FICO reconciliation);
+- Adding leading / non-leading ledger functionality for multiple valuation requirements;
+- Extending the GL code-block e.g. for IFRS segmentation requirements.
+
+NewGL provided a starting point for further simplifications enabled by HANA.
+
+### Fiori
+
+Fiori is SAPs new approach to user interface design.
+
+One of the main objectives of Fiori is to allow developers to quickly create 'apps' as an interface for specific activities or tasks within SAP.
+
+These apps can feature improved visual design, role-specific actions and are adaptable between desktop, tablet and mobile etc.
+
+Fiori starts from the launchpad where different apps can be placed as tiles along with global elements such as user personalisation options, search and notification.
+
+![A screenshot of Fiori](/assets/images/blog/saphana__nineteen.png)
+
+[image source](https://experience.sap.com/fiori-design-web/launchpad/)
+
+This provides a significant step forward in the ability to customise the interface to specific roles and improve the user experience. It's easy to see how having key figures and activities available at a glance could have a number of benefits.
+
+Fiori comes with a number of SAP provided apps and organisations can also develop their own apps.
+
+For a S/4HANA conversion how much effort should be placed on Fiori? How many apps will be deployed? How much time will be spent on optimising launchpads for specific roles?
+
+## Implementation considerations
+
+As with any ERP implementation or upgrade, a conversion to S/4HANA will be a complex project. SAP provide free training available on open sap:
+
+[Open SAP](https://open.sap.com/)
+
+In addition to training, there is a recommended roadmap. Between these, it's possible to plan out all required activities.
+
+However, I'd like to emphasise here three critical areas of focus:
+
+### 1. Business case development
+
+S/4HANA conversion is like a hybrid between a technical upgrade and an introduction of new business features. With this in mind, what is the business case behind the investment? It could range between:
+
+- It's a 'must-do' program to ensure we stay on the latest version, but we want to minimise cost and effort;
+- It's an opportunity to simplify our IT architecture, access as many of the business suite enhancements as possible and implement Fiori for all our users with our own apps. We want to invest a lot of time and effort and improve the way we work.
+
+When considering the benefits, it's critical to ensure that experts who understand the state of the current systems and current ways of working are involved.
+
+In my experience the pre-sales and business case activities are often limited to senior management and architects, this can lead to an overestimation of the benefits that the users of the system will receive and a lack of appreciation of the effort required based on the current state of the operations.
+
+I'd recommend validating the business case with functional and technical experts. This may lead to an adjustment of the plan for improved scope, more refined focus and a more realistic project plan.
+
+### 2. Preparation is critical
+
+The recommendations and learnings which I've applied to R/3 and ERP upgrades also apply to S/4HANA. The biggest of these is related to preparation. Serious work should start 3-6 months prior to the start of the project proper. The work that should start early includes topics such as:
+
+- Master data cleansing
+- Transaction data cleansing (i.e. ageing analysis)
+- Ensuring that existing processes are understood and documented
+- Ensuring that existing configuration is understood and documented
+- Ensuring issues and problems are understood and documented
+- Ensuring custom developments are understood and documented
+- Ensuring the right resources are available for the project
+- Ensuring the biggest pain points within the current process/system steps are understood and have been included in the scope consideration as part of the business case.
+
+The extent of the work will depend on how well you manage systems and processes, typically in most organisations they are not well managed.
+
+The majority of SAP projects run into problems in the requirements, fit-gap and testing stages because the current system and process were not well understood or considered or there were hidden issues. It's critical to surface these early.
+
+### 3. Involve the right people early
+
+Typically a large organisation may run a global SAP upgrade/implementation something like this:
+
+1. A small team develops a business case with senior management involvement;
+2. A first project runs the upgrade for one business unit / country / region as a pilot and as part of this defines a global standard approach to the upgrade, the project is highly biased to one business unit / geography;
+3. The upgrade is then executed across different geographies/business units, they struggle with the design decisions made by the first unit;
+4. Within each individual project, the first stages start with the involvement of a small number of people and as they progress an ever-increasing number of people up to user acceptance and training activities with the full teams.
+
+With this approach, the best experts and 'real knowledge' may not see the planned solution until user acceptance testing occurs. By this time it's too late to change anything without major project delays. I've always disliked how user acceptance testing is included in traditional IT projects, it's never a chance to accept a system works acceptably for a business, it's often more an argument on whether the system works according to what was agreed and written down in previous project stages.
+
+When you plan your project, look at the team staffing, from the very first phases:
+
+- How many of the team members have worked in your business operations?
+- How many of your team members are middle managers?
+- How many of your team members are external contractors or consultants that don't know the details of your operations?
+
+Free up your at least one operational experts from each in scope function and ensure they are involved from the start. Make sure the profile of this person is someone that will continuously socialise and gain feedback and input from their peers.
+
+## Final thoughts
+
+There are still a lot of topics to be considered such as the details of the simplification list for each function and the impact on 'add on' systems e.g. analytics. However, hopefully understanding what HANA and S/4HANA are from an evolutionary and technical perspective makes it easier to figure out how it all fits together.
+
+What aspects of understanding and planning SAP related work do you find most challenging?

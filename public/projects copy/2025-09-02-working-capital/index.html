@@ -1,0 +1,1232 @@
+<h2>Introduction</h2>
+<p>Recently, SAP introduced the 'Working Capital Intelligent Insights Application' as part of SAP Business Data Cloud (BDC).</p>
+<p>This is the first in a series of BDC-powered intelligent apps.</p>
+<p>I like this app and its underlying architecture. Positives:</p>
+<ul>
+<li>It brings together working capital KPIs, trends, related KPIs, and details. This is important, as similar working capital results can hide differing realities.</li>
+<li>As part of BDC, the app can provide cross-entity, geography, and system results.</li>
+<li>Data is sourced from line of business solutions like S/4HANA using data products, which require less management than traditional reporting interfaces.</li>
+</ul>
+<p>BDC also includes Datasphere and Databricks, which together make it possible to build on the SAP-delivered apps with:</p>
+<ul>
+<li>Data engineering</li>
+<li>AI/ML</li>
+<li>Advanced analytics.</li>
+</ul>
+<p>But what is working capital? And how well does this app represent it? In this article I'll take a look at working capital theory and the new SAP reporting.</p>
+<h2>What is working capital</h2>
+<p>Working capital is a measure of financial resources that are available to an organisation in the short term.</p>
+<p>Working capital can refer to the specific KPI 'Net Working Capital (NWC)'. Or, it may be used in a more general sense to refer to the factors that influence the calculation of the KPI.</p>
+<p>The analysis and interpretation of working capital is complex:</p>
+<ul>
+<li>It summarises: inventory, payables, receivables, and cash</li>
+<li>A 'normal' NWC my hide unexpected underlying factors</li>
+<li>Expected results vary by industry, and operating environment</li>
+<li>It's a point in time measure, any delay in preparing it reduces its validity.</li>
+</ul>
+<h2>Financial definition of working capital</h2>
+<p>In this definition, 'available resources' and 'short term' have specific meanings:</p>
+<p>Available resources:</p>
+<ul>
+<li>The total of assets minus liabilities</li>
+<li>(Everything a company owns minus everything is owes others)</li>
+</ul>
+<p>Short term:</p>
+<ul>
+<li>Convertible to cash within 1 year</li>
+</ul>
+<p>Assets and liabilities are recorded on an organisation's balance sheet. It's important to keep in mind the balance sheet is a point in time snapshot. It provides a valued list of the items a company owns and owes at a specified point in time. This list is constantly changing.</p>
+<p>The high level structure of the balance sheet is:</p>
+<ul>
+<li>Non-current assets</li>
+<li>Current assets (short term)</li>
+<li>Non-current liabilities</li>
+<li>Current liabilities (short term)</li>
+<li>Shareholder equity (retained earnings and shareholder funds)</li>
+</ul>
+<p>It's called the balance sheet, as these items balance according to the accounting equation:</p>
+<p><strong>Assets = liabilities + equity</strong></p>
+<p>To understand working capital, let's look into the detail of the current items:</p>
+<p>Current assets:</p>
+<ul>
+<li>Inventories (raw material, work-in-progress, finished goods)</li>
+<li>Prepayments and other short term assets</li>
+<li>Trade and other receivables (accounts receivable)</li>
+<li>Derivative financial instruments (notes receivable)</li>
+<li>Other short term financial assets (notes receivable)</li>
+<li>Cash and cash equivalent</li>
+<li>Other e.g. deferred tax.</li>
+</ul>
+<p>Current liabilities:</p>
+<ul>
+<li>Provisions (unearned revenue)</li>
+<li>Pension and other employee obligations (wages payable)</li>
+<li>Borrowings (current portion of long term debt)</li>
+<li>Lease liabilities</li>
+<li>Trade and other payables (accounts payable)</li>
+<li>Accrued tax payable</li>
+<li>Dividend payable.</li>
+</ul>
+<p>It's a long list,  and some items are a complex. But, usually, only a few lines drive the majority of working capital. These are the points we want to focus on:</p>
+<ul>
+<li>Cash (asset)</li>
+<li>Accounts receivable (asset)</li>
+<li>Inventory (asset)</li>
+<li>Accounts payable (liability).</li>
+</ul>
+<p>So Net Working Capital primarily captures Cash, AP, AR, and inventory at a point in time.</p>
+<p>In other words, the KPI tells us something about the organisation's primary operations. Let's look at how these factor into operations.</p>
+<h2>Business operation flow</h2>
+<p>Manufacturing is a good place to start. Cash, AP, AR, and inventory are all present.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-1.png" alt="Business operation flow"></p>
+<p>The diagram shows the flow of operations. Several steps have an impact on the balance of assets and liabilities:</p>
+<ol>
+<li>Receiving materials:
+<ul>
+<li>Raw materials are considered convertible to cash within 1 year</li>
+<li>These are recorded as current assets when received</li>
+</ul>
+</li>
+<li>Accounts payable
+<ul>
+<li>An invoice arrives with a future due date for payment</li>
+<li>An invoice represents money owed to a supplier within 1 year</li>
+</ul>
+</li>
+<li>Outgoing payments
+<ul>
+<li>The invoice is paid when it's due</li>
+<li>Cash is reduced when the payment is sent to the supplier</li>
+<li>The open invoice is cleared and money is no longer owed</li>
+</ul>
+</li>
+<li>Manufacturing
+<ul>
+<li>Raw materials (RM) are removed from inventory (RM asset reduction)</li>
+<li>During production, work in progress is recorded (WIP asset increase)</li>
+<li>After production, finished products (FP) are added to inventory
+<ul>
+<li>(FP asset increase, WIP asset reduction)</li>
+</ul>
+</li>
+<li>Overall, a net asset increase as FP value is higher than RM value</li>
+</ul>
+</li>
+<li>Shipping
+<ul>
+<li>Finished products are sent to the customer (FP asset decrease)</li>
+</ul>
+</li>
+<li>Accounts receivable
+<ul>
+<li>An invoice is sent to the customer</li>
+<li>This invoice represents money the customer owes us within 1 year</li>
+</ul>
+</li>
+<li>Incoming payments
+<ul>
+<li>An incoming payment is received from a customer</li>
+<li>This increases cash</li>
+<li>This clears the open customer invoice.</li>
+</ul>
+</li>
+</ol>
+<p>When thinking about the flow of operations and working capital, I'd suggest to keep in mind two key concepts; continual change, and timing.</p>
+<h3>Key Concepts - Continual Change</h3>
+<p>I tend to imagine a single item flowing through operations. However, in reality working capital never measures a single item, it measures a point in time with a mix of in-progress items.</p>
+<p>Most manufacturing organisations operate on a 'make to stock' basis. Sales are made from stock. Stock is replenished through manufacturing based on forecast/planning.</p>
+<p>Depending on when you capture a snapshot of the balance sheet, the levels of cash/AP/AR/inventory can vary significantly.</p>
+<p>Consider a big order shipment, or a big cash receipt. These will cause a shift in working capital from one moment to the next.</p>
+<p>A better abstraction may be something like this:</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-2.png" alt="business operation flow - continual change"></p>
+<h3>Key concepts - Timing</h3>
+<p>Accounts Receivable and Accounts Payable represent sales and purchases made on credit. Total sales equals cash sales plus accounts receivable.</p>
+<p>These credit sales and purchases involve negotiated payment terms. This introduces a timing factor to working capital.</p>
+<p>If a manufacturing company operates on a make to stock basis, their inventory levels represent another timing factor. Inventory at minimum should cover the time it takes to buy raw materials and manufacture a product.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-3.png" alt="business operation flow - timing difference"></p>
+<p>To illustrate timing:</p>
+<ul>
+<li>A company receives an order for finished product from a customer</li>
+<li>They ship from stock, and send an invoice</li>
+<li>Accounts receivable is due for payment in 60 days</li>
+<li>Raw materials are continuously being ordered to manufacture more stock</li>
+<li>Raw materials arrive together with an invoice</li>
+<li>The invoice is due for payment in 30 days.</li>
+</ul>
+<p>In this example, the difference between A/R and A/P payment terms means the organisation has a 30-day window where it needs to fund raw materials with its own cash.</p>
+<p>In 'make to stock' the individual sale and shipment is not linked to raw material procurement. But, the total bucket of all sales, all shipments, all inventory, all purchasing are linked in this timing.</p>
+<p>If total A/R and total A/P terms are poorly aligned, companies need a lot more cash to fund operations.</p>
+<p>An idea scenario is to run a 'make-to-order' business. If a customer's advance payment or down payment covers procurement and manufacturing costs, this puts a business in an excellent cash position.</p>
+<p>I was curious about Tesla when I read customers were putting deposits down one year in advance for the Cybertruck. Next, let's look at Tesla's financial data.</p>
+<h3>Case study: Tesla</h3>
+<p>Yahoo Finance is a good resource for financial summaries - <a href="https://finance.yahoo.com/quote/TSLA/balance-sheet/">Tesla on Yahoo Finance</a>.</p>
+<p>On 31/12/2024:</p>
+<ul>
+<li>Current assets = 58.4bn</li>
+<li>Current liabilities = 28.8bn</li>
+<li>Net working capital (NWC) = current assets - current liabilities = 29bn.</li>
+</ul>
+<p>This is a massive amount of positive working capital.</p>
+<p>However, at this level of detail, it is difficult to draw more detailed conclusions.</p>
+<p>Let's look at Tesla's US SEC filling to get more insights - <a href="https://ir.tesla.com/_flysystem/s3/sec/000162828025035806/tsla-20250630-gen.pdf">SEC filing</a>. This includes data for June '25 and December '24.</p>
+<p>Current assets on 31/12/2024:</p>
+<ul>
+<li>Current assets = 58.4bn
+<ul>
+<li>Cash, cash equivalent and short term investments = A whopping 36.6bn</li>
+<li>A/R = 4.4bn</li>
+<li>Inventory = 12.0bn.</li>
+</ul>
+</li>
+</ul>
+<p>I knew Tesla were cash rich, but I was still slightly shocked to see the number This asset mix may indicate:</p>
+<ul>
+<li>High cash, which enables:
+<ul>
+<li>Flexibility to invest</li>
+<li>Flexibility to build stock if needed</li>
+<li>Flexibility to design and launch new products</li>
+</ul>
+</li>
+<li>Low A/R, which could indicate:
+<ul>
+<li>Payments are collected upfront (via deposits)</li>
+<li>When sales are on credit, there is little to no problem collecting cash.</li>
+</ul>
+</li>
+</ul>
+<p>But, what about the Tesla taking deposits far in advance. Let's look at the liabilities.</p>
+<p>Current liabilities on 31/12/2024:</p>
+<ul>
+<li>Current liabilities = 28.8bn
+<ul>
+<li>A/P = 12.5bn</li>
+<li>Accrued liabilities and others = 10.8bn</li>
+<li>Deferred revenue = 3.2bn</li>
+<li>Current portion of debt/finance = 2.5bn</li>
+</ul>
+</li>
+</ul>
+<p>We can see deferred revenue of 3.2bn, some of which may related to advance payment for vehicles. Keep in mind, these numbers are Tesla wide.</p>
+<p>Accrued liabilities of 10.8bn also includes customer deposits of 1bn.</p>
+<p>So, around 4.2bn of advance payments from customers. Unfortunately, we don't know the exact nature of these, nor the product they relate to.</p>
+<p>However, we do see total inventory of 12.0bn. Customer advance payments of 4.2bn covers 1/3 of inventory.</p>
+<p>So 1/3 of inventory is financed by customer advance payments.</p>
+<p>From the above, I also note AP aligns well with inventory (12.0B, and 12.5B).
+This suggests Tesla aligns purchases with production needs well, minimizing excess stock. This would indicate a high level of procurement efficiency.</p>
+<p>I'd conclude that:</p>
+<ul>
+<li>Tesla are extremely cash rich
+<ul>
+<li>They have a lot of flexibility to invest, innovate, build stock, etc.</li>
+</ul>
+</li>
+<li>No notable working capital issues
+<ul>
+<li>No sign of difficulties recovering cash, or selling stock</li>
+</ul>
+</li>
+<li>Advance payments  cover a sizeable part of their purchasing / inventory.</li>
+</ul>
+<h2>Variations by organisation</h2>
+<p>Working capital differs by various factors. Three big ones are:</p>
+<ul>
+<li>Industry</li>
+<li>Company size</li>
+<li>Risk profile</li>
+</ul>
+<p>Manufacturing was a good place to start, but let's look at how it differs for services and retail.</p>
+<h3>Service Industries</h3>
+<p>Generally, services don't have inventory or trade accounts payable.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-4.png" alt="Working capital in services"></p>
+<p>However, working capital can still be a relevant measure. Consider a consulting firm or a systems integrator.</p>
+<p>Current assets:</p>
+<ul>
+<li>Accounts receivable
+<ul>
+<li>Billing is usually based on service delivery milestones</li>
+</ul>
+</li>
+<li>Inventory
+<ul>
+<li>They may consider 'time booking' on projects as a contract delivery asset</li>
+</ul>
+</li>
+</ul>
+<p>Current liabilities:</p>
+<ul>
+<li>Accounts payable: cost of staff, contractors, software, etc.</li>
+</ul>
+<p>Creating a services industry customised version of working capital can help them monitor their cash, receivables, 'service WIP inventory', and costs.</p>
+<p>The big considerations for services are:</p>
+<ul>
+<li>Unbilled revenue is “hidden AR”</li>
+<li>Utilisation, milestone cadence, and acceptance criteria drive the cycle</li>
+<li>Prepayments reduce NWC but add performance obligations.</li>
+</ul>
+<h3>Retail Industries</h3>
+<p>Generally, retail doesn't have Accounts Receivable, sales are cash. They don't have manufacturing, but they do hold stock in inventory.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-5.png" alt="Working capital in retail"></p>
+<p>The rough flow in retail:</p>
+<ul>
+<li>Stock is purchased</li>
+<li>Stock is received
+<ul>
+<li>Increase inventory (asset increase)</li>
+<li>Increase A/P (liability increase)</li>
+</ul>
+</li>
+<li>Stock is paid for
+<ul>
+<li>Decrease A/P (liability reduction)</li>
+<li>Decrease cash (asset reduction)</li>
+</ul>
+</li>
+<li>Customers buy stock in-store, paying at cash registers
+<ul>
+<li>Decrease inventory (asset decrease)</li>
+<li>Increase cash (asset increase)</li>
+</ul>
+</li>
+</ul>
+<p>The process is similar for online stores, just replacing in-store collection with shipping.</p>
+<p>In retail, the size of the business and the nature of the stock has a big effect on working capital.</p>
+<p>A large retail chain with fast moving stock sells for cash and buys on credit. They may be able to sell stock before they pay for it. When large retailers negotiate long AP payment terms, this puts them in an excellent cash position.</p>
+<p>Small, specialist retailers on the flip side may have some inventory items that they buy, and remain in stock for a long time. This ties up cash.</p>
+<p>In retail, inventory and supplier terms are a key focus. Other factors to keep an eye on include returns liability, and gift cards (deferred revenue).</p>
+<h2>Balance sheet items in detail</h2>
+<h3>Accounts Receivable (AR)</h3>
+<p>Accounts receivable tracks sales made on credit to customers with a due date for payment in the future.</p>
+<p>An A/R invoice is usually issued at the point of product or service delivery. This invoice includes the agreed payment terms.</p>
+<p>Payment terms include two main factors:</p>
+<ul>
+<li>Length of time before the payment is due</li>
+<li>Discounts for early payment if relevant</li>
+</ul>
+<p>A simple payment term is '60 days net due', or with a discount '60 days net due or 15 days 2% discount'.</p>
+<p>From a working capital perspective,  organisation's want to ensure customers can pay, and that they pay as quickly as possible.</p>
+<p>A wide range of AR factors impact working capital, these include:</p>
+<ul>
+<li>Credit policy
+<ul>
+<li>Who is credit advanced to, on what terms</li>
+<li>What is the risk of non-payment or late payment</li>
+</ul>
+</li>
+<li>Dunning processes
+<ul>
+<li>Utilisation of reminders and follow with customers on open invoices</li>
+</ul>
+</li>
+<li>Early identification and resolution of disputes</li>
+<li>Extent of and maturity of discounting
+<ul>
+<li>For example, adjusting discounting based on working capital forecast</li>
+</ul>
+</li>
+<li>Invoicing efficiency
+<ul>
+<li>Issuing invoices on-time, technology such as e-invoicing to automate</li>
+</ul>
+</li>
+<li>Payment receipts efficiency
+<ul>
+<li>Providing a range of payment options</li>
+<li>Efficiency at matching incoming payments to open invoices.</li>
+</ul>
+</li>
+</ul>
+<h3>Accounts Payable (AR)</h3>
+<p>Accounts payable tracks purchased made on credit from suppliers with a due date for payment in the future.</p>
+<p>An A/P invoice is usually received at the point of goods or service receipt.</p>
+<p>For working capital, look at a subset of total A/P. The part that relates to products or services.</p>
+<p>Payment terms also apply to AP.</p>
+<p>AP factors that affect working capital include:</p>
+<ul>
+<li>Payment terms</li>
+<li>Utilisation of supplier owned inventory (only purchased on consumption)</li>
+<li>Efficiency of the purchasing-receiving-invoicing cycle, lots of metrics including:
+<ul>
+<li>Invoice right first time rates</li>
+<li>3-way match cycle time.</li>
+</ul>
+</li>
+</ul>
+<h3>Inventory</h3>
+<p>Inventory levels are an important consideration for working capital. Holding high inventory levels requires a large AP spend, and that cash remains tied up in inventory until it's sold.</p>
+<p>Optimising inventory is a challenging topic. Manufacturing plans are usually based on sales plans, which are based on actual sales. However, this is not an exact science and planning beyond the very near future is extremely difficult.</p>
+<p>On the one hand, we want to minimise inventory to release cash. On the other hand, we may want extra inventory as safety stock as a buffer for unexpected events.</p>
+<p>Key inventory factors to consider related to working capital</p>
+<ul>
+<li>Forecast accuracy</li>
+<li>Safety-stock policy</li>
+<li>Lead-time compression</li>
+<li>Stop keeping unit rationalisation (number of products/product variations)</li>
+<li>Vendor managed inventory / consignment stock</li>
+<li>Postponement.</li>
+</ul>
+<h3>Cash</h3>
+<p>Optimising inventory, AP, and AR can make more cash available. Cash is also affected by various other factors, key cash considerations include:</p>
+<ul>
+<li>Utilisation/reliance on short term loans</li>
+<li>Spending requirements:
+<ul>
+<li>Procurement related to product/service delivery</li>
+<li>Spending on capital projects</li>
+<li>Spending on R&amp;D and product development</li>
+</ul>
+</li>
+<li>Ability to invest in building stock to meet specific demand spikes.</li>
+</ul>
+<h3>Other balance sheet items</h3>
+<p>Working capital may include other current items:</p>
+<p>Current assets</p>
+<ul>
+<li>Prepayments and other short term assets</li>
+<li>Derivative financial instruments (notes receivable)</li>
+<li>Other short term financial assets (notes receivable)</li>
+<li>Other e.g. deferred tax</li>
+</ul>
+<p>Current liabilities</p>
+<ul>
+<li>Provisions (unearned revenue)</li>
+<li>Pension and other employee obligations (wages payable)</li>
+<li>Borrowings (current portion of long term debt)</li>
+<li>Lease liabilities</li>
+<li>Accrued tax payable</li>
+<li>Dividend payable</li>
+</ul>
+<p>These are usually smaller components. When analysing a company, if one of these is a big factor, it should be investigated further.</p>
+<h2>Key performance indicators</h2>
+<p>When it comes to analysing working capital, I'd highlight five key performance indicators:</p>
+<ol>
+<li>Net working capital</li>
+<li>Days sales outstanding</li>
+<li>Days payables outstanding</li>
+<li>Days inventory</li>
+<li>Cash conversion cycle</li>
+</ol>
+<p>I would supplement any analysis with a few connected KPIs:</p>
+<ul>
+<li>Current ratio</li>
+<li>Quick ratio</li>
+<li>Operational cash flow</li>
+</ul>
+<p>In general, working capital KPIs are used as broader indicators of health:</p>
+<ul>
+<li>As an indicator of short term financial health</li>
+<li>A measure of how efficient operations are</li>
+<li>A measure of how well managed a business is.</li>
+</ul>
+<p>Let's have a look at each KPI.</p>
+<h3>Net Working Capital (NWC)</h3>
+<p><strong>Net Working Capital (NWC) = Current Assets − Current Liabilities</strong></p>
+<p>A common way to visualise NWC is to put assets and liabilities in stacked bar columns. The difference between the two columns equals working capital. Let's visualise the Tesla data we looked at earlier.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-11.png" alt="Tesla NWC"></p>
+<p>These charts are great. They make the nature of assets very clear. In the Tesla case not only do we see high working capital, we see most of it is highly liquid as cash, cash equivalents and short term investments.</p>
+<p>Converting inventory and receivables into cash takes time, and actual realised value may be lower than the book value.</p>
+<p>These charts also give a good indication of the relationship between Cash, Receivables, Inventory, and Payables.</p>
+<p>High level interpretation guidelines for NWC include:</p>
+<ul>
+<li>Positive working capital may suggest:
+<ul>
+<li>Good support for ongoing operations</li>
+<li>Ability to invest in growth</li>
+</ul>
+</li>
+<li>But high positive working capital can hide issues:
+<ul>
+<li>Excess inventory</li>
+<li>Slow AR</li>
+<li>Lack of strategy to manage / invest cash</li>
+<li>Under-utilization of low-cost debt</li>
+</ul>
+</li>
+<li>Negative working capital may suggest liquidity issues:
+<ul>
+<li>Growth</li>
+<li>Paying back debt</li>
+<li>Pending bankruptcy.</li>
+</ul>
+</li>
+</ul>
+<p>What if we compared Tesla with another automotive company?
+What if we compared those with consumer goods, retail, and services?</p>
+<p>I've picked out Ford, Proctor and Gamble, Walmart, and Accenture as samples. Here are their working capital breakdowns side-by-side. All on the same scale apart from Walmart, which is comparatively much larger.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-12.png" alt="NWC comparison"></p>
+<ul>
+<li>Tesla is indeed cash rich, with high positive working capital
+<ul>
+<li>This reflects a lean, and efficient operating structure</li>
+</ul>
+</li>
+<li>Ford:
+<ul>
+<li>A lot of cash driving positive working capital</li>
+<li>Notably huge A/R, huge debt</li>
+<li>(Capital intensive/credit-heavy business model)</li>
+</ul>
+</li>
+<li>P&amp;G:
+<ul>
+<li>Significant negative working capital</li>
+<li>Driven by large open A/P and debt</li>
+<li>Common in FMCG, where suppliers finance operations</li>
+</ul>
+</li>
+<li>Walmart:
+<ul>
+<li>Significant negative working capital, driven by huge A/P</li>
+<li>Notable that A/P is greater than inventory + receivables</li>
+<li>Like FMCG, retailers commonly finance through suppliers</li>
+</ul>
+</li>
+<li>Accenture:
+<ul>
+<li>Small positive working capital</li>
+<li>Receivables only slightly higher than payables</li>
+<li>As expected, a light working capital structure in services.</li>
+</ul>
+</li>
+</ul>
+<p>As discussed, NWC is a point in time static metric. Despite all the detail above, we haven't gained any insight on how these assets and liabilities related to revenue or costs. The next three KPIs; DSO, DPO, and DIO blend balance sheet and P&amp;L data to give us a more dynamic view.</p>
+<h3>Days sales outstanding</h3>
+<p>DSO looks at the balance of open accounts receivable at a point of time in conjunction with revenue over a period of time (a year).</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-6.png" alt="DSO picture"></p>
+<p>Going back to Tesla:</p>
+<ul>
+<li>Accounts Receivable at 31/12/24 = 4.42bn</li>
+<li>Revenue from 01/01/24 to 31/12/24 = 97.7bn</li>
+</ul>
+<p>Their annual revenue clears their open AR around 22 times in a year! Or, put another way, it only takes 17 days of cash receipts for them to collect their full open AR balance.</p>
+<p>To get to 17 days: Days Sales Outstanding (DSO) = (AR / Net revenue) * 365</p>
+<p>Where:</p>
+<ul>
+<li>AR is net accounts receivable at a point in time</li>
+<li>Net Revenue = Gross Revenue – Returns – Discounts.</li>
+</ul>
+<p>We can visualise this by plotting the revenue in relation to 365 days, and highlight how the 4bn receivables relates to 17 days.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-13.png" alt="DSO for Tesla"></p>
+<p>Calculation notes:</p>
+<ul>
+<li>If AR fluctuates a lot or the business is highly seasonal:
+<ul>
+<li>Use an average to avoid fluctuations (period end AR - period start AR) / 2</li>
+<li>Use rolling 3–6 month averages for seasonality</li>
+</ul>
+</li>
+<li>Separate “current” vs. “overdue” AR to see impact of overdue on DSO</li>
+<li>Make sure to exclude:
+<ul>
+<li>Provisions for doubtful debts</li>
+<li>VAT</li>
+</ul>
+</li>
+</ul>
+<p>Generally speaking, a low DSO is attractive. It indicates an organisation can convert credit sales to cash quickly. A high DSO may hint at collection issues.</p>
+<p>Let's look at the comparison with the other companies:</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-14.png" alt="DSO across companies"></p>
+<ul>
+<li>As with NWC, Tesla's DSO performance is impressive</li>
+<li>Ford: <strong>131 days</strong>
+<ul>
+<li>Ford takes the longest out of this group to collect cash</li>
+<li>A reflection of their focus on selling on credit</li>
+</ul>
+</li>
+<li>P&amp;G: <strong>27 days</strong>
+<ul>
+<li>A strong number for FMCG where credit sales are normal</li>
+<li>Indicates P&amp;G has solid credit policy and AR processes</li>
+</ul>
+</li>
+<li>Walmart: <strong>5 days</strong>
+<ul>
+<li>Very short DSO, a reflection of retail being a cash sales business</li>
+</ul>
+</li>
+<li>Accenture: <strong>77 days</strong></li>
+</ul>
+<p>Interpretation</p>
+<ul>
+<li>
+<p>High DSO:</p>
+<ul>
+<li>It takes a long time to receive payment</li>
+<li>May indicate collection issues.</li>
+<li>In some cases, may represent high quality customers with strong buying power</li>
+</ul>
+</li>
+<li>
+<p>Low DSO</p>
+<ul>
+<li>Cash sales over credit sales</li>
+<li>Efficient collection process</li>
+<li>Good cash flow.</li>
+</ul>
+</li>
+</ul>
+<h3>Days inventory outstanding</h3>
+<p>DIO looks at the balance of inventory at a point of time in conjunction with cost of sales over a period of time (a year).</p>
+<p>Cost of sales are booked at the point of shipping and are the direct costs related to the creation of a product or service that is sold. It's the part of revenue that relates most closely to inventory.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-7.png" alt="DIO picture"></p>
+<p>Going back to Tesla:</p>
+<ul>
+<li>Inventory at 31/12/24: 12bn</li>
+<li>COS from 01/01/24 to 31/12/24: 80bn</li>
+</ul>
+<p>COS covers inventory about 7 times a year. Or, put another way, it takes 55 days of COS to pay for current inventory.</p>
+<p>To get to 55 days: DIO = (Inventory / Cost of sales) * 365</p>
+<p>Where:</p>
+<ul>
+<li>Inventory on the balance sheet includes:
+<ul>
+<li>Raw materials</li>
+<li>Work in progress</li>
+<li>Finished goods</li>
+</ul>
+</li>
+<li>COS is mostly manufacturing and direct production costs
+<ul>
+<li>Exclude non-trade items</li>
+</ul>
+</li>
+</ul>
+<p>Let's look at our comparison companies:</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-15.png" alt="Example company DIO"></p>
+<p>Tesla: 55 days
+Ford: 32 days
+P&amp;G: 67 days
+Walmart: 40 days
+Accenture: No inventory / not relevant</p>
+<p>Interpretation</p>
+<ul>
+<li>
+<p>High DIO:</p>
+<ul>
+<li>May indicate slow sales</li>
+<li>May indicate too much inventory (increased storage costs, risk of obsolete)</li>
+<li>May indicate lack of demand for product</li>
+</ul>
+</li>
+<li>
+<p>Low DIO</p>
+<ul>
+<li>Good sales: inventory is sold quickly (a potential sign of efficiency)</li>
+<li>Less cash is tied up in inventory</li>
+<li>Organisations may struggle to react to extra demand</li>
+</ul>
+</li>
+</ul>
+<p>Where we see significant variation in NWC and DSO, the DIO looks a lot closer across these companies. When we look at inventory in relation to sales, Ford performs well, but as we've seen this is supported by a credit sales model which will help drive sales volume.</p>
+<h3>Days payables outstanding</h3>
+<p>DPO looks at the balance of AP at a point of time in conjunction with cost of sales over a period of time (a year).</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-8.png" alt="DPO picture"></p>
+<p>Going back to Tesla:</p>
+<ul>
+<li>A/P at 31/12/24: 18bn</li>
+<li>COS from 01/01/24 to 31/12/24: 80bn</li>
+</ul>
+<p>COS covers inventory about 4.5 times a year. Or, put another way, it takes 82 days of COS to pay all open supplier invoices.</p>
+<p>To get to 82 days: DSO = (Accounts payable / Cost of sales) * 365</p>
+<p>Where:</p>
+<ul>
+<li>Accounts payable is the accumulated balance of open trade payables
+<ul>
+<li>Non-trade AP is excluded</li>
+</ul>
+</li>
+<li>Cost of sales as described earlier.</li>
+</ul>
+<p>Let's look at our comparison companies:</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-16.png" alt="Example company DIO"></p>
+<p>Tesla: 80 days
+Ford: 55 days
+P&amp;G: 182 days (fits with typical FMCG strategy)
+Walmart: 61 days
+Accenture: 101 days</p>
+<p>Interpretation</p>
+<ul>
+<li>High DPO:
+<ul>
+<li>An organisation takes longer to pay</li>
+<li>Suppliers are funding the operation, good for cash flow</li>
+</ul>
+</li>
+<li>Low DPO
+<ul>
+<li>An organisation pays quickly</li>
+<li>Potentially takes advantage of discounts.</li>
+</ul>
+</li>
+<li>Average DPO can hide mix of 15 days and 90 days.</li>
+<li>In services DPO is less important, COGS may be tiny or hard to define</li>
+</ul>
+<h3>Cash conversion cycle /  net operating cycle / cash cycle</h3>
+<p>DSO, DIO, and DPO can be combined to create the cash conversion cycle (CCC).</p>
+<p>Think of:</p>
+<p>DSO: Number of days it takes to convert receivables to cash
+DIO: Number of days it takes to convert stock to receivables or cash
+DPO: Number of days you hold onto payables.</p>
+<p>DSO + DIO can be considered total days to convert assets to cash.</p>
+<p>Next, if you think of DPO as number of days to pay suppliers cash we owe them, if you deduct DPO from DSO + DIO you get a measure of the overall number of days it takes to convert net assets to cash.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-9.png" alt="CCC picture"></p>
+<p>Looking at our example companies:</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-17.png" alt="working capital CCC"></p>
+<p>A short cash conversion cycle is that an organisation can convert its assets to liabilities quickly. If the cash conversion cycle is negative, it means the company collects from customers before paying suppliers.</p>
+<p>Interpretation</p>
+<ul>
+<li>Composition is important, which is why a waterfall is a useful visual</li>
+</ul>
+<p>All companies except Ford are using suppliers to fund their operations. The high DSO at Ford drives their CCC to a higher positive number.</p>
+<h3>Current and quick ratio</h3>
+<p>Two popular ratios for working capital are the current ratio and quick ratio.</p>
+<p>Current ratio:</p>
+<ul>
+<li>Measure the ability to meet short-term obligations</li>
+<li>Compares current assets with current liabilities</li>
+<li>Expected results vary by industry, rule of thumb:
+<ul>
+<li>Greater than 1: indicates enough liquid assets to cover its short-term debts</li>
+<li>From 1.5 to 3: often considered ideal</li>
+<li>Lower numbers expected in FMCG, retail, who leverage supplier funding.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Current Ratio = Current Assets / Current Liabilities</strong></p>
+<p>Tesla: 2.04
+Ford: 1.1
+P&amp;G: 0.7
+Walmart: 0.79
+Accenture: 1.46</p>
+<p>Quick ratio:</p>
+<ul>
+<li>Also known as the acid-test ratio</li>
+<li>Measures the ability to meet short-term obligations using only highly liquid assets. It excludes inventory.</li>
+<li>Provides a more conservative snapshot of a company's financial health</li>
+<li>1:1 or higher generally indicates strong short-term financial health</li>
+</ul>
+<p><strong>Quick Ratio = (Current Assets - Inventory) / Current Liabilities</strong></p>
+<h3>Ageing analysis</h3>
+<p>This isn't as much of a KPI as a process measure. In AP and AR ageing reports show the open items by length of time open.</p>
+<p>Keeping on top of AR ageing is very important in ensuring customers are paying in line with agreed payment terms.</p>
+<p>Connected to AR ageing are various key process, including:</p>
+<ul>
+<li>Dunning: sending statements and reminders at optimal times</li>
+<li>Provisions: early identification of potential irrecoverable amounts and protective actions such as blocking sales and shipping.</li>
+</ul>
+<h2>Challenges and complexities</h2>
+<p>In real life, working capital can be a bit more difficult to calculate and interpret. In this section, I'll look at some of the major challenges and complexities.</p>
+<h3>The purchase to pay cycle</h3>
+<p>The purchase to pay (PtP) cycle that hides under DPO is complex. Part of optimising DPO is optimising PtP.</p>
+<p>The PtP cycle for physical inventory:</p>
+<ul>
+<li>Where relevant, contracts are agreed with suppliers</li>
+<li>Purchase requisitions/purchase orders are placed based on demand plans
+<ul>
+<li>No financial impact</li>
+</ul>
+</li>
+<li>When the goods arrive, a goods receipt is posted
+<ul>
+<li>Accounting impact: increase inventory, offset post to GR/IR</li>
+</ul>
+</li>
+<li>When the invoice is received, an invoice is posted
+<ul>
+<li>Accounting impact: increase AP, offset post to GR/IR</li>
+</ul>
+</li>
+<li>The invoice is paid
+<ul>
+<li>Accounting impact: decrease cash, reduce AP.</li>
+</ul>
+</li>
+</ul>
+<p>GR/IR is a special control account. It stands for goods receipt/invoice receipt. The GR/IR allows for goods receipts and invoice receipts to be matched with reference to purchase orders. This is the core of the 'three-way' match in PtP.</p>
+<p>Outside an ideal PtP flow, various things can happen:</p>
+<ul>
+<li>Goods are received, but not yet invoiced</li>
+<li>Invoices received, but goods were not yet received</li>
+<li>Goods receipt and invoice receipt have a quantity mismatch</li>
+<li>Goods receipt and invoice receipt have a quantity match, but price mismatch.</li>
+</ul>
+<p>These scenarios impact working capital.</p>
+<p>Invoice received, but goods not received in particular increases our A/P liability on the balance sheet without a matching increase in assets on the balance sheet.</p>
+<p>Part of optimising working capital is having a good GR/IR reconciliation process.</p>
+<h3>Invoice discounts</h3>
+<p>So far, we looked at simple examples of payment terms:</p>
+<ul>
+<li>30 days net due</li>
+<li>60 days net due or 15 days 2% discount</li>
+</ul>
+<p>Back at the start of my career, when I worked in an AP product group, our SAP had several hundred payment terms set up.</p>
+<p>For example:</p>
+<ul>
+<li>3% if paid 11th of following month, else 1% if paid 26th, else net 60 EOM.</li>
+</ul>
+<p>I re-call recently that SAP added an AI capability to create plain English descriptions of payment terms!</p>
+<p>With this level of complexity, it can be very difficult to manage payment terms.</p>
+<p>Factors to consider:</p>
+<ul>
+<li>What is organisation's ideal AR and AP payment timing</li>
+<li>What is realistically negotiable with different customer/supplier segments</li>
+<li>Should we offer or take discounts</li>
+<li>Are customers/suppliers actually invoicing with agreed terms
+<ul>
+<li>Often 'actual' postings don't match contract agreements</li>
+</ul>
+</li>
+<li>Can we implement a form of dynamic term or discounting based on evolving working capital needs over time.</li>
+</ul>
+<p>A classic working capital improvement activity is to review contracts,  download vendor and customer master data, and transactional data and do an analysis:</p>
+<ul>
+<li>Are our contractually agreed terms optimal</li>
+<li>Do the terms in our master data match those</li>
+<li>Are the actual open invoices paid in line with the terms (timing &amp; discount).</li>
+</ul>
+<p>There are various case studies of organisations finding huge amounts of working capital improvement just by this simple analysis.</p>
+<h3>Revenue recognition</h3>
+<p>When we ship goods, we reduce inventory (assets). It's important to record the corresponding accounts receivable asset as soon as possible to balance this. This also starts the clock ticking on the AR invoice payment terms.</p>
+<p>However, revenue recognition rules can be a little complex.</p>
+<p>This is another area where analysis should be done to validate whether an organisation is billing at the right moment (earliest possible).</p>
+<p>Within services, without a tangible product, revenue recognition gets a little more complex. Typically, a contract should define 'work packages' that can be easily demonstrated and used as a basis of booking service delivery and billing/invoicing. From a working capital perspective, the structure of the contract deliverables is very important.</p>
+<p>It's not uncommon in services to see disputes around quality and completeness of delivery, leading to significant delays to the ability to bill.</p>
+<p>As a consultant, I've personally had issues with this! In one case when a client wasn't happy with a deliverable, my billing ended up happening two months later than planned. Lesson learned - make the contract much clearer on the minimum level of delivery for billing.</p>
+<h3>Timing</h3>
+<p>All the KPIs are based at least partly on the balance sheet at a point in time, they are very sensitive to operational events</p>
+<ul>
+<li>Consider average rather than period-end numbers</li>
+<li>Understand seasonal impacts and look at the trend</li>
+<li>Be aware of significant business events that might skew numbers
+<ul>
+<li>Unusually high purchase or sale.</li>
+</ul>
+</li>
+</ul>
+<h3>Intercompany flows</h3>
+<p>The sample company numbers we have looked at so far come from annual accounts. Preparing those takes a big effort and a long time. Those numbers are not available on a real-time basis for daily operations.</p>
+<p>A big part of the issue in preparing working capital KPIs is intercompany.</p>
+<p>The below diagram is an illustrative mock-up for a multinational focused on tax efficient operations. The main features are:</p>
+<ul>
+<li>Regardless of physically location, the inventory, WIP, and finished products are owned by an entity (entrepreneur) in a country with low corporate tax</li>
+<li>The manufacturer charges a service fee to the entrepreneur for converting the raw materials to finished products (it's like an internal contract manufacturer)</li>
+<li>Sales entities buy the finished product at a 'high' price from the entrepreneur and sell at a slightly higher price to customers.</li>
+</ul>
+<p><img src="/assets/images/sap/working-capital/working-capital-18.png" alt="Tax efficient intercompany"></p>
+<p>With this model, the maximum amount of margin is earned in a location with low tax rates.</p>
+<p>This model is well established. SAP has long had functionality called 'plants abroad' to do this.</p>
+<p>Unfortunately these intercompany flows make it hard to calculate true NWC, DSO, DIO, DPO as cash, AR, inventory, and AP is split across entities.</p>
+<p>Periodic financial closing includes the elimination of intercompany, but we don't want to wait for closed books every month to look at working capital.</p>
+<p>It's easy to look at reports about a single legal entity, but this often doesn't give us a country/product/region/group-wide view.</p>
+<h3>Business systems architecture</h3>
+<p>Another big challenge in calculating working capital comes from business systems architecture.</p>
+<p>In multinationals, we rarely have a single ERP, that we can log on to and check KPIs.</p>
+<p>Here is an abstraction of a relatively simple multinational ERP architecture.</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-19.png" alt="Multinational systems architecture"></p>
+<p>There are often multiple systems per country, entity, and category. These are the systems that hold the cash, receivables, inventory and payables data we need.</p>
+<p>The periodic financial closing will consolidate this data on a periodic basis in a trusted way. However, this is not available on a day-to-day basis.</p>
+<p>The traditional solution to sending ERP data to external data &amp; reporting systems. However, from a financial perspective, this is not ideal.</p>
+<p>ERPs are controlled accounting systems. When you take data out of an ERP, trust degrades. This is a key concern for important KPIs like working capital used in key business decisions.</p>
+<h3>Other topics</h3>
+<p>A few additional comments by industry:</p>
+<p>Manufacturing</p>
+<ul>
+<li>Split analysis by raw materials, work in progress, and finished product for more insights</li>
+<li>Remove consignment stock if not owned.</li>
+<li>Longer production cycles generally require higher working capital</li>
+<li>Improve work in progress control &amp; yield to free up capital</li>
+<li>Reducing minimum order quantity can improve DIO</li>
+<li>Long lead times can increase DIO, try to align with DPO</li>
+</ul>
+<p>Retail</p>
+<ul>
+<li>Generally low working capital needs due to cash sales</li>
+<li>High DSO would be very concerning</li>
+<li>Gift cards help generate cash, but are an interest free loan from customers and the balance sheet liability needs to be carefully managed</li>
+</ul>
+<h3>Economic and market conditions</h3>
+<p>Alongside internal KPIs, several economic and market factors should be monitored:</p>
+<ul>
+<li>Inflation
+<ul>
+<li>Increases costs of all inputs, increasing need for capital</li>
+<li>Increasing cost to access cash</li>
+</ul>
+</li>
+<li>Economic cycles
+<ul>
+<li>Changes in consumer demand affect inventory and AR</li>
+<li>Downturns: need for sufficient cash to cover short-term obligations</li>
+<li>Upturns: short term cash for fast growth/expansion</li>
+</ul>
+</li>
+<li>Major unexpected
+<ul>
+<li>Organisations may want to stress test their capital situation to deal with the unexpected:
+<ul>
+<li>Political events (e.g. Brexit)</li>
+<li>Natural disasters (e.g. Earthquake/Tsunami)</li>
+<li>Changes to trade tariffs (e.g. Trump's tariffs)</li>
+<li>Global supply chain incidents (e.g. 2021 Ever Green Suez blockage)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Working capital opportunities</h2>
+<p>A brief checklist to consolidate the factors to consider when trying to improve working capital:</p>
+<ul>
+<li>Invoice terms
+<ul>
+<li>Review AP and AR terms across contract, systems, actuals (timing/discounts)</li>
+<li>Extend AP as much as possible w/out risking supplier stability</li>
+</ul>
+</li>
+<li>Planning
+<ul>
+<li>Investigate forecast accuracy, and look to optimise</li>
+<li>If not doing, utilise scenario analysis and variance analysis</li>
+</ul>
+</li>
+<li>Receivables
+<ul>
+<li>Investigate AR efficiency (credit terms, invoice ageing, dunning)</li>
+<li>Reduce/eliminate any risky credit lending causing working capital issues</li>
+<li>Offer incentives for cash or early payment on AR</li>
+</ul>
+</li>
+<li>Inventory
+<ul>
+<li>Optimise stock levels, look at minimum order quantity and lead time</li>
+</ul>
+</li>
+<li>Operations
+<ul>
+<li>Shorten operating cycle</li>
+</ul>
+</li>
+<li>Financing
+<ul>
+<li>Manage terms vs. loans as a way to raise cash</li>
+</ul>
+</li>
+<li>Reporting
+<ul>
+<li>Aim to design/implement real-time reporting on working capital</li>
+<li>Improve cash visibility.</li>
+</ul>
+</li>
+</ul>
+<h2>Advanced topics</h2>
+<h3>Supply chain financing</h3>
+<p>Generally speaking, an organisation wants to pay for their purchases as late as possible. Powerful multinationals will often try to negotiate 90 days, or at least 60 days payment terms.</p>
+<p>On the flip side, suppliers want to get cash as quickly as possible. They may need this for various reasons; funding their own purchases, investing in growth, etc.</p>
+<p>When I worked at Procter &amp; Gamble, I remember the power the big UK supermarkets had over us. But then again, I also remember the power we had over our suppliers.</p>
+<p>This situation can make it difficult for a customer and its supplier to reach a mutually beneficial relationship with payment timings that work for both parties.</p>
+<p>Supply chain financing involves bringing a financial services organisation as an intermediate. They pay the supplier early, and receive payment from the customer later.</p>
+<p>The mechanisms can get a little complicated when it comes to payment dates, discounts, and fees. However, this model can be highly beneficial for a customer and supplier if working capital is of critical importance to them.</p>
+<p>Recently, there are various case studies of supply chain financing in the ESG space. In this area large organisations may want to buy from smaller, independent suppliers, but they may not want to meet the early payment needs of those small businesses. Supply chain financing can bridge this gap.</p>
+<p>Walmart and HSBC are <a href="https://initiatives.weforum.org/financing-transition-community/case-study-details/hsbc-x-walmart/aJYTG0000000ZsD4AU">partnering</a> on supply chain financing in the ESG space. This partnership allows Walmart to engage with smaller suppliers focussed on sustainable practices. This is how SCF can help preserve a supplier's working capital</p>
+<p>Suppliers taking a loan could have the same effect, however, supply chain financing leverages the buyers' creditworthiness. This is one of the main reasons it can work well in ESG.</p>
+<h3>Finance vs. discounts</h3>
+<p>One important topic which is overlooked related to working capital is whether to take or receive discounts.</p>
+<ul>
+<li>In AP suppliers may offer discounts for early payment</li>
+<li>In AR an organisation may offer customers discounts for early payment.</li>
+</ul>
+<p>Taking advantage of discounting can improve cash flow, but at the expense of profit margin.</p>
+<p>Cash flow can also be improved through lending. Therefore, discount opportunities can be evaluated in terms of the cost of lending to make a decision on the optimal way to improve working capital.</p>
+<p>Organisations that set payment terms and do not regularly review them may be offering discounts when it would be better to take advantage of lending or other methods to improve cash flow.</p>
+<p>A model can be built to compare the short term cost of funds and the impact of discounts.</p>
+<p>This topic is rarely covered in working capital reporting.</p>
+<p>In theory, an overlay could be added to working capital reporting showing Discount ROI vs. Funding Cost with supplier segmentation.</p>
+<h2>Limitations of working capital KPIs</h2>
+<p>A brief checklist to consolidate the limitation of working capital KPIs</p>
+<ul>
+<li>Operations are always changing
+<ul>
+<li>Working capital KPIs are out of date the second they are generated</li>
+</ul>
+</li>
+<li>Liquidation valuation
+<ul>
+<li>NWC represents a theoretical liquidation of current items</li>
+<li>Real-life liquidation values will be lower than current BS values</li>
+</ul>
+</li>
+<li>Top level KPIs don't explain the specific nature and state of assets</li>
+<li>A/R total may hide:
+<ul>
+<li>Collection issues
+<ul>
+<li>Ensure provisions for bad debts are up-to-date</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The asset numbers may hide inability to sell</li>
+<li>Inventory total may hide:
+<ul>
+<li>Obsolete items</li>
+<li>Damaged items</li>
+<li>Stolen items.</li>
+</ul>
+</li>
+</ul>
+<h2>Reporting in business systems featuring SAP</h2>
+<h3>ERP: SAP ECC &amp; S/4HANA</h3>
+<p>When it comes to ECC and S/4HANA there are numerous reporting options for working capital.</p>
+<p>Baseline from ECC</p>
+<ul>
+<li>Standard GUI reports</li>
+<li>For deep dive table extracts:
+<ul>
+<li>AR/AP line items: BSID/BSAD, BSIK/BSAK</li>
+<li>Inventory and movements: MBEW, MARD, MKPF/MSEG</li>
+</ul>
+</li>
+<li>SAP business warehouse for custom DSO/DPO/DIO calculations.</li>
+</ul>
+<p>In S4/HANA:</p>
+<ul>
+<li>Universal Journal ACDOCA for finance and CO in one place.</li>
+<li>Material movements via MATDOC; better WIP/settlement visibility.</li>
+<li>Fiori apps:
+<ul>
+<li>Embedded Analytics: CDS views, analytical queries</li>
+<li>Fiori apps for AR/AP ageing, inventory turns, CCC.</li>
+</ul>
+</li>
+</ul>
+<p>The problem with ECC and S/4HANA reporting is not necessarily the reporting capability of the system, it's the intercompany and solutions architecture points we looked at before. In most multinationals, the full operational flow doesn't exist in one system for a country or business unit. This makes the in-built reports less useful.</p>
+<h3>Financial consolidation</h3>
+<p>There are multiple solution options for financial consolidation. These systems and processes are used to calculate the KPIs that we've taken from annual reports in this article. However, these are not much use when it comes to getting real-time visibility on working capital.</p>
+<h3>BDC - Intelligent Working Capital Insights App</h3>
+<p>SAP recently launched the 'Intelligent Working Capital Insights Application'.</p>
+<p>There's a <a href="https://www.sap.com/products/data-cloud/trial.html">BDC free trial</a> where you can configure and experiment with this app.</p>
+<ul>
+<li>This is a pre-built analytical app presented in SAP analytics cloud</li>
+<li>Data is sourced from line of business systems such as S/4HANA</li>
+<li>The data is sourced as 'Data Products'</li>
+<li>Datasphere acts as the semantic layer:
+<ul>
+<li>Federate S/4 + ECC + non-SAP</li>
+<li>Create analytical models</li>
+</ul>
+</li>
+<li>Databricks can be utilised to build in ML models, scenarios, etc.</li>
+</ul>
+<p>Features:</p>
+<ul>
+<li>Pre-delivered integration and KPI rich content out of the box</li>
+<li>Working Capital Insights app on top: curated KPIs, drill-downs, and alerts.</li>
+<li>Show how the app decomposes the high-level KPI into driver charts
+<ul>
+<li>Inventory value/turns</li>
+<li>Ageing buckets</li>
+<li>Supplier term adherence</li>
+<li>Things headline CCC can’t</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://help.sap.com/docs/business-data-cloud/viewing-intelligent-applications/working-capital-insights?locale=en-US&amp;version=LATEST">SAP Help - BDC working capital intelligent insights</a></p>
+<p><a href="https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/42093f14b43c485fbe3adbbe81eff6c8/819a965dd7d643de8e28e125ed22a3a6.html?locale=en-US">SAP Help - SAC working capital intelligent insights</a></p>
+<p>The app itself is split into five pages:</p>
+<h4>Overview page</h4>
+<p>Have a look at the below screenshot from the BDC trial / documentation. A few observations on this:</p>
+<ul>
+<li>Great to see the NWC trend over time alongside the visual breakdown</li>
+<li>Nice to see a ratio with sales to provide more context to NWC.</li>
+</ul>
+<p><img src="/assets/images/sap/working-capital/app-overview.png" alt="Overview Page"></p>
+<h4>Inventory page</h4>
+<p>This is where magic starts to happen, we can see our DIO, and immediately get a visual on important things that explain it:</p>
+<ul>
+<li>Trend over time</li>
+<li>Side by side view with key inventory KPIs (average and turnover)</li>
+<li>Structural analysis (company, customer, country)</li>
+</ul>
+<p><img src="/assets/images/sap/working-capital/app-inventory.png" alt="Inventory Page"></p>
+<h4>Accounts receivable page</h4>
+<p>I'd like to customise this further to include discounts, ageing and potentially something on credit rating breakdown of open AR.</p>
+<p><img src="/assets/images/sap/working-capital/app-ap.png" alt="Accounts Payable Page"></p>
+<h4>Accounts payable page</h4>
+<p>Excellent to see a few visualisations on discounts here. I would potentially want to customise this to add in an ageing analysis.</p>
+<p><img src="/assets/images/sap/working-capital/app-ar.png" alt="Accounts Receivable Page"></p>
+<h4>Liquidity and cash page</h4>
+<p>Great summary: liquidity breakdown, key relevant ratios like ROCE and cash flow.</p>
+<p><img src="/assets/images/sap/working-capital/app-liquidityandcash.png" alt="Liquidity and Cash Page"></p>
+<h4>Overall thoughts</h4>
+<p>The real benefit of this app is in three areas:</p>
+<ul>
+<li>It's part of BDC, delivered in SAP analytics cloud: so you can create country, region, group wide views regardless of source system</li>
+<li>It mixes the high level KPIs with various detailed breakdowns, which help a lot with interpretation</li>
+<li>It's customisable and extendable, including the addition of AI/ML generated data.</li>
+</ul>
+<p>It would be hard to do a full criticism without using it as part of a real business, but my quick reaction is:</p>
+<ul>
+<li>I'd like to build something in to compare discounts vs. cost of loans</li>
+<li>Potentially interested to see something related to supply chain financing</li>
+<li>Would definitely want ageing views on AR and AP</li>
+</ul>
+<p>Depending on the organisation there will be certain cash, inventory, AR or AP specific metrics important to that business that would be good to bring in.</p>
+<h3>BDC overview</h3>
+<p>My quick look at the intelligent working capital insights app glossed over a bunch of SAP systems. In this section, I'll briefly introduce and describe each:</p>
+<p>Business Data Cloud can be considered as a software as a service platform oriented towards unification and governance of SAP data.</p>
+<p>Several products sit under the umbrella of data cloud:</p>
+<ul>
+<li>Data Products for SAP line of business applications</li>
+<li>Business Warehouse</li>
+<li>Managed DataBricks</li>
+<li>Datasphere</li>
+<li>Analytics Cloud</li>
+<li>Intelligent Applications</li>
+</ul>
+<p>The following SAP slide gives a great overview of BDC capabilities</p>
+<p><img src="/assets/images/sap/working-capital/working-capital-10.png" alt="SAP BDC"></p>
+<p>This shows how data products provide line of business (e.g. S/4HANA) data to BDC and Datasphere and how this can be manipulated in Databricks and consumed in SAP Analytics Cloud.</p>
+<p>It's important to keep in mind that data products are fully managed and they automatically update with line of business system changes, so there's no interface overhead here.</p>
+<p>I'll give a quick overview of each part of the architecture below.</p>
+<h4>Data products</h4>
+<ul>
+<li>Curated set managed by from SAP</li>
+<li>Business context &amp; semantic intact &amp; fully governed</li>
+<li>BDC data products visualise KPIs from based on data from different S/4HANA financial areas related to **Finance Foundation for SAP S/4HANA and S/4HANA Cloud.</li>
+<li>Refined data set based on data ingested from an SAP solution</li>
+<li>SAP data products are created, delivered and managed by SAP</li>
+<li>Foundation for the SAP Business Data Cloud Intelligent Applications.</li>
+</ul>
+<p><a href="https://help.sap.com/docs/business-accelerator-hub/sap-business-accelerator-hub/data-products-3839648004cb44c1b20f92685c9d4cba?locale=en-US&amp;q=Data+Products">Help - Data Products</a></p>
+<h4>Databricks</h4>
+<p>A special edition of databricks lakehouse available in BDC</p>
+<p>Features:</p>
+<ul>
+<li>Data engineering</li>
+<li>AI (pro-code dev of AI, ML)</li>
+<li>Analytics</li>
+<li>Fully integrated with SAP
+<ul>
+<li>Access to data products w/out replication</li>
+</ul>
+</li>
+<li>Combine SAP and external data, publish back to BDC</li>
+</ul>
+<p>Example use cases:</p>
+<ul>
+<li>Automated forecasting, time-series with best algorithms, hyperparameters</li>
+<li>Fine-tuning an LLM: customise foundation models on your own data</li>
+<li>Exploratory data analysis: notebooks in multi-language work surface:
+<ul>
+<li>Data science</li>
+<li>Visualisations</li>
+<li>Feature engineering</li>
+<li>ML model development</li>
+</ul>
+</li>
+<li>Business intelligence:
+<ul>
+<li>SQL editor to run optimised queries</li>
+<li>Create visualisation for BI</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://help.sap.com/docs/business-data-cloud/sap-databricks/introducing-sap-databricks?locale=en-US&amp;q=Databricks">Help - DataBricks</a></p>
+<h4>Datasphere</h4>
+<ul>
+<li>Integrate, model, and share data from SAP and non-SAP sources.</li>
+<li>It's a cloud-based data management and analytics service</li>
+</ul>
+<p><a href="https://help.sap.com/docs/SAP_DATASPHERE?locale=en-US">Help - Datasphere</a></p>
+<h4>Datasphere finance foundation</h4>
+<ul>
+<li>Broad foundation of SAP Datasphere data models</li>
+<li>A basis for a variety of financial reporting</li>
+</ul>
+<p>Including</p>
+<ul>
+<li>G/L Account Line Items</li>
+<li>Actual/Plan Journal Entry Item</li>
+<li>Operational Accounting Document</li>
+<li>Journal Entry Operational View</li>
+<li>Corresponding master data models.</li>
+</ul>
+<p>Models based on semantic tags make it easy to analyze and calculate various financial KPIs.</p>
+<p>Profit &amp; Loss:</p>
+<p>The SAP Analytic Cloud Story Finance: P&amp;L Statement (based on SAP Datasphere) is an example of how the foundation can be used.</p>
+<p>It offers an overview of selected KPIs relevant to profit &amp; loss, for instance Cost of Goods Sold (COGS), Net Profit, Operating Profit and Operating Expense. Year-over-Year, Plan vs. Actual comparisons and variances are also included.</p>
+<p>Data Connectivity:</p>
+<p>Based on live data access to SAP Datasphere (based on SAP S/4HANA or SAP S/4HANA Cloud).</p>
+<p><a href="https://help.sap.com/docs/SAP_ANALYTICS_CLOUD/42093f14b43c485fbe3adbbe81eff6c8/3cfaf687e201474d8bbee6e33a3e6d8b.html?locale=en-US&amp;version=LATEST">Help - Finance Foundation</a></p>
+<h4>SAP Analytics Cloud</h4>
+<ul>
+<li>SAP's cloud based analytics solution.</li>
+</ul>
+<p><a href="https://help.sap.com/docs/SAP_ANALYTICS_CLOUD?locale=en-US">Help - SAP Analytics Cloud</a></p>
+<h4>Intelligent Applications</h4>
+<p>Pre-build applications from SAP.</p>
+<p>For example, the working capital intelligent insights application discussed earlier.</p>
+<ul>
+<li>Intelligent app = premium offering exposed via BDC
+<ul>
+<li>Streamline data analytics processes</li>
+<li>Comprehensive dashboards</li>
+<li>Facilitate data analysis</li>
+<li>Suggest viable action</li>
+<li>Use AI where possible</li>
+</ul>
+</li>
+<li>Installing an intelligent app also installs its data products</li>
+</ul>
+<h2>AI in Working Capital Management</h2>
+<p>The above section covered Databricks, which can be used to integrate AI with SAP line of business data.</p>
+<p>However, any AI / ML and data engineering product stack can be used to apply these capabilities to working capital data.</p>
+<p>AI/ML models and algorithms can be run on the detailed data that lies underneath working capital KPIs to do various things:</p>
+<ul>
+<li>Predictive analysis on DSO, DPO</li>
+<li>Analysis of A/R and automation of collection activities.</li>
+<li>Scenario analysis</li>
+<li>Stress-testing working capital under market changes</li>
+</ul>
+<h2>Appendix 1: data products</h2>
+<p>One of the themes of this article is the wide range of data needed to calculate and interpret working capital.</p>
+<p>We've seen that it's difficult to calculate working capital KPIs in a single system.</p>
+<p>External data warehouses are a popular alternative, however these generally require a range of effort to manage interfaces, replication, data model design etc.</p>
+<p>The SAP data products we talked about are designed to be mostly SAP managed ways to get working capital data from source systems to the app. SAP published the list of data products used in this app. There are 35 in the current version. This list gives a good indication of the scope of data we are talking about for working capital calculation:</p>
+<ul>
+<li>BillableControl | Billable Control</li>
+<li>BusinessArea | Business Area</li>
+<li>CashFlow | Cash Flow</li>
+<li>Company | Company</li>
+<li>CompanyCode | Company Code</li>
+<li>ConsolidationChartOfAccounts | Consolidation Chart Of Accounts</li>
+<li>ConsolidationSubitem | Consolidation Subitem</li>
+<li>ConsolidationUnit | Consolidation Unit</li>
+<li>ControllingArea | Controlling Area</li>
+<li>ControllingObject | Controlling Object</li>
+<li>CostAnalysisResource | Cost Analysis Resource</li>
+<li>CostCenter | Cost Center</li>
+<li>CostCenterActivityType | Cost Center Activity Type</li>
+<li>CountryRegion | Country / Region</li>
+<li>Customer | Customer</li>
+<li>EntryViewJournalEntry | Entry View Journal Entry</li>
+<li>FinancialPlanningEntryItem | Financial Planning Entry Item</li>
+<li>FiscalYear | Fiscal Year</li>
+<li>FunctionalArea | Functional Area</li>
+<li>GeneralLedgerAccount | General Ledger Account</li>
+<li>HANACurrency | HANA Currency</li>
+<li>HouseBank | House Bank</li>
+<li>InternalOrder | Internal Order</li>
+<li>JournalEntryCodes | Journal Entry Codes</li>
+<li>JournalEntryHeader | Journal Entry Header</li>
+<li>JournalEntryItemCodes | Journal Entry Item Codes</li>
+<li>Ledger | Ledger</li>
+<li>OperatingConcern | Operating Concern</li>
+<li>Plant | Plant</li>
+<li>Product | Product</li>
+<li>ProfitCenter | Profit Center</li>
+<li>PurchasingOrganization | Purchasing Organization</li>
+<li>SalesTaxType | Sales Tax Type</li>
+<li>Segment | Segment</li>
+<li>Supplier | Supplier</li>
+</ul>

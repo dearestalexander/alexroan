@@ -4,7 +4,7 @@ author: Alexander Roan
 date: 2024-11-17
 tags: 
 hashtags:
-project: ["Frontend"]
+project: ["Technology"]
 subproject: ["Frontend Mentor"]
 image:  /assets/images/frontment/four-card-pokemon/pokemon-desktop.png
 imageAlt: A screenshot of the design of a pokemon themed web page
