@@ -124,7 +124,7 @@ There are obvious factors such as the loss of the GUI and the move to Fiori apps
 
 When it comes to your 'run' model, any change to SAP likely means a service request to SAP. This may be 'slower' than the way you manage your on-premise ERP today where you have infrastructure, functional consultants, and developers on-site who can make changes immediately.
 
-### 6. Business roles and authorisation
+### 7. Business roles and authorisation
 
 In R/3 and ECC implementations, work on security profiles was often not well addressed:
 
@@ -151,7 +151,7 @@ In addition to this, there are a variety of additional solutions that are not in
 
 Care would need to be taken to correctly estimate costs and to potentially avoid adding a lot of 'nice to haves' during the implementation project.
 
-### 8. The importance of implementation governance may still be underemphasised
+### 9. The importance of implementation governance may still be underemphasised
 
 In my experience, a lot of issues during implementation trace back to a lack of governance. I'd call out two examples:
 
@@ -170,7 +170,7 @@ I think every SAP project I've been involved in, the users have faced basic issu
 
 Technical teams need to carefully track their work, and this should have formal sign-offs and reviews.
 
-### 9. Managing custom items in production
+### 10. Managing custom items in production
 
 There are various options to develop in S/4HANA Public Cloud. In fact, there are four main approaches
 
@@ -187,7 +187,7 @@ However, something important to plan for is the need to test custom developments
 
 SAP provide some test automation tools with scripts that can be adjusted, but there may still be an ongoing management effort associated with custom developments.
 
-### 10. Benefiting from innovations
+### 11Benefiting from innovations
 
 One of the big benefits of Public Cloud is the speed of release of updates.
 
@@ -202,3 +202,4 @@ SAP are making significant investments and automations across the board. Conside
 - Ongoing acquisitions and integration.
 
 Public Cloud puts a company in a good position to leverage these innovations, but I think as part of the run model an organisation needs to think about a structure of product/process owners who can look at innovations on a regular basis and do some work to analyse requirements/benefit and manage activation of new items.
+
