@@ -1,5 +1,5 @@
 ---
-title: S/4HANA Cloud Public - Implementation Guide
+title: How different is the implementation of S/4HANA Cloud Public from on-premise?
 author: Alexander Roan
 date: 2025-09-05
 tags: 
@@ -7,7 +7,7 @@ hashtags: ["post", "sap", "finance"]
 project: 
 subproject:
 image: 
-imageAlt:
+imageAlt: /assets/images/sap/cloud/s4hana-cloud-cover.jpg
 description:  I've started looking into the implementation process for SAP S/4HANA Public Cloud
 ---
 
