@@ -2,10 +2,7 @@
 title: Business framework
 author: Alex Roan
 date: 2024-06-18
-tags: 
-hashtags: ["post", "blog", "consulting"]
-project: 
-subproject:
+hashtags: ["all", "business", "consulting"]
 image:
 imageAlt:
 description: One of the challenges of improving operations is identifying and prioritising where to focus. A good way to provide some structure to the approach and to improve communications is by working with a framework or map which helps to visualise the areas of the business and the nature of possible improvements.

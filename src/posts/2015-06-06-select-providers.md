@@ -2,10 +2,7 @@
 title: Advice On Selecting Project & Outsourcing Service Providers
 author: Alex Roan
 date: 2015-06-06
-tags: 
-hashtags: ["post", "blog", "consulting"]
-project: 
-subproject:
+hashtags: ["all", "thoughts", "operations"]
 image: 
 imageAlt:
 description: Cultural considerations when selecting 3rd party service providers.

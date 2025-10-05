@@ -3,9 +3,7 @@ title: How to assess operations - a three part guide
 author: Alex Roan
 date: 2024-07-01
 tags: 
-hashtags: ["post", "article", "operations"]
-project: 
-subproject:
+hashtags: ["all", "operations","consulting"]
 image: /assets/images/blog/ops-asses__cover.jpg
 imageAlt: A cover illustration
 description: Assessing operations is a key part of the 'as is' analysis that is an important part of any transformation project. I've written a 3 part guide on assessing operations.

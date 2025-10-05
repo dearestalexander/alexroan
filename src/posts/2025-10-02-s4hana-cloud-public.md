@@ -2,12 +2,9 @@
 title: How different is the implementation of S/4HANA Cloud Public from on-premise?
 author: Alexander Roan
 date: 2025-09-05
-tags: 
-hashtags: ["post", "sap", "finance"]
-project: 
-subproject:
-image: 
-imageAlt: /assets/images/sap/cloud/s4hana-cloud-cover.jpg
+hashtags: ["all", "sap", "finance", "technology"]
+image:  /assets/images/sap/cloud/s4hana-cloud-cover.jpg
+imageAlt: A cover image for the post showing the article title
 description:  I've started looking into the implementation process for SAP S/4HANA Public Cloud
 ---
 
@@ -202,4 +199,3 @@ SAP are making significant investments and automations across the board. Conside
 - Ongoing acquisitions and integration.
 
 Public Cloud puts a company in a good position to leverage these innovations, but I think as part of the run model an organisation needs to think about a structure of product/process owners who can look at innovations on a regular basis and do some work to analyse requirements/benefit and manage activation of new items.
-

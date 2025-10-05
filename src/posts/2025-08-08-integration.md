@@ -2,12 +2,9 @@
 title: From Web App to SAP S/4HANA with modern integration technology
 author: Alexander Roan
 date: 2025-08-08
-tags: 
-hashtags: ["post", "article", "technology", "featured"]
-project: 
-subproject:
+hashtags: ["all", "sap", "technology, enterprise architecture"]
 image: /assets/images/blog/integration/integration-cover.jpg
-imageAlt:
+imageAlt: A cover image for the post showing the post title
 description:  I've written a detailed guide on the process to create a custom web app and connect it to SAP S/4HANA using a standard API and SAP Integration Suite in SAP Business Technology Platform
 ---
 

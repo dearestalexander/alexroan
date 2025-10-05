@@ -437,6 +437,7 @@ section:nth-child(even) {
   flex-direction: column;
   align-items: center;
   font-size: var(--step--1);
+  margin: 2rem auto;
 }
 
 .select-ctr {
@@ -453,7 +454,7 @@ section:nth-child(even) {
   appearance: none;
 
   /* Basic styling */
-  width: 20ch;
+  width: 30ch;
   padding: 0.3rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -546,7 +547,9 @@ section:nth-child(even) {
   margin: 0;
 }
 
+/*----------------*/
 /*--- projects ---*/
+/*----------------*/
 
 .layout-projects {
   margin-top: var(--space-l); 
@@ -565,6 +568,32 @@ section:nth-child(even) {
 
 .project-grid {
   border-left: 1px solid var(--color-lightgrey);
+}
+
+.project-h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--color-red-primary);
+  position: relative;
+  padding: 1rem;
+  margin-left: 3rem;
+}
+
+.project-h2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-red-primary);
+}
+
+.project-intro {
+  margin-left: 3rem;
+  margin-bottom: 2rem;
 }
 
 .project-menu-title {

@@ -2,12 +2,9 @@
 title: The leadership-project team gap
 author: Alex Roan
 date: 2025-03-14
-tags: 
-hashtags: ["post", "article", "strategy", "featured", "project management"]
-project: 
-subproject:
+hashtags: ["all", "strategy", "business", "project management"]
 image: /assets/images/blog/strategy-project/strategy-project_0.jpg
-imageAlt:
+imageAlt: A cover image for the post showing the article title
 description: Succesful large scale transformation requires a handoff and the ongoing collaboration between strategy and project delivery. This often involves senior teams working with project teams. I take a look at how to improve this relationship.
 ---
 

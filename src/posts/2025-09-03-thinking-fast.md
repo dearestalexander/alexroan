@@ -2,10 +2,7 @@
 title: Thinking Fast and Thinking Slow Organisation Design
 author: Alexander Roan
 date: 2025-09-02
-tags: 
-hashtags: ["post"]
-project: 
-subproject:
+hashtags: ["all", "business", "operations"]
 image: 
 imageAlt:
 description:  A valuable strategy for established businesses facing stiff competition from fast moving digital market entrants.

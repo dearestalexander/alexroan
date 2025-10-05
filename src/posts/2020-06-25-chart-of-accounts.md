@@ -2,10 +2,7 @@
 title: The chart of accounts, concept & design
 author: Alex Roan
 date: 2020-06-25
-tags: 
-hashtags: ["post", "article", "finance", "featured"]
-project: 
-subproject:
+hashtags: ["all", "finance", "reporting and data"]
 image: /assets/images/blog/coa__cover.jpg
 imageAlt: An abstract cover image with the article title
 description: A detailed guide to the  chart of account (CoA). This  is one of the most important structures in business. It reflects all the activities a business is involved in and it provides a foundation for the majority of financial and management reporting.

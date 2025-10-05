@@ -2,10 +2,7 @@
 title: The dreaded job listing search!
 author: Alexander Roan
 date: 2025-09-02
-tags: 
-hashtags: ["post"]
-project: 
-subproject:
+hashtags: ["all", "thoughts"]
 image: 
 imageAlt:
 description:  I'm open for work, and it's time to start putting a real effort into finding a new contract or permanent position.

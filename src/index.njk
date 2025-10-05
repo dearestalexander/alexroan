@@ -336,16 +336,15 @@ layout: 'template-home.njk'
 
 <section class="download-cv">
   <h2 class="home-h2">Download CV</h2>
-  <a href="/assets/documents/alexander-roan-cv-2.docx"><img class="home-cv" src="/assets/images/cv.png"/></a>
+  <a href="/assets/documents/cv-alexander-roan.docx"><img class="home-cv" src="/assets/images/cv.png"/></a>
 </section>
 
 <section class="blog">
-  <h2 class="home-h2">Blog</h2>
-
+  <h2 class="home-h2">Thoughts and Updates</h2>
+  <p>Short reflections on work, learning, and the things I’m exploring.</p>
   <div class="posts-ftr">
       <div id="select-ctr" class="select-ctr"></div>
   </div>
-
   <div class="region-cards">
     <ul class="card-grid">
       {%- for post in collections.post | reverse -%}

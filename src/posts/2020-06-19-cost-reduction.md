@@ -2,10 +2,7 @@
 title: A simple guide to cost reduction
 author: Alex Roan
 date: 2020-06-19
-tags: 
-hashtags: ["post", "article", "finance"]
-project: 
-subproject:
+hashtags: ["all", "finance", "operations", "consulting"]
 image: /assets/images/blog/cost-reduction__cover.jpg
 imageAlt: An abstract cover graphic with the title 'A simple guide to cost reduction'
 description: A guide to various approaches to cost reduction

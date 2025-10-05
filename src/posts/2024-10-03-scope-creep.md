@@ -2,10 +2,7 @@
 title: Understand the root cause of scope creep & disagreements
 author: Alex Roan
 date: 2024-10-03
-tags: 
-hashtags: ["post", "blog", "project"]
-project: 
-subproject:
+hashtags: ["all", "project management", "consulting"]
 image:
 imageAlt:
 description: Scope creep occurs frequently on projects, I take a look at the  common causes and what can we do..

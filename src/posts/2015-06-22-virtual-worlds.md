@@ -2,10 +2,7 @@
 title: Can Big Business Cash In On Virtual Worlds?
 author: Alex Roan
 date: 2015-06-22
-tags: 
-hashtags: ["post", "blog", "technology"]
-project: 
-subproject:
+hashtags: ["all", "thoughts", "technology"]
 image: /assets/images/blog/akihabara.jpg
 imageAlt: A photograph of akihabara showing a futuristic scene with large buildings with lights and an overhead train.
 description: Will business services in virtual worlds.

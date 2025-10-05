@@ -2,12 +2,9 @@
 title: SAP S4HANA Embedded Analytics for FInance - Apps, Architecture, and Implementation Tips
 author: Alexander Roan
 date: 2025-06-12
-tags: 
-hashtags: ["post", "article", "finance", "featured"]
-project: 
-subproject:
+hashtags: ["all", "finance","sap"]
 image: /assets/images/blog/embedded-analytics/embedded-analytics-cover.jpg
-imageAlt:
+imageAlt: A cover image for the post showing the post title
 description: Embedded analytics in SAP S/4HANA sounds like a BW in SAP, but it's not. It's a core capability that utilises HANA, the virtual data model and Fiori to blend analytics and transactions in real time. It's part of the core S/4HANA platform. In this post, I explain the architecture, key app types, and how to approach implementation with real examples from finance.
 ---
 

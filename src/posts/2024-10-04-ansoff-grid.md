@@ -2,10 +2,7 @@
 title: Strategy models - Ansoff's grid
 author: Alex Roan
 date: 2024-10-04
-tags: 
-hashtags: ["post", "blog", "strategy"]
-project: 
-subproject:
+hashtags: ["all", "strategy", "consulting"]
 image:
 imageAlt:
 description: Ansoff's grid is a simple, but excellent way to visualise the different options an organisation has when considering their strategy.

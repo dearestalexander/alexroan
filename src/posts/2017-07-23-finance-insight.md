@@ -2,10 +2,7 @@
 title: Insight in finance - the light bulb moment!
 author: Alex Roan
 date: 2015-07-23
-tags: 
-hashtags: ["post", "blog", "finance"]
-project: 
-subproject:
+hashtags: ["all", "finance", "consulting"]
 image:
 imageAlt: 
 description: Insight is often talked about in Finance, but not always clearly defined. What does it really mean to provide insight and how does this differ from the core role of preparing financial and management reports and accounts?

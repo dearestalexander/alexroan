@@ -2,12 +2,9 @@
 title: Centralised Business Services
 author: Alexander Roan
 date: 2025-06-29
-tags: 
-hashtags: ["project"]
-project: Finance Transformation
-subproject: Global Business Services
+hashtags: ["all", "operations", "finance"]
 image: /assets/images/blog/gbs/gbs-cover.jpg
-imageAlt:
+imageAlt: A cover image for the post showing the post title
 description:  I wrote a detailed article on business services. This was inspired by 7 years at P&G rolling out GBS and several client projects consulting on target operating models for business services and outsourcing.
 ---
 

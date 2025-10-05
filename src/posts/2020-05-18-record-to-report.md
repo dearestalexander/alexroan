@@ -2,12 +2,9 @@
 title: Improving the record to report process
 author: Alex Roan
 date: 2020-05-18
-tags: 
-hashtags: ["post", "blog", "finance", "featured"]
-project: 
-subproject:
+hashtags: ["all", "finance", "consulting"]
 image: /assets/images/blog/rtr-cover.jpg
-imageAlt: 
+imageAlt: A cover image showing the article title
 description: A detailed look at the record to report process.
 ---
 

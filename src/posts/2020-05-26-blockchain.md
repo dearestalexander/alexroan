@@ -2,10 +2,7 @@
 title: Blockchain - how it works
 author: Alex Roan
 date: 2020-05-26
-tags: 
-hashtags: ["post", "article", "technology"]
-project: 
-subproject:
+hashtags: ["all", "digital", "technology"]
 image:
 imageAlt: 
 description: A detailed look into the technology behind blockchain as a way to understand suitable use cases.

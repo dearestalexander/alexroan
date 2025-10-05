@@ -4,6 +4,8 @@ titletwo: ~ by Alex Roan
 layout: 'template-projects.njk'
 ---
 
+  <h2 class="project-h2">Projects and Deep Dives</h2>
+  <p class="project-intro">Long-form articles, experiments, and hands-on learning from my consulting and creative work.</p>
   {%- for project in collections.project | reverse -%}
   <li class="project-card flow--small" data-project="{{ project.data.project }}" data-subproject="{{ project.data.subproject }}">
     <a class="card-inner flow--small" aria-labelledby="{{ project.data.title }}" href="{{ project.url }}">

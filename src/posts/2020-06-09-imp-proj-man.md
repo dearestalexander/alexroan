@@ -2,10 +2,7 @@
 title: Improving project management by focussing on strategy and people
 author: Alex Roan
 date: 2020-06-09
-tags: 
-hashtags: ["post", "article", "project"]
-project: 
-subproject:
+hashtags: ["all", "consulting", "project management"]
 image: /assets/images/blog/proj-man__cover.jpg
 imageAlt: An abstract cover image with the article title
 description: One of the ways to increase the likelihodd of success with transformation projects is to place a more proactive focus on people and strategy.

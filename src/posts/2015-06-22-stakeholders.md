@@ -2,10 +2,7 @@
 title: Improving stakeholder interactions
 author: Alex Roan
 date: 2015-06-22
-tags: 
-hashtags: ["post", "blog", "consulting", "project"]
-project: 
-subproject:
+hashtags: ["all", "project management", "consulting"]
 image: 
 imageAlt: 
 description: The benefits of good stakeholder management

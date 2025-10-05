@@ -2,10 +2,7 @@
 title: Can sites like 'freelance.com' shake up traditional professional services?
 author: Alex Roan
 date: 2015-06-22
-tags: 
-hashtags: ["post", "blog", "consulting"]
-project: 
-subproject:
+hashtags: ["all", "thoughts", "technology"]
 image: /assets/images/blog/smithfields.jpg
 imageAlt: A photograph showing business men walking at smithfields in London
 description: Can tools like freelance.com replace traditional professional services?
